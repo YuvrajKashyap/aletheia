@@ -3,6 +3,7 @@ from redis.exceptions import RedisError
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from app.api.dependencies.admin import AdminContext, require_admin
 from app.db.session import get_db
 from app.jobs import queue as job_queue
 from app.models.system import WorkerHeartbeat
@@ -30,7 +31,10 @@ async def queue_status() -> QueueStatusResponse:
 
 
 @router.post("/jobs/test", response_model=EnqueueJobResponse)
-async def enqueue_test_job(request: EnqueueTestJobRequest) -> EnqueueJobResponse:
+async def enqueue_test_job(
+    request: EnqueueTestJobRequest,
+    _admin_context: AdminContext = Depends(require_admin),
+) -> EnqueueJobResponse:
     try:
         return EnqueueJobResponse(**job_queue.enqueue_ping_job(request.message))
     except RedisError as exc:

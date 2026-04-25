@@ -1,6 +1,8 @@
-﻿from functools import lru_cache
+from functools import lru_cache
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+from app.core.app_mode import is_public_app_mode, validate_admin_key_for_mode
 
 
 class Settings(BaseSettings):
@@ -15,6 +17,7 @@ class Settings(BaseSettings):
     RQ_DEFAULT_QUEUE: str = "default"
     WORKER_NAME: str = "aletheia-worker"
     WORKER_HEARTBEAT_INTERVAL_SECONDS: int = 15
+    ADMIN_API_KEY: str = "replace-me"
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
@@ -25,6 +28,14 @@ class Settings(BaseSettings):
             for origin in self.CORS_ALLOWED_ORIGINS.split(",")
             if origin.strip()
         ]
+
+    @property
+    def public_app_mode(self) -> bool:
+        return is_public_app_mode(self.APP_MODE)
+
+    @property
+    def admin_key_warnings(self) -> list[str]:
+        return validate_admin_key_for_mode(self.APP_MODE, self.ADMIN_API_KEY)
 
 
 @lru_cache

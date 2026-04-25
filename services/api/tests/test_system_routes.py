@@ -20,7 +20,33 @@ def test_system_queue_returns_mocked_queue_info(monkeypatch) -> None:
     assert response.json() == {"queue": "default", "job_count": 3}
 
 
-def test_enqueue_test_job_returns_mocked_job_id(monkeypatch) -> None:
+def test_enqueue_test_job_missing_admin_key_returns_401(monkeypatch) -> None:
+    monkeypatch.setattr(
+        "app.api.v1.routes.system.job_queue.enqueue_ping_job",
+        lambda message: {"job_id": "job-123", "queue": "default", "status": "queued"},
+    )
+
+    response = client.post("/api/v1/system/jobs/test", json={"message": "hello"})
+
+    assert response.status_code == 401
+
+
+def test_enqueue_test_job_wrong_admin_key_returns_403(monkeypatch) -> None:
+    monkeypatch.setattr(
+        "app.api.v1.routes.system.job_queue.enqueue_ping_job",
+        lambda message: {"job_id": "job-123", "queue": "default", "status": "queued"},
+    )
+
+    response = client.post(
+        "/api/v1/system/jobs/test",
+        json={"message": "hello"},
+        headers={"X-Admin-API-Key": "wrong"},
+    )
+
+    assert response.status_code == 403
+
+
+def test_enqueue_test_job_returns_mocked_job_id_with_admin_key(monkeypatch) -> None:
     def fake_enqueue_ping_job(message: str) -> dict:
         return {"job_id": "job-123", "queue": "default", "status": "queued"}
 
@@ -29,7 +55,11 @@ def test_enqueue_test_job_returns_mocked_job_id(monkeypatch) -> None:
         fake_enqueue_ping_job,
     )
 
-    response = client.post("/api/v1/system/jobs/test", json={"message": "hello"})
+    response = client.post(
+        "/api/v1/system/jobs/test",
+        json={"message": "hello"},
+        headers={"X-Admin-API-Key": "replace-me"},
+    )
 
     assert response.status_code == 200
     assert response.json() == {

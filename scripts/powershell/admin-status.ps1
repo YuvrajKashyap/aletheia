@@ -1,15 +1,10 @@
-# Enqueues a harmless worker test job through the running FastAPI backend.
+# Checks the admin safety status endpoint on the running FastAPI backend.
 
 param(
-    [string]$Message = "pong",
     [string]$AdminApiKey = "replace-me"
 )
 
 $ErrorActionPreference = "Stop"
-
-$body = @{
-    message = $Message
-} | ConvertTo-Json
 
 $headers = @{
     "X-Admin-API-Key" = $AdminApiKey
@@ -17,14 +12,12 @@ $headers = @{
 
 try {
     Invoke-RestMethod `
-        -Method Post `
-        -Uri "http://localhost:8000/api/v1/system/jobs/test" `
-        -ContentType "application/json" `
-        -Headers $headers `
-        -Body $body
+        -Method Get `
+        -Uri "http://localhost:8000/api/v1/admin/status" `
+        -Headers $headers
 }
 catch {
-    Write-Host "ERROR enqueue test job request failed."
+    Write-Host "ERROR admin status request failed."
     Write-Host $_.Exception.Message
     if ($_.Exception.Response) {
         Write-Host "Status:" $_.Exception.Response.StatusCode.value__

@@ -636,7 +636,7 @@ Check the default queue:
 Enqueue a test job:
 
     $body = @{ message = "step7-worker-check" } | ConvertTo-Json
-    $job = Invoke-RestMethod -Method Post -Uri http://localhost:8000/api/v1/system/jobs/test -ContentType "application/json" -Body $body
+    $job = Invoke-RestMethod -Method Post -Uri http://localhost:8000/api/v1/system/jobs/test -ContentType "application/json" -Headers @{"X-Admin-API-Key"="replace-me"} -Body $body
     $job
 
 Inspect the test job:
@@ -646,3 +646,48 @@ Inspect the test job:
 Inspect worker heartbeats:
 
     Invoke-RestMethod http://localhost:8000/api/v1/system/worker-heartbeats
+
+## Step 8 admin safety commands
+
+Step 8 adds app mode and admin API key protection for expensive or mutating backend
+operations.
+
+App modes:
+
+- `local` is the default development mode.
+- `demo` and `production` are public-like modes.
+- `demo` and `production` must use a real `ADMIN_API_KEY`, not `replace-me`.
+
+Admin protection:
+
+- This is not a full user authentication system.
+- It is a safety guard for expensive or destructive backend operations.
+- Public demo viewers should not be able to trigger ingestion, indexing, evaluation, reset, or seed jobs.
+- `POST /api/v1/system/jobs/test` is admin-protected as the current harmless mutation endpoint.
+- Step 8 does not add real ingestion, search, indexing, evaluation, OpenSearch, Qdrant, embedding, reranking, or frontend logic.
+
+The default local admin key is:
+
+    replace-me
+
+Check admin status:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/admin-status.ps1
+
+Check admin status with an explicit key:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/admin-status.ps1 -AdminApiKey "replace-me"
+
+Enqueue the protected test job:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/enqueue-test-job.ps1 -Message "step8-script-check"
+
+Direct admin status request:
+
+    Invoke-RestMethod http://localhost:8000/api/v1/admin/status -Headers @{"X-Admin-API-Key"="replace-me"}
+
+Direct protected enqueue request:
+
+    $body = @{ message = "step8-admin-check" } | ConvertTo-Json
+    $job = Invoke-RestMethod -Method Post -Uri http://localhost:8000/api/v1/system/jobs/test -ContentType "application/json" -Headers @{"X-Admin-API-Key"="replace-me"} -Body $body
+    $job
