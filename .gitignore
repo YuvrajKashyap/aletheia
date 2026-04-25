@@ -1,0 +1,92 @@
+﻿# Environment files
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+dist/
+build/
+.vercel/
+.turbo/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Logs
+logs/
+*.log
+
+# Local database and service data
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.bak
+postgres-data/
+opensearch-data/
+qdrant-data/
+redis-data/
+
+# Dataset and generated data outputs
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/benchmarks/*
+!data/benchmarks/.gitkeep
+
+# Keep small sample data trackable later if intentionally added
+# data/samples is not globally ignored
+
+# Generated reports
+reports/*
+!reports/.gitkeep
+
+# Model and ML caches
+.cache/
+model-cache/
+models/
+.embeddings/
+sentence_transformers/
+huggingface/
+.huggingface/
+torch_cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
