@@ -304,3 +304,104 @@ Commands should not:
 ## Final note
 
 These commands will become real as future steps add Docker, FastAPI, worker, frontend, ingestion, indexing, evaluation, and reporting.
+
+## Step 3 local infrastructure commands
+
+Step 3 adds the local Docker Compose infrastructure layer.
+
+Implemented services:
+
+- PostgreSQL
+- Redis
+- OpenSearch
+- Qdrant
+
+No FastAPI app, RQ worker code, or Next.js app exists yet.
+
+### Check prerequisites
+
+Run:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/check-prereqs.ps1
+
+This checks:
+
+- git
+- python
+- node
+- npm
+- docker
+- docker compose
+- Docker daemon availability
+- gh as optional
+
+### Start local infrastructure
+
+Run:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/dev.ps1
+
+This runs:
+
+    docker compose up -d postgres redis opensearch qdrant
+
+Helpful local endpoints:
+
+- Postgres: localhost:5432
+- Redis: localhost:6379
+- OpenSearch: http://localhost:9200
+- Qdrant: http://localhost:6333
+
+### Inspect running containers
+
+Run:
+
+    docker compose ps
+
+### Stop local infrastructure
+
+Run:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/infra-down.ps1
+
+This runs:
+
+    docker compose down
+
+It stops containers but keeps local Docker volumes.
+
+### Reset local infrastructure volumes
+
+Warning:
+
+This deletes local Docker volumes.
+
+Run:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/infra-reset.ps1 -ConfirmReset
+
+This runs:
+
+    docker compose down -v
+
+Do not run this unless you intentionally want to delete local Postgres, Redis, OpenSearch, and Qdrant data.
+
+### Direct health checks
+
+Postgres:
+
+    docker exec aletheia-postgres pg_isready -U aletheia -d aletheia
+
+Redis:
+
+    docker exec aletheia-redis redis-cli ping
+
+OpenSearch:
+
+    Invoke-WebRequest -UseBasicParsing http://localhost:9200
+
+Qdrant:
+
+    Invoke-WebRequest -UseBasicParsing http://localhost:6333
+
+

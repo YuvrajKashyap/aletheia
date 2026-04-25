@@ -1,0 +1,91 @@
+﻿services:
+  postgres:
+    image: postgres:16
+    container_name: aletheia-postgres
+    environment:
+      POSTGRES_DB: aletheia
+      POSTGRES_USER: aletheia
+      POSTGRES_PASSWORD: aletheia
+    ports:
+      - "5432:5432"
+    volumes:
+      - aletheia-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aletheia -d aletheia"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - aletheia-network
+
+  redis:
+    image: redis:7
+    container_name: aletheia-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - aletheia-redis-data:/data
+    command: ["redis-server", "--appendonly", "yes"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - aletheia-network
+
+  opensearch:
+    image: opensearchproject/opensearch:2.19.3
+    container_name: aletheia-opensearch
+    environment:
+      discovery.type: single-node
+      plugins.security.disabled: "true"
+      OPENSEARCH_INITIAL_ADMIN_PASSWORD: "AletheiaLocalOnly123!"
+      OPENSEARCH_JAVA_OPTS: "-Xms512m -Xmx512m"
+      bootstrap.memory_lock: "true"
+    ports:
+      - "9200:9200"
+    volumes:
+      - aletheia-opensearch-data:/usr/share/opensearch/data
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:9200 >/dev/null || exit 1"]
+      interval: 20s
+      timeout: 10s
+      retries: 20
+      start_period: 60s
+    networks:
+      - aletheia-network
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: aletheia-qdrant
+    ports:
+      - "6333:6333"
+    volumes:
+      - aletheia-qdrant-data:/qdrant/storage
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c ':> /dev/tcp/127.0.0.1/6333' || exit 1"]
+      interval: 20s
+      timeout: 10s
+      retries: 20
+      start_period: 20s
+    networks:
+      - aletheia-network
+
+networks:
+  aletheia-network:
+    name: aletheia-network
+
+volumes:
+  aletheia-postgres-data:
+  aletheia-redis-data:
+  aletheia-opensearch-data:
+  aletheia-qdrant-data:
+
