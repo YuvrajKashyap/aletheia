@@ -604,3 +604,45 @@ Run database migrations:
 Run backend tests:
 
     .\services\api\.venv\Scripts\python.exe -m pytest services/api/tests
+
+## Step 7 worker and queue commands
+
+Step 7 adds the Redis/RQ async worker foundation.
+
+Worker rules:
+
+- RQ is used for async jobs.
+- Redis is the broker.
+- Worker heartbeat state is stored in PostgreSQL.
+- Real ingestion, indexing, evaluation, replay, and demo seed jobs come later.
+- This step only validates async plumbing with a harmless test job.
+
+Start local infrastructure:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/dev.ps1
+
+Start the API:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/api.ps1
+
+Start the worker:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/worker.ps1
+
+Check the default queue:
+
+    Invoke-RestMethod http://localhost:8000/api/v1/system/queue
+
+Enqueue a test job:
+
+    $body = @{ message = "step7-worker-check" } | ConvertTo-Json
+    $job = Invoke-RestMethod -Method Post -Uri http://localhost:8000/api/v1/system/jobs/test -ContentType "application/json" -Body $body
+    $job
+
+Inspect the test job:
+
+    Invoke-RestMethod "http://localhost:8000/api/v1/system/jobs/$($job.job_id)"
+
+Inspect worker heartbeats:
+
+    Invoke-RestMethod http://localhost:8000/api/v1/system/worker-heartbeats
