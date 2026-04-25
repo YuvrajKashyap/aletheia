@@ -405,3 +405,94 @@ Qdrant:
     Invoke-WebRequest -UseBasicParsing http://localhost:6333
 
 
+
+## Step 4 FastAPI backend commands
+
+Step 4 adds the FastAPI backend foundation.
+
+This step does not add database models, SQLAlchemy, Alembic, ingestion, search, OpenSearch clients, Qdrant clients, worker logic, or frontend code.
+
+### Python 3.11 verification
+
+Run:
+
+    py -0p
+    py -3.11 --version
+
+Expected:
+
+    Python 3.11.x
+
+### Create backend virtual environment
+
+Run from the repo root:
+
+    py -3.11 -m venv services/api/.venv
+
+Verify:
+
+    .\services\api\.venv\Scripts\python.exe --version
+
+### Install backend dependencies
+
+Run from the repo root:
+
+    .\services\api\.venv\Scripts\python.exe -m pip install --upgrade pip
+    .\services\api\.venv\Scripts\python.exe -m pip install -e "services/api[dev]"
+
+### Run backend tests
+
+Run:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/test.ps1
+
+Equivalent direct command:
+
+    .\services\api\.venv\Scripts\python.exe -m pytest services/api/tests
+
+### Start the FastAPI backend
+
+Run:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/api.ps1
+
+The backend runs at:
+
+    http://localhost:8000
+
+API docs:
+
+    http://localhost:8000/api/docs
+
+OpenAPI schema:
+
+    http://localhost:8000/api/openapi.json
+
+### Test backend endpoints
+
+In a second PowerShell window while the API is running:
+
+    Invoke-RestMethod http://localhost:8000/
+    Invoke-RestMethod http://localhost:8000/api/v1/health
+
+Expected root response:
+
+    service: aletheia-api
+    status: ok
+    docs: /api/docs
+
+Expected health response includes:
+
+    status
+    service
+    version
+    app_mode
+    request_id
+
+### Request ID behavior
+
+The API adds an X-Request-ID response header.
+
+If the request includes X-Request-ID, the API preserves it.
+
+If absent, the API generates a UUID request ID.

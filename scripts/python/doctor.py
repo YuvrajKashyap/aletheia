@@ -13,6 +13,11 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 EXPECTED_DIRS = [
     "apps/web",
     "services/api",
+    "services/api/app",
+    "services/api/app/api/v1/routes",
+    "services/api/app/core",
+    "services/api/app/schemas",
+    "services/api/tests",
     "services/worker",
     "infra",
     "data",
@@ -25,14 +30,25 @@ EXPECTED_FILES = [
     "PROJECT_CHARTER.md",
     "AGENTS.md",
     "docs/product-spec.md",
+    "docs/dev-commands.md",
     ".env.example",
     ".gitignore",
+    "docker-compose.yml",
+    "services/api/pyproject.toml",
+    "services/api/app/main.py",
+    "services/api/app/api/v1/router.py",
+    "services/api/app/api/v1/routes/health.py",
+    "services/api/app/core/config.py",
+    "services/api/app/core/logging.py",
+    "services/api/app/core/middleware.py",
+    "services/api/app/schemas/health.py",
+    "services/api/tests/test_health.py",
 ]
 
 
 def status_line(status: str, label: str, detail: str = "") -> None:
     if detail:
-        print(f"{status:<4} {label:<35} {detail}")
+        print(f"{status:<4} {label:<45} {detail}")
     else:
         print(f"{status:<4} {label}")
 

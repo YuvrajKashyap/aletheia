@@ -90,3 +90,6 @@ desktop.ini
 *.temp
 tmp/
 temp/
+
+# Python package metadata
+*.egg-info/
