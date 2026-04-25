@@ -1,0 +1,87 @@
+﻿"""Standard-library-only diagnostics for the Aletheia repo."""
+
+from __future__ import annotations
+
+import platform
+import sys
+from pathlib import Path
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+
+
+EXPECTED_DIRS = [
+    "apps/web",
+    "services/api",
+    "services/worker",
+    "infra",
+    "data",
+    "docs",
+    "scripts",
+    "tests",
+]
+
+EXPECTED_FILES = [
+    "PROJECT_CHARTER.md",
+    "AGENTS.md",
+    "docs/product-spec.md",
+    ".env.example",
+    ".gitignore",
+]
+
+
+def status_line(status: str, label: str, detail: str = "") -> None:
+    if detail:
+        print(f"{status:<4} {label:<35} {detail}")
+    else:
+        print(f"{status:<4} {label}")
+
+
+def check_path(path_text: str, should_be_dir: bool) -> bool:
+    path = PROJECT_ROOT / path_text
+
+    if should_be_dir:
+        exists = path.is_dir()
+        kind = "directory"
+    else:
+        exists = path.is_file()
+        kind = "file"
+
+    if exists:
+        status_line("PASS", path_text, f"{kind} exists")
+        return True
+
+    status_line("WARN", path_text, f"missing expected {kind}")
+    return False
+
+
+def main() -> int:
+    print()
+    print("Aletheia doctor")
+    print("================")
+    print(f"Project root: {PROJECT_ROOT}")
+    print(f"Python: {sys.version.split()[0]}")
+    print(f"Python executable: {sys.executable}")
+    print(f"Platform: {platform.platform()}")
+    print()
+
+    print("Expected folders")
+    print("----------------")
+    dir_results = [check_path(path, should_be_dir=True) for path in EXPECTED_DIRS]
+
+    print()
+    print("Expected files")
+    print("--------------")
+    file_results = [check_path(path, should_be_dir=False) for path in EXPECTED_FILES]
+
+    print()
+    if all(dir_results) and all(file_results):
+        print("PASS Aletheia repo structure looks ready for the current step.")
+        return 0
+
+    print("WARN Aletheia repo structure has missing expected items.")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
