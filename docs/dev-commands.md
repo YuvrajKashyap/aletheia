@@ -496,3 +496,89 @@ The API adds an X-Request-ID response header.
 If the request includes X-Request-ID, the API preserves it.
 
 If absent, the API generates a UUID request ID.
+
+## Step 5 database and Alembic commands
+
+Step 5 adds the SQLAlchemy and Alembic database foundation.
+
+This step does not add application data models yet. Dataset, document, chunk, query, qrel, evaluation, trace, and job tables are added in later steps.
+
+Database rules:
+
+- Database access is owned by FastAPI through SQLAlchemy.
+- Migrations are managed by Alembic.
+- Do not use Base.metadata.create_all().
+- Do not make the frontend talk directly to PostgreSQL.
+- The initial migration is intentionally empty and establishes Alembic versioning only.
+
+### Start local infrastructure
+
+Postgres must be running before migration commands are used.
+
+Run:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/dev.ps1
+
+Check Postgres:
+
+    docker exec aletheia-postgres pg_isready -U aletheia -d aletheia
+
+### Install updated backend dependencies
+
+Run:
+
+    .\services\api\.venv\Scripts\python.exe -m pip install -e "services/api[dev]"
+
+Step 5 adds:
+
+- sqlalchemy
+- alembic
+- psycopg[binary]
+- python-dotenv
+
+### Upgrade database
+
+Run:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/db-upgrade.ps1
+
+This runs Alembic upgrade head from services/api.
+
+### Check current migration
+
+Run:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/db-current.ps1
+
+### Show migration history
+
+Run:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/db-history.ps1
+
+### Downgrade database
+
+Downgrade requires an explicit revision.
+
+Example:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/db-downgrade.ps1 -Revision -1
+
+If no revision is provided, the script exits without running a downgrade.
+
+### Database health endpoint
+
+Start the API:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/api.ps1
+
+Then in a second PowerShell window:
+
+    Invoke-RestMethod http://localhost:8000/api/v1/health/db
+
+Expected healthy response includes:
+
+    status: healthy
+    database: postgresql
+    request_id
+    error: null

@@ -16,7 +16,10 @@ EXPECTED_DIRS = [
     "services/api/app",
     "services/api/app/api/v1/routes",
     "services/api/app/core",
+    "services/api/app/db",
     "services/api/app/schemas",
+    "services/api/alembic",
+    "services/api/alembic/versions",
     "services/api/tests",
     "services/worker",
     "infra",
@@ -35,20 +38,32 @@ EXPECTED_FILES = [
     ".gitignore",
     "docker-compose.yml",
     "services/api/pyproject.toml",
+    "services/api/alembic.ini",
+    "services/api/alembic/env.py",
+    "services/api/alembic/script.py.mako",
+    "services/api/alembic/versions/0001_initialize_database.py",
     "services/api/app/main.py",
     "services/api/app/api/v1/router.py",
     "services/api/app/api/v1/routes/health.py",
     "services/api/app/core/config.py",
     "services/api/app/core/logging.py",
     "services/api/app/core/middleware.py",
+    "services/api/app/db/base.py",
+    "services/api/app/db/session.py",
+    "services/api/app/db/health.py",
     "services/api/app/schemas/health.py",
     "services/api/tests/test_health.py",
+    "services/api/tests/test_db_health.py",
+    "scripts/powershell/db-upgrade.ps1",
+    "scripts/powershell/db-downgrade.ps1",
+    "scripts/powershell/db-current.ps1",
+    "scripts/powershell/db-history.ps1",
 ]
 
 
 def status_line(status: str, label: str, detail: str = "") -> None:
     if detail:
-        print(f"{status:<4} {label:<45} {detail}")
+        print(f"{status:<4} {label:<55} {detail}")
     else:
         print(f"{status:<4} {label}")
 

@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     API_PORT: int = 8000
     CORS_ALLOWED_ORIGINS: str = "http://localhost:3000"
     PROJECT_VERSION: str = "0.1.0"
+    DATABASE_URL: str = "postgresql+psycopg://aletheia:aletheia@localhost:5432/aletheia"
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 

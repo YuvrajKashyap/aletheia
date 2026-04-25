@@ -11,6 +11,10 @@ dependencies = [
     "fastapi",
     "uvicorn[standard]",
     "pydantic-settings",
+    "sqlalchemy",
+    "alembic",
+    "psycopg[binary]",
+    "python-dotenv",
 ]
 
 [project.optional-dependencies]
