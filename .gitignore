@@ -68,6 +68,8 @@ reports/*
 .cache/
 model-cache/
 models/
+!services/api/app/models/
+!services/api/app/models/*.py
 .embeddings/
 sentence_transformers/
 huggingface/

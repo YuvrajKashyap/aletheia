@@ -582,3 +582,25 @@ Expected healthy response includes:
     database: postgresql
     request_id
     error: null
+
+## Step 6 core schema commands
+
+Step 6 adds the core SQLAlchemy ORM model metadata and the Alembic migration for the
+Aletheia database schema.
+
+Schema rules:
+
+- Core tables are defined in `services/api/app/models`.
+- Migrations are managed under `services/api/alembic/versions`.
+- Apply schema changes with the database upgrade command after reviewing migrations.
+- Do not use `Base.metadata.create_all()`.
+- Use Alembic only for database schema changes.
+- This step still does not include ingestion, search, vector indexing, reranking, worker, or frontend code.
+
+Run database migrations:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/db-upgrade.ps1
+
+Run backend tests:
+
+    .\services\api\.venv\Scripts\python.exe -m pytest services/api/tests
