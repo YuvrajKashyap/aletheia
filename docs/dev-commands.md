@@ -1241,3 +1241,74 @@ DB checks:
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select source, count(*) from retrieval_candidates group by source order by source;"
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select event_type, severity, count(*) from system_events group by event_type, severity order by event_type, severity;"
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select trace_json->>'trace_schema_version' as version, count(*) from query_traces group by version;"
+
+## Step 22 benchmark metrics engine commands
+
+Step 22 adds the pure benchmark metrics engine. It does not run SciFact retrieval, create an evaluation runner, expose evaluation API routes, enqueue jobs, or write evaluation database rows.
+
+Metric rules:
+
+- Metrics operate on document IDs, not chunk IDs.
+- Aletheia retrieves chunks, so the full evaluation runner must later map chunk results back to parent document IDs before scoring.
+- Duplicate document IDs are deduplicated before scoring so multiple chunks from the same document cannot count as multiple hits.
+- Recall@K is the fraction of relevant documents retrieved in the top K deduplicated document IDs.
+- MRR@10 is the mean of per-query reciprocal rank at 10.
+- NDCG@10 uses DCG divided by ideal DCG with binary or graded relevance.
+- Latency summaries include count, average, p50, p95, min, and max using deterministic nearest-rank percentiles.
+- The fixture output is deterministic and only validates metric math; it is not a benchmark result.
+- Full SciFact evaluation and evaluation DB writes come later.
+
+Run the fixture through PowerShell:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/evaluate-metrics-fixture.ps1
+
+Run the fixture directly:
+
+    cd services/api
+    .\.venv\Scripts\python.exe -m app.cli.evaluate_metrics_fixture --input ..\..\data\samples\metrics-fixture.json
+    cd ..\..
+
+Expected output shape:
+
+    {
+      "per_query": [
+        {
+          "query_id": "q_perfect",
+          "metrics": {
+            "recall_at_5": 1.0,
+            "recall_at_10": 1.0,
+            "reciprocal_rank_at_10": 1.0,
+            "ndcg_at_10": 1.0,
+            "retrieved_count": 3,
+            "relevant_count": 1,
+            "hit_at_5": 1.0,
+            "hit_at_10": 1.0
+          }
+        }
+      ],
+      "aggregate": {
+        "query_count": 3,
+        "recall_at_5": 0.6666666666666666,
+        "recall_at_10": 0.6666666666666666,
+        "mrr_at_10": 0.4444444444444444,
+        "ndcg_at_10": 0.5,
+        "hit_rate_at_5": 0.6666666666666666,
+        "hit_rate_at_10": 0.6666666666666666
+      },
+      "latency_summary": {
+        "count": 3,
+        "avg_latency_ms": 43.333333333333336,
+        "p50_latency_ms": 20.0,
+        "p95_latency_ms": 100.0,
+        "min_latency_ms": 10.0,
+        "max_latency_ms": 100.0
+      }
+    }
+
+Evaluation DB non-mutation checks:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from evaluation_runs;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from evaluation_query_results;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from evaluation_reports;"
+
+Expected counts should remain 0 unless prior manual testing inserted rows. Step 22 does not write evaluation DB rows.

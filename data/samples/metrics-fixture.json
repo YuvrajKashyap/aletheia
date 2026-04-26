@@ -1,0 +1,29 @@
+{
+  "queries": [
+    {
+      "query_id": "q_perfect",
+      "retrieved_document_ids": ["d1", "d2", "d3"],
+      "relevant_document_ids": ["d1"],
+      "relevance_by_id": {
+        "d1": 1
+      }
+    },
+    {
+      "query_id": "q_late_hit_with_duplicate",
+      "retrieved_document_ids": ["x1", "x1", "x2", "d4", "x3"],
+      "relevant_document_ids": ["d4"],
+      "relevance_by_id": {
+        "d4": 1
+      }
+    },
+    {
+      "query_id": "q_miss",
+      "retrieved_document_ids": ["x5", "x6", "x7"],
+      "relevant_document_ids": ["d9"],
+      "relevance_by_id": {
+        "d9": 1
+      }
+    }
+  ],
+  "latencies_ms": [10.0, 20.0, 100.0]
+}
