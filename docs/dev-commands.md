@@ -1312,3 +1312,60 @@ Evaluation DB non-mutation checks:
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from evaluation_reports;"
 
 Expected counts should remain 0 unless prior manual testing inserted rows. Step 22 does not write evaluation DB rows.
+
+## Step 23 evaluation correctness commands
+
+Step 23 adds the correctness layer that connects stored Aletheia traces and retrieval candidates to document-level SciFact relevance judgments.
+
+Correctness rules:
+
+- SciFact qrels are document-level, while Aletheia retrieves chunks.
+- Chunks and retrieval candidates must be mapped back to parent `document_id` values before scoring.
+- Ranked document IDs are deduplicated before metrics so multiple chunks from the same document count once.
+- Trace-level evaluation uses real stored candidates and real relevance judgments.
+- This step is read-only: it does not create `evaluation_runs`, `evaluation_query_results`, or `evaluation_reports`.
+- This is not the full evaluation runner. Batch evaluation, jobs, reports, and persisted evaluation rows come later.
+
+Check qrels alignment:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/check-eval-alignment.ps1
+
+Manual benchmark query lookup:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select external_id, text from benchmark_queries order by external_id limit 5;"
+
+Run search for exact benchmark query text:
+
+    $body = @{
+      query = "<PASTE_EXACT_BENCHMARK_QUERY_TEXT>"
+      retrieval_mode = "hybrid_rerank"
+      top_k = 10
+      bm25_candidate_k = 50
+      dense_candidate_k = 50
+      hybrid_candidate_k = 50
+      rerank_top_n = 25
+      rrf_k = 60
+    } | ConvertTo-Json
+
+    $result = Invoke-RestMethod -Method Post -Uri http://localhost:8000/api/v1/search -ContentType "application/json" -Body $body
+
+Evaluate trace:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/evaluate-trace.ps1 -TraceId $result.trace_id -QueryExternalId "<PASTE_QUERY_EXTERNAL_ID>"
+
+Evaluate trace with text output:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/evaluate-trace.ps1 -TraceId $result.trace_id -QueryExternalId "<PASTE_QUERY_EXTERNAL_ID>" -Text
+
+Direct CLI help:
+
+    cd services/api
+    .\.venv\Scripts\python.exe -m app.cli.check_eval_alignment --help
+    .\.venv\Scripts\python.exe -m app.cli.evaluate_trace --help
+    cd ..\..
+
+Verify no evaluation DB rows:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from evaluation_runs;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from evaluation_query_results;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from evaluation_reports;"
