@@ -141,6 +141,8 @@ def test_create_index_version_with_admin_key_returns_created_shape(monkeypatch) 
 
     assert response.status_code == 200
     assert response.json()["name"] == "beir-scifact-test-scifact-document-v1-1-0"
+    assert response.json()["status"] == "ready"
+    assert response.json()["is_active"] is False
 
 
 def test_activation_endpoint_requires_admin_key() -> None:

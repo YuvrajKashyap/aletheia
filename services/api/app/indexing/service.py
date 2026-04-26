@@ -133,31 +133,57 @@ def create_index_version(
     index_version = existing or IndexVersion(dataset_id=dataset.id, name=resolved_name)
     if existing is None:
         db.add(index_version)
+        index_version.status = status
+        index_version.is_active = False
 
-    index_version.status = index_version.status if existing and index_version.is_active else status
-    index_version.is_active = bool(index_version.is_active)
-    index_version.lexical_index_name = lexical_index_name or generate_lexical_index_name(
+    resolved_lexical_index_name = lexical_index_name or generate_lexical_index_name(
         dataset.name,
         dataset.version,
         strategy,
         version,
     )
-    index_version.vector_collection_name = vector_collection_name or generate_vector_collection_name(
+    resolved_vector_collection_name = vector_collection_name or generate_vector_collection_name(
         dataset.name,
         dataset.version,
         strategy,
         version,
         embedding_model,
     )
-    index_version.embedding_model = embedding_model
-    index_version.embedding_dimension = embedding_dimension
-    index_version.chunking_strategy = strategy
-    index_version.chunking_version = version
+
+    if existing is None:
+        index_version.lexical_index_name = resolved_lexical_index_name
+        index_version.vector_collection_name = resolved_vector_collection_name
+        index_version.embedding_model = embedding_model
+        index_version.embedding_dimension = embedding_dimension
+        index_version.chunking_strategy = strategy
+        index_version.chunking_version = version
+        index_version.vector_count = vector_count
+        index_version.config_json = config_json or {}
+        index_version.notes = notes
+    else:
+        if not index_version.lexical_index_name:
+            index_version.lexical_index_name = resolved_lexical_index_name
+        if not index_version.vector_collection_name:
+            index_version.vector_collection_name = resolved_vector_collection_name
+        if not index_version.embedding_model and embedding_model:
+            index_version.embedding_model = embedding_model
+        if index_version.embedding_dimension is None and embedding_dimension is not None:
+            index_version.embedding_dimension = embedding_dimension
+        if not index_version.chunking_strategy:
+            index_version.chunking_strategy = strategy
+        if not index_version.chunking_version:
+            index_version.chunking_version = version
+        if index_version.vector_count is None:
+            index_version.vector_count = vector_count
+        if config_json:
+            merged_config = dict(index_version.config_json or {})
+            merged_config.update(config_json)
+            index_version.config_json = merged_config
+        if notes is not None:
+            index_version.notes = notes
+
     index_version.document_count = resolved_document_count
     index_version.chunk_count = resolved_chunk_count
-    index_version.vector_count = vector_count
-    index_version.config_json = config_json or {}
-    index_version.notes = notes
 
     db.commit()
     db.refresh(index_version)
