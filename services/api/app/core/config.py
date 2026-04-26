@@ -18,6 +18,10 @@ class Settings(BaseSettings):
     WORKER_NAME: str = "aletheia-worker"
     WORKER_HEARTBEAT_INTERVAL_SECONDS: int = 15
     ADMIN_API_KEY: str = "replace-me"
+    IR_DATASETS_HOME: str = "data/raw/ir_datasets"
+    SCIFACT_CORPUS_DATASET_ID: str = "beir/scifact"
+    SCIFACT_EVAL_DATASET_ID: str = "beir/scifact/test"
+    SCIFACT_DEFAULT_SPLIT: str = "test"
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 

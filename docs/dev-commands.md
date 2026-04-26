@@ -691,3 +691,41 @@ Direct protected enqueue request:
     $body = @{ message = "step8-admin-check" } | ConvertTo-Json
     $job = Invoke-RestMethod -Method Post -Uri http://localhost:8000/api/v1/system/jobs/test -ContentType "application/json" -Headers @{"X-Admin-API-Key"="replace-me"} -Body $body
     $job
+
+## Step 9 SciFact dataset loader commands
+
+Step 9 adds the BEIR SciFact dataset loader.
+
+Loader rules:
+
+- `ir_datasets` is used as the dataset source.
+- The loader stores SciFact corpus documents, test benchmark queries, and document-level qrels.
+- SciFact qrels are stored as document-level relevance judgments.
+- Chunking, OpenSearch indexing, Qdrant indexing, retrieval, reranking, and evaluation metrics come later.
+- This step does not add fake data or fake benchmark metrics.
+
+Dry run with small limits:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/ingest-scifact.ps1 -DryRun -DocumentLimit 10 -QueryLimit 5 -QrelLimit 5
+
+Limited real load:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/ingest-scifact.ps1 -DocumentLimit 10 -QueryLimit 5 -QrelLimit 5
+
+Full load:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/ingest-scifact.ps1
+
+Postgres count checks:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from datasets;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from documents;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from benchmark_queries;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from relevance_judgments;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from chunks;"
+
+Read-only API endpoints:
+
+    Invoke-RestMethod http://localhost:8000/api/v1/datasets
+    Invoke-RestMethod "http://localhost:8000/api/v1/documents?limit=5&offset=0"
+    Invoke-RestMethod "http://localhost:8000/api/v1/benchmark-queries?limit=5&offset=0"

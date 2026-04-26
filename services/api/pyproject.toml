@@ -17,6 +17,7 @@ dependencies = [
     "python-dotenv",
     "redis",
     "rq",
+    "ir-datasets",
 ]
 
 [project.optional-dependencies]
