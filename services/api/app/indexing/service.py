@@ -287,25 +287,35 @@ def mark_index_version_failed(
 
 
 def _activate(db: Session, target: IndexVersion, message: str) -> IndexVersion:
-    current_versions = db.scalars(
-        select(IndexVersion).where(
-            IndexVersion.dataset_id == target.dataset_id,
-            IndexVersion.id != target.id,
-            IndexVersion.is_active.is_(True),
-        )
-    ).all()
-    for current in current_versions:
-        current.status = statuses.DEPRECATED
-        current.is_active = False
+    try:
+        activated_at = utc_now()
+        current_versions = db.scalars(
+            select(IndexVersion).where(
+                IndexVersion.dataset_id == target.dataset_id,
+                IndexVersion.id != target.id,
+                IndexVersion.is_active.is_(True),
+            )
+        ).all()
+        for current in current_versions:
+            current.status = statuses.DEPRECATED
+            current.is_active = False
+            current.updated_at = activated_at
 
-    target.status = statuses.ACTIVE
-    target.is_active = True
-    target.activated_at = utc_now()
-    config = dict(target.config_json or {})
-    config["last_activation_message"] = message
-    target.config_json = config
-    db.commit()
-    db.refresh(target)
+        if current_versions:
+            db.flush()
+
+        target.status = statuses.ACTIVE
+        target.is_active = True
+        target.activated_at = activated_at
+        target.updated_at = activated_at
+        config = dict(target.config_json or {})
+        config["last_activation_message"] = message
+        target.config_json = config
+        db.commit()
+        db.refresh(target)
+    except Exception:
+        db.rollback()
+        raise
     return target
 
 
