@@ -942,3 +942,41 @@ Expected JSON output fields:
 - `total_hits`
 - `latency_ms`
 - `results`, including rank, OpenSearch score, chunk/document IDs, title, text, chunking metadata, and source metadata.
+
+## Step 15 BM25 Search API and trace commands
+
+Step 15 adds the formal backend Search API for BM25 retrieval.
+
+Search API rules:
+
+- `POST /api/v1/search` is public/read-oriented and does not require an admin key.
+- `bm25` is currently the only supported retrieval mode.
+- Every successful search writes a `queries` row, a `query_traces` row, and BM25 `retrieval_candidates` rows.
+- The trace is a BM25-only skeleton for now.
+- Dense retrieval, Qdrant retrieval, hybrid RRF, reranking, evaluation metrics, and frontend work come later.
+- The response returns ranked chunks, not generated answers.
+
+PowerShell helper:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/search-api.ps1 -Query "Do statins lower cholesterol?" -TopK 5
+
+Direct API call:
+
+    $body = @{ query = "Do statins lower cholesterol?"; retrieval_mode = "bm25"; top_k = 5 } | ConvertTo-Json
+    Invoke-RestMethod -Method Post -Uri "http://localhost:8000/api/v1/search" -ContentType "application/json" -Body $body
+
+List traces:
+
+    Invoke-RestMethod "http://localhost:8000/api/v1/search/traces?limit=10&offset=0"
+
+Get trace detail:
+
+    $traces = Invoke-RestMethod "http://localhost:8000/api/v1/search/traces?limit=1&offset=0"
+    $traceId = $traces.items[0].trace_id
+    Invoke-RestMethod "http://localhost:8000/api/v1/search/traces/$traceId"
+
+Validate database writes:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, retrieval_mode, status, total_latency_ms, created_at from queries order by created_at desc limit 5;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, query_id, created_at from query_traces order by created_at desc limit 5;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select query_id, source, bm25_rank, final_rank, bm25_score from retrieval_candidates order by created_at desc limit 10;"
