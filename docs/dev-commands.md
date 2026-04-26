@@ -980,3 +980,37 @@ Validate database writes:
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, retrieval_mode, status, total_latency_ms, created_at from queries order by created_at desc limit 5;"
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, query_id, created_at from query_traces order by created_at desc limit 5;"
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select query_id, source, bm25_rank, final_rank, bm25_score from retrieval_candidates order by created_at desc limit 10;"
+
+## Step 16 local embedding model commands
+
+Step 16 adds the local embedding model service.
+
+Embedding rules:
+
+- The locked embedding model is `BAAI/bge-small-en-v1.5`.
+- The expected embedding dimension is `384`.
+- The model loads lazily only when embedding functionality is called.
+- FastAPI startup and normal health checks do not load or download the model.
+- The model cache directory is `data/models`.
+- The first CLI run may download the model and take time.
+- This step does not write embeddings to Qdrant.
+- This step does not add dense retrieval or modify `/api/v1/search`.
+- Hybrid retrieval, reranking, evaluation metrics, and frontend work come later.
+
+Check API embedding model status without loading the model:
+
+    Invoke-RestMethod http://localhost:8000/api/v1/system/models/embedding
+
+Embed text from PowerShell:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/embed-text.ps1 -Text "Do statins lower cholesterol?"
+
+Show a larger vector preview:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/embed-text.ps1 -Text "Do statins lower cholesterol?" -PreviewDimensions 16
+
+Print the full vector:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/embed-text.ps1 -Text "Do statins lower cholesterol?" -ShowVector
+
+Note: the CLI runs in its own Python process. If the CLI loads the model, the API status route may still report `loaded=false` until the API process itself uses embedding functionality.

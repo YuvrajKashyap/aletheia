@@ -23,6 +23,11 @@ class Settings(BaseSettings):
     SCIFACT_EVAL_DATASET_ID: str = "beir/scifact/test"
     SCIFACT_DEFAULT_SPLIT: str = "test"
     EMBEDDING_MODEL: str = "BAAI/bge-small-en-v1.5"
+    EMBEDDING_DIMENSION: int = 384
+    EMBEDDING_DEVICE: str = "cpu"
+    MODEL_CACHE_DIR: str = "data/models"
+    EMBEDDING_BATCH_SIZE: int = 64
+    EMBEDDING_NORMALIZE: bool = True
     OPENSEARCH_URL: str = "http://localhost:9200"
     OPENSEARCH_USERNAME: str | None = None
     OPENSEARCH_PASSWORD: str | None = None

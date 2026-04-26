@@ -6,9 +6,11 @@ from sqlalchemy.orm import Session
 from app.api.dependencies.admin import AdminContext, require_admin
 from app.db.session import get_db
 from app.jobs import queue as job_queue
+from app.ml.embeddings import get_embedding_model_status
 from app.models.system import WorkerHeartbeat
 from app.search.opensearch_client import check_opensearch_health
 from app.schemas.system import (
+    EmbeddingModelStatusResponse,
     EnqueueJobResponse,
     EnqueueTestJobRequest,
     JobStatusResponse,
@@ -35,6 +37,11 @@ async def queue_status() -> QueueStatusResponse:
 @router.get("/opensearch", response_model=OpenSearchHealthResponse)
 async def opensearch_status() -> OpenSearchHealthResponse:
     return OpenSearchHealthResponse(**check_opensearch_health())
+
+
+@router.get("/models/embedding", response_model=EmbeddingModelStatusResponse)
+async def embedding_model_status() -> EmbeddingModelStatusResponse:
+    return EmbeddingModelStatusResponse(**get_embedding_model_status())
 
 
 @router.post("/jobs/test", response_model=EnqueueJobResponse)

@@ -46,3 +46,12 @@ class OpenSearchHealthResponse(BaseModel):
     cluster_name: str | None = None
     version: str | None = None
     error: str | None = None
+
+
+class EmbeddingModelStatusResponse(BaseModel):
+    model_name: str
+    device: str
+    loaded: bool
+    embedding_dimension: int | None
+    cache_dir: str
+    error: str | None = None
