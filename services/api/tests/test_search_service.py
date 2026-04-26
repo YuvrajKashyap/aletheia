@@ -8,6 +8,8 @@ from app.search import service as search_service
 from app.search.retrieval_models import (
     DenseSearchResponse,
     DenseSearchResult,
+    HybridSearchResponse,
+    HybridSearchResult,
     LexicalSearchResponse,
     LexicalSearchResult,
 )
@@ -104,6 +106,49 @@ def fake_dense_response() -> DenseSearchResponse:
             )
         ],
         latency_ms=8.5,
+        embedding_latency_ms=2.0,
+        qdrant_latency_ms=3.0,
+    )
+
+
+def fake_hybrid_response() -> HybridSearchResponse:
+    return HybridSearchResponse(
+        query="Do statins lower cholesterol?",
+        index_version_id="00000000-0000-0000-0000-000000000001",
+        lexical_index_name="aletheia-lexical-test",
+        vector_collection_name="aletheia-vector-test",
+        top_k=1,
+        bm25_candidate_k=3,
+        dense_candidate_k=4,
+        rrf_k=60,
+        result_count=1,
+        results=[
+            HybridSearchResult(
+                rank=1,
+                chunk_id="00000000-0000-0000-0000-000000000002",
+                document_id="00000000-0000-0000-0000-000000000003",
+                dataset_id="00000000-0000-0000-0000-000000000004",
+                index_version_id="00000000-0000-0000-0000-000000000001",
+                document_external_id="doc-1",
+                chunk_external_id="doc-1:0",
+                title="Hybrid statin result",
+                text="Statins lower cholesterol in many fused matches.",
+                fusion_score=0.032,
+                bm25_rank=1,
+                dense_rank=2,
+                bm25_score=12.3,
+                dense_score=0.87,
+                token_count=7,
+                content_hash="hash",
+                chunking_strategy="scifact_document_v1",
+                chunking_version="1.0",
+                metadata_json={"source_document_external_id": "doc-1"},
+            )
+        ],
+        latency_ms=15.0,
+        bm25_latency_ms=4.5,
+        dense_latency_ms=8.5,
+        fusion_latency_ms=0.5,
         embedding_latency_ms=2.0,
         qdrant_latency_ms=3.0,
     )
@@ -217,6 +262,84 @@ def test_run_search_routes_dense_and_persists_dense_trace(monkeypatch) -> None:
     assert candidate_rows[0].bm25_score is None
     assert candidate_rows[0].metadata_json["score_breakdown"] == {"dense": 0.87}
     assert candidate_rows[0].metadata_json["collection_name"] == "aletheia-vector-test"
+
+
+def test_run_search_routes_hybrid_and_persists_hybrid_trace(monkeypatch) -> None:
+    hybrid_calls = []
+
+    def fake_search_hybrid(
+        db,
+        query,
+        index_version_id=None,
+        top_k=10,
+        bm25_candidate_k=50,
+        dense_candidate_k=50,
+        rrf_k=60,
+    ):
+        hybrid_calls.append(
+            {
+                "query": query,
+                "index_version_id": index_version_id,
+                "top_k": top_k,
+                "bm25_candidate_k": bm25_candidate_k,
+                "dense_candidate_k": dense_candidate_k,
+                "rrf_k": rrf_k,
+            }
+        )
+        return fake_hybrid_response()
+
+    monkeypatch.setattr(search_service, "search_hybrid", fake_search_hybrid)
+    db = FakeSearchDb()
+    request = SearchRequest(
+        query="Do statins lower cholesterol?",
+        retrieval_mode="hybrid",
+        top_k=1,
+        bm25_candidate_k=3,
+        dense_candidate_k=4,
+        rrf_k=60,
+    )
+
+    response = search_service.run_search(db, request, request_id="request-3")
+
+    assert hybrid_calls == [
+        {
+            "query": "Do statins lower cholesterol?",
+            "index_version_id": None,
+            "top_k": 1,
+            "bm25_candidate_k": 3,
+            "dense_candidate_k": 4,
+            "rrf_k": 60,
+        }
+    ]
+    assert response.retrieval_mode == "hybrid"
+    assert response.lexical_index_name == "aletheia-lexical-test"
+    assert response.vector_collection_name == "aletheia-vector-test"
+    assert response.fusion_latency_ms == 0.5
+    assert response.results[0].score_breakdown == {
+        "fusion": 0.032,
+        "bm25": 12.3,
+        "dense": 0.87,
+        "bm25_rank": 1,
+        "dense_rank": 2,
+    }
+
+    trace_rows = [value for value in db.added if isinstance(value, QueryTrace)]
+    candidate_rows = [value for value in db.added if isinstance(value, RetrievalCandidate)]
+
+    assert trace_rows[0].trace_json["stages"]["bm25"]["index_name"] == "aletheia-lexical-test"
+    assert trace_rows[0].trace_json["stages"]["dense"]["collection_name"] == "aletheia-vector-test"
+    assert trace_rows[0].trace_json["stages"]["fusion"]["method"] == "reciprocal_rank_fusion"
+    assert "reranker" in trace_rows[0].trace_json["notes"][0].lower()
+    assert candidate_rows[0].source == "hybrid_rrf"
+    assert candidate_rows[0].bm25_rank == 1
+    assert candidate_rows[0].dense_rank == 2
+    assert candidate_rows[0].fusion_rank == 1
+    assert candidate_rows[0].rerank_rank is None
+    assert candidate_rows[0].final_rank == 1
+    assert candidate_rows[0].bm25_score == 12.3
+    assert candidate_rows[0].dense_score == 0.87
+    assert candidate_rows[0].fusion_score == 0.032
+    assert candidate_rows[0].reranker_score is None
 
 
 def test_trace_json_helper_contains_bm25_stage() -> None:

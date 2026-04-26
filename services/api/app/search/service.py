@@ -18,8 +18,15 @@ from app.schemas.search import (
     TraceListResponse,
 )
 from app.search.dense_retriever import search_dense
+from app.search.hybrid_retriever import search_hybrid
 from app.search.lexical_retriever import search_bm25
-from app.search.retrieval_models import DenseSearchResponse, DenseSearchResult, LexicalSearchResult
+from app.search.retrieval_models import (
+    DenseSearchResponse,
+    DenseSearchResult,
+    HybridSearchResponse,
+    HybridSearchResult,
+    LexicalSearchResult,
+)
 
 
 BM25_TRACE_NOTE = (
@@ -28,6 +35,10 @@ BM25_TRACE_NOTE = (
 )
 DENSE_TRACE_NOTE = (
     "Step 18 trace skeleton: dense only. Hybrid and reranker stages are not implemented yet."
+)
+HYBRID_TRACE_NOTE = (
+    "Step 19 trace: hybrid BM25 + dense using Reciprocal Rank Fusion. "
+    "Reranker is not implemented yet."
 )
 
 
@@ -78,6 +89,38 @@ def _dense_result_item(result: DenseSearchResult) -> SearchResultItem:
     )
 
 
+def _hybrid_score_breakdown(result: HybridSearchResult) -> dict[str, Any]:
+    breakdown: dict[str, Any] = {"fusion": result.fusion_score}
+    if result.bm25_score is not None:
+        breakdown["bm25"] = result.bm25_score
+    if result.dense_score is not None:
+        breakdown["dense"] = result.dense_score
+    if result.bm25_rank is not None:
+        breakdown["bm25_rank"] = result.bm25_rank
+    if result.dense_rank is not None:
+        breakdown["dense_rank"] = result.dense_rank
+    return breakdown
+
+
+def _hybrid_result_item(result: HybridSearchResult) -> SearchResultItem:
+    return SearchResultItem(
+        rank=result.rank,
+        chunk_id=result.chunk_id,
+        document_id=result.document_id,
+        dataset_id=result.dataset_id,
+        document_external_id=result.document_external_id,
+        chunk_external_id=result.chunk_external_id,
+        title=result.title,
+        text=result.text,
+        score=result.fusion_score,
+        score_breakdown=_hybrid_score_breakdown(result),
+        token_count=result.token_count,
+        chunking_strategy=result.chunking_strategy,
+        chunking_version=result.chunking_version,
+        metadata_json=result.metadata_json,
+    )
+
+
 def _candidate_metadata(result: LexicalSearchResult) -> dict[str, Any]:
     return {
         "document_external_id": result.document_external_id,
@@ -100,6 +143,24 @@ def _dense_candidate_metadata(
         "collection_name": collection_name,
         "query_embedding_dimension": query_embedding_dimension,
         "score_breakdown": {"dense": result.score},
+        "metadata_json": result.metadata_json,
+    }
+
+
+def _hybrid_candidate_metadata(
+    result: HybridSearchResult,
+    lexical_index_name: str | None,
+    vector_collection_name: str | None,
+    rrf_k: int,
+) -> dict[str, Any]:
+    return {
+        "document_external_id": result.document_external_id,
+        "chunk_external_id": result.chunk_external_id,
+        "title": result.title,
+        "lexical_index_name": lexical_index_name,
+        "vector_collection_name": vector_collection_name,
+        "rrf_k": rrf_k,
+        "score_breakdown": _hybrid_score_breakdown(result),
         "metadata_json": result.metadata_json,
     }
 
@@ -153,6 +214,45 @@ def _dense_trace_json(
             }
         },
         "notes": [DENSE_TRACE_NOTE],
+    }
+
+
+def _hybrid_trace_json(
+    request: SearchRequest,
+    hybrid_response: HybridSearchResponse,
+) -> dict[str, Any]:
+    return {
+        "query": request.query,
+        "retrieval_mode": request.retrieval_mode,
+        "index_version_id": hybrid_response.index_version_id,
+        "lexical_index_name": hybrid_response.lexical_index_name,
+        "vector_collection_name": hybrid_response.vector_collection_name,
+        "top_k": request.top_k,
+        "bm25_candidate_k": hybrid_response.bm25_candidate_k,
+        "dense_candidate_k": hybrid_response.dense_candidate_k,
+        "rrf_k": hybrid_response.rrf_k,
+        "stages": {
+            "bm25": {
+                "latency_ms": hybrid_response.bm25_latency_ms,
+                "candidate_count": hybrid_response.bm25_candidate_k,
+                "index_name": hybrid_response.lexical_index_name,
+            },
+            "dense": {
+                "latency_ms": hybrid_response.dense_latency_ms,
+                "embedding_latency_ms": hybrid_response.embedding_latency_ms,
+                "qdrant_latency_ms": hybrid_response.qdrant_latency_ms,
+                "candidate_count": hybrid_response.dense_candidate_k,
+                "collection_name": hybrid_response.vector_collection_name,
+            },
+            "fusion": {
+                "latency_ms": hybrid_response.fusion_latency_ms,
+                "method": "reciprocal_rank_fusion",
+                "rrf_k": hybrid_response.rrf_k,
+                "fused_candidate_count": hybrid_response.result_count,
+                "result_count": len(hybrid_response.results),
+            },
+        },
+        "notes": [HYBRID_TRACE_NOTE],
     }
 
 
@@ -218,6 +318,8 @@ def _run_bm25_search(
         index_version_id=lexical_response.index_version_id,
         index_name=lexical_response.index_name,
         collection_name=None,
+        lexical_index_name=lexical_response.index_name,
+        vector_collection_name=None,
         top_k=request.top_k,
         candidate_k=candidate_k,
         latency_ms=total_latency_ms,
@@ -290,6 +392,8 @@ def _run_dense_search(
         index_version_id=dense_response.index_version_id,
         index_name=None,
         collection_name=dense_response.collection_name,
+        lexical_index_name=None,
+        vector_collection_name=dense_response.collection_name,
         top_k=request.top_k,
         candidate_k=candidate_k,
         latency_ms=total_latency_ms,
@@ -297,6 +401,91 @@ def _run_dense_search(
         qdrant_latency_ms=dense_response.qdrant_latency_ms,
         result_count=len(dense_response.results),
         results=[_dense_result_item(result) for result in dense_response.results],
+    )
+
+
+def _run_hybrid_search(
+    db: Session,
+    request: SearchRequest,
+    query_row: Query,
+    started: float,
+) -> SearchResponse:
+    hybrid_response = search_hybrid(
+        db,
+        query=request.query,
+        index_version_id=request.index_version_id,
+        top_k=request.top_k,
+        bm25_candidate_k=request.bm25_candidate_k or 50,
+        dense_candidate_k=request.dense_candidate_k or 50,
+        rrf_k=request.rrf_k,
+    )
+    total_latency_ms = round((perf_counter() - started) * 1000, 2)
+    resolved_index_version_id = _uuid_or_none(hybrid_response.index_version_id)
+    query_row.status = "completed"
+    query_row.total_latency_ms = total_latency_ms
+    query_row.index_version_id = resolved_index_version_id
+
+    trace_row = QueryTrace(
+        query_id=query_row.id,
+        trace_json=_hybrid_trace_json(
+            request=request,
+            hybrid_response=hybrid_response,
+        ),
+    )
+    db.add(trace_row)
+    db.flush()
+
+    for result in hybrid_response.results:
+        db.add(
+            RetrievalCandidate(
+                query_id=query_row.id,
+                trace_id=trace_row.id,
+                chunk_id=_uuid_or_none(result.chunk_id),
+                document_id=_uuid_or_none(result.document_id),
+                source="hybrid_rrf",
+                bm25_rank=result.bm25_rank,
+                dense_rank=result.dense_rank,
+                fusion_rank=result.rank,
+                final_rank=result.rank,
+                bm25_score=result.bm25_score,
+                dense_score=result.dense_score,
+                fusion_score=result.fusion_score,
+                latency_ms=hybrid_response.latency_ms,
+                metadata_json=_hybrid_candidate_metadata(
+                    result,
+                    hybrid_response.lexical_index_name,
+                    hybrid_response.vector_collection_name,
+                    hybrid_response.rrf_k,
+                ),
+            )
+        )
+
+    db.commit()
+    db.refresh(query_row)
+    db.refresh(trace_row)
+    return SearchResponse(
+        query_id=query_row.id,
+        trace_id=trace_row.id,
+        request_id=query_row.request_id,
+        query=query_row.text,
+        retrieval_mode=query_row.retrieval_mode,
+        index_version_id=hybrid_response.index_version_id,
+        index_name=hybrid_response.lexical_index_name,
+        collection_name=hybrid_response.vector_collection_name,
+        lexical_index_name=hybrid_response.lexical_index_name,
+        vector_collection_name=hybrid_response.vector_collection_name,
+        top_k=request.top_k,
+        candidate_k=max(hybrid_response.bm25_candidate_k, hybrid_response.dense_candidate_k),
+        bm25_candidate_k=hybrid_response.bm25_candidate_k,
+        dense_candidate_k=hybrid_response.dense_candidate_k,
+        rrf_k=hybrid_response.rrf_k,
+        latency_ms=total_latency_ms,
+        bm25_latency_ms=hybrid_response.bm25_latency_ms,
+        embedding_latency_ms=hybrid_response.embedding_latency_ms,
+        qdrant_latency_ms=hybrid_response.qdrant_latency_ms,
+        fusion_latency_ms=hybrid_response.fusion_latency_ms,
+        result_count=len(hybrid_response.results),
+        results=[_hybrid_result_item(result) for result in hybrid_response.results],
     )
 
 
@@ -315,6 +504,9 @@ def run_search(
         metadata_json={
             "top_k": request.top_k,
             "candidate_k": request.candidate_k,
+            "bm25_candidate_k": request.bm25_candidate_k,
+            "dense_candidate_k": request.dense_candidate_k,
+            "rrf_k": request.rrf_k,
         },
     )
     db.add(query_row)
@@ -326,6 +518,8 @@ def run_search(
             return _run_bm25_search(db, request, query_row, started)
         if request.retrieval_mode == "dense":
             return _run_dense_search(db, request, query_row, started)
+        if request.retrieval_mode == "hybrid":
+            return _run_hybrid_search(db, request, query_row, started)
         raise ValueError(f"Unsupported retrieval mode: {request.retrieval_mode}")
     except Exception as exc:
         db.rollback()

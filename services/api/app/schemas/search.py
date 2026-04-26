@@ -10,6 +10,9 @@ class SearchRequest(BaseModel):
     retrieval_mode: str = "bm25"
     top_k: int = Field(default=10, ge=1, le=100)
     candidate_k: int | None = Field(default=None, ge=1, le=500)
+    bm25_candidate_k: int | None = Field(default=None, ge=1, le=500)
+    dense_candidate_k: int | None = Field(default=None, ge=1, le=500)
+    rrf_k: int = Field(default=60, ge=1)
     index_version_id: UUID | None = None
 
     @field_validator("query")
@@ -22,14 +25,23 @@ class SearchRequest(BaseModel):
     @field_validator("retrieval_mode")
     @classmethod
     def retrieval_mode_must_be_supported(cls, value: str) -> str:
-        if value not in {"bm25", "dense"}:
-            raise ValueError('retrieval_mode must be "bm25" or "dense"')
+        if value not in {"bm25", "dense", "hybrid"}:
+            raise ValueError('retrieval_mode must be "bm25", "dense", or "hybrid"')
         return value
 
     @model_validator(mode="after")
     def candidate_k_must_cover_top_k(self) -> "SearchRequest":
         if self.candidate_k is not None and self.candidate_k < self.top_k:
             raise ValueError("candidate_k must be greater than or equal to top_k")
+        if self.retrieval_mode == "hybrid":
+            if self.bm25_candidate_k is None:
+                self.bm25_candidate_k = 50
+            if self.dense_candidate_k is None:
+                self.dense_candidate_k = 50
+            if self.bm25_candidate_k < self.top_k:
+                raise ValueError("bm25_candidate_k must be greater than or equal to top_k")
+            if self.dense_candidate_k < self.top_k:
+                raise ValueError("dense_candidate_k must be greater than or equal to top_k")
         return self
 
 
@@ -59,12 +71,18 @@ class SearchResponse(BaseModel):
     index_version_id: UUID | str | None
     index_name: str | None = None
     collection_name: str | None = None
+    lexical_index_name: str | None = None
+    vector_collection_name: str | None = None
     top_k: int
     candidate_k: int
+    bm25_candidate_k: int | None = None
+    dense_candidate_k: int | None = None
+    rrf_k: int | None = None
     latency_ms: float
     bm25_latency_ms: float | None = None
     embedding_latency_ms: float | None = None
     qdrant_latency_ms: float | None = None
+    fusion_latency_ms: float | None = None
     result_count: int
     results: list[SearchResultItem]
 

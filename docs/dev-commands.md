@@ -1099,3 +1099,50 @@ Trace and candidate checks:
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from query_traces;"
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select source, count(*) from retrieval_candidates group by source order by source;"
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, retrieval_mode, status, total_latency_ms, created_at from queries where retrieval_mode = 'dense' order by created_at desc limit 5;"
+
+## Step 19 hybrid retrieval commands
+
+Step 19 adds hybrid retrieval with Reciprocal Rank Fusion.
+
+Hybrid retrieval rules:
+
+- BM25 and dense raw scores are not directly comparable, so they are not added or averaged.
+- Reciprocal Rank Fusion combines ranked lists using `sum(1 / (rrf_k + rank))`.
+- The default `rrf_k` is `60`.
+- `/api/v1/search` now supports `bm25`, `dense`, and `hybrid`.
+- Hybrid traces store BM25, dense, and fusion stages.
+- Reranking, evaluation metrics, and frontend work come later.
+
+Compare BM25:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/search-bm25.ps1 -Query "Can animals transmit coronaviruses to humans?" -TopK 5
+
+Compare dense:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/search-dense.ps1 -Query "Can animals transmit coronaviruses to humans?" -TopK 5
+
+Hybrid CLI:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/search-hybrid.ps1 -Query "Can animals transmit coronaviruses to humans?" -TopK 5 -Bm25CandidateK 50 -DenseCandidateK 50 -RrfK 60
+
+Hybrid CLI with text output:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/search-hybrid.ps1 -Query "Do statins lower cholesterol?" -TopK 5 -Text
+
+Hybrid Search API body:
+
+    $body = @{
+      query = "Do statins lower cholesterol?"
+      retrieval_mode = "hybrid"
+      top_k = 5
+      bm25_candidate_k = 50
+      dense_candidate_k = 50
+      rrf_k = 60
+    } | ConvertTo-Json
+    Invoke-RestMethod -Method Post -Uri "http://localhost:8000/api/v1/search" -ContentType "application/json" -Body $body
+
+Trace and candidate checks:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select source, count(*) from retrieval_candidates group by source order by source;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, retrieval_mode, status, total_latency_ms, created_at from queries order by created_at desc limit 10;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select source, bm25_rank, dense_rank, fusion_rank, final_rank, bm25_score, dense_score, fusion_score from retrieval_candidates where source = 'hybrid_rrf' order by created_at desc limit 10;"
