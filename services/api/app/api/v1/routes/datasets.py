@@ -9,6 +9,9 @@ from app.models.datasets import BenchmarkQuery, Chunk, Dataset, Document, Releva
 from app.schemas.datasets import (
     BenchmarkQueryListItem,
     BenchmarkQueryListResponse,
+    ChunkDetailResponse,
+    ChunkListItem,
+    ChunkListResponse,
     DatasetStatsResponse,
     DatasetSummary,
     DocumentListItem,
@@ -20,6 +23,12 @@ router = APIRouter(tags=["datasets"])
 
 def _count(db: Session, statement) -> int:
     return int(db.scalar(statement) or 0)
+
+
+def _preview(text: str, max_length: int = 240) -> str:
+    if len(text) <= max_length:
+        return text
+    return f"{text[: max_length - 3]}..."
 
 
 def _dataset_counts(db: Session, dataset_id: UUID) -> dict[str, int]:
@@ -161,4 +170,84 @@ async def list_benchmark_queries(
             )
             for query in queries
         ],
+    )
+
+
+@router.get("/chunks", response_model=ChunkListResponse)
+async def list_chunks(
+    dataset_id: UUID | None = None,
+    document_id: UUID | None = None,
+    chunking_strategy: str | None = None,
+    limit: int = Query(default=50, ge=1, le=200),
+    offset: int = Query(default=0, ge=0),
+    db: Session = Depends(get_db),
+) -> ChunkListResponse:
+    filters = []
+    if dataset_id is not None:
+        filters.append(Chunk.dataset_id == dataset_id)
+    if document_id is not None:
+        filters.append(Chunk.document_id == document_id)
+    if chunking_strategy is not None:
+        filters.append(Chunk.chunking_strategy == chunking_strategy)
+
+    total_statement = select(func.count()).select_from(Chunk)
+    item_statement = (
+        select(Chunk)
+        .order_by(Chunk.created_at.desc(), Chunk.chunk_index.asc())
+        .limit(limit)
+        .offset(offset)
+    )
+    if filters:
+        total_statement = total_statement.where(*filters)
+        item_statement = item_statement.where(*filters)
+
+    total = _count(db, total_statement)
+    chunks = db.scalars(item_statement).all()
+    return ChunkListResponse(
+        total=total,
+        limit=limit,
+        offset=offset,
+        items=[
+            ChunkListItem(
+                id=chunk.id,
+                dataset_id=chunk.dataset_id,
+                document_id=chunk.document_id,
+                external_id=chunk.external_id,
+                chunk_index=chunk.chunk_index,
+                text_preview=_preview(chunk.text),
+                token_count=chunk.token_count,
+                content_hash=chunk.content_hash,
+                chunking_strategy=chunk.chunking_strategy,
+                chunking_version=chunk.chunking_version,
+                created_at=chunk.created_at,
+            )
+            for chunk in chunks
+        ],
+    )
+
+
+@router.get("/chunks/{chunk_id}", response_model=ChunkDetailResponse)
+async def chunk_detail(chunk_id: UUID, db: Session = Depends(get_db)) -> ChunkDetailResponse:
+    chunk = db.get(Chunk, chunk_id)
+    if chunk is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Chunk not found: {chunk_id}",
+        )
+
+    return ChunkDetailResponse(
+        id=chunk.id,
+        dataset_id=chunk.dataset_id,
+        document_id=chunk.document_id,
+        external_id=chunk.external_id,
+        chunk_index=chunk.chunk_index,
+        text=chunk.text,
+        token_count=chunk.token_count,
+        char_start=chunk.char_start,
+        char_end=chunk.char_end,
+        content_hash=chunk.content_hash,
+        chunking_strategy=chunk.chunking_strategy,
+        chunking_version=chunk.chunking_version,
+        metadata_json=chunk.metadata_json,
+        created_at=chunk.created_at,
     )

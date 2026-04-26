@@ -56,3 +56,41 @@ class BenchmarkQueryListResponse(BaseModel):
     limit: int
     offset: int
     items: list[BenchmarkQueryListItem]
+
+
+class ChunkListItem(BaseModel):
+    id: UUID
+    dataset_id: UUID
+    document_id: UUID
+    external_id: str | None
+    chunk_index: int
+    text_preview: str
+    token_count: int | None
+    content_hash: str
+    chunking_strategy: str
+    chunking_version: str
+    created_at: datetime
+
+
+class ChunkListResponse(BaseModel):
+    total: int
+    limit: int
+    offset: int
+    items: list[ChunkListItem]
+
+
+class ChunkDetailResponse(BaseModel):
+    id: UUID
+    dataset_id: UUID
+    document_id: UUID
+    external_id: str | None
+    chunk_index: int
+    text: str
+    token_count: int | None
+    char_start: int | None
+    char_end: int | None
+    content_hash: str
+    chunking_strategy: str
+    chunking_version: str
+    metadata_json: dict
+    created_at: datetime

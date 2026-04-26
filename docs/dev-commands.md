@@ -729,3 +729,40 @@ Read-only API endpoints:
     Invoke-RestMethod http://localhost:8000/api/v1/datasets
     Invoke-RestMethod "http://localhost:8000/api/v1/documents?limit=5&offset=0"
     Invoke-RestMethod "http://localhost:8000/api/v1/benchmark-queries?limit=5&offset=0"
+
+## Step 10 text normalization and chunking commands
+
+Step 10 adds conservative text normalization and database chunk generation.
+
+Chunking rules:
+
+- Text normalization collapses whitespace and strips leading/trailing whitespace.
+- Normalization preserves case, punctuation, citations, numbers, and scientific symbols.
+- SciFact uses document-level chunking by default: one chunk per document.
+- SciFact qrels are document-level, so document-level chunks preserve a clean mapping back to relevance judgments.
+- OpenSearch indexing, Qdrant indexing, search, embeddings, reranking, and evaluation metrics come later.
+
+Dry-run chunking:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/chunk-documents.ps1 -DryRun -DocumentLimit 10
+
+Limited real chunking:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/chunk-documents.ps1 -DocumentLimit 10
+
+Full chunking:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/chunk-documents.ps1
+
+Postgres count checks:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from documents;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from chunks;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select chunking_strategy, chunking_version, count(*) from chunks group by chunking_strategy, chunking_version;"
+
+Chunk API endpoints:
+
+    Invoke-RestMethod "http://localhost:8000/api/v1/chunks?limit=5&offset=0"
+    $chunks = Invoke-RestMethod "http://localhost:8000/api/v1/chunks?limit=1&offset=0"
+    $chunkId = $chunks.items[0].id
+    Invoke-RestMethod "http://localhost:8000/api/v1/chunks/$chunkId"
