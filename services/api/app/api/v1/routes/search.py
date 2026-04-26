@@ -11,6 +11,11 @@ from app.schemas.search import (
     TraceListResponse,
 )
 from app.search import service as search_service
+from app.search.dense_retriever import (
+    DenseRetrievalError,
+    InvalidDenseSearchRequestError,
+    NoVectorIndexError,
+)
 from app.search.lexical_retriever import InvalidSearchRequestError, NoActiveIndexError, RetrievalError
 
 router = APIRouter(prefix="/search", tags=["search"])
@@ -28,9 +33,15 @@ async def search(
             search_request,
             request_id=getattr(request.state, "request_id", None),
         )
-    except NoActiveIndexError as exc:
+    except (NoActiveIndexError, NoVectorIndexError) as exc:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=str(exc)) from exc
-    except (InvalidSearchRequestError, RetrievalError, ValueError) as exc:
+    except (
+        InvalidSearchRequestError,
+        InvalidDenseSearchRequestError,
+        RetrievalError,
+        DenseRetrievalError,
+        ValueError,
+    ) as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
 
 

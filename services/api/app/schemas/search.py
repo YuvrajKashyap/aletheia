@@ -21,9 +21,9 @@ class SearchRequest(BaseModel):
 
     @field_validator("retrieval_mode")
     @classmethod
-    def retrieval_mode_must_be_bm25(cls, value: str) -> str:
-        if value != "bm25":
-            raise ValueError('retrieval_mode must be "bm25"')
+    def retrieval_mode_must_be_supported(cls, value: str) -> str:
+        if value not in {"bm25", "dense"}:
+            raise ValueError('retrieval_mode must be "bm25" or "dense"')
         return value
 
     @model_validator(mode="after")
@@ -57,10 +57,14 @@ class SearchResponse(BaseModel):
     query: str
     retrieval_mode: str
     index_version_id: UUID | str | None
-    index_name: str
+    index_name: str | None = None
+    collection_name: str | None = None
     top_k: int
     candidate_k: int
     latency_ms: float
+    bm25_latency_ms: float | None = None
+    embedding_latency_ms: float | None = None
+    qdrant_latency_ms: float | None = None
     result_count: int
     results: list[SearchResultItem]
 

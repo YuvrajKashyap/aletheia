@@ -1062,3 +1062,40 @@ Qdrant count validation:
 Inspect vector index jobs:
 
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, index_version_id, job_type, status, chunks_total, chunks_completed, chunks_failed, created_at from index_jobs where job_type = 'vector_index_build' order by created_at desc limit 10;"
+
+## Step 18 dense retrieval commands
+
+Step 18 adds dense vector retrieval from Qdrant and enables `retrieval_mode=dense` in the Search API.
+
+Dense retrieval rules:
+
+- The query is embedded with `BAAI/bge-small-en-v1.5`.
+- Qdrant vector similarity search is used against the active index version collection.
+- Dense retrieval is semantic retrieval, not keyword retrieval.
+- `/api/v1/search` now supports `bm25` and `dense`.
+- Dense searches write `queries`, `query_traces`, and `retrieval_candidates` rows with dense stage metadata.
+- Hybrid RRF, reranking, evaluation metrics, and frontend work come later.
+
+Dense CLI:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/search-dense.ps1 -Query "Can animals transmit coronaviruses to humans?" -TopK 5
+
+Dense CLI with text output:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/search-dense.ps1 -Query "Do statins lower cholesterol?" -TopK 5 -Text
+
+Dense Search API body:
+
+    $body = @{
+      query = "Can animals transmit coronaviruses to humans?"
+      retrieval_mode = "dense"
+      top_k = 5
+    } | ConvertTo-Json
+    Invoke-RestMethod -Method Post -Uri "http://localhost:8000/api/v1/search" -ContentType "application/json" -Body $body
+
+Trace and candidate checks:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from queries;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from query_traces;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select source, count(*) from retrieval_candidates group by source order by source;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, retrieval_mode, status, total_latency_ms, created_at from queries where retrieval_mode = 'dense' order by created_at desc limit 5;"

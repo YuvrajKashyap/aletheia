@@ -16,7 +16,13 @@ def test_whitespace_query_rejected() -> None:
 
 def test_unsupported_retrieval_mode_rejected() -> None:
     with pytest.raises(ValidationError):
-        SearchRequest(query="statins", retrieval_mode="dense")
+        SearchRequest(query="statins", retrieval_mode="hybrid")
+
+
+def test_dense_retrieval_mode_accepted() -> None:
+    request = SearchRequest(query="statins", retrieval_mode="dense")
+
+    assert request.retrieval_mode == "dense"
 
 
 def test_top_k_lower_bound() -> None:
