@@ -48,6 +48,14 @@ class OpenSearchHealthResponse(BaseModel):
     error: str | None = None
 
 
+class QdrantHealthResponse(BaseModel):
+    status: str
+    url: str
+    version: str | None = None
+    collections_count: int | None = None
+    error: str | None = None
+
+
 class EmbeddingModelStatusResponse(BaseModel):
     model_name: str
     device: str

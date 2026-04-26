@@ -34,6 +34,11 @@ class Settings(BaseSettings):
     OPENSEARCH_VERIFY_CERTS: bool = False
     OPENSEARCH_REQUEST_TIMEOUT_SECONDS: int = 30
     LEXICAL_INDEX_BATCH_SIZE: int = 500
+    QDRANT_URL: str = "http://localhost:6333"
+    QDRANT_API_KEY: str | None = None
+    QDRANT_REQUEST_TIMEOUT_SECONDS: int = 60
+    VECTOR_INDEX_BATCH_SIZE: int = 64
+    VECTOR_DISTANCE: str = "Cosine"
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 

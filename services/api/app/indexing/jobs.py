@@ -7,6 +7,7 @@ from rq import get_current_job
 from app.db.session import SessionLocal
 from app.search.lexical_indexer import build_lexical_index_for_version
 from app.search.opensearch_client import get_opensearch_client
+from app.search.vector_indexer import build_vector_index_for_version
 
 
 def build_lexical_index_job(
@@ -28,6 +29,29 @@ def build_lexical_index_job(
             recreate=recreate,
             limit=limit,
             refresh=refresh,
+            rq_job_id=resolved_rq_job_id,
+        )
+    finally:
+        db.close()
+
+
+def build_vector_index_job(
+    index_version_id: str,
+    recreate: bool = False,
+    limit: int | None = None,
+    batch_size: int | None = None,
+    rq_job_id: str | None = None,
+) -> dict:
+    db = SessionLocal()
+    try:
+        current_job = get_current_job()
+        resolved_rq_job_id = rq_job_id or (current_job.id if current_job else None)
+        return build_vector_index_for_version(
+            db,
+            index_version_id=UUID(index_version_id),
+            recreate=recreate,
+            limit=limit,
+            batch_size=batch_size,
             rq_job_id=resolved_rq_job_id,
         )
     finally:

@@ -85,3 +85,17 @@ class BuildLexicalIndexResponse(BaseModel):
     status: str
     index_version_id: UUID
     message: str
+
+
+class BuildVectorIndexRequest(BaseModel):
+    recreate: bool = False
+    limit: int | None = Field(default=None, ge=1)
+    batch_size: int | None = Field(default=None, ge=1)
+
+
+class BuildVectorIndexResponse(BaseModel):
+    job_id: str
+    queue: str
+    status: str
+    index_version_id: UUID
+    message: str

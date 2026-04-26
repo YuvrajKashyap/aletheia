@@ -8,7 +8,7 @@ from rq.job import Job
 from app.core.config import get_settings
 from app.core.redis import get_redis_connection
 from app.ingestion.jobs import run_scifact_ingestion_job
-from app.indexing.jobs import build_lexical_index_job
+from app.indexing.jobs import build_lexical_index_job, build_vector_index_job
 from app.jobs.health import ping_job
 
 
@@ -111,6 +111,29 @@ def enqueue_lexical_index_build_job(
         "status": _serialize_status(job.get_status(refresh=True)),
         "index_version_id": index_version_id,
         "message": "Lexical index build job enqueued.",
+    }
+
+
+def enqueue_vector_index_build_job(
+    index_version_id: str,
+    recreate: bool = False,
+    limit: int | None = None,
+    batch_size: int | None = None,
+) -> dict:
+    queue = get_queue()
+    job = queue.enqueue(
+        build_vector_index_job,
+        index_version_id=index_version_id,
+        recreate=recreate,
+        limit=limit,
+        batch_size=batch_size,
+    )
+    return {
+        "job_id": job.id,
+        "queue": queue.name,
+        "status": _serialize_status(job.get_status(refresh=True)),
+        "index_version_id": index_version_id,
+        "message": "Vector index build job enqueued.",
     }
 
 

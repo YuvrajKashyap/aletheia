@@ -13,6 +13,8 @@ from app.schemas.indexes import (
     ActivateIndexVersionResponse,
     BuildLexicalIndexRequest,
     BuildLexicalIndexResponse,
+    BuildVectorIndexRequest,
+    BuildVectorIndexResponse,
     CreateIndexVersionRequest,
     IndexStatusResponse,
     IndexVersionDetail,
@@ -264,3 +266,35 @@ async def build_lexical_index(
             detail=f"Redis queue unavailable: {exc}",
         ) from exc
     return BuildLexicalIndexResponse(**payload)
+
+
+@router.post(
+    "/versions/{index_version_id}/build-vector",
+    response_model=BuildVectorIndexResponse,
+)
+async def build_vector_index(
+    index_version_id: UUID,
+    request: BuildVectorIndexRequest | None = None,
+    _admin_context: AdminContext = Depends(require_admin),
+    db: Session = Depends(get_db),
+) -> BuildVectorIndexResponse:
+    if index_service.get_index_version(db, index_version_id) is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Index version not found: {index_version_id}",
+        )
+
+    body = request or BuildVectorIndexRequest()
+    try:
+        payload = job_queue.enqueue_vector_index_build_job(
+            index_version_id=str(index_version_id),
+            recreate=body.recreate,
+            limit=body.limit,
+            batch_size=body.batch_size,
+        )
+    except RedisError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=f"Redis queue unavailable: {exc}",
+        ) from exc
+    return BuildVectorIndexResponse(**payload)

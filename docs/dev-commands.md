@@ -1014,3 +1014,51 @@ Print the full vector:
     powershell -ExecutionPolicy Bypass -File scripts/powershell/embed-text.ps1 -Text "Do statins lower cholesterol?" -ShowVector
 
 Note: the CLI runs in its own Python process. If the CLI loads the model, the API status route may still report `loaded=false` until the API process itself uses embedding functionality.
+
+## Step 17 Qdrant vector indexing commands
+
+Step 17 adds Qdrant vector indexing for stored chunks.
+
+Vector indexing rules:
+
+- Chunk text is embedded with `BAAI/bge-small-en-v1.5`.
+- Expected vector dimension is `384`.
+- Vectors are stored in Qdrant with chunk, document, dataset, and index-version payload metadata.
+- The target collection name comes from `index_versions.vector_collection_name`.
+- A full local build should make `index_versions.vector_count` become `5183`.
+- This step does not add dense retrieval or modify `/api/v1/search`.
+- Hybrid RRF, reranking, evaluation metrics, and frontend work come later.
+- First run may load or download the embedding model and take time on CPU.
+
+Check Qdrant health:
+
+    Invoke-RestMethod http://localhost:8000/api/v1/system/qdrant
+
+Build vector index from the CLI:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/build-vector-index.ps1 -IndexVersionId $indexVersionId
+
+Limited build for validation:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/build-vector-index.ps1 -IndexVersionId $indexVersionId -Recreate -Limit 25 -BatchSize 8
+
+Build the active index version:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/build-vector-index.ps1 -Active
+
+Start an async vector build job through the API:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/start-vector-index-build-job.ps1 -IndexVersionId $indexVersionId
+
+Direct API trigger:
+
+    $body = @{ recreate = $false; batch_size = 64 } | ConvertTo-Json
+    Invoke-RestMethod -Method Post -Uri "http://localhost:8000/api/v1/indexes/versions/$indexVersionId/build-vector" -ContentType "application/json" -Headers @{"X-Admin-API-Key"="replace-me"} -Body $body
+
+Qdrant count validation:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, vector_collection_name, vector_count, embedding_model, embedding_dimension from index_versions order by created_at desc limit 5;"
+
+Inspect vector index jobs:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, index_version_id, job_type, status, chunks_total, chunks_completed, chunks_failed, created_at from index_jobs where job_type = 'vector_index_build' order by created_at desc limit 10;"

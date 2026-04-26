@@ -9,12 +9,14 @@ from app.jobs import queue as job_queue
 from app.ml.embeddings import get_embedding_model_status
 from app.models.system import WorkerHeartbeat
 from app.search.opensearch_client import check_opensearch_health
+from app.search.qdrant_client import check_qdrant_health
 from app.schemas.system import (
     EmbeddingModelStatusResponse,
     EnqueueJobResponse,
     EnqueueTestJobRequest,
     JobStatusResponse,
     OpenSearchHealthResponse,
+    QdrantHealthResponse,
     QueueStatusResponse,
     WorkerHeartbeatItem,
     WorkerHeartbeatListResponse,
@@ -37,6 +39,11 @@ async def queue_status() -> QueueStatusResponse:
 @router.get("/opensearch", response_model=OpenSearchHealthResponse)
 async def opensearch_status() -> OpenSearchHealthResponse:
     return OpenSearchHealthResponse(**check_opensearch_health())
+
+
+@router.get("/qdrant", response_model=QdrantHealthResponse)
+async def qdrant_status() -> QdrantHealthResponse:
+    return QdrantHealthResponse(**check_qdrant_health())
 
 
 @router.get("/models/embedding", response_model=EmbeddingModelStatusResponse)

@@ -242,3 +242,68 @@ def test_build_lexical_endpoint_enqueues_job_without_opensearch(monkeypatch) -> 
     assert response.status_code == 200
     assert response.json()["job_id"] == "job-lexical-123"
     assert response.json()["index_version_id"] == "00000000-0000-0000-0000-000000000001"
+
+
+def test_build_vector_endpoint_requires_admin_key(monkeypatch) -> None:
+    monkeypatch.setattr(
+        "app.api.v1.routes.indexes.index_service.get_index_version",
+        lambda db, index_version_id: fake_index_version(str(index_version_id)),
+    )
+    app.dependency_overrides[get_db] = fake_db
+    try:
+        response = client.post(
+            "/api/v1/indexes/versions/00000000-0000-0000-0000-000000000001/build-vector",
+            json={},
+        )
+    finally:
+        app.dependency_overrides.clear()
+
+    assert response.status_code == 401
+
+
+def test_build_vector_endpoint_wrong_admin_key_fails(monkeypatch) -> None:
+    monkeypatch.setattr(
+        "app.api.v1.routes.indexes.index_service.get_index_version",
+        lambda db, index_version_id: fake_index_version(str(index_version_id)),
+    )
+    app.dependency_overrides[get_db] = fake_db
+    try:
+        response = client.post(
+            "/api/v1/indexes/versions/00000000-0000-0000-0000-000000000001/build-vector",
+            json={},
+            headers={"X-Admin-API-Key": "wrong"},
+        )
+    finally:
+        app.dependency_overrides.clear()
+
+    assert response.status_code == 403
+
+
+def test_build_vector_endpoint_enqueues_job_without_qdrant(monkeypatch) -> None:
+    monkeypatch.setattr(
+        "app.api.v1.routes.indexes.index_service.get_index_version",
+        lambda db, index_version_id: fake_index_version(str(index_version_id)),
+    )
+    monkeypatch.setattr(
+        "app.api.v1.routes.indexes.job_queue.enqueue_vector_index_build_job",
+        lambda index_version_id, recreate=False, limit=None, batch_size=None: {
+            "job_id": "job-vector-123",
+            "queue": "default",
+            "status": "queued",
+            "index_version_id": index_version_id,
+            "message": "Vector index build job enqueued.",
+        },
+    )
+    app.dependency_overrides[get_db] = fake_db
+    try:
+        response = client.post(
+            "/api/v1/indexes/versions/00000000-0000-0000-0000-000000000001/build-vector",
+            json={"recreate": True, "limit": 10, "batch_size": 4},
+            headers={"X-Admin-API-Key": "replace-me"},
+        )
+    finally:
+        app.dependency_overrides.clear()
+
+    assert response.status_code == 200
+    assert response.json()["job_id"] == "job-vector-123"
+    assert response.json()["index_version_id"] == "00000000-0000-0000-0000-000000000001"
