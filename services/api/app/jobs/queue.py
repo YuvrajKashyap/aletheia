@@ -7,6 +7,7 @@ from rq.job import Job
 
 from app.core.config import get_settings
 from app.core.redis import get_redis_connection
+from app.ingestion.jobs import run_scifact_ingestion_job
 from app.jobs.health import ping_job
 
 
@@ -53,6 +54,39 @@ def enqueue_ping_job(message: str = "pong") -> dict:
         "job_id": job.id,
         "queue": queue.name,
         "status": _serialize_status(job.get_status(refresh=True)),
+    }
+
+
+def enqueue_scifact_ingestion_job(
+    ingestion_run_id: str,
+    document_limit: int | None = None,
+    query_limit: int | None = None,
+    qrel_limit: int | None = None,
+    split: str = "test",
+    chunk_after_load: bool = True,
+    chunk_document_limit: int | None = None,
+    dry_run: bool = False,
+    started_by: str = "api",
+) -> dict:
+    queue = get_queue()
+    job = queue.enqueue(
+        run_scifact_ingestion_job,
+        document_limit=document_limit,
+        query_limit=query_limit,
+        qrel_limit=qrel_limit,
+        split=split,
+        chunk_after_load=chunk_after_load,
+        chunk_document_limit=chunk_document_limit,
+        dry_run=dry_run,
+        started_by=started_by,
+        ingestion_run_id=ingestion_run_id,
+    )
+    return {
+        "job_id": job.id,
+        "queue": queue.name,
+        "status": _serialize_status(job.get_status(refresh=True)),
+        "ingestion_run_id": ingestion_run_id,
+        "message": "SciFact ingestion job enqueued.",
     }
 
 

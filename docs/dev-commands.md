@@ -766,3 +766,44 @@ Chunk API endpoints:
     $chunks = Invoke-RestMethod "http://localhost:8000/api/v1/chunks?limit=1&offset=0"
     $chunkId = $chunks.items[0].id
     Invoke-RestMethod "http://localhost:8000/api/v1/chunks/$chunkId"
+
+## Step 11 idempotent ingestion and job tracking commands
+
+Step 11 adds tracked ingestion runs for SciFact loading.
+
+Ingestion rules:
+
+- Ingestion runs are tracked in PostgreSQL using `ingestion_runs`.
+- CLI ingestion and API-triggered ingestion use the same orchestration service.
+- The API trigger is admin-protected and enqueues an RQ job.
+- The worker executes expensive ingestion work.
+- Reruns are idempotent: existing datasets, documents, queries, qrels, and chunks are updated or reused instead of duplicated.
+- An active-run guard prevents duplicate concurrent real SciFact ingestion jobs.
+- Chunking is included by default.
+- OpenSearch indexing, Qdrant indexing, retrieval, embeddings, reranking, and evaluation metrics are not part of this step.
+
+CLI dry run:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/ingest-scifact.ps1 -DryRun -DocumentLimit 10 -QueryLimit 5 -QrelLimit 5
+
+CLI full run:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/ingest-scifact.ps1
+
+API async trigger:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/start-scifact-ingestion-job.ps1 -DocumentLimit 10 -QueryLimit 5 -QrelLimit 5
+
+List ingestion runs:
+
+    Invoke-RestMethod "http://localhost:8000/api/v1/ingestion/runs?limit=10&offset=0"
+
+Get ingestion run detail:
+
+    $runs = Invoke-RestMethod "http://localhost:8000/api/v1/ingestion/runs?limit=1&offset=0"
+    $runId = $runs.items[0].id
+    Invoke-RestMethod "http://localhost:8000/api/v1/ingestion/runs/$runId"
+
+Inspect ingestion runs table:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, status, documents_loaded, chunks_created, queries_loaded, qrels_loaded, errors_count, created_at from ingestion_runs order by created_at desc limit 10;"

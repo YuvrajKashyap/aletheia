@@ -6,6 +6,8 @@ param(
     [int]$QueryLimit = 0,
     [int]$QrelLimit = 0,
     [string]$Split = "test",
+    [switch]$NoChunk,
+    [int]$ChunkDocumentLimit = 0,
     [switch]$DryRun
 )
 
@@ -36,6 +38,14 @@ if ($QueryLimit -gt 0) {
 
 if ($QrelLimit -gt 0) {
     $arguments += @("--qrel-limit", $QrelLimit)
+}
+
+if ($NoChunk) {
+    $arguments += "--no-chunk"
+}
+
+if ($ChunkDocumentLimit -gt 0) {
+    $arguments += @("--chunk-document-limit", $ChunkDocumentLimit)
 }
 
 if ($DryRun) {
