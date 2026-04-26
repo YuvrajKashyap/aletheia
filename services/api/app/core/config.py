@@ -44,6 +44,9 @@ class Settings(BaseSettings):
     RERANKER_BATCH_SIZE: int = 16
     RERANKER_TOP_N: int = 25
     RERANKER_TIMEOUT_SECONDS: int = 30
+    TRACE_SCHEMA_VERSION: str = "search_trace_v1"
+    TRACE_CANDIDATE_PREVIEW_CHARS: int = 300
+    SEARCH_SLOW_QUERY_THRESHOLD_MS: int = 1000
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 

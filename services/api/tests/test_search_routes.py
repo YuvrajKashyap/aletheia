@@ -8,6 +8,8 @@ from app.main import app
 from app.schemas.search import (
     SearchResponse,
     SearchResultItem,
+    TraceCandidateItem,
+    TraceCandidateListResponse,
     TraceDetailResponse,
     TraceListItem,
     TraceListResponse,
@@ -311,7 +313,7 @@ def test_search_traces_list_works_without_admin_key(monkeypatch) -> None:
     now = datetime(2026, 4, 25, tzinfo=timezone.utc)
     monkeypatch.setattr(
         "app.api.v1.routes.search.search_service.list_query_traces",
-        lambda db, limit=50, offset=0: TraceListResponse(
+        lambda db, retrieval_mode=None, status=None, limit=50, offset=0: TraceListResponse(
             total=1,
             limit=limit,
             offset=offset,
@@ -323,6 +325,7 @@ def test_search_traces_list_works_without_admin_key(monkeypatch) -> None:
                     retrieval_mode="bm25",
                     status="completed",
                     total_latency_ms=5.0,
+                    result_count=1,
                     created_at=now,
                 )
             ],
@@ -330,12 +333,13 @@ def test_search_traces_list_works_without_admin_key(monkeypatch) -> None:
     )
     app.dependency_overrides[get_db] = fake_db
     try:
-        response = client.get("/api/v1/search/traces?limit=10&offset=0")
+        response = client.get("/api/v1/search/traces?retrieval_mode=bm25&status=completed&limit=10&offset=0")
     finally:
         app.dependency_overrides.clear()
 
     assert response.status_code == 200
     assert response.json()["items"][0]["retrieval_mode"] == "bm25"
+    assert response.json()["items"][0]["result_count"] == 1
 
 
 def test_search_trace_detail_works_without_admin_key(monkeypatch) -> None:
@@ -350,8 +354,11 @@ def test_search_trace_detail_works_without_admin_key(monkeypatch) -> None:
             index_version_id=UUID("00000000-0000-0000-0000-000000000003"),
             status="completed",
             total_latency_ms=5.0,
+            trace_schema_version="search_trace_v1",
             trace_json={"stages": {"bm25": {"result_count": 1}}},
+            ranking_summary={"result_count": 1},
             candidates=[],
+            candidates_by_source={},
             created_at=now,
         ),
     )
@@ -363,6 +370,47 @@ def test_search_trace_detail_works_without_admin_key(monkeypatch) -> None:
 
     assert response.status_code == 200
     assert response.json()["trace_json"]["stages"]["bm25"]["result_count"] == 1
+
+
+def test_search_trace_candidates_works_without_admin_key(monkeypatch) -> None:
+    now = datetime(2026, 4, 25, tzinfo=timezone.utc)
+    monkeypatch.setattr(
+        "app.api.v1.routes.search.search_service.list_trace_candidates",
+        lambda db, trace_id, source=None, limit=100, offset=0: TraceCandidateListResponse(
+            total=1,
+            limit=limit,
+            offset=offset,
+            items=[
+                TraceCandidateItem(
+                    id=UUID("00000000-0000-0000-0000-000000000010"),
+                    chunk_id=UUID("00000000-0000-0000-0000-000000000004"),
+                    document_id=UUID("00000000-0000-0000-0000-000000000005"),
+                    source=source or "bm25",
+                    bm25_rank=1,
+                    dense_rank=None,
+                    fusion_rank=None,
+                    rerank_rank=None,
+                    final_rank=1,
+                    bm25_score=12.3,
+                    dense_score=None,
+                    fusion_score=None,
+                    reranker_score=None,
+                    metadata_json={},
+                    created_at=now,
+                )
+            ],
+        ),
+    )
+    app.dependency_overrides[get_db] = fake_db
+    try:
+        response = client.get(
+            "/api/v1/search/traces/00000000-0000-0000-0000-000000000002/candidates?source=bm25"
+        )
+    finally:
+        app.dependency_overrides.clear()
+
+    assert response.status_code == 200
+    assert response.json()["items"][0]["source"] == "bm25"
 
 
 def test_missing_search_trace_returns_404(monkeypatch) -> None:

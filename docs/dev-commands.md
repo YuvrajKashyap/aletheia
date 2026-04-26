@@ -1193,3 +1193,51 @@ Trace and candidate checks:
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select source, count(*) from retrieval_candidates group by source order by source;"
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, retrieval_mode, status, total_latency_ms, created_at from queries order by created_at desc limit 10;"
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select source, bm25_rank, dense_rank, fusion_rank, rerank_rank, final_rank, bm25_score, dense_score, fusion_score, reranker_score from retrieval_candidates where source = 'hybrid_rerank' order by created_at desc limit 10;"
+
+## Step 21 query tracing and observability commands
+
+Step 21 standardizes search traces under `trace_schema_version = search_trace_v1`.
+
+Trace rules:
+
+- Every completed search trace records query metadata, request ID, query ID, trace ID, index version snapshot, parameters, stages, warnings, errors, ranking summary, and total latency.
+- Stage traces include BM25, dense, fusion, and reranker latency and resource names where relevant.
+- Candidate provenance is persisted in `retrieval_candidates` and exposed by trace detail/candidate endpoints.
+- `hybrid_rerank` traces include rank movement summaries comparing fusion rank to rerank rank.
+- Slow searches create best-effort `SLOW_SEARCH_QUERY` system events.
+- Failed searches create failed query traces and best-effort `SEARCH_QUERY_FAILED` system events when possible.
+- Evaluation metrics, experiment configs, query replay, and frontend work still come later.
+
+Run one search in each mode:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/search-api.ps1 -Query "Can animals transmit coronaviruses to humans?" -RetrievalMode bm25 -TopK 5
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/search-api.ps1 -Query "Can animals transmit coronaviruses to humans?" -RetrievalMode dense -TopK 5
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/search-api.ps1 -Query "Can animals transmit coronaviruses to humans?" -RetrievalMode hybrid -TopK 5
+
+List traces:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/list-traces.ps1 -Limit 5
+
+List rerank traces:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/list-traces.ps1 -RetrievalMode hybrid_rerank -Limit 5
+
+Inspect trace detail:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/inspect-trace.ps1 -TraceId <trace_id>
+
+Inspect trace as text:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/inspect-trace.ps1 -TraceId <trace_id> -Text
+
+Inspect candidates through the API:
+
+    Invoke-RestMethod "http://localhost:8000/api/v1/search/traces/<trace_id>/candidates?limit=25&offset=0"
+    Invoke-RestMethod "http://localhost:8000/api/v1/search/traces/<trace_id>/candidates?source=hybrid_rerank&limit=25&offset=0"
+
+DB checks:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select retrieval_mode, status, count(*) from queries group by retrieval_mode, status order by retrieval_mode, status;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select source, count(*) from retrieval_candidates group by source order by source;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select event_type, severity, count(*) from system_events group by event_type, severity order by event_type, severity;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select trace_json->>'trace_schema_version' as version, count(*) from query_traces group by version;"

@@ -3,6 +3,7 @@ from types import SimpleNamespace
 from uuid import UUID, uuid4
 
 from app.models.queries import Query, QueryTrace, RetrievalCandidate
+from app.models.system import SystemEvent
 from app.schemas.search import SearchRequest
 from app.search import service as search_service
 from app.search.retrieval_models import (
@@ -245,6 +246,10 @@ def test_run_search_calls_bm25_and_persists_trace_skeleton(monkeypatch) -> None:
     assert query_rows[0].status == "completed"
     assert query_rows[0].request_id == "request-1"
     assert len(trace_rows) == 1
+    assert trace_rows[0].trace_json["trace_schema_version"] == "search_trace_v1"
+    assert trace_rows[0].trace_json["parameters"]["top_k"] == 1
+    assert trace_rows[0].trace_json["warnings"] == []
+    assert trace_rows[0].trace_json["errors"] == []
     assert trace_rows[0].trace_json["stages"]["bm25"]["index_name"] == "aletheia-lexical-test"
     assert trace_rows[0].trace_json["notes"]
     assert len(candidate_rows) == 1
@@ -303,6 +308,7 @@ def test_run_search_routes_dense_and_persists_dense_trace(monkeypatch) -> None:
     candidate_rows = [value for value in db.added if isinstance(value, RetrievalCandidate)]
 
     assert trace_rows[0].trace_json["stages"]["dense"]["collection_name"] == "aletheia-vector-test"
+    assert trace_rows[0].trace_json["trace_schema_version"] == "search_trace_v1"
     assert trace_rows[0].trace_json["stages"]["dense"]["query_embedding_dimension"] == 384
     assert "hybrid" not in trace_rows[0].trace_json["stages"]
     assert candidate_rows[0].source == "dense"
@@ -380,6 +386,8 @@ def test_run_search_routes_hybrid_and_persists_hybrid_trace(monkeypatch) -> None
     assert trace_rows[0].trace_json["stages"]["bm25"]["index_name"] == "aletheia-lexical-test"
     assert trace_rows[0].trace_json["stages"]["dense"]["collection_name"] == "aletheia-vector-test"
     assert trace_rows[0].trace_json["stages"]["fusion"]["method"] == "reciprocal_rank_fusion"
+    assert trace_rows[0].trace_json["trace_schema_version"] == "search_trace_v1"
+    assert trace_rows[0].trace_json["ranking_summary"]["both_sources_count"] == 1
     assert "reranker" in trace_rows[0].trace_json["notes"][0].lower()
     assert candidate_rows[0].source == "hybrid_rrf"
     assert candidate_rows[0].bm25_rank == 1
@@ -448,6 +456,8 @@ def test_run_search_routes_hybrid_rerank_and_persists_rerank_trace(monkeypatch) 
     trace_json = trace_rows[0].trace_json
 
     assert set(trace_json["stages"]) == {"bm25", "dense", "fusion", "reranker"}
+    assert trace_json["trace_schema_version"] == "search_trace_v1"
+    assert trace_json["ranking_summary"]["moved_up"] == 1
     assert trace_json["stages"]["reranker"]["rerank_top_n"] == 10
     assert trace_json["stages"]["reranker"]["result_count"] == 1
     assert "Evaluation metrics" in trace_json["notes"][0]
@@ -458,6 +468,48 @@ def test_run_search_routes_hybrid_rerank_and_persists_rerank_trace(monkeypatch) 
     assert candidate_rows[0].final_rank == 1
     assert candidate_rows[0].reranker_score == 8.7
     assert candidate_rows[0].fusion_score == 0.032
+
+
+def test_slow_search_records_system_event(monkeypatch) -> None:
+    def fake_search_bm25(db, query, index_version_id=None, top_k=10, candidate_k=None):
+        return fake_lexical_response()
+
+    monkeypatch.setattr(search_service, "search_bm25", fake_search_bm25)
+    monkeypatch.setattr(
+        search_service,
+        "get_settings",
+        lambda: SimpleNamespace(SEARCH_SLOW_QUERY_THRESHOLD_MS=0),
+    )
+    db = FakeSearchDb()
+
+    search_service.run_search(db, SearchRequest(query="Do statins lower cholesterol?", top_k=1))
+
+    events = [value for value in db.added if isinstance(value, SystemEvent)]
+    assert events
+    assert events[0].event_type == "SLOW_SEARCH_QUERY"
+    assert events[0].severity == "warning"
+
+
+def test_failed_search_creates_failed_trace_and_system_event(monkeypatch) -> None:
+    def fail_search(*args, **kwargs):
+        raise ValueError("retrieval failed")
+
+    monkeypatch.setattr(search_service, "search_bm25", fail_search)
+    db = FakeSearchDb()
+
+    try:
+        search_service.run_search(db, SearchRequest(query="Do statins lower cholesterol?", top_k=1))
+    except ValueError:
+        pass
+
+    query_rows = [value for value in db.added if isinstance(value, Query)]
+    trace_rows = [value for value in db.added if isinstance(value, QueryTrace)]
+    events = [value for value in db.added if isinstance(value, SystemEvent)]
+
+    assert query_rows[0].status == "failed"
+    assert query_rows[0].error_message == "retrieval failed"
+    assert trace_rows[0].trace_json["errors"][0]["message"] == "retrieval failed"
+    assert events[0].event_type == "SEARCH_QUERY_FAILED"
 
 
 def test_trace_json_helper_contains_bm25_stage() -> None:
@@ -473,11 +525,11 @@ def test_trace_json_helper_contains_bm25_stage() -> None:
     )
 
     assert payload["retrieval_mode"] == "bm25"
-    assert payload["stages"]["bm25"] == {
-        "latency_ms": 3.2,
-        "result_count": 2,
-        "index_name": "index-name",
-    }
+    assert payload["trace_schema_version"] == "search_trace_v1"
+    assert payload["stages"]["bm25"]["latency_ms"] == 3.2
+    assert payload["stages"]["bm25"]["result_count"] == 2
+    assert payload["stages"]["bm25"]["candidate_count"] == 5
+    assert payload["stages"]["bm25"]["index_name"] == "index-name"
     assert "Dense, hybrid, and reranker stages are not implemented yet" in payload["notes"][0]
 
 

@@ -112,6 +112,7 @@ class TraceListItem(BaseModel):
     retrieval_mode: str
     status: str
     total_latency_ms: float | None
+    result_count: int | None = None
     created_at: datetime
 
 
@@ -123,6 +124,7 @@ class TraceListResponse(BaseModel):
 
 
 class TraceCandidateItem(BaseModel):
+    id: UUID | str | None = None
     chunk_id: UUID | str | None
     document_id: UUID | str | None
     source: str
@@ -136,6 +138,14 @@ class TraceCandidateItem(BaseModel):
     fusion_score: float | None
     reranker_score: float | None
     metadata_json: dict[str, Any]
+    created_at: datetime | str | None = None
+
+
+class TraceCandidateListResponse(BaseModel):
+    total: int
+    limit: int
+    offset: int
+    items: list[TraceCandidateItem]
 
 
 class TraceDetailResponse(BaseModel):
@@ -146,6 +156,9 @@ class TraceDetailResponse(BaseModel):
     index_version_id: UUID | str | None
     status: str
     total_latency_ms: float | None
+    trace_schema_version: str | None = None
     trace_json: dict[str, Any]
+    ranking_summary: dict[str, Any] = Field(default_factory=dict)
     candidates: list[TraceCandidateItem]
+    candidates_by_source: dict[str, list[dict[str, Any]]] = Field(default_factory=dict)
     created_at: datetime

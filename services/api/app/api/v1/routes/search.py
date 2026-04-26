@@ -7,6 +7,7 @@ from app.db.session import get_db
 from app.schemas.search import (
     SearchRequest,
     SearchResponse,
+    TraceCandidateListResponse,
     TraceDetailResponse,
     TraceListResponse,
 )
@@ -53,11 +54,19 @@ async def search(
 
 @router.get("/traces", response_model=TraceListResponse)
 async def list_search_traces(
+    retrieval_mode: str | None = Query(default=None),
+    status: str | None = Query(default=None),
     limit: int = Query(default=50, ge=1, le=200),
     offset: int = Query(default=0, ge=0),
     db: Session = Depends(get_db),
 ) -> TraceListResponse:
-    return search_service.list_query_traces(db, limit=limit, offset=offset)
+    return search_service.list_query_traces(
+        db,
+        retrieval_mode=retrieval_mode,
+        status=status,
+        limit=limit,
+        offset=offset,
+    )
 
 
 @router.get("/traces/{trace_id}", response_model=TraceDetailResponse)
@@ -72,3 +81,26 @@ async def search_trace_detail(
             detail=f"Search trace not found: {trace_id}",
         )
     return detail
+
+
+@router.get("/traces/{trace_id}/candidates", response_model=TraceCandidateListResponse)
+async def search_trace_candidates(
+    trace_id: UUID,
+    source: str | None = Query(default=None),
+    limit: int = Query(default=100, ge=1, le=500),
+    offset: int = Query(default=0, ge=0),
+    db: Session = Depends(get_db),
+) -> TraceCandidateListResponse:
+    candidates = search_service.list_trace_candidates(
+        db,
+        trace_id=trace_id,
+        source=source,
+        limit=limit,
+        offset=offset,
+    )
+    if candidates is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Search trace not found: {trace_id}",
+        )
+    return candidates
