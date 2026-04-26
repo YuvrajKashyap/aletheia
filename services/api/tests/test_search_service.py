@@ -52,6 +52,11 @@ class FakeSearchDb:
         return None
 
 
+def assert_trace_json_has_persisted_trace_id(trace_row: QueryTrace) -> None:
+    assert trace_row.trace_json["trace_id"] is not None
+    assert trace_row.trace_json["trace_id"] == str(trace_row.id)
+
+
 def fake_lexical_response() -> LexicalSearchResponse:
     return LexicalSearchResponse(
         query="Do statins lower cholesterol?",
@@ -246,6 +251,7 @@ def test_run_search_calls_bm25_and_persists_trace_skeleton(monkeypatch) -> None:
     assert query_rows[0].status == "completed"
     assert query_rows[0].request_id == "request-1"
     assert len(trace_rows) == 1
+    assert_trace_json_has_persisted_trace_id(trace_rows[0])
     assert trace_rows[0].trace_json["trace_schema_version"] == "search_trace_v1"
     assert trace_rows[0].trace_json["parameters"]["top_k"] == 1
     assert trace_rows[0].trace_json["warnings"] == []
@@ -308,6 +314,7 @@ def test_run_search_routes_dense_and_persists_dense_trace(monkeypatch) -> None:
     candidate_rows = [value for value in db.added if isinstance(value, RetrievalCandidate)]
 
     assert trace_rows[0].trace_json["stages"]["dense"]["collection_name"] == "aletheia-vector-test"
+    assert_trace_json_has_persisted_trace_id(trace_rows[0])
     assert trace_rows[0].trace_json["trace_schema_version"] == "search_trace_v1"
     assert trace_rows[0].trace_json["stages"]["dense"]["query_embedding_dimension"] == 384
     assert "hybrid" not in trace_rows[0].trace_json["stages"]
@@ -384,6 +391,7 @@ def test_run_search_routes_hybrid_and_persists_hybrid_trace(monkeypatch) -> None
     candidate_rows = [value for value in db.added if isinstance(value, RetrievalCandidate)]
 
     assert trace_rows[0].trace_json["stages"]["bm25"]["index_name"] == "aletheia-lexical-test"
+    assert_trace_json_has_persisted_trace_id(trace_rows[0])
     assert trace_rows[0].trace_json["stages"]["dense"]["collection_name"] == "aletheia-vector-test"
     assert trace_rows[0].trace_json["stages"]["fusion"]["method"] == "reciprocal_rank_fusion"
     assert trace_rows[0].trace_json["trace_schema_version"] == "search_trace_v1"
@@ -455,6 +463,7 @@ def test_run_search_routes_hybrid_rerank_and_persists_rerank_trace(monkeypatch) 
     candidate_rows = [value for value in db.added if isinstance(value, RetrievalCandidate)]
     trace_json = trace_rows[0].trace_json
 
+    assert_trace_json_has_persisted_trace_id(trace_rows[0])
     assert set(trace_json["stages"]) == {"bm25", "dense", "fusion", "reranker"}
     assert trace_json["trace_schema_version"] == "search_trace_v1"
     assert trace_json["ranking_summary"]["moved_up"] == 1
@@ -508,8 +517,30 @@ def test_failed_search_creates_failed_trace_and_system_event(monkeypatch) -> Non
 
     assert query_rows[0].status == "failed"
     assert query_rows[0].error_message == "retrieval failed"
+    assert_trace_json_has_persisted_trace_id(trace_rows[0])
     assert trace_rows[0].trace_json["errors"][0]["message"] == "retrieval failed"
     assert events[0].event_type == "SEARCH_QUERY_FAILED"
+
+
+def test_create_trace_row_assigns_trace_id_and_flags_json_modified(monkeypatch) -> None:
+    flag_calls = []
+
+    def fake_flag_modified(row, field_name):
+        flag_calls.append((row, field_name))
+
+    monkeypatch.setattr(search_service, "flag_modified", fake_flag_modified)
+    db = FakeSearchDb()
+    query_row = Query(text="statins", retrieval_mode="bm25", status="running")
+    db.add(query_row)
+
+    trace_row = search_service._create_trace_row(
+        db,
+        query_row,
+        {"trace_schema_version": "search_trace_v1", "trace_id": None},
+    )
+
+    assert trace_row.trace_json["trace_id"] == str(trace_row.id)
+    assert flag_calls == [(trace_row, "trace_json")]
 
 
 def test_trace_json_helper_contains_bm25_stage() -> None:

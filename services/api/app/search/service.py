@@ -4,6 +4,7 @@ from time import perf_counter
 from typing import Any
 from uuid import UUID
 
+from sqlalchemy.orm.attributes import flag_modified
 from sqlalchemy.orm import Session
 
 from app.core.config import get_settings
@@ -162,8 +163,8 @@ def _create_trace_row(db: Session, query_row: Query, trace_json: dict[str, Any])
     trace_row = QueryTrace(query_id=query_row.id, trace_json=trace_json)
     db.add(trace_row)
     db.flush()
-    trace_json["trace_id"] = str(trace_row.id)
-    trace_row.trace_json = trace_json
+    trace_row.trace_json = {**trace_json, "trace_id": str(trace_row.id)}
+    flag_modified(trace_row, "trace_json")
     return trace_row
 
 
