@@ -854,3 +854,50 @@ Activate an index version:
 Rollback to a previous ready or deprecated version:
 
     Invoke-RestMethod -Method Post -Uri "http://localhost:8000/api/v1/indexes/versions/$indexVersionId/rollback" -Headers @{"X-Admin-API-Key"="replace-me"}
+
+## Step 13 OpenSearch lexical indexing commands
+
+Step 13 adds OpenSearch BM25 lexical indexing for stored chunks.
+
+Indexing rules:
+
+- Chunks are indexed into OpenSearch.
+- The target OpenSearch index name comes from `index_versions.lexical_index_name`.
+- Default OpenSearch BM25 behavior is used; there is no custom analyzer yet.
+- This step does not add a BM25 search endpoint or any retrieval API.
+- Qdrant/vector indexing, embeddings, dense retrieval, reranking, evaluation metrics, and frontend work come later.
+- `index_jobs` tracks lexical build jobs.
+- `vector_count` remains `0` because Qdrant indexing is not built yet.
+
+Check OpenSearch health through FastAPI:
+
+    Invoke-RestMethod http://localhost:8000/api/v1/system/opensearch
+
+Build lexical index from the CLI:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/build-lexical-index.ps1 -IndexVersionId $indexVersionId
+
+Recreate and build with a small limit:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/build-lexical-index.ps1 -IndexVersionId $indexVersionId -Recreate -Limit 25
+
+Build the active index version:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/build-lexical-index.ps1 -Active
+
+Start an async lexical build job through the API:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/start-lexical-index-build-job.ps1 -IndexVersionId $indexVersionId
+
+Direct API trigger:
+
+    $body = @{ recreate = $false; refresh = $true } | ConvertTo-Json
+    Invoke-RestMethod -Method Post -Uri "http://localhost:8000/api/v1/indexes/versions/$indexVersionId/build-lexical" -ContentType "application/json" -Headers @{"X-Admin-API-Key"="replace-me"} -Body $body
+
+OpenSearch count validation:
+
+    Invoke-RestMethod "http://localhost:9200/$lexicalIndexName/_count"
+
+Inspect index jobs:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, index_version_id, job_type, status, chunks_total, chunks_completed, chunks_failed, created_at from index_jobs order by created_at desc limit 10;"

@@ -23,6 +23,12 @@ class Settings(BaseSettings):
     SCIFACT_EVAL_DATASET_ID: str = "beir/scifact/test"
     SCIFACT_DEFAULT_SPLIT: str = "test"
     EMBEDDING_MODEL: str = "BAAI/bge-small-en-v1.5"
+    OPENSEARCH_URL: str = "http://localhost:9200"
+    OPENSEARCH_USERNAME: str | None = None
+    OPENSEARCH_PASSWORD: str | None = None
+    OPENSEARCH_VERIFY_CERTS: bool = False
+    OPENSEARCH_REQUEST_TIMEOUT_SECONDS: int = 30
+    LEXICAL_INDEX_BATCH_SIZE: int = 500
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 

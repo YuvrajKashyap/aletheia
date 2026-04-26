@@ -71,3 +71,17 @@ class MarkIndexVersionStatusRequest(BaseModel):
     document_count: int | None = None
     chunk_count: int | None = None
     vector_count: int | None = None
+
+
+class BuildLexicalIndexRequest(BaseModel):
+    recreate: bool = False
+    limit: int | None = Field(default=None, ge=1)
+    refresh: bool = True
+
+
+class BuildLexicalIndexResponse(BaseModel):
+    job_id: str
+    queue: str
+    status: str
+    index_version_id: UUID
+    message: str

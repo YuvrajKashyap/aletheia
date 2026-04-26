@@ -18,6 +18,7 @@ dependencies = [
     "redis",
     "rq",
     "ir-datasets",
+    "opensearch-py",
 ]
 
 [project.optional-dependencies]

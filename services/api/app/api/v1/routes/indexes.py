@@ -1,14 +1,18 @@
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
+from redis.exceptions import RedisError
 from sqlalchemy.orm import Session
 
 from app.api.dependencies.admin import AdminContext, require_admin
 from app.core.config import Settings, get_settings
 from app.db.session import get_db
 from app.indexing import service as index_service
+from app.jobs import queue as job_queue
 from app.schemas.indexes import (
     ActivateIndexVersionResponse,
+    BuildLexicalIndexRequest,
+    BuildLexicalIndexResponse,
     CreateIndexVersionRequest,
     IndexStatusResponse,
     IndexVersionDetail,
@@ -228,3 +232,35 @@ async def rollback_to_index_version(
         index_version=_item(index_version),
         message="metadata-only rollback activated.",
     )
+
+
+@router.post(
+    "/versions/{index_version_id}/build-lexical",
+    response_model=BuildLexicalIndexResponse,
+)
+async def build_lexical_index(
+    index_version_id: UUID,
+    request: BuildLexicalIndexRequest | None = None,
+    _admin_context: AdminContext = Depends(require_admin),
+    db: Session = Depends(get_db),
+) -> BuildLexicalIndexResponse:
+    if index_service.get_index_version(db, index_version_id) is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Index version not found: {index_version_id}",
+        )
+
+    body = request or BuildLexicalIndexRequest()
+    try:
+        payload = job_queue.enqueue_lexical_index_build_job(
+            index_version_id=str(index_version_id),
+            recreate=body.recreate,
+            limit=body.limit,
+            refresh=body.refresh,
+        )
+    except RedisError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=f"Redis queue unavailable: {exc}",
+        ) from exc
+    return BuildLexicalIndexResponse(**payload)

@@ -7,10 +7,12 @@ from app.api.dependencies.admin import AdminContext, require_admin
 from app.db.session import get_db
 from app.jobs import queue as job_queue
 from app.models.system import WorkerHeartbeat
+from app.search.opensearch_client import check_opensearch_health
 from app.schemas.system import (
     EnqueueJobResponse,
     EnqueueTestJobRequest,
     JobStatusResponse,
+    OpenSearchHealthResponse,
     QueueStatusResponse,
     WorkerHeartbeatItem,
     WorkerHeartbeatListResponse,
@@ -28,6 +30,11 @@ async def queue_status() -> QueueStatusResponse:
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail=f"Redis queue unavailable: {exc}",
         ) from exc
+
+
+@router.get("/opensearch", response_model=OpenSearchHealthResponse)
+async def opensearch_status() -> OpenSearchHealthResponse:
+    return OpenSearchHealthResponse(**check_opensearch_health())
 
 
 @router.post("/jobs/test", response_model=EnqueueJobResponse)

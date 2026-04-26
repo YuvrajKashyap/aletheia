@@ -144,6 +144,25 @@ def test_worker_heartbeat_endpoint_serializes_workers() -> None:
     assert payload["workers"][0]["metadata_json"] == {"hostname": "test-host"}
 
 
+def test_opensearch_health_route_returns_mocked_status(monkeypatch) -> None:
+    monkeypatch.setattr(
+        "app.api.v1.routes.system.check_opensearch_health",
+        lambda: {
+            "status": "healthy",
+            "url": "http://localhost:9200",
+            "cluster_name": "docker-cluster",
+            "version": "2.19.3",
+            "error": None,
+        },
+    )
+
+    response = client.get("/api/v1/system/opensearch")
+
+    assert response.status_code == 200
+    assert response.json()["status"] == "healthy"
+    assert response.json()["version"] == "2.19.3"
+
+
 def test_health_route_still_registered() -> None:
     response = client.get("/api/v1/health")
 

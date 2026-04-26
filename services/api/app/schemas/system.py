@@ -38,3 +38,11 @@ class WorkerHeartbeatItem(BaseModel):
 
 class WorkerHeartbeatListResponse(BaseModel):
     workers: list[WorkerHeartbeatItem]
+
+
+class OpenSearchHealthResponse(BaseModel):
+    status: str
+    url: str
+    cluster_name: str | None = None
+    version: str | None = None
+    error: str | None = None
