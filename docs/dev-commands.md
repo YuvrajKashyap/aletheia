@@ -901,3 +901,44 @@ OpenSearch count validation:
 Inspect index jobs:
 
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, index_version_id, job_type, status, chunks_total, chunks_completed, chunks_failed, created_at from index_jobs order by created_at desc limit 10;"
+
+## Step 14 BM25 lexical retrieval commands
+
+Step 14 adds the internal BM25 lexical retrieval service.
+
+Retrieval rules:
+
+- OpenSearch default BM25 scoring is used against indexed chunk text, with a small title match included.
+- This is not the final public Search API.
+- No `/api/v1/search` endpoint is added in this step.
+- Retrieval does not write to `queries`, `query_traces`, or `retrieval_candidates`.
+- Results are ranked chunks from the active OpenSearch lexical index unless an index version or index name is explicitly supplied.
+- Qdrant/vector retrieval, embeddings, reranking, evaluation metrics, and frontend work are still not implemented.
+
+Run BM25 search through the PowerShell helper:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/search-bm25.ps1 -Query "Does aspirin reduce risk of heart attack?" -TopK 5
+
+Use a specific index name:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/search-bm25.ps1 -Query "Does aspirin reduce risk of heart attack?" -IndexName "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04" -TopK 5
+
+Human-readable output:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/search-bm25.ps1 -Query "statin therapy cardiovascular risk" -TopK 5 -Text
+
+Direct CLI help:
+
+    cd services/api
+    .venv/Scripts/python.exe -m app.cli.search_bm25 --help
+
+Expected JSON output fields:
+
+- `query`
+- `index_version_id`
+- `index_name`
+- `retrieval_mode`
+- `top_k`
+- `total_hits`
+- `latency_ms`
+- `results`, including rank, OpenSearch score, chunk/document IDs, title, text, chunking metadata, and source metadata.
