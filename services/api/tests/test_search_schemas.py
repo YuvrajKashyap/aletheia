@@ -16,7 +16,7 @@ def test_whitespace_query_rejected() -> None:
 
 def test_unsupported_retrieval_mode_rejected() -> None:
     with pytest.raises(ValidationError):
-        SearchRequest(query="statins", retrieval_mode="hybrid_rerank")
+        SearchRequest(query="statins", retrieval_mode="rerank_only")
 
 
 def test_dense_retrieval_mode_accepted() -> None:
@@ -31,6 +31,17 @@ def test_hybrid_retrieval_mode_accepted_and_defaults_candidates() -> None:
     assert request.retrieval_mode == "hybrid"
     assert request.bm25_candidate_k == 50
     assert request.dense_candidate_k == 50
+    assert request.rrf_k == 60
+
+
+def test_hybrid_rerank_mode_accepted_and_defaults_candidates() -> None:
+    request = SearchRequest(query="statins", retrieval_mode="hybrid_rerank", top_k=5)
+
+    assert request.retrieval_mode == "hybrid_rerank"
+    assert request.bm25_candidate_k == 50
+    assert request.dense_candidate_k == 50
+    assert request.hybrid_candidate_k == 50
+    assert request.rerank_top_n == 25
     assert request.rrf_k == 60
 
 
@@ -64,6 +75,27 @@ def test_hybrid_candidate_counts_must_cover_top_k() -> None:
 def test_rrf_k_must_be_positive() -> None:
     with pytest.raises(ValidationError):
         SearchRequest(query="statins", retrieval_mode="hybrid", rrf_k=0)
+
+
+def test_hybrid_rerank_candidate_validation() -> None:
+    with pytest.raises(ValidationError):
+        SearchRequest(query="statins", retrieval_mode="hybrid_rerank", top_k=10, rerank_top_n=5)
+    with pytest.raises(ValidationError):
+        SearchRequest(
+            query="statins",
+            retrieval_mode="hybrid_rerank",
+            top_k=5,
+            rerank_top_n=25,
+            hybrid_candidate_k=10,
+        )
+    with pytest.raises(ValidationError):
+        SearchRequest(
+            query="statins",
+            retrieval_mode="hybrid_rerank",
+            top_k=5,
+            hybrid_candidate_k=50,
+            bm25_candidate_k=25,
+        )
 
 
 def test_valid_search_request_defaults_to_bm25() -> None:

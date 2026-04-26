@@ -63,3 +63,11 @@ class EmbeddingModelStatusResponse(BaseModel):
     embedding_dimension: int | None
     cache_dir: str
     error: str | None = None
+
+
+class RerankerModelStatusResponse(BaseModel):
+    model_name: str
+    device: str
+    loaded: bool
+    cache_dir: str
+    error: str | None = None

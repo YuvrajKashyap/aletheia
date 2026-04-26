@@ -208,6 +208,30 @@ def test_embedding_model_status_route_returns_mocked_status_without_admin(monkey
     }
 
 
+def test_reranker_model_status_route_returns_mocked_status_without_admin(monkeypatch) -> None:
+    def fake_status() -> dict:
+        return {
+            "model_name": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+            "device": "cpu",
+            "loaded": False,
+            "cache_dir": "data/models",
+            "error": None,
+        }
+
+    monkeypatch.setattr("app.api.v1.routes.system.get_reranker_model_status", fake_status)
+
+    response = client.get("/api/v1/system/models/reranker")
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "model_name": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+        "device": "cpu",
+        "loaded": False,
+        "cache_dir": "data/models",
+        "error": None,
+    }
+
+
 def test_health_route_still_registered() -> None:
     response = client.get("/api/v1/health")
 

@@ -18,6 +18,7 @@ from app.search.dense_retriever import (
 )
 from app.search.hybrid_retriever import HybridRetrievalError, InvalidHybridSearchRequestError
 from app.search.lexical_retriever import InvalidSearchRequestError, NoActiveIndexError, RetrievalError
+from app.search.reranker import InvalidRerankSearchRequestError, RerankSearchError
 
 router = APIRouter(prefix="/search", tags=["search"])
 
@@ -40,9 +41,11 @@ async def search(
         InvalidSearchRequestError,
         InvalidDenseSearchRequestError,
         InvalidHybridSearchRequestError,
+        InvalidRerankSearchRequestError,
         RetrievalError,
         DenseRetrievalError,
         HybridRetrievalError,
+        RerankSearchError,
         ValueError,
     ) as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc

@@ -1146,3 +1146,50 @@ Trace and candidate checks:
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select source, count(*) from retrieval_candidates group by source order by source;"
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, retrieval_mode, status, total_latency_ms, created_at from queries order by created_at desc limit 10;"
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select source, bm25_rank, dense_rank, fusion_rank, final_rank, bm25_score, dense_score, fusion_score from retrieval_candidates where source = 'hybrid_rrf' order by created_at desc limit 10;"
+
+## Step 20 cross-encoder reranking commands
+
+Step 20 adds cross-encoder reranking for hybrid retrieval candidates.
+
+Reranking rules:
+
+- Hybrid retrieval still runs first with BM25, dense retrieval, and Reciprocal Rank Fusion.
+- The cross-encoder scores only the top-N hybrid candidates because pairwise query-document scoring is expensive.
+- The default reranker model is `cross-encoder/ms-marco-MiniLM-L-6-v2`.
+- The default `rerank_top_n` is `25`.
+- `/api/v1/search` now supports `bm25`, `dense`, `hybrid`, and `hybrid_rerank`.
+- `hybrid_rerank` traces store BM25, dense, fusion, and reranker stages.
+- Evaluation metrics and frontend work come later.
+- The first reranker call may download or load the model and be slower.
+
+Check reranker model status without loading the model:
+
+    Invoke-RestMethod http://localhost:8000/api/v1/system/models/reranker
+
+Rerank CLI:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/search-hybrid-rerank.ps1 -Query "Can animals transmit coronaviruses to humans?" -TopK 5 -Bm25CandidateK 50 -DenseCandidateK 50 -HybridCandidateK 50 -RerankTopN 25 -RrfK 60
+
+Rerank CLI with text output:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/search-hybrid-rerank.ps1 -Query "Do statins lower cholesterol?" -TopK 5 -RerankTopN 25 -Text
+
+Rerank Search API body:
+
+    $body = @{
+      query = "Do statins lower cholesterol?"
+      retrieval_mode = "hybrid_rerank"
+      top_k = 5
+      bm25_candidate_k = 50
+      dense_candidate_k = 50
+      hybrid_candidate_k = 50
+      rerank_top_n = 25
+      rrf_k = 60
+    } | ConvertTo-Json
+    Invoke-RestMethod -Method Post -Uri "http://localhost:8000/api/v1/search" -ContentType "application/json" -Body $body
+
+Trace and candidate checks:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select source, count(*) from retrieval_candidates group by source order by source;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, retrieval_mode, status, total_latency_ms, created_at from queries order by created_at desc limit 10;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select source, bm25_rank, dense_rank, fusion_rank, rerank_rank, final_rank, bm25_score, dense_score, fusion_score, reranker_score from retrieval_candidates where source = 'hybrid_rerank' order by created_at desc limit 10;"

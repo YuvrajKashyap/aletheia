@@ -145,6 +145,62 @@ def fake_hybrid_search_response() -> SearchResponse:
     )
 
 
+def fake_hybrid_rerank_search_response() -> SearchResponse:
+    return SearchResponse(
+        query_id=UUID("00000000-0000-0000-0000-000000000001"),
+        trace_id=UUID("00000000-0000-0000-0000-000000000002"),
+        request_id="request-1",
+        query="Do statins lower cholesterol?",
+        retrieval_mode="hybrid_rerank",
+        index_version_id=UUID("00000000-0000-0000-0000-000000000003"),
+        index_name="aletheia-lexical-test",
+        collection_name="aletheia-vector-test",
+        lexical_index_name="aletheia-lexical-test",
+        vector_collection_name="aletheia-vector-test",
+        top_k=1,
+        candidate_k=50,
+        bm25_candidate_k=50,
+        dense_candidate_k=50,
+        hybrid_candidate_k=25,
+        rerank_top_n=10,
+        rrf_k=60,
+        latency_ms=25.0,
+        bm25_latency_ms=4.5,
+        embedding_latency_ms=2.0,
+        qdrant_latency_ms=3.0,
+        fusion_latency_ms=0.5,
+        reranker_latency_ms=6.0,
+        result_count=1,
+        results=[
+            SearchResultItem(
+                rank=1,
+                chunk_id=UUID("00000000-0000-0000-0000-000000000004"),
+                document_id=UUID("00000000-0000-0000-0000-000000000005"),
+                dataset_id=UUID("00000000-0000-0000-0000-000000000006"),
+                document_external_id="doc-1",
+                chunk_external_id="doc-1:0",
+                title="Reranked statin result",
+                text="Statins lower cholesterol.",
+                score=8.7,
+                score_breakdown={
+                    "reranker": 8.7,
+                    "fusion": 0.032,
+                    "bm25": 12.3,
+                    "dense": 0.87,
+                    "bm25_rank": 1,
+                    "dense_rank": 2,
+                    "fusion_rank": 2,
+                    "rerank_rank": 1,
+                },
+                token_count=3,
+                chunking_strategy="scifact_document_v1",
+                chunking_version="1.0",
+                metadata_json={},
+            )
+        ],
+    )
+
+
 def test_search_post_works_without_admin_key(monkeypatch) -> None:
     monkeypatch.setattr(
         "app.api.v1.routes.search.search_service.run_search",
@@ -216,10 +272,36 @@ def test_hybrid_search_post_works_without_admin_key(monkeypatch) -> None:
     assert payload["results"][0]["score_breakdown"]["fusion"] == 0.032
 
 
+def test_hybrid_rerank_search_post_works_without_admin_key(monkeypatch) -> None:
+    monkeypatch.setattr(
+        "app.api.v1.routes.search.search_service.run_search",
+        lambda db, request, request_id=None: fake_hybrid_rerank_search_response(),
+    )
+    app.dependency_overrides[get_db] = fake_db
+    try:
+        response = client.post(
+            "/api/v1/search",
+            json={
+                "query": "Do statins lower cholesterol?",
+                "retrieval_mode": "hybrid_rerank",
+                "top_k": 1,
+                "rerank_top_n": 10,
+            },
+        )
+    finally:
+        app.dependency_overrides.clear()
+
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["retrieval_mode"] == "hybrid_rerank"
+    assert payload["reranker_latency_ms"] == 6.0
+    assert payload["results"][0]["score_breakdown"]["reranker"] == 8.7
+
+
 def test_search_post_unsupported_retrieval_mode_returns_validation_error() -> None:
     response = client.post(
         "/api/v1/search",
-        json={"query": "Do statins lower cholesterol?", "retrieval_mode": "hybrid_rerank"},
+        json={"query": "Do statins lower cholesterol?", "retrieval_mode": "rerank_only"},
     )
 
     assert response.status_code == 422

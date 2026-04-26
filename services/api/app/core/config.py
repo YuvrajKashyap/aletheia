@@ -39,6 +39,11 @@ class Settings(BaseSettings):
     QDRANT_REQUEST_TIMEOUT_SECONDS: int = 60
     VECTOR_INDEX_BATCH_SIZE: int = 64
     VECTOR_DISTANCE: str = "Cosine"
+    RERANKER_MODEL: str = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    RERANKER_DEVICE: str = "cpu"
+    RERANKER_BATCH_SIZE: int = 16
+    RERANKER_TOP_N: int = 25
+    RERANKER_TIMEOUT_SECONDS: int = 30
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 

@@ -12,6 +12,8 @@ class SearchRequest(BaseModel):
     candidate_k: int | None = Field(default=None, ge=1, le=500)
     bm25_candidate_k: int | None = Field(default=None, ge=1, le=500)
     dense_candidate_k: int | None = Field(default=None, ge=1, le=500)
+    hybrid_candidate_k: int | None = Field(default=None, ge=1, le=500)
+    rerank_top_n: int | None = Field(default=None, ge=1, le=500)
     rrf_k: int = Field(default=60, ge=1)
     index_version_id: UUID | None = None
 
@@ -25,15 +27,15 @@ class SearchRequest(BaseModel):
     @field_validator("retrieval_mode")
     @classmethod
     def retrieval_mode_must_be_supported(cls, value: str) -> str:
-        if value not in {"bm25", "dense", "hybrid"}:
-            raise ValueError('retrieval_mode must be "bm25", "dense", or "hybrid"')
+        if value not in {"bm25", "dense", "hybrid", "hybrid_rerank"}:
+            raise ValueError('retrieval_mode must be "bm25", "dense", "hybrid", or "hybrid_rerank"')
         return value
 
     @model_validator(mode="after")
     def candidate_k_must_cover_top_k(self) -> "SearchRequest":
         if self.candidate_k is not None and self.candidate_k < self.top_k:
             raise ValueError("candidate_k must be greater than or equal to top_k")
-        if self.retrieval_mode == "hybrid":
+        if self.retrieval_mode in {"hybrid", "hybrid_rerank"}:
             if self.bm25_candidate_k is None:
                 self.bm25_candidate_k = 50
             if self.dense_candidate_k is None:
@@ -42,6 +44,19 @@ class SearchRequest(BaseModel):
                 raise ValueError("bm25_candidate_k must be greater than or equal to top_k")
             if self.dense_candidate_k < self.top_k:
                 raise ValueError("dense_candidate_k must be greater than or equal to top_k")
+        if self.retrieval_mode == "hybrid_rerank":
+            if self.hybrid_candidate_k is None:
+                self.hybrid_candidate_k = 50
+            if self.rerank_top_n is None:
+                self.rerank_top_n = 25
+            if self.rerank_top_n < self.top_k:
+                raise ValueError("rerank_top_n must be greater than or equal to top_k")
+            if self.hybrid_candidate_k < self.rerank_top_n:
+                raise ValueError("hybrid_candidate_k must be greater than or equal to rerank_top_n")
+            if self.bm25_candidate_k < self.hybrid_candidate_k:
+                raise ValueError("bm25_candidate_k must be greater than or equal to hybrid_candidate_k")
+            if self.dense_candidate_k < self.hybrid_candidate_k:
+                raise ValueError("dense_candidate_k must be greater than or equal to hybrid_candidate_k")
         return self
 
 
@@ -77,12 +92,15 @@ class SearchResponse(BaseModel):
     candidate_k: int
     bm25_candidate_k: int | None = None
     dense_candidate_k: int | None = None
+    hybrid_candidate_k: int | None = None
+    rerank_top_n: int | None = None
     rrf_k: int | None = None
     latency_ms: float
     bm25_latency_ms: float | None = None
     embedding_latency_ms: float | None = None
     qdrant_latency_ms: float | None = None
     fusion_latency_ms: float | None = None
+    reranker_latency_ms: float | None = None
     result_count: int
     results: list[SearchResultItem]
 
