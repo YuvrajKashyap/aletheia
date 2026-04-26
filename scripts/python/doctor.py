@@ -96,6 +96,8 @@ EXPECTED_FILES = [
     "services/api/app/evaluation/metrics.py",
     "services/api/app/evaluation/latency.py",
     "services/api/app/evaluation/correctness.py",
+    "services/api/app/evaluation/runner.py",
+    "services/api/app/evaluation/reporting.py",
     "services/api/app/search/__init__.py",
     "services/api/app/search/opensearch_client.py",
     "services/api/app/search/qdrant_client.py",
@@ -129,6 +131,7 @@ EXPECTED_FILES = [
     "services/api/app/cli/evaluate_metrics_fixture.py",
     "services/api/app/cli/check_eval_alignment.py",
     "services/api/app/cli/evaluate_trace.py",
+    "services/api/app/cli/run_evaluation.py",
     "services/api/app/cli/embed_text.py",
     "services/api/app/api/dependencies/__init__.py",
     "services/api/app/api/dependencies/admin.py",
@@ -183,12 +186,15 @@ EXPECTED_FILES = [
     "scripts/powershell/evaluate-metrics-fixture.ps1",
     "scripts/powershell/check-eval-alignment.ps1",
     "scripts/powershell/evaluate-trace.ps1",
+    "scripts/powershell/run-evaluation.ps1",
+    "scripts/powershell/run-eval.ps1",
     "scripts/powershell/search-api.ps1",
     "scripts/powershell/embed-text.ps1",
     "scripts/powershell/worker.ps1",
     "scripts/powershell/enqueue-test-job.ps1",
     "scripts/powershell/admin-status.ps1",
     "data/samples/metrics-fixture.json",
+    "reports/evaluations/.gitkeep",
 ]
 
 

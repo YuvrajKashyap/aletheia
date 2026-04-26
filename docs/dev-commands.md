@@ -1369,3 +1369,58 @@ Verify no evaluation DB rows:
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from evaluation_runs;"
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from evaluation_query_results;"
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from evaluation_reports;"
+
+## Step 24 offline evaluation runner commands
+
+Step 24 adds the synchronous offline evaluation runner. This is the first step that writes evaluation DB rows.
+
+Runner rules:
+
+- The runner writes `evaluation_runs`, `evaluation_query_results`, and `evaluation_reports`.
+- It uses real benchmark query text, the existing Search API service layer, real retrieval, stored traces/candidates, and real qrels.
+- Normal `queries`, `query_traces`, and `retrieval_candidates` rows are created as side effects because evaluation calls the existing search service.
+- Retrieved chunks are scored only after mapping to parent document IDs.
+- Duplicate document IDs are deduplicated before metrics.
+- Metrics are honest and may be low or zero.
+- Reports are written to `reports/evaluations/`.
+- The runner is synchronous in Step 24. RQ jobs and evaluation API routes come later.
+
+Run qrels alignment first:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/check-eval-alignment.ps1
+
+Limited BM25:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/run-evaluation.ps1 -Mode bm25 -Name "BM25 limited Step 24 eval" -QueryLimit 10 -TopK 10 -CandidateK 10 -Notes "Step 24 limited BM25 validation"
+
+Limited dense:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/run-evaluation.ps1 -Mode dense -Name "Dense limited Step 24 eval" -QueryLimit 10 -TopK 10 -CandidateK 10 -Notes "Step 24 limited dense validation"
+
+Limited hybrid:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/run-evaluation.ps1 -Mode hybrid -Name "Hybrid limited Step 24 eval" -QueryLimit 10 -TopK 10 -Bm25CandidateK 50 -DenseCandidateK 50 -RrfK 60 -Notes "Step 24 limited hybrid validation"
+
+Tiny hybrid rerank:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/run-evaluation.ps1 -Mode hybrid_rerank -Name "Hybrid rerank tiny Step 24 eval" -QueryLimit 3 -TopK 10 -Bm25CandidateK 50 -DenseCandidateK 50 -HybridCandidateK 50 -RerankTopN 25 -RrfK 60 -Notes "Step 24 tiny rerank validation"
+
+The legacy `run-eval.ps1` delegates to `run-evaluation.ps1`:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/run-eval.ps1 -Mode bm25 -QueryLimit 10
+
+Evaluation DB inspection:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, name, status, query_count, failed_query_count, recall_at_5, recall_at_10, mrr_at_10, ndcg_at_10, avg_latency_ms, p50_latency_ms, p95_latency_ms, report_path, created_at from evaluation_runs order by created_at desc limit 10;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from evaluation_query_results;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select report_format, report_path, created_at from evaluation_reports order by created_at desc limit 5;"
+
+Report files:
+
+    dir reports\evaluations
+    Get-Content reports\evaluations\<REPORT_FILE_NAME>.json | Select-Object -First 40
+
+Trace side effects:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select retrieval_mode, count(*) from queries group by retrieval_mode order by retrieval_mode;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select source, count(*) from retrieval_candidates group by source order by source;"
