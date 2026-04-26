@@ -807,3 +807,50 @@ Get ingestion run detail:
 Inspect ingestion runs table:
 
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, status, documents_loaded, chunks_created, queries_loaded, qrels_loaded, errors_count, created_at from ingestion_runs order by created_at desc limit 10;"
+
+## Step 12 index versioning commands
+
+Step 12 adds metadata-only index version lifecycle management.
+
+Index version rules:
+
+- Index versions represent future OpenSearch lexical indexes and Qdrant vector collections.
+- `status` describes lifecycle: pending, building, ready, active, failed, deprecated.
+- `is_active` identifies the one version that should serve search for a dataset later.
+- No real OpenSearch index or Qdrant collection is created in this step.
+- Never build directly into an active index. The intended future flow is create pending metadata, build resources later, validate later, mark ready, then activate.
+- Activation is metadata-only until indexing steps exist.
+- Rollback is metadata-only and switches `is_active` back to a ready or deprecated version.
+
+Create an index version from the CLI:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/create-index-version.ps1
+
+Create and mark ready for local lifecycle validation:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/create-index-version.ps1 -MarkReady
+
+Check index status:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/index-status.ps1
+
+List index versions:
+
+    Invoke-RestMethod "http://localhost:8000/api/v1/indexes/versions?limit=10&offset=0"
+
+Create index version through the API:
+
+    $body = @{ dataset_name = "beir/scifact"; dataset_version = "test"; chunking_strategy = "scifact_document_v1"; chunking_version = "1.0" } | ConvertTo-Json
+    Invoke-RestMethod -Method Post -Uri "http://localhost:8000/api/v1/indexes/versions" -ContentType "application/json" -Headers @{"X-Admin-API-Key"="replace-me"} -Body $body
+
+Mark an index version ready:
+
+    Invoke-RestMethod -Method Post -Uri "http://localhost:8000/api/v1/indexes/versions/$indexVersionId/mark-ready" -Headers @{"X-Admin-API-Key"="replace-me"}
+
+Activate an index version:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/activate-index-version.ps1 -IndexVersionId $indexVersionId
+
+Rollback to a previous ready or deprecated version:
+
+    Invoke-RestMethod -Method Post -Uri "http://localhost:8000/api/v1/indexes/versions/$indexVersionId/rollback" -Headers @{"X-Admin-API-Key"="replace-me"}

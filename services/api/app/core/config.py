@@ -22,6 +22,7 @@ class Settings(BaseSettings):
     SCIFACT_CORPUS_DATASET_ID: str = "beir/scifact"
     SCIFACT_EVAL_DATASET_ID: str = "beir/scifact/test"
     SCIFACT_DEFAULT_SPLIT: str = "test"
+    EMBEDDING_MODEL: str = "BAAI/bge-small-en-v1.5"
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
