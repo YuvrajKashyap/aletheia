@@ -56,6 +56,12 @@ function emptyPage<T>(limit = 25): PageState<T> {
 }
 
 function errorMessage(error: unknown) {
+  if (error instanceof TypeError && error.message.toLowerCase().includes("fetch")) {
+    return `Backend API is not reachable at ${API_BASE_URL}.`;
+  }
+  if (error instanceof Error && error.message.toLowerCase() === "failed to fetch") {
+    return `Backend API is not reachable at ${API_BASE_URL}.`;
+  }
   return error instanceof Error ? error.message : "Request failed";
 }
 
