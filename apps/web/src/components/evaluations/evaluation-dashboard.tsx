@@ -194,7 +194,11 @@ export function EvaluationDashboard() {
           <CardHeader>
             <CardTitle>Evaluation runs</CardTitle>
             <CardDescription>
-              {listLoading ? "Loading real evaluation runs." : `${runs.length} runs loaded from FastAPI.`}
+              {listError
+                ? "No evaluation runs loaded."
+                : listLoading
+                  ? "Loading real evaluation runs."
+                  : `${runs.length} runs loaded from FastAPI.`}
             </CardDescription>
           </CardHeader>
           <CardContent>

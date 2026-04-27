@@ -22,7 +22,7 @@ export function EvaluationLatencyChart({ runs }: LatencyChartProps) {
     }));
 
   return (
-    <Card>
+    <Card className="min-w-0 overflow-hidden">
       <CardHeader>
         <CardTitle>Latency comparison</CardTitle>
         <CardDescription>Recent runs with real measured latency fields.</CardDescription>
@@ -31,8 +31,8 @@ export function EvaluationLatencyChart({ runs }: LatencyChartProps) {
         {data.length === 0 ? (
           <p className="text-sm text-slate-500">No latency values available for charting.</p>
         ) : (
-          <div className="min-h-[20rem]" style={{ height: 320, width: "100%" }}>
-            <ResponsiveContainer height="100%" width="100%">
+          <div className="h-80 min-h-80 w-full min-w-0 overflow-hidden" style={{ height: 320, width: "100%" }}>
+            <ResponsiveContainer height="100%" minHeight={1} minWidth={1} width="100%">
               <BarChart data={data}>
                 <CartesianGrid stroke="#1e293b" strokeDasharray="3 3" />
                 <XAxis dataKey="name" stroke="#94a3b8" tick={{ fill: "#94a3b8", fontSize: 11 }} />
