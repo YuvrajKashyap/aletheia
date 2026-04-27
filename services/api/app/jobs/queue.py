@@ -12,6 +12,7 @@ from app.experiments.jobs import run_evaluation_comparison_job
 from app.ingestion.jobs import run_scifact_ingestion_job
 from app.indexing.jobs import build_lexical_index_job, build_vector_index_job
 from app.jobs.health import ping_job
+from app.replay.jobs import run_golden_query_replay_job, run_saved_query_replay_job
 
 
 def _serialize_datetime(value: Any) -> str | None:
@@ -219,6 +220,90 @@ def enqueue_evaluation_comparison_job(
         "queue": queue.name,
         "status": _serialize_status(job.get_status(refresh=True)),
         "message": "Evaluation comparison job enqueued.",
+    }
+
+
+def enqueue_saved_query_replay_job(
+    saved_query_id: str,
+    retrieval_mode: str | None = None,
+    experiment_config_id: str | None = None,
+    experiment_config_name: str | None = None,
+    index_version_id: str | None = None,
+    source_trace_id: str | None = None,
+    top_k: int = 10,
+    candidate_k: int | None = None,
+    bm25_candidate_k: int | None = None,
+    dense_candidate_k: int | None = None,
+    hybrid_candidate_k: int | None = None,
+    rerank_top_n: int | None = None,
+    rrf_k: int = 60,
+) -> dict:
+    queue = get_queue()
+    job = queue.enqueue(
+        run_saved_query_replay_job,
+        saved_query_id=saved_query_id,
+        retrieval_mode=retrieval_mode,
+        experiment_config_id=experiment_config_id,
+        experiment_config_name=experiment_config_name,
+        index_version_id=index_version_id,
+        source_trace_id=source_trace_id,
+        top_k=top_k,
+        candidate_k=candidate_k,
+        bm25_candidate_k=bm25_candidate_k,
+        dense_candidate_k=dense_candidate_k,
+        hybrid_candidate_k=hybrid_candidate_k,
+        rerank_top_n=rerank_top_n,
+        rrf_k=rrf_k,
+    )
+    return {
+        "job_id": job.id,
+        "queue": queue.name,
+        "status": _serialize_status(job.get_status(refresh=True)),
+        "message": "Saved query replay job enqueued.",
+    }
+
+
+def enqueue_golden_query_replay_job(
+    name: str,
+    source: str = "golden_scifact",
+    retrieval_mode: str | None = None,
+    experiment_config_id: str | None = None,
+    experiment_config_name: str | None = None,
+    limit: int | None = None,
+    offset: int = 0,
+    top_k: int = 10,
+    candidate_k: int | None = None,
+    bm25_candidate_k: int | None = None,
+    dense_candidate_k: int | None = None,
+    hybrid_candidate_k: int | None = None,
+    rerank_top_n: int | None = None,
+    rrf_k: int = 60,
+    notes: str | None = None,
+) -> dict:
+    queue = get_queue()
+    job = queue.enqueue(
+        run_golden_query_replay_job,
+        name=name,
+        source=source,
+        retrieval_mode=retrieval_mode,
+        experiment_config_id=experiment_config_id,
+        experiment_config_name=experiment_config_name,
+        limit=limit,
+        offset=offset,
+        top_k=top_k,
+        candidate_k=candidate_k,
+        bm25_candidate_k=bm25_candidate_k,
+        dense_candidate_k=dense_candidate_k,
+        hybrid_candidate_k=hybrid_candidate_k,
+        rerank_top_n=rerank_top_n,
+        rrf_k=rrf_k,
+        notes=notes,
+    )
+    return {
+        "job_id": job.id,
+        "queue": queue.name,
+        "status": _serialize_status(job.get_status(refresh=True)),
+        "message": "Golden query replay job enqueued.",
     }
 
 

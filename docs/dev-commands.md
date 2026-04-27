@@ -1489,6 +1489,92 @@ Final DB checks:
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from evaluation_runs where experiment_config_id is not null;"
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select name, status, query_count, failed_query_count, recall_at_10, mrr_at_10, ndcg_at_10 from evaluation_runs order by created_at desc limit 10;"
 
+## Step 27 saved queries and query replay
+
+Step 27 adds saved queries, a deterministic golden query set, and a query replay harness.
+
+Replay is different from full evaluation:
+
+- Evaluation runs benchmark many queries and store aggregate evaluation rows.
+- Query replay focuses on individual saved queries or a small golden set for trace-level debugging and regression analysis.
+- Replay uses the existing search service, so normal `queries`, `query_traces`, and `retrieval_candidates` are still created.
+- Replay writes `query_replays` rows and JSON reports under `reports/replays`.
+- Golden queries are sourced from real SciFact benchmark queries with real qrels.
+- Replay metrics are document-level when qrels are available.
+- Source trace vs target trace comparison is used for rank movement and overlap debugging.
+- No fake golden labels, fake benchmark results, frontend behavior, or chatbot/RAG behavior is included.
+
+Seed golden queries:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/seed-golden-queries.ps1 -Limit 10
+
+Inspect saved queries:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, name, source, text, metadata_json->>'query_external_id' as query_external_id, created_at from saved_queries order by created_at desc limit 12;"
+
+Replay one saved query:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/replay-saved-query.ps1 -SavedQueryId "<saved_query_id>" -Mode hybrid_rerank -TopK 10 -Bm25CandidateK 50 -DenseCandidateK 50 -HybridCandidateK 50 -RerankTopN 25 -RrfK 60
+
+Run limited golden replay:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/run-golden-replay.ps1 -Name "Step 27 golden replay validation" -Mode hybrid_rerank -Limit 3 -TopK 10 -Bm25CandidateK 50 -DenseCandidateK 50 -HybridCandidateK 50 -RerankTopN 25 -RrfK 60 -Notes "Step 27 sync golden replay validation"
+
+Inspect query replays:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, saved_query_id, status, source_trace_id, target_trace_id, experiment_config_id, index_version_id, error_message, created_at from query_replays order by created_at desc limit 10;"
+
+Reports:
+
+    dir reports\replays
+
+API list saved queries:
+
+    Invoke-RestMethod "http://localhost:8000/api/v1/replay/saved-queries?limit=10&offset=0"
+
+API seed golden:
+
+    $seedBody = @{
+      dataset_name = "beir/scifact"
+      dataset_version = "test"
+      limit = 10
+    } | ConvertTo-Json
+
+    Invoke-RestMethod -Method Post -Uri http://localhost:8000/api/v1/replay/saved-queries/seed-golden -ContentType "application/json" -Headers @{"X-Admin-API-Key"="replace-me"} -Body $seedBody
+
+Async golden replay:
+
+    $body = @{
+      name = "Step 27 async golden replay validation"
+      source = "golden_scifact"
+      retrieval_mode = "hybrid"
+      limit = 3
+      top_k = 10
+      bm25_candidate_k = 50
+      dense_candidate_k = 50
+      rrf_k = 60
+      notes = "Step 27 async golden replay validation"
+    } | ConvertTo-Json
+
+    $job = Invoke-RestMethod -Method Post -Uri http://localhost:8000/api/v1/replay/golden/run -ContentType "application/json" -Headers @{"X-Admin-API-Key"="replace-me"} -Body $body
+
+Job status:
+
+    Invoke-RestMethod "http://localhost:8000/api/v1/system/jobs/$($job.job_id)"
+
+PowerShell helpers:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/list-saved-queries.ps1 -Limit 5
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/start-golden-replay-job.ps1 -Name "Step 27 helper async replay" -Mode hybrid -Limit 3 -TopK 10 -Bm25CandidateK 50 -DenseCandidateK 50 -RrfK 60
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/list-query-replays.ps1 -Limit 5
+
+Final DB checks:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from saved_queries;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select status, count(*) from query_replays group by status order by status;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select source, count(*) from saved_queries group by source order by source;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select retrieval_mode, count(*) from queries group by retrieval_mode order by retrieval_mode;"
+
 Report files:
 
     dir reports\evaluations
