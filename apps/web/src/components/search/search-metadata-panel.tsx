@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ModePill } from "@/components/search/mode-pill";
@@ -38,7 +39,18 @@ export function SearchMetadataPanel({ response }: MetadataPanelProps) {
         </div>
         <dl className="grid gap-3 text-sm">
           <MetadataRow label="query_id" value={response.query_id} />
-          <MetadataRow label="trace_id" value={response.trace_id} />
+          <MetadataRow
+            label="trace_id"
+            value={response.trace_id}
+            action={
+              <Link
+                className="inline-flex h-8 items-center rounded-md border border-cyan-700 bg-cyan-950/60 px-3 text-xs font-semibold text-cyan-200 transition hover:border-cyan-400 hover:text-cyan-100 focus:outline-none focus:ring-2 focus:ring-cyan-400/70"
+                href={`/traces?traceId=${encodeURIComponent(response.trace_id)}`}
+              >
+                Open trace
+              </Link>
+            }
+          />
           <MetadataRow label="index_version_id" value={response.index_version_id} />
           <MetadataRow label="lexical index" value={response.lexical_index_name || response.index_name} />
           <MetadataRow label="vector collection" value={response.vector_collection_name || response.collection_name} />
@@ -54,22 +66,27 @@ export function SearchMetadataPanel({ response }: MetadataPanelProps) {
             ))}
           </div>
         </div>
-        <Link
-          className="inline-flex text-sm font-medium text-cyan-300 hover:text-cyan-200"
-          href={`/traces?traceId=${encodeURIComponent(response.trace_id)}`}
-        >
-          Open trace route
-        </Link>
       </CardContent>
     </Card>
   );
 }
 
-function MetadataRow({ label, value }: { label: string; value?: string | null }) {
+function MetadataRow({
+  label,
+  value,
+  action
+}: {
+  label: string;
+  value?: string | null;
+  action?: ReactNode;
+}) {
   return (
     <div className="grid gap-1">
       <dt className="text-xs font-medium uppercase tracking-wide text-slate-500">{label}</dt>
-      <dd className="select-all break-all font-mono text-xs text-slate-200">{valueOrUnknown(value)}</dd>
+      <dd className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <span className="select-all break-all font-mono text-xs text-slate-200">{valueOrUnknown(value)}</span>
+        {action}
+      </dd>
     </div>
   );
 }

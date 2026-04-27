@@ -122,6 +122,7 @@ export function TraceBrowser() {
             <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white">Search observability console</h1>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
               Inspect real search traces, pipeline stages, candidate provenance, rerank movement, and raw trace JSON.
+              Search history with full retrieval traces and ranking provenance.
             </p>
           </div>
           <div className="rounded-md border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-slate-400">
