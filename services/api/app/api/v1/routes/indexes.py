@@ -16,6 +16,8 @@ from app.schemas.indexes import (
     BuildVectorIndexRequest,
     BuildVectorIndexResponse,
     CreateIndexVersionRequest,
+    IndexJobItem,
+    IndexJobListResponse,
     IndexStatusResponse,
     IndexVersionDetail,
     IndexVersionItem,
@@ -54,6 +56,24 @@ def _detail(index_version) -> IndexVersionDetail:
     return IndexVersionDetail(**_item(index_version).model_dump())
 
 
+def _job_item(index_job) -> IndexJobItem:
+    return IndexJobItem(
+        id=index_job.id,
+        index_version_id=index_job.index_version_id,
+        job_id=index_job.job_id,
+        job_type=index_job.job_type,
+        status=index_job.status,
+        started_at=index_job.started_at,
+        completed_at=index_job.completed_at,
+        chunks_total=index_job.chunks_total,
+        chunks_completed=index_job.chunks_completed,
+        chunks_failed=index_job.chunks_failed,
+        error_message=index_job.error_message,
+        created_at=index_job.created_at,
+        updated_at=index_job.updated_at,
+    )
+
+
 def _bad_request(exc: ValueError) -> HTTPException:
     return HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc))
 
@@ -90,6 +110,31 @@ async def list_index_versions(
     )
     return IndexVersionListResponse(
         items=[_item(version) for version in versions],
+        total=total,
+        limit=limit,
+        offset=offset,
+    )
+
+
+@router.get("/jobs", response_model=IndexJobListResponse)
+async def list_index_jobs(
+    index_version_id: UUID | None = None,
+    job_type: str | None = None,
+    status: str | None = None,
+    limit: int = Query(default=50, ge=1, le=200),
+    offset: int = Query(default=0, ge=0),
+    db: Session = Depends(get_db),
+) -> IndexJobListResponse:
+    jobs, total = index_service.list_index_jobs(
+        db,
+        index_version_id=index_version_id,
+        job_type=job_type,
+        status=status,
+        limit=limit,
+        offset=offset,
+    )
+    return IndexJobListResponse(
+        items=[_job_item(job) for job in jobs],
         total=total,
         limit=limit,
         offset=offset,

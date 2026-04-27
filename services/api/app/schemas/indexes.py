@@ -52,6 +52,29 @@ class IndexVersionListResponse(BaseModel):
     offset: int
 
 
+class IndexJobItem(BaseModel):
+    id: UUID
+    index_version_id: UUID
+    job_id: str | None
+    job_type: str
+    status: str
+    started_at: datetime | None
+    completed_at: datetime | None
+    chunks_total: int
+    chunks_completed: int
+    chunks_failed: int
+    error_message: str | None
+    created_at: datetime
+    updated_at: datetime | None
+
+
+class IndexJobListResponse(BaseModel):
+    items: list[IndexJobItem]
+    total: int
+    limit: int
+    offset: int
+
+
 class IndexStatusResponse(BaseModel):
     active_index_version: IndexVersionItem | None
     dataset_count: int

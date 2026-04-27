@@ -43,6 +43,25 @@ def fake_index_version(index_id: str = "00000000-0000-0000-0000-000000000001"):
     )
 
 
+def fake_index_job():
+    now = datetime.now(timezone.utc)
+    return SimpleNamespace(
+        id=UUID("00000000-0000-0000-0000-000000000003"),
+        index_version_id=UUID("00000000-0000-0000-0000-000000000001"),
+        job_id="rq-job-123",
+        job_type="lexical_index_build",
+        status="completed",
+        started_at=now,
+        completed_at=now,
+        chunks_total=5183,
+        chunks_completed=5183,
+        chunks_failed=0,
+        error_message=None,
+        created_at=now,
+        updated_at=now,
+    )
+
+
 def test_index_status_route_exists(monkeypatch) -> None:
     monkeypatch.setattr(
         "app.api.v1.routes.indexes.index_service.index_status",
@@ -79,6 +98,23 @@ def test_index_versions_route_exists(monkeypatch) -> None:
     assert response.status_code == 200
     assert response.json()["total"] == 1
     assert response.json()["items"][0]["status"] == "ready"
+
+
+def test_index_jobs_route_exists(monkeypatch) -> None:
+    monkeypatch.setattr(
+        "app.api.v1.routes.indexes.index_service.list_index_jobs",
+        lambda db, index_version_id=None, job_type=None, status=None, limit=50, offset=0: ([fake_index_job()], 1),
+    )
+    app.dependency_overrides[get_db] = fake_db
+    try:
+        response = client.get("/api/v1/indexes/jobs")
+    finally:
+        app.dependency_overrides.clear()
+
+    assert response.status_code == 200
+    assert response.json()["total"] == 1
+    assert response.json()["items"][0]["job_type"] == "lexical_index_build"
+    assert response.json()["items"][0]["chunks_completed"] == 5183
 
 
 def test_index_version_detail_missing_returns_404(monkeypatch) -> None:

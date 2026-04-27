@@ -11,7 +11,7 @@ from sqlalchemy.orm import Session
 
 from app.indexing import statuses
 from app.models.datasets import Chunk, Dataset, Document
-from app.models.indexing import IndexVersion
+from app.models.indexing import IndexJob, IndexVersion
 
 
 def utc_now() -> datetime:
@@ -206,6 +206,37 @@ def list_index_versions(
     total_statement = select(func.count()).select_from(IndexVersion)
     item_statement = (
         select(IndexVersion).order_by(IndexVersion.created_at.desc()).limit(limit).offset(offset)
+    )
+    if filters:
+        total_statement = total_statement.where(*filters)
+        item_statement = item_statement.where(*filters)
+
+    total = _count(db, total_statement)
+    return db.scalars(item_statement).all(), total
+
+
+def list_index_jobs(
+    db: Session,
+    index_version_id: UUID | None = None,
+    job_type: str | None = None,
+    status: str | None = None,
+    limit: int = 50,
+    offset: int = 0,
+) -> tuple[list[IndexJob], int]:
+    filters = []
+    if index_version_id is not None:
+        filters.append(IndexJob.index_version_id == index_version_id)
+    if job_type:
+        filters.append(IndexJob.job_type == job_type)
+    if status:
+        filters.append(IndexJob.status == status)
+
+    total_statement = select(func.count()).select_from(IndexJob)
+    item_statement = (
+        select(IndexJob)
+        .order_by(IndexJob.created_at.desc(), IndexJob.started_at.desc())
+        .limit(limit)
+        .offset(offset)
     )
     if filters:
         total_statement = total_statement.where(*filters)

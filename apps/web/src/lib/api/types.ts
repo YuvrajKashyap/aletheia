@@ -30,17 +30,32 @@ export type QdrantHealthResponse = {
 };
 
 export type IndexVersionItem = {
-  id?: string;
-  name?: string;
-  status?: string;
-  is_active?: boolean;
+  id: string;
+  dataset_id?: string | null;
+  name: string;
+  status: string;
+  is_active: boolean;
   lexical_index_name?: string | null;
   vector_collection_name?: string | null;
   embedding_model?: string | null;
   embedding_dimension?: number | null;
+  chunking_strategy?: string | null;
+  chunking_version?: string | null;
   chunk_count?: number | null;
   vector_count?: number | null;
   document_count?: number | null;
+  config_json?: Record<string, unknown>;
+  notes?: string | null;
+  created_at?: string | null;
+  activated_at?: string | null;
+  updated_at?: string | null;
+};
+
+export type IndexVersionListResponse = {
+  total: number;
+  limit: number;
+  offset: number;
+  items: IndexVersionItem[];
 };
 
 export type IndexStatusResponse = {
@@ -50,6 +65,51 @@ export type IndexStatusResponse = {
   ready_index_version_count?: number;
   active_index_version_count?: number;
   latest_index_versions?: IndexVersionItem[];
+};
+
+export type IndexJobItem = {
+  id: string;
+  index_version_id: string;
+  job_id?: string | null;
+  job_type: string;
+  status: string;
+  started_at?: string | null;
+  completed_at?: string | null;
+  chunks_total?: number | null;
+  chunks_completed?: number | null;
+  chunks_failed?: number | null;
+  error_message?: string | null;
+  created_at?: string | null;
+  updated_at?: string | null;
+};
+
+export type IndexJobListResponse = {
+  total: number;
+  limit: number;
+  offset: number;
+  items: IndexJobItem[];
+};
+
+export type BuildIndexJobResponse = {
+  job_id: string;
+  queue?: string;
+  status?: string;
+  index_version_id?: string;
+  message?: string;
+};
+
+export type CreateIndexVersionRequest = {
+  dataset_name?: string;
+  dataset_version?: string;
+  name?: string;
+  lexical_index_name?: string;
+  vector_collection_name?: string;
+  embedding_model?: string;
+  embedding_dimension?: number;
+  chunking_strategy?: string;
+  chunking_version?: string;
+  notes?: string;
+  config_json?: Record<string, unknown>;
 };
 
 export type EvaluationRunItem = {

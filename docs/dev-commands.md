@@ -1922,3 +1922,66 @@ Manual experiment checks:
 - Confirm configs without completed runs show unavailable metrics.
 - Confirm best badges appear only when comparable real values exist.
 - Confirm admin comparison trigger requires an admin API key and reports queued job status honestly.
+
+## Step 33 Index Console UI
+
+The `/indexes` route is now a real Index Console UI. It reads real index status, index versions, index job history, OpenSearch health, and Qdrant health from FastAPI.
+
+The console shows:
+
+- active index version metadata
+- document, chunk, and vector counts from backend index metadata
+- lexical index and vector collection names
+- OpenSearch and Qdrant health responses
+- index version table and selected version detail
+- read-only `index_jobs` history with progress counts
+- local admin actions for existing protected index lifecycle and build endpoints
+
+Admin actions require `X-Admin-API-Key`. Lexical and vector build buttons enqueue real jobs through FastAPI and Redis/RQ. Use small limits for safe validation. The UI does not show fake health, fake counts, or fake job rows.
+
+Start infrastructure:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/dev.ps1
+
+Start API:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/api.ps1
+
+Start worker for build jobs:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/worker.ps1
+
+Start web:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web.ps1
+
+Backend checks:
+
+    Invoke-RestMethod http://localhost:8000/api/v1/indexes/status
+    Invoke-RestMethod "http://localhost:8000/api/v1/indexes/versions?limit=5&offset=0"
+    Invoke-RestMethod "http://localhost:8000/api/v1/indexes/jobs?limit=5&offset=0"
+
+Frontend validation:
+
+    cd apps/web
+    npm run typecheck
+    npm run build
+    npm run lint
+    cd ../..
+
+Scripted frontend validation:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web-build.ps1
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web-lint.ps1
+
+Doctor:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/doctor.ps1
+
+Manual index checks:
+
+- Open `http://localhost:3000/indexes`.
+- Confirm active index counts and index names match FastAPI.
+- Confirm OpenSearch and Qdrant health cards use real API responses.
+- Confirm index jobs table shows real `index_jobs` rows.
+- Trigger admin actions only with an admin key and safe small limits.
