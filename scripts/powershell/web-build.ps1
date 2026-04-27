@@ -7,20 +7,15 @@ $WebRoot = Join-Path $RepoRoot "apps\web"
 if (-not (Test-Path $WebRoot)) {
     Write-Error "Missing apps/web frontend directory."
 }
-if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
-    Write-Error "Node.js is required to run the frontend."
-}
 if (-not (Get-Command npm -ErrorAction SilentlyContinue)) {
-    Write-Error "npm is required to run the frontend."
+    Write-Error "npm is required to build the frontend."
 }
 
 $PreviousLocation = Get-Location
 try {
     Set-Location $WebRoot
-    if (-not (Test-Path "node_modules")) {
-        npm install
-    }
-    npm run dev
+    npm run build
+    exit $LASTEXITCODE
 }
 finally {
     Set-Location $PreviousLocation

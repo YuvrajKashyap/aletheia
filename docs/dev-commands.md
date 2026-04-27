@@ -1415,6 +1415,54 @@ Evaluation DB inspection:
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from evaluation_query_results;"
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select report_format, report_path, created_at from evaluation_reports order by created_at desc limit 5;"
 
+## Step 28 frontend foundation commands
+
+Step 28 initializes the frontend foundation under `apps/web`.
+
+Frontend scope:
+
+- Next.js App Router with TypeScript and Tailwind CSS.
+- Real API client using `NEXT_PUBLIC_API_BASE_URL`.
+- Default backend URL is `http://localhost:8000`.
+- Overview uses real FastAPI data only.
+- Route skeletons are intentionally not fake dashboards.
+- No frontend metrics are invented.
+
+The backend API should be running before testing the Overview page in a browser.
+
+Direct frontend commands:
+
+    cd apps/web
+    npm install
+    npm run typecheck
+    npm run build
+    cd ../..
+
+PowerShell helpers:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web.ps1
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web-build.ps1
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web-lint.ps1
+
+Environment:
+
+    copy apps\web\.env.example apps\web\.env.local
+
+Then edit `apps/web/.env.local` only if your backend is not running on `http://localhost:8000`.
+
+Overview data sources:
+
+- `GET /api/v1/health`
+- `GET /api/v1/health/db`
+- `GET /api/v1/system/opensearch`
+- `GET /api/v1/system/qdrant`
+- `GET /api/v1/indexes/status`
+- `GET /api/v1/evaluations/runs`
+- `GET /api/v1/experiments/configs`
+- `GET /api/v1/search/traces`
+- `GET /api/v1/datasets`
+- `GET /api/v1/replay/saved-queries`
+
 ## Step 26 experiment configs and comparison matrix
 
 Step 26 adds reusable experiment configs and a comparison matrix built from real evaluation runs.
