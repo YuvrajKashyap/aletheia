@@ -49,6 +49,7 @@ export function SearchLab() {
 
     setIsLoading(true);
     setError(null);
+    setResponse(null);
     try {
       const result = await runSearch(request);
       setResponse(result);
