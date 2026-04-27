@@ -57,14 +57,18 @@ function HealthCard({
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent className="space-y-2">
-        {fields.map(([label, value]) => (
-          <div className="grid gap-2 text-sm md:grid-cols-[120px_1fr]" key={label}>
-            <div className="text-slate-500">{label}</div>
-            <div className="break-all font-mono text-slate-200">
-              {value === null || value === undefined || value === "" ? "Unavailable" : String(value)}
+        {fields.map(([label, value]) => {
+          const isMissing = value === null || value === undefined || value === "";
+          const displayValue = label === "Error" && isMissing ? "None" : isMissing ? "Unavailable" : String(value);
+          return (
+            <div className="grid gap-2 text-sm md:grid-cols-[120px_1fr]" key={label}>
+              <div className="text-slate-500">{label}</div>
+              <div className={`break-all font-mono ${label === "Error" && !isMissing ? "text-red-300" : "text-slate-200"}`}>
+                {displayValue}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </CardContent>
     </Card>
   );
