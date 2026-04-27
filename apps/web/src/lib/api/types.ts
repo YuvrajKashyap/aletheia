@@ -461,22 +461,118 @@ export type RelevanceJudgmentListResponse = {
 };
 
 export type SavedQueryItem = {
-  id?: string;
+  id: string;
+  dataset_id?: string | null;
   name?: string | null;
-  text?: string;
-  source?: string;
-  metadata_json?: {
-    query_external_id?: string;
-    relevance_count?: number;
-  };
-  created_at?: string;
+  text: string;
+  source: string;
+  metadata_json?: Record<string, unknown>;
+  created_at?: string | null;
+  updated_at?: string | null;
 };
 
+export type SavedQueryDetail = SavedQueryItem;
+
 export type SavedQueryListResponse = {
-  total?: number;
+  total: number;
+  limit: number;
+  offset: number;
+  items: SavedQueryItem[];
+};
+
+export type SavedQueryCreateRequest = {
+  name?: string | null;
+  text: string;
+  source?: string;
+  dataset_id?: string | null;
+  metadata_json?: Record<string, unknown>;
+};
+
+export type SeedGoldenQueriesRequest = {
+  dataset_name?: string;
+  dataset_version?: string;
   limit?: number;
   offset?: number;
-  items?: SavedQueryItem[];
+};
+
+export type SeedGoldenQueriesResponse = {
+  created_count?: number;
+  existing_count?: number;
+  total_selected?: number;
+  items?: SavedQueryItem[] | unknown[];
+};
+
+export type ReplaySavedQueryRequest = {
+  retrieval_mode?: SearchMode;
+  experiment_config_id?: string | null;
+  experiment_config_name?: string | null;
+  index_version_id?: string | null;
+  source_trace_id?: string | null;
+  top_k?: number;
+  candidate_k?: number | null;
+  bm25_candidate_k?: number | null;
+  dense_candidate_k?: number | null;
+  hybrid_candidate_k?: number | null;
+  rerank_top_n?: number | null;
+  rrf_k?: number;
+};
+
+export type StartGoldenReplayRequest = {
+  name?: string | null;
+  source?: string;
+  retrieval_mode?: SearchMode;
+  experiment_config_id?: string | null;
+  experiment_config_name?: string | null;
+  limit?: number | null;
+  offset?: number;
+  top_k?: number;
+  candidate_k?: number | null;
+  bm25_candidate_k?: number | null;
+  dense_candidate_k?: number | null;
+  hybrid_candidate_k?: number | null;
+  rerank_top_n?: number | null;
+  rrf_k?: number;
+  notes?: string | null;
+};
+
+export type ReplayResponse = {
+  job_id?: string;
+  queue?: string;
+  status?: string;
+  message?: string;
+  query_replay_id?: string;
+  saved_query_id?: string;
+  target_trace_id?: string;
+  target_query_id?: string;
+  metrics?: Record<string, unknown>;
+};
+
+export type QueryReplayItem = {
+  id: string;
+  saved_query_id?: string | null;
+  original_query_id?: string | null;
+  source_trace_id?: string | null;
+  target_trace_id?: string | null;
+  experiment_config_id?: string | null;
+  index_version_id?: string | null;
+  status: string;
+  comparison_json?: Record<string, unknown>;
+  error_message?: string | null;
+  started_at?: string | null;
+  completed_at?: string | null;
+  created_at?: string | null;
+  updated_at?: string | null;
+};
+
+export type QueryReplayListResponse = {
+  total: number;
+  limit: number;
+  offset: number;
+  items: QueryReplayItem[];
+};
+
+export type QueryReplayDetail = QueryReplayItem & {
+  comparison_json?: Record<string, unknown>;
 };
 
 export type SearchRequest = {

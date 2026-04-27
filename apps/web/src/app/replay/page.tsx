@@ -1,10 +1,5 @@
-import { SkeletonPage } from "@/components/layout/skeleton-page";
+import { ReplayLab } from "@/components/replay/replay-lab";
 
 export default function ReplayPage() {
-  return (
-    <SkeletonPage
-      title="Replay Lab"
-      intent="Replay Lab will work with saved queries, golden queries, source traces, and target trace comparisons."
-    />
-  );
+  return <ReplayLab />;
 }

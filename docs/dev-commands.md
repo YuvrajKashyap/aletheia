@@ -2046,3 +2046,68 @@ Manual dataset checks:
 - Confirm chunk detail shows real chunk text and metadata.
 - Confirm benchmark query detail shows real query text and qrels.
 - Confirm relevance judgment filters do not invent missing labels.
+
+## Step 35 Replay Lab UI
+
+The `/replay` route is now a real Replay Lab UI. It reads saved queries and query replay rows from FastAPI, and admin actions call the existing protected replay endpoints.
+
+Replay Lab focuses on trace-level regression and debugging:
+
+- saved and golden query browsing
+- qrels-backed metadata when available
+- replay run history and status
+- replay metrics from `comparison_json`
+- matched and missed relevant document IDs when present
+- target and source trace links to `/traces?traceId=<trace_id>`
+- admin actions for seeding golden queries, creating manual saved queries, replaying one saved query, and running golden replay batches
+
+Replay is not a full evaluation run. Evaluation Dashboard aggregates many benchmark queries. Replay focuses on individual saved queries or small golden sets and preserves trace context. The UI does not show fake saved queries, fake replay results, fake qrels, fake metrics, or generated answers.
+
+Backend API and Redis/RQ worker should be running before validating admin replay jobs.
+
+Start infrastructure:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/dev.ps1
+
+Start API:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/api.ps1
+
+Start worker:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/worker.ps1
+
+Start web:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web.ps1
+
+Backend checks:
+
+    Invoke-RestMethod "http://localhost:8000/api/v1/replay/saved-queries?source=golden_scifact&limit=5&offset=0"
+    Invoke-RestMethod "http://localhost:8000/api/v1/replay/runs?limit=5&offset=0"
+
+Frontend validation:
+
+    cd apps/web
+    npm run typecheck
+    npm run build
+    npm run lint
+    cd ../..
+
+Scripted frontend validation:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web-build.ps1
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web-lint.ps1
+
+Doctor:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/doctor.ps1
+
+Manual replay checks:
+
+- Open `http://localhost:3000/replay`.
+- Confirm saved queries load from FastAPI or show an honest empty/error state.
+- Select a saved query and inspect real metadata.
+- Select a query replay and confirm trace links open Query Traces.
+- Use admin actions only with a local admin API key.
+- Confirm queued jobs show real job status and do not fake completion.
