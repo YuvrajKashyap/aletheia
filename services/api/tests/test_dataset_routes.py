@@ -11,12 +11,20 @@ class EmptyScalars:
         return []
 
 
+class EmptyRows:
+    def all(self) -> list:
+        return []
+
+
 class EmptyDb:
     def scalar(self, statement) -> int:
         return 0
 
     def scalars(self, statement) -> EmptyScalars:
         return EmptyScalars()
+
+    def execute(self, statement) -> EmptyRows:
+        return EmptyRows()
 
     def get(self, model, item_id):
         return None
@@ -76,6 +84,23 @@ def test_chunks_route_returns_paginated_empty_response_with_mocked_db() -> None:
     assert response.json() == {"total": 0, "limit": 5, "offset": 0, "items": []}
 
 
+def test_relevance_judgments_route_returns_paginated_empty_response_with_mocked_db() -> None:
+    app.dependency_overrides[get_db] = override_empty_db
+    try:
+        response = client.get("/api/v1/relevance-judgments?limit=5&offset=0")
+    finally:
+        app.dependency_overrides.clear()
+
+    assert response.status_code == 200
+    assert response.json() == {"total": 0, "limit": 5, "offset": 0, "items": []}
+
+
+def test_relevance_judgments_limit_max_validation() -> None:
+    response = client.get("/api/v1/relevance-judgments?limit=201")
+
+    assert response.status_code == 422
+
+
 def test_chunks_limit_max_validation() -> None:
     response = client.get("/api/v1/chunks?limit=201")
 
@@ -86,6 +111,28 @@ def test_missing_chunk_detail_returns_404_with_mocked_db() -> None:
     app.dependency_overrides[get_db] = override_empty_db
     try:
         response = client.get("/api/v1/chunks/00000000-0000-0000-0000-000000000001")
+    finally:
+        app.dependency_overrides.clear()
+
+    assert response.status_code == 404
+
+
+def test_missing_document_detail_returns_404_with_mocked_db() -> None:
+    app.dependency_overrides[get_db] = override_empty_db
+    try:
+        response = client.get("/api/v1/documents/00000000-0000-0000-0000-000000000001")
+    finally:
+        app.dependency_overrides.clear()
+
+    assert response.status_code == 404
+
+
+def test_missing_benchmark_query_detail_returns_404_with_mocked_db() -> None:
+    app.dependency_overrides[get_db] = override_empty_db
+    try:
+        response = client.get(
+            "/api/v1/benchmark-queries/00000000-0000-0000-0000-000000000001"
+        )
     finally:
         app.dependency_overrides.clear()
 

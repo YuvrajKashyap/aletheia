@@ -304,18 +304,161 @@ export type TraceCandidateListResponse = {
   items: TraceCandidateItem[];
 };
 
-export type DatasetItem = {
+export type DatasetSummary = {
+  id: string;
+  name: string;
+  version: string;
+  source?: string | null;
+  description?: string | null;
+  document_count?: number | null;
+  chunk_count?: number | null;
+  benchmark_query_count?: number | null;
+  relevance_judgment_count?: number | null;
+  created_at?: string | null;
+};
+
+export type DatasetListResponse =
+  | DatasetSummary[]
+  | {
+      total?: number;
+      limit?: number;
+      offset?: number;
+      items?: DatasetSummary[];
+    };
+
+export type DatasetStatsResponse = {
   id?: string;
+  dataset_id?: string;
   name?: string;
   version?: string;
   source?: string | null;
-  document_count?: number;
-  benchmark_query_count?: number;
-  relevance_judgment_count?: number;
-  created_at?: string;
+  document_count?: number | null;
+  chunk_count?: number | null;
+  benchmark_query_count?: number | null;
+  relevance_judgment_count?: number | null;
 };
 
-export type DatasetListResponse = DatasetItem[];
+export type DocumentListItem = {
+  id: string;
+  dataset_id: string;
+  external_id: string;
+  title?: string | null;
+  text_preview?: string | null;
+  text?: string | null;
+  source_url?: string | null;
+  metadata_json?: Record<string, unknown>;
+  created_at?: string | null;
+  updated_at?: string | null;
+};
+
+export type DocumentListResponse = {
+  total: number;
+  limit: number;
+  offset: number;
+  items: DocumentListItem[];
+};
+
+export type ChunkListItem = {
+  id: string;
+  dataset_id: string;
+  document_id: string;
+  external_id?: string | null;
+  chunk_index?: number | null;
+  text_preview?: string | null;
+  text?: string | null;
+  token_count?: number | null;
+  content_hash?: string | null;
+  chunking_strategy?: string | null;
+  chunking_version?: string | null;
+  created_at?: string | null;
+};
+
+export type DocumentDetailResponse = {
+  id: string;
+  dataset_id: string;
+  external_id: string;
+  title?: string | null;
+  text: string;
+  source_url?: string | null;
+  metadata_json?: Record<string, unknown>;
+  created_at?: string | null;
+  updated_at?: string | null;
+  chunk_count?: number | null;
+  chunks_preview?: ChunkListItem[];
+};
+
+export type ChunkListResponse = {
+  total: number;
+  limit: number;
+  offset: number;
+  items: ChunkListItem[];
+};
+
+export type ChunkDetailResponse = {
+  id: string;
+  dataset_id: string;
+  document_id: string;
+  external_id?: string | null;
+  chunk_index?: number | null;
+  text: string;
+  token_count?: number | null;
+  char_start?: number | null;
+  char_end?: number | null;
+  content_hash?: string | null;
+  chunking_strategy?: string | null;
+  chunking_version?: string | null;
+  metadata_json?: Record<string, unknown>;
+  created_at?: string | null;
+};
+
+export type BenchmarkQueryListItem = {
+  id: string;
+  dataset_id: string;
+  external_id: string;
+  text: string;
+  split?: string | null;
+  metadata_json?: Record<string, unknown>;
+  created_at?: string | null;
+};
+
+export type BenchmarkQueryListResponse = {
+  total: number;
+  limit: number;
+  offset: number;
+  items: BenchmarkQueryListItem[];
+};
+
+export type BenchmarkQueryDetailResponse = {
+  id: string;
+  dataset_id: string;
+  external_id: string;
+  text: string;
+  split?: string | null;
+  metadata_json?: Record<string, unknown>;
+  created_at?: string | null;
+  relevance_judgment_count?: number | null;
+};
+
+export type RelevanceJudgmentItem = {
+  id: string;
+  dataset_id: string;
+  query_id: string;
+  document_id: string;
+  query_external_id?: string | null;
+  document_external_id?: string | null;
+  relevance_score?: number | null;
+  metadata_json?: Record<string, unknown>;
+  created_at?: string | null;
+  query_text?: string | null;
+  document_title?: string | null;
+};
+
+export type RelevanceJudgmentListResponse = {
+  total: number;
+  limit: number;
+  offset: number;
+  items: RelevanceJudgmentItem[];
+};
 
 export type SavedQueryItem = {
   id?: string;

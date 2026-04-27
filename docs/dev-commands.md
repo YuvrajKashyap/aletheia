@@ -1985,3 +1985,64 @@ Manual index checks:
 - Confirm OpenSearch and Qdrant health cards use real API responses.
 - Confirm index jobs table shows real `index_jobs` rows.
 - Trigger admin actions only with an admin key and safe small limits.
+
+## Step 34 Dataset Browser and Document Explorer UI
+
+The `/datasets` route is now a real Dataset Browser UI. It reads datasets, dataset stats, documents, chunks, benchmark queries, and relevance judgments from FastAPI.
+
+The browser helps inspect what retrieval is actually searching:
+
+- dataset inventory and corpus counts
+- paginated document rows and full document text
+- chunks for each document and standalone chunk inspection
+- benchmark query rows and query-level qrels
+- relevance judgment filters by query and document external ID
+- raw metadata JSON for documents, chunks, and benchmark queries
+
+No fake documents, fake chunks, fake qrels, or invented relevance labels are displayed. Backend API must be running before browser validation.
+
+Start infrastructure:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/dev.ps1
+
+Start API:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/api.ps1
+
+Start web:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web.ps1
+
+Backend checks:
+
+    Invoke-RestMethod http://localhost:8000/api/v1/datasets
+    Invoke-RestMethod "http://localhost:8000/api/v1/documents?limit=5&offset=0"
+    Invoke-RestMethod "http://localhost:8000/api/v1/chunks?limit=5&offset=0"
+    Invoke-RestMethod "http://localhost:8000/api/v1/benchmark-queries?limit=5&offset=0"
+    Invoke-RestMethod "http://localhost:8000/api/v1/relevance-judgments?limit=5&offset=0"
+
+Frontend validation:
+
+    cd apps/web
+    npm run typecheck
+    npm run build
+    npm run lint
+    cd ../..
+
+Scripted frontend validation:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web-build.ps1
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web-lint.ps1
+
+Doctor:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/doctor.ps1
+
+Manual dataset checks:
+
+- Open `http://localhost:3000/datasets`.
+- Confirm dataset counts come from FastAPI.
+- Confirm document detail shows real stored text and chunks.
+- Confirm chunk detail shows real chunk text and metadata.
+- Confirm benchmark query detail shows real query text and qrels.
+- Confirm relevance judgment filters do not invent missing labels.

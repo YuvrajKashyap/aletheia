@@ -132,7 +132,7 @@ export default async function OverviewPage() {
   const evaluationItems = evalRuns.ok ? evalRuns.data.items || [] : [];
   const configItems = configs.ok ? configs.data.items || [] : [];
   const traceItems = traces.ok ? traces.data.items || [] : [];
-  const datasetItems = datasets.ok ? datasets.data || [] : [];
+  const datasetItems = datasets.ok ? (Array.isArray(datasets.data) ? datasets.data : datasets.data.items || []) : [];
   const savedQueryItems = savedQueries.ok ? savedQueries.data.items || [] : [];
 
   return (
