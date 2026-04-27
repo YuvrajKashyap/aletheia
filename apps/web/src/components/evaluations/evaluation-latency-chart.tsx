@@ -31,7 +31,7 @@ export function EvaluationLatencyChart({ runs }: LatencyChartProps) {
         {data.length === 0 ? (
           <p className="text-sm text-slate-500">No latency values available for charting.</p>
         ) : (
-          <div className="h-72">
+          <div className="min-h-[20rem]" style={{ height: 320, width: "100%" }}>
             <ResponsiveContainer height="100%" width="100%">
               <BarChart data={data}>
                 <CartesianGrid stroke="#1e293b" strokeDasharray="3 3" />

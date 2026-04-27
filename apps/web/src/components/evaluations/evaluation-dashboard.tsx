@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { AppShell } from "@/components/layout/app-shell";
 import { EvaluationLatencyChart } from "@/components/evaluations/evaluation-latency-chart";
@@ -54,6 +54,7 @@ const initialFilters: Filters = {
 export function EvaluationDashboard() {
   const [filters, setFilters] = useState<Filters>(initialFilters);
   const [runs, setRuns] = useState<EvaluationRunItem[]>([]);
+  const [detailsByRunId, setDetailsByRunId] = useState<Record<string, EvaluationRunDetail>>({});
   const [selectedRunId, setSelectedRunId] = useState<string | null>(null);
   const [detail, setDetail] = useState<EvaluationRunDetail | null>(null);
   const [results, setResults] = useState<EvaluationQueryResultItem[]>([]);
@@ -75,6 +76,7 @@ export function EvaluationDashboard() {
         offset: 0
       });
       setRuns(response.items || []);
+      setDetailsByRunId({});
       setSelectedRunId((current) => current || response.items?.[0]?.id || null);
     } catch (caught) {
       setRuns([]);
@@ -101,6 +103,10 @@ export function EvaluationDashboard() {
 
       if (runDetail.status === "fulfilled") {
         setDetail(runDetail.value);
+        setDetailsByRunId((current) => ({
+          ...current,
+          [runDetail.value.id]: runDetail.value
+        }));
       } else {
         throw runDetail.reason;
       }
@@ -138,6 +144,15 @@ export function EvaluationDashboard() {
     }
   }, [loadRunDetail, selectedRunId]);
 
+  const labeledRuns = useMemo(
+    () =>
+      runs.map((run) => {
+        const runDetail = detailsByRunId[run.id];
+        return runDetail ? { ...run, ...runDetail, config_json: runDetail.config_json } : run;
+      }),
+    [detailsByRunId, runs]
+  );
+
   return (
     <AppShell>
       <div className="space-y-6">
@@ -171,8 +186,8 @@ export function EvaluationDashboard() {
         {listError ? <ErrorCard title="Evaluation run list failed" error={listError} /> : null}
 
         <div className="grid gap-4 xl:grid-cols-2">
-          <EvaluationMetricChart runs={runs} />
-          <EvaluationLatencyChart runs={runs} />
+          <EvaluationMetricChart runs={labeledRuns} />
+          <EvaluationLatencyChart runs={labeledRuns} />
         </div>
 
         <Card>
@@ -183,7 +198,7 @@ export function EvaluationDashboard() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            {listLoading ? <LoadingBlock /> : <EvaluationRunTable runs={runs} selectedRunId={selectedRunId} onSelect={setSelectedRunId} />}
+            {listLoading ? <LoadingBlock /> : <EvaluationRunTable runs={labeledRuns} selectedRunId={selectedRunId} onSelect={setSelectedRunId} />}
           </CardContent>
         </Card>
 
