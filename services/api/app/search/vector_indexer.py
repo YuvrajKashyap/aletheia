@@ -257,7 +257,8 @@ def build_vector_index_for_version(
         index_job.chunks_failed = chunks_failed
         index_job.status = "completed"
         index_job.completed_at = _utc_now()
-        index_version.vector_count = qdrant_count
+        if limit is None:
+            index_version.vector_count = qdrant_count
         index_version.embedding_model = embedding_model
         index_version.embedding_dimension = embedding_dimension
         config = dict(index_version.config_json or {})

@@ -5,6 +5,7 @@ import pytest
 
 from app.search import vector_indexer
 from app.search.vector_indexer import (
+    build_vector_index_for_version,
     chunk_to_qdrant_payload,
     ensure_vector_collection,
     get_collection_vector_count,
@@ -128,3 +129,60 @@ def test_get_collection_vector_count_reads_qdrant_count() -> None:
             return SimpleNamespace(count=5183)
 
     assert get_collection_vector_count(FakeClient(), "collection") == 5183
+
+
+def test_limited_vector_build_does_not_reduce_index_version_vector_count(monkeypatch) -> None:
+    index_version = SimpleNamespace(
+        id=UUID("00000000-0000-0000-0000-000000000010"),
+        dataset_id=UUID("00000000-0000-0000-0000-000000000011"),
+        vector_collection_name="aletheia-vector-test",
+        chunking_strategy="scifact_document_v1",
+        chunking_version="1.0",
+        embedding_model="BAAI/bge-small-en-v1.5",
+        embedding_dimension=384,
+        status="ready",
+        vector_count=5183,
+        config_json={},
+    )
+    rows = [fake_objects()[:3] for _ in range(10)]
+
+    class FakeDb:
+        index_job = None
+
+        def get(self, model, key):
+            return index_version
+
+        def add(self, item):
+            self.index_job = item
+
+        def commit(self):
+            pass
+
+        def refresh(self, item):
+            pass
+
+    monkeypatch.setattr(
+        vector_indexer,
+        "_chunk_count",
+        lambda db, dataset_id, chunking_strategy, chunking_version, limit: min(5183, limit) if limit is not None else 5183,
+    )
+    monkeypatch.setattr(vector_indexer, "get_qdrant_client", lambda: SimpleNamespace())
+    monkeypatch.setattr(vector_indexer, "ensure_vector_collection", lambda *args, **kwargs: {})
+    monkeypatch.setattr(vector_indexer, "iter_chunks_for_vector_indexing", lambda *args, **kwargs: iter(rows))
+    monkeypatch.setattr(
+        vector_indexer,
+        "embed_texts",
+        lambda texts, model_name, batch_size: [[0.1, 0.2, 0.3] for _ in texts],
+    )
+    monkeypatch.setattr(vector_indexer, "_upsert_batch", lambda client, collection_name, batch, vectors, index_version: len(batch))
+    monkeypatch.setattr(vector_indexer, "get_collection_vector_count", lambda client, collection_name: 10)
+
+    db = FakeDb()
+    result = build_vector_index_for_version(db, index_version.id, limit=10, batch_size=4)
+
+    assert result["chunks_total"] == 10
+    assert result["vectors_upserted"] == 10
+    assert result["qdrant_count"] == 10
+    assert db.index_job.chunks_total == 10
+    assert db.index_job.chunks_completed == 10
+    assert index_version.vector_count == 5183

@@ -250,8 +250,15 @@ def build_lexical_index_for_version(
         if bulk_summary["chunks_failed"]:
             index_job.error_message = "One or more chunks failed during OpenSearch bulk indexing."
 
+        full_chunk_count = _chunk_count(
+            db,
+            dataset_id=index_version.dataset_id,
+            chunking_strategy=index_version.chunking_strategy,
+            chunking_version=index_version.chunking_version,
+            limit=None,
+        )
         index_version.document_count = _document_count(db, index_version.dataset_id)
-        index_version.chunk_count = chunks_total
+        index_version.chunk_count = full_chunk_count
         config = dict(index_version.config_json or {})
         config.update(
             {
