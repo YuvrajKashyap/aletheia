@@ -138,3 +138,64 @@ export type SavedQueryListResponse = {
   offset?: number;
   items?: SavedQueryItem[];
 };
+
+export type SearchMode = "bm25" | "dense" | "hybrid" | "hybrid_rerank";
+
+export type SearchRequest = {
+  query: string;
+  retrieval_mode: SearchMode;
+  top_k: number;
+  candidate_k?: number | null;
+  bm25_candidate_k?: number | null;
+  dense_candidate_k?: number | null;
+  hybrid_candidate_k?: number | null;
+  rerank_top_n?: number | null;
+  rrf_k?: number | null;
+  index_version_id?: string | null;
+};
+
+export type SearchResultItem = {
+  rank: number;
+  chunk_id: string;
+  document_id?: string | null;
+  dataset_id?: string | null;
+  document_external_id?: string | null;
+  chunk_external_id?: string | null;
+  title?: string | null;
+  text: string;
+  score?: number | null;
+  score_breakdown?: Record<string, number | string | null>;
+  token_count?: number | null;
+  chunking_strategy?: string | null;
+  chunking_version?: string | null;
+  metadata_json?: Record<string, unknown>;
+};
+
+export type SearchResponse = {
+  query_id: string;
+  trace_id: string;
+  request_id?: string | null;
+  query: string;
+  retrieval_mode: SearchMode;
+  index_version_id?: string | null;
+  index_name?: string | null;
+  lexical_index_name?: string | null;
+  collection_name?: string | null;
+  vector_collection_name?: string | null;
+  top_k: number;
+  candidate_k?: number | null;
+  bm25_candidate_k?: number | null;
+  dense_candidate_k?: number | null;
+  hybrid_candidate_k?: number | null;
+  rerank_top_n?: number | null;
+  rrf_k?: number | null;
+  latency_ms?: number | null;
+  bm25_latency_ms?: number | null;
+  dense_latency_ms?: number | null;
+  embedding_latency_ms?: number | null;
+  qdrant_latency_ms?: number | null;
+  fusion_latency_ms?: number | null;
+  reranker_latency_ms?: number | null;
+  result_count: number;
+  results: SearchResultItem[];
+};

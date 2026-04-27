@@ -1,10 +1,5 @@
-import { SkeletonPage } from "@/components/layout/skeleton-page";
+import { SearchLab } from "@/components/search/search-lab";
 
 export default function SearchPage() {
-  return (
-    <SkeletonPage
-      title="Search Lab"
-      intent="Search Lab will run BM25, dense, hybrid, and rerank queries against the FastAPI search API."
-    />
-  );
+  return <SearchLab />;
 }

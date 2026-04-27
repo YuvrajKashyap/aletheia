@@ -1702,3 +1702,54 @@ DB inspection:
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, name, status, query_count, failed_query_count, recall_at_5, recall_at_10, mrr_at_10, ndcg_at_10, avg_latency_ms, report_path, created_at from evaluation_runs order by created_at desc limit 10;"
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from evaluation_query_results;"
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select report_format, report_path, created_at from evaluation_reports order by created_at desc limit 5;"
+
+## Step 29 Search Lab UI
+
+The `/search` route is now a real Search Lab UI connected to the FastAPI search endpoint. It runs real retrieval requests only and does not show fake search results, generated answers, invented relevance labels, or local JSON fallback data.
+
+Supported modes:
+
+- BM25
+- Dense
+- Hybrid RRF
+- Hybrid Rerank
+
+The backend API must be running before browser validation. Hybrid rerank may be slower on first run because the backend loads and runs the cross-encoder model.
+
+Start infrastructure:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/dev.ps1
+
+Start API:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/api.ps1
+
+Start web:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web.ps1
+
+Frontend validation:
+
+    cd apps/web
+    npm run typecheck
+    npm run build
+    npm run lint
+    cd ../..
+
+Scripted frontend validation:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web-build.ps1
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web-lint.ps1
+
+Doctor:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/doctor.ps1
+
+Manual Search Lab checks:
+
+- Open `http://localhost:3000/search`.
+- Run a BM25 query with `top_k=5` and `candidate_k=10`.
+- Run a dense query with `top_k=5` and `candidate_k=10`.
+- Run a hybrid query with `bm25_candidate_k=50`, `dense_candidate_k=50`, and `rrf_k=60`.
+- Run a hybrid rerank query with `hybrid_candidate_k=50`, `rerank_top_n=25`, and `rrf_k=60`.
+- Confirm `query_id`, `trace_id`, latency fields, ranked chunks, and score breakdowns are shown from the backend response.
