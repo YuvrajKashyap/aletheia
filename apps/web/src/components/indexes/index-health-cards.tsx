@@ -11,6 +11,7 @@ export function IndexHealthCards({ openSearch, qdrant }: IndexHealthCardsProps) 
   return (
     <div className="grid gap-4 md:grid-cols-2">
       <HealthCard
+        hasResponse={Boolean(openSearch)}
         title="OpenSearch"
         description="Lexical retrieval backend."
         status={openSearch?.status}
@@ -22,6 +23,7 @@ export function IndexHealthCards({ openSearch, qdrant }: IndexHealthCardsProps) 
         ]}
       />
       <HealthCard
+        hasResponse={Boolean(qdrant)}
         title="Qdrant"
         description="Dense vector retrieval backend."
         status={qdrant?.status}
@@ -37,11 +39,13 @@ export function IndexHealthCards({ openSearch, qdrant }: IndexHealthCardsProps) 
 }
 
 function HealthCard({
+  hasResponse,
   title,
   description,
   status,
   fields
 }: {
+  hasResponse: boolean;
   title: string;
   description: string;
   status?: string;
@@ -59,7 +63,7 @@ function HealthCard({
       <CardContent className="space-y-2">
         {fields.map(([label, value]) => {
           const isMissing = value === null || value === undefined || value === "";
-          const displayValue = label === "Error" && isMissing ? "None" : isMissing ? "Unavailable" : String(value);
+          const displayValue = label === "Error" && isMissing && hasResponse ? "None" : isMissing ? "Unavailable" : String(value);
           return (
             <div className="grid gap-2 text-sm md:grid-cols-[120px_1fr]" key={label}>
               <div className="text-slate-500">{label}</div>
