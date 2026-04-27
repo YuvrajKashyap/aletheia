@@ -1424,3 +1424,73 @@ Trace side effects:
 
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select retrieval_mode, count(*) from queries group by retrieval_mode order by retrieval_mode;"
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select source, count(*) from retrieval_candidates group by source order by source;"
+
+## Step 25 evaluation API and async job commands
+
+Step 25 exposes evaluation runs through FastAPI and wraps the Step 24 synchronous runner in an RQ job.
+
+Evaluation API rules:
+
+- `POST /api/v1/evaluations/runs` enqueues an async evaluation job and requires the admin API key.
+- Read-only endpoints do not require an admin key.
+- The worker job calls the existing offline runner, so real `evaluation_runs`, `evaluation_query_results`, `evaluation_reports`, query traces, and candidate rows are created.
+- Triggering dense, hybrid, or hybrid rerank evaluation can be expensive.
+- Experiment config management, comparison matrices, query replay, frontend work, and fake benchmark results are not implemented here.
+
+Start infra:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/dev.ps1
+
+Start API:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/api.ps1
+
+Start worker:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/worker.ps1
+
+Health:
+
+    Invoke-RestMethod http://localhost:8000/api/v1/health
+    Invoke-RestMethod http://localhost:8000/api/v1/health/db
+    Invoke-RestMethod http://localhost:8000/api/v1/system/queue
+    Invoke-RestMethod http://localhost:8000/api/v1/indexes/status
+
+Trigger eval with API:
+
+    $body = @{
+      retrieval_mode = "bm25"
+      name = "BM25 async Step 25 validation"
+      query_limit = 5
+      top_k = 10
+      candidate_k = 10
+      notes = "Step 25 async BM25 validation"
+    } | ConvertTo-Json
+
+    Invoke-RestMethod -Method Post -Uri http://localhost:8000/api/v1/evaluations/runs -ContentType "application/json" -Headers @{"X-Admin-API-Key"="replace-me"} -Body $body
+
+PowerShell helper:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/start-evaluation-job.ps1 -Mode bm25 -Name "BM25 async Step 25 validation" -QueryLimit 5 -TopK 10 -CandidateK 10 -Notes "Step 25 async BM25 validation"
+
+List runs:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/list-evaluation-runs.ps1 -Limit 5
+
+Show run:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/show-evaluation-run.ps1 -EvaluationRunId "<run_id>"
+
+Show results:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/show-evaluation-run.ps1 -EvaluationRunId "<run_id>" -Results
+
+Show report:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/show-evaluation-run.ps1 -EvaluationRunId "<run_id>" -Report
+
+DB inspection:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, name, status, query_count, failed_query_count, recall_at_5, recall_at_10, mrr_at_10, ndcg_at_10, avg_latency_ms, report_path, created_at from evaluation_runs order by created_at desc limit 10;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from evaluation_query_results;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select report_format, report_path, created_at from evaluation_reports order by created_at desc limit 5;"

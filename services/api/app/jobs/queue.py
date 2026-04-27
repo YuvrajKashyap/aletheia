@@ -7,6 +7,7 @@ from rq.job import Job
 
 from app.core.config import get_settings
 from app.core.redis import get_redis_connection
+from app.evaluation.jobs import run_evaluation_job
 from app.ingestion.jobs import run_scifact_ingestion_job
 from app.indexing.jobs import build_lexical_index_job, build_vector_index_job
 from app.jobs.health import ping_job
@@ -134,6 +135,51 @@ def enqueue_vector_index_build_job(
         "status": _serialize_status(job.get_status(refresh=True)),
         "index_version_id": index_version_id,
         "message": "Vector index build job enqueued.",
+    }
+
+
+def enqueue_evaluation_job(
+    name: str,
+    retrieval_mode: str,
+    dataset_name: str = "beir/scifact",
+    dataset_version: str = "test",
+    index_version_id: str | None = None,
+    query_limit: int | None = None,
+    query_offset: int = 0,
+    top_k: int = 10,
+    candidate_k: int | None = None,
+    bm25_candidate_k: int | None = None,
+    dense_candidate_k: int | None = None,
+    hybrid_candidate_k: int | None = None,
+    rerank_top_n: int | None = None,
+    rrf_k: int = 60,
+    notes: str | None = None,
+) -> dict:
+    queue = get_queue()
+    job = queue.enqueue(
+        run_evaluation_job,
+        name=name,
+        retrieval_mode=retrieval_mode,
+        dataset_name=dataset_name,
+        dataset_version=dataset_version,
+        index_version_id=index_version_id,
+        query_limit=query_limit,
+        query_offset=query_offset,
+        top_k=top_k,
+        candidate_k=candidate_k,
+        bm25_candidate_k=bm25_candidate_k,
+        dense_candidate_k=dense_candidate_k,
+        hybrid_candidate_k=hybrid_candidate_k,
+        rerank_top_n=rerank_top_n,
+        rrf_k=rrf_k,
+        notes=notes,
+    )
+    return {
+        "job_id": job.id,
+        "queue": queue.name,
+        "status": _serialize_status(job.get_status(refresh=True)),
+        "retrieval_mode": retrieval_mode,
+        "message": "Evaluation job enqueued.",
     }
 
 
