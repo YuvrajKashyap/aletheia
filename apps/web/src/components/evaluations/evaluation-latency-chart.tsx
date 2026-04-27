@@ -3,22 +3,19 @@
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { getEvaluationRunChartLabel } from "@/components/evaluations/evaluation-run-labels";
 import type { EvaluationRunItem } from "@/lib/api/types";
 
 type LatencyChartProps = {
   runs: EvaluationRunItem[];
 };
 
-function shortName(name: string): string {
-  return name.length > 18 ? `${name.slice(0, 18)}...` : name;
-}
-
 export function EvaluationLatencyChart({ runs }: LatencyChartProps) {
   const data = runs
     .filter((run) => run.avg_latency_ms !== null || run.p50_latency_ms !== null || run.p95_latency_ms !== null)
     .slice(0, 10)
     .map((run) => ({
-      name: shortName(run.name),
+      name: getEvaluationRunChartLabel(run),
       avg_latency_ms: run.avg_latency_ms ?? undefined,
       p50_latency_ms: run.p50_latency_ms ?? undefined,
       p95_latency_ms: run.p95_latency_ms ?? undefined

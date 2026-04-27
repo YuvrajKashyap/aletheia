@@ -58,6 +58,7 @@ export type EvaluationRunItem = {
   dataset_id?: string | null;
   index_version_id?: string | null;
   experiment_config_id?: string | null;
+  retrieval_mode?: string | null;
   status: string;
   query_count: number;
   failed_query_count: number;

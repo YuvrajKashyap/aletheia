@@ -1,6 +1,10 @@
 "use client";
 
 import { EvaluationStatusBadge } from "@/components/evaluations/evaluation-status-badge";
+import {
+  getEvaluationRunExperimentConfigName,
+  getEvaluationRunModeLabel
+} from "@/components/evaluations/evaluation-run-labels";
 import { formatMetricValue } from "@/components/evaluations/metric-value";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import type { EvaluationRunItem } from "@/lib/api/types";
@@ -17,11 +21,6 @@ function formatDate(value?: string | null): string {
   }
   const date = new Date(value);
   return Number.isNaN(date.getTime()) ? value : date.toLocaleString();
-}
-
-function retrievalMode(run: EvaluationRunItem): string {
-  const value = run.config_json?.retrieval_mode;
-  return typeof value === "string" ? value : "Unknown mode";
 }
 
 export function EvaluationRunTable({ runs, selectedRunId, onSelect }: EvaluationRunTableProps) {
@@ -64,7 +63,12 @@ export function EvaluationRunTable({ runs, selectedRunId, onSelect }: Evaluation
               <TableCell>
                 <EvaluationStatusBadge status={run.status} />
               </TableCell>
-              <TableCell>{retrievalMode(run)}</TableCell>
+              <TableCell>
+                <div className="font-medium text-slate-200">{getEvaluationRunModeLabel(run)}</div>
+                {getEvaluationRunExperimentConfigName(run) ? (
+                  <div className="mt-1 font-mono text-xs text-slate-500">{getEvaluationRunExperimentConfigName(run)}</div>
+                ) : null}
+              </TableCell>
               <TableCell className="font-mono">{run.query_count}</TableCell>
               <TableCell className="font-mono">{run.failed_query_count}</TableCell>
               <TableCell className="font-mono">{formatMetricValue(run.recall_at_10)}</TableCell>

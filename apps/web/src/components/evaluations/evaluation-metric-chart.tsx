@@ -3,6 +3,7 @@
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { getEvaluationRunChartLabel } from "@/components/evaluations/evaluation-run-labels";
 import type { EvaluationRunItem } from "@/lib/api/types";
 
 type ChartRun = {
@@ -16,16 +17,12 @@ type MetricChartProps = {
   runs: EvaluationRunItem[];
 };
 
-function shortName(name: string): string {
-  return name.length > 18 ? `${name.slice(0, 18)}...` : name;
-}
-
 export function EvaluationMetricChart({ runs }: MetricChartProps) {
   const data: ChartRun[] = runs
     .filter((run) => run.recall_at_10 !== null || run.mrr_at_10 !== null || run.ndcg_at_10 !== null)
     .slice(0, 10)
     .map((run) => ({
-      name: shortName(run.name),
+      name: getEvaluationRunChartLabel(run),
       recall_at_10: run.recall_at_10 ?? undefined,
       mrr_at_10: run.mrr_at_10 ?? undefined,
       ndcg_at_10: run.ndcg_at_10 ?? undefined
