@@ -1,6 +1,6 @@
 "use client";
 
-import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from "recharts";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getEvaluationRunChartLabel } from "@/components/evaluations/evaluation-run-labels";
@@ -20,6 +20,7 @@ export function EvaluationLatencyChart({ runs }: LatencyChartProps) {
       p50_latency_ms: run.p50_latency_ms ?? undefined,
       p95_latency_ms: run.p95_latency_ms ?? undefined
     }));
+  const chartWidth = Math.max(760, data.length * 140);
 
   return (
     <Card className="min-w-0 overflow-hidden">
@@ -31,25 +32,23 @@ export function EvaluationLatencyChart({ runs }: LatencyChartProps) {
         {data.length === 0 ? (
           <p className="text-sm text-slate-500">No latency values available for charting.</p>
         ) : (
-          <div className="h-80 min-h-80 w-full min-w-0 overflow-hidden" style={{ height: 320, width: "100%" }}>
-            <ResponsiveContainer height="100%" minHeight={1} minWidth={1} width="100%">
-              <BarChart data={data}>
-                <CartesianGrid stroke="#1e293b" strokeDasharray="3 3" />
-                <XAxis dataKey="name" stroke="#94a3b8" tick={{ fill: "#94a3b8", fontSize: 11 }} />
-                <YAxis stroke="#94a3b8" tick={{ fill: "#94a3b8", fontSize: 11 }} />
-                <Tooltip
-                  contentStyle={{
-                    background: "#020617",
-                    border: "1px solid #1e293b",
-                    color: "#e2e8f0"
-                  }}
-                />
-                <Legend wrapperStyle={{ color: "#cbd5e1" }} />
-                <Bar dataKey="avg_latency_ms" fill="#67e8f9" name="Avg latency" />
-                <Bar dataKey="p50_latency_ms" fill="#a7f3d0" name="p50" />
-                <Bar dataKey="p95_latency_ms" fill="#fca5a5" name="p95" />
-              </BarChart>
-            </ResponsiveContainer>
+          <div className="w-full min-w-0 overflow-x-auto">
+            <BarChart data={data} height={280} margin={{ top: 8, right: 24, bottom: 8, left: 0 }} width={chartWidth}>
+              <CartesianGrid stroke="#1e293b" strokeDasharray="3 3" />
+              <XAxis dataKey="name" stroke="#94a3b8" tick={{ fill: "#94a3b8", fontSize: 11 }} />
+              <YAxis stroke="#94a3b8" tick={{ fill: "#94a3b8", fontSize: 11 }} />
+              <Tooltip
+                contentStyle={{
+                  background: "#020617",
+                  border: "1px solid #1e293b",
+                  color: "#e2e8f0"
+                }}
+              />
+              <Legend wrapperStyle={{ color: "#cbd5e1" }} />
+              <Bar dataKey="avg_latency_ms" fill="#67e8f9" name="Avg latency" />
+              <Bar dataKey="p50_latency_ms" fill="#a7f3d0" name="p50" />
+              <Bar dataKey="p95_latency_ms" fill="#fca5a5" name="p95" />
+            </BarChart>
           </div>
         )}
       </CardContent>
