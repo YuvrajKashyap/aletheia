@@ -9,9 +9,11 @@ function shortId(value?: string | null) {
 
 export function QueryReplayTable({
   replays,
+  selectedReplayId,
   onSelect
 }: {
   replays: QueryReplayItem[];
+  selectedReplayId?: string | null;
   onSelect: (replay: QueryReplayItem) => void;
 }) {
   if (!replays.length) {
@@ -37,8 +39,10 @@ export function QueryReplayTable({
           </TableRow>
         </TableHeader>
         <TableBody>
-          {replays.map((replay) => (
-            <TableRow key={replay.id}>
+          {replays.map((replay) => {
+            const isSelected = selectedReplayId === replay.id;
+            return (
+              <TableRow key={replay.id} className={isSelected ? "bg-cyan-950/20" : undefined}>
               <TableCell>
                 <ReplayStatusBadge status={replay.status} />
               </TableCell>
@@ -51,11 +55,12 @@ export function QueryReplayTable({
               <TableCell className="max-w-64 truncate text-red-300">{replay.error_message || ""}</TableCell>
               <TableCell className="sticky right-0 bg-slate-950 text-right shadow-[-12px_0_18px_rgba(2,6,23,0.85)]">
                 <Button variant="secondary" onClick={() => onSelect(replay)}>
-                  View detail
+                  {isSelected ? "Selected" : "View detail"}
                 </Button>
               </TableCell>
-            </TableRow>
-          ))}
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
     </div>

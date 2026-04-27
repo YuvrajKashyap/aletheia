@@ -158,7 +158,7 @@ export function ReplayLab() {
           </div>
         </section>
 
-        <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_420px]">
+        <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_460px]">
           <section className="space-y-4">
             <Card>
               <CardHeader>
@@ -199,7 +199,7 @@ export function ReplayLab() {
                 {isLoadingSaved ? (
                   <p className="rounded-lg border border-slate-800 p-4 text-sm text-slate-400">Loading saved queries...</p>
                 ) : (
-                  <SavedQueryTable queries={savedQueries} onSelect={selectSavedQuery} />
+                  <SavedQueryTable queries={savedQueries} selectedQueryId={selectedQuery?.id} onSelect={selectSavedQuery} />
                 )}
               </CardContent>
             </Card>
@@ -241,35 +241,35 @@ export function ReplayLab() {
                 {isLoadingReplays ? (
                   <p className="rounded-lg border border-slate-800 p-4 text-sm text-slate-400">Loading query replays...</p>
                 ) : (
-                  <QueryReplayTable replays={queryReplays} onSelect={selectReplay} />
+                  <QueryReplayTable replays={queryReplays} selectedReplayId={selectedReplay?.id} onSelect={selectReplay} />
                 )}
               </CardContent>
             </Card>
           </section>
 
-          <aside className="space-y-4">
+          <aside className="space-y-4 xl:sticky xl:top-6 xl:self-start">
             {detailError ? <p className="rounded-md border border-red-900/70 p-3 text-sm text-red-300">{detailError}</p> : null}
+            <QueryReplayDetailPanel replay={selectedReplay} />
             <SavedQueryDetailPanel query={selectedQuery} />
-            <ReplayAdminPanel
-              selectedQuery={selectedQuery}
-              onActionComplete={refreshAll}
-              onJobStarted={(response) => {
-                setStartedJob(response);
-                setJobStatus(null);
-              }}
-            />
-            <ReplayJobStatus
-              response={startedJob}
-              jobStatus={jobStatus}
-              isLoading={isJobLoading}
-              error={jobError}
-              onRefresh={refreshJob}
-            />
           </aside>
         </div>
 
-        <section>
-          <QueryReplayDetailPanel replay={selectedReplay} />
+        <section className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_420px]">
+          <ReplayAdminPanel
+            selectedQuery={selectedQuery}
+            onActionComplete={refreshAll}
+            onJobStarted={(response) => {
+              setStartedJob(response);
+              setJobStatus(null);
+            }}
+          />
+          <ReplayJobStatus
+            response={startedJob}
+            jobStatus={jobStatus}
+            isLoading={isJobLoading}
+            error={jobError}
+            onRefresh={refreshJob}
+          />
         </section>
       </div>
     </AppShell>
