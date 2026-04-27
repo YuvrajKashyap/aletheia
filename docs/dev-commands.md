@@ -1862,3 +1862,63 @@ Manual evaluation checks:
 - Confirm metric cards and charts only render real numeric fields.
 - Confirm per-query result trace links open the Query Trace UI.
 - Confirm missing reports show an unavailable state rather than invented report content.
+
+## Step 32 Experiment Matrix UI
+
+The `/experiments` route is now a real Experiment Matrix UI. It reads real experiment configs and real evaluation runs from FastAPI, groups completed evaluation runs by `experiment_config_id`, and shows the latest completed run per config.
+
+The matrix shows:
+
+- default and custom experiment configs
+- retrieval mode and config parameters
+- latest completed run metrics per config
+- best-by-metric indicators computed from real numeric values only
+- quality and latency charts built only from real evaluation run fields
+- config details including candidate sizes, fusion method, model names, and RRF parameters
+- local admin actions for seeding defaults and starting default comparison jobs
+
+Best-by-metric indicators are not shown unless at least two configs have comparable real values. The UI does not create fake winners, fake metrics, fake configs, or fake chart entries.
+
+Backend API must be running before browser validation. Async comparison jobs require Redis and an RQ worker.
+
+Start infrastructure:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/dev.ps1
+
+Start API:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/api.ps1
+
+Start worker for comparison jobs:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/worker.ps1
+
+Start web:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web.ps1
+
+Frontend validation:
+
+    cd apps/web
+    npm run typecheck
+    npm run build
+    npm run lint
+    cd ../..
+
+Scripted frontend validation:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web-build.ps1
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web-lint.ps1
+
+Doctor:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/doctor.ps1
+
+Manual experiment checks:
+
+- Open `http://localhost:3000/experiments`.
+- Confirm configs are loaded from `GET /api/v1/experiments/configs`.
+- Confirm metrics come from real `GET /api/v1/evaluations/runs` rows.
+- Confirm configs without completed runs show unavailable metrics.
+- Confirm best badges appear only when comparable real values exist.
+- Confirm admin comparison trigger requires an admin API key and reports queued job status honestly.

@@ -75,6 +75,7 @@ export type EvaluationRunItem = {
   started_at?: string | null;
   completed_at?: string | null;
   config_json?: Record<string, unknown>;
+  notes?: string | null;
 };
 
 export type EvaluationRunListResponse = {
@@ -122,18 +123,64 @@ export type EvaluationReportResponse = {
 };
 
 export type ExperimentConfigItem = {
-  id?: string;
-  name?: string;
-  retrieval_mode?: string;
+  id: string;
+  name: string;
+  retrieval_mode: SearchMode;
+  bm25_candidate_k?: number | null;
+  dense_candidate_k?: number | null;
+  hybrid_candidate_k?: number | null;
+  rerank_top_n?: number | null;
+  top_k_final?: number | null;
+  fusion_method?: string | null;
+  fusion_params_json?: Record<string, unknown>;
+  embedding_model?: string | null;
+  reranker_model?: string | null;
+  config_json?: Record<string, unknown>;
   is_default?: boolean;
-  top_k_final?: number;
+  created_at?: string | null;
+  updated_at?: string | null;
 };
 
 export type ExperimentConfigListResponse = {
-  total?: number;
-  limit?: number;
-  offset?: number;
-  items?: ExperimentConfigItem[];
+  total: number;
+  limit: number;
+  offset: number;
+  items: ExperimentConfigItem[];
+};
+
+export type SeedExperimentConfigsResponse = {
+  created_count?: number;
+  updated_count?: number;
+  existing_count?: number;
+  configs?: ExperimentConfigItem[] | unknown[];
+};
+
+export type StartComparisonRequest = {
+  name: string;
+  use_defaults?: boolean;
+  experiment_config_ids?: string[];
+  experiment_config_names?: string[];
+  dataset_name?: string;
+  dataset_version?: string;
+  query_limit?: number | null;
+  query_offset?: number;
+  notes?: string | null;
+};
+
+export type StartComparisonResponse = {
+  job_id: string;
+  queue?: string;
+  status?: string;
+  message?: string;
+};
+
+export type JobStatusResponse = {
+  job_id: string;
+  status: string;
+  result?: unknown;
+  error?: string | null;
+  found?: boolean;
+  queue?: string | null;
 };
 
 export type SearchMode = "bm25" | "dense" | "hybrid" | "hybrid_rerank";

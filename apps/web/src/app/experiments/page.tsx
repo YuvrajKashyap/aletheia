@@ -1,10 +1,5 @@
-import { SkeletonPage } from "@/components/layout/skeleton-page";
+import { ExperimentMatrix } from "@/components/experiments/experiment-matrix";
 
 export default function ExperimentsPage() {
-  return (
-    <SkeletonPage
-      title="Experiments"
-      intent="Experiments will manage retrieval configs and compare real evaluation runs across BM25, dense, hybrid, and rerank modes."
-    />
-  );
+  return <ExperimentMatrix />;
 }
