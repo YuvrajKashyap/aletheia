@@ -23,6 +23,12 @@ function errorMessage(error: unknown) {
   return error instanceof Error ? error.message : "Request failed";
 }
 
+type Feedback = {
+  scope: "admin" | "seed" | "create" | "single" | "golden";
+  tone: "success" | "error";
+  text: string;
+};
+
 export function ReplayAdminPanel({
   selectedQuery,
   onActionComplete,
@@ -34,8 +40,7 @@ export function ReplayAdminPanel({
 }) {
   const [adminApiKey, setAdminApiKey] = useState("");
   const [isBusy, setIsBusy] = useState(false);
-  const [message, setMessage] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [seedLimit, setSeedLimit] = useState(10);
   const [manualName, setManualName] = useState("");
   const [manualText, setManualText] = useState("");
@@ -47,33 +52,40 @@ export function ReplayAdminPanel({
   const [goldenLimit, setGoldenLimit] = useState(3);
   const [goldenNotes, setGoldenNotes] = useState("");
 
+  function setSuccess(scope: Feedback["scope"], text: string) {
+    setFeedback({ scope, tone: "success", text });
+  }
+
+  function setError(scope: Feedback["scope"], text: string) {
+    setFeedback({ scope, tone: "error", text });
+  }
+
   function requireAdminKey() {
     if (!adminApiKey.trim()) {
-      setError("Admin API key is required for replay actions.");
+      setError("admin", "Admin API key is required for replay actions.");
       return null;
     }
     return adminApiKey.trim();
   }
 
-  async function runAction(action: (key: string) => Promise<void>) {
+  async function runAction(scope: Feedback["scope"], action: (key: string) => Promise<void>) {
     const key = requireAdminKey();
     if (!key) return;
     setIsBusy(true);
-    setError(null);
-    setMessage(null);
+    setFeedback(null);
     try {
       await action(key);
     } catch (err) {
-      setError(errorMessage(err));
+      setError(scope, errorMessage(err));
     } finally {
       setIsBusy(false);
     }
   }
 
-  function currentReplayRequest() {
+  function currentReplayRequest(scope: Feedback["scope"]) {
     const validation = validateReplayModeState(modeState);
     if (validation) {
-      setError(validation);
+      setError(scope, validation);
       return null;
     }
     return buildReplayRequest(modeState, { sourceTraceId, indexVersionId });
@@ -95,19 +107,24 @@ export function ReplayAdminPanel({
             onChange={(event) => setAdminApiKey(event.target.value)}
           />
         </label>
+        {feedback?.scope === "admin" ? <FeedbackAlert feedback={feedback} /> : null}
 
-        <section className="space-y-3 rounded-lg border border-slate-800 p-4">
-          <h3 className="text-sm font-semibold text-slate-100">Seed golden queries</h3>
+        <section className="space-y-3 rounded-lg border border-slate-800 bg-slate-950/40 p-4">
+          <div>
+            <h3 className="text-sm font-semibold text-slate-100">Seed golden queries</h3>
+            <p className="mt-1 text-xs text-slate-500">Create missing SciFact golden saved queries from backend qrels.</p>
+          </div>
+          {feedback?.scope === "seed" ? <FeedbackAlert feedback={feedback} /> : null}
           <NumberField label="limit" value={seedLimit} onChange={setSeedLimit} />
           <Button
             disabled={isBusy}
             onClick={() =>
-              runAction(async (key) => {
+              runAction("seed", async (key) => {
                 const result = await seedGoldenQueries(
                   { dataset_name: "beir/scifact", dataset_version: "test", limit: seedLimit, offset: 0 },
                   key
                 );
-                setMessage(`Seed complete. Created ${result.created_count ?? 0}, existing ${result.existing_count ?? 0}.`);
+                setSuccess("seed", `Seed complete. Created ${result.created_count ?? 0}, existing ${result.existing_count ?? 0}.`);
                 onActionComplete();
               })
             }
@@ -116,8 +133,12 @@ export function ReplayAdminPanel({
           </Button>
         </section>
 
-        <section className="space-y-3 rounded-lg border border-slate-800 p-4">
-          <h3 className="text-sm font-semibold text-slate-100">Create manual saved query</h3>
+        <section className="space-y-3 rounded-lg border border-slate-800 bg-slate-950/40 p-4">
+          <div>
+            <h3 className="text-sm font-semibold text-slate-100">Create manual saved query</h3>
+            <p className="mt-1 text-xs text-slate-500">Store a replayable query without generating answers.</p>
+          </div>
+          {feedback?.scope === "create" ? <FeedbackAlert feedback={feedback} /> : null}
           <TextField label="name optional" value={manualName} onChange={setManualName} />
           <TextField label="source" value={manualSource} onChange={setManualSource} />
           <label className="block">
@@ -131,16 +152,16 @@ export function ReplayAdminPanel({
           <Button
             disabled={isBusy}
             onClick={() =>
-              runAction(async (key) => {
+              runAction("create", async (key) => {
                 if (!manualText.trim()) {
-                  setError("Saved query text is required.");
+                  setError("create", "Saved query text is required.");
                   return;
                 }
                 await createSavedQuery(
                   { name: manualName.trim() || null, text: manualText.trim(), source: manualSource.trim() || "manual" },
                   key
                 );
-                setMessage("Manual saved query created.");
+                setSuccess("create", "Manual saved query created.");
                 setManualText("");
                 onActionComplete();
               })
@@ -150,8 +171,12 @@ export function ReplayAdminPanel({
           </Button>
         </section>
 
-        <section className="space-y-3 rounded-lg border border-slate-800 p-4">
-          <h3 className="text-sm font-semibold text-slate-100">Replay selected saved query</h3>
+        <section className="space-y-3 rounded-lg border border-slate-800 bg-slate-950/40 p-4">
+          <div>
+            <h3 className="text-sm font-semibold text-slate-100">Replay selected saved query</h3>
+            <p className="mt-1 text-xs text-slate-500">Queue one saved query replay through the selected retrieval settings.</p>
+          </div>
+          {feedback?.scope === "single" ? <FeedbackAlert feedback={feedback} /> : null}
           <p className="text-xs text-slate-500">
             Selected query: {selectedQuery?.name || selectedQuery?.id || "None selected"}
           </p>
@@ -163,16 +188,16 @@ export function ReplayAdminPanel({
           <Button
             disabled={isBusy || !selectedQuery}
             onClick={() =>
-              runAction(async (key) => {
+              runAction("single", async (key) => {
                 if (!selectedQuery) {
-                  setError("Select a saved query first.");
+                  setError("single", "Select a saved query first.");
                   return;
                 }
-                const request = currentReplayRequest();
+                const request = currentReplayRequest("single");
                 if (!request) return;
                 const response = await runSavedQueryReplay(selectedQuery.id, request, key);
                 onJobStarted(response);
-                setMessage(response.message || "Saved query replay submitted.");
+                setSuccess("single", response.message || "Saved query replay submitted.");
               })
             }
           >
@@ -180,16 +205,20 @@ export function ReplayAdminPanel({
           </Button>
         </section>
 
-        <section className="space-y-3 rounded-lg border border-slate-800 p-4">
-          <h3 className="text-sm font-semibold text-slate-100">Run golden replay batch</h3>
+        <section className="space-y-3 rounded-lg border border-slate-800 bg-slate-950/40 p-4">
+          <div>
+            <h3 className="text-sm font-semibold text-slate-100">Run golden replay batch</h3>
+            <p className="mt-1 text-xs text-slate-500">Queue a small golden replay batch for trace-level regression checks.</p>
+          </div>
+          {feedback?.scope === "golden" ? <FeedbackAlert feedback={feedback} /> : null}
           <TextField label="name" value={goldenName} onChange={setGoldenName} />
           <NumberField label="limit" value={goldenLimit} onChange={setGoldenLimit} />
           <TextField label="notes optional" value={goldenNotes} onChange={setGoldenNotes} />
           <Button
             disabled={isBusy}
             onClick={() =>
-              runAction(async (key) => {
-                const request = currentReplayRequest();
+              runAction("golden", async (key) => {
+                const request = currentReplayRequest("golden");
                 if (!request) return;
                 const response = await runGoldenReplay(
                   {
@@ -203,7 +232,7 @@ export function ReplayAdminPanel({
                   key
                 );
                 onJobStarted(response);
-                setMessage(response.message || "Golden replay submitted.");
+                setSuccess("golden", response.message || "Golden replay submitted.");
               })
             }
           >
@@ -211,11 +240,18 @@ export function ReplayAdminPanel({
           </Button>
         </section>
 
-        {message ? <p className="rounded-md border border-emerald-900 bg-emerald-950/30 p-3 text-sm text-emerald-300">{message}</p> : null}
-        {error ? <p className="rounded-md border border-red-900 bg-red-950/30 p-3 text-sm text-red-300">{error}</p> : null}
       </CardContent>
     </Card>
   );
+}
+
+function FeedbackAlert({ feedback }: { feedback: Feedback }) {
+  const className =
+    feedback.tone === "success"
+      ? "rounded-md border border-emerald-900 bg-emerald-950/30 p-3 text-sm text-emerald-300"
+      : "rounded-md border border-red-900 bg-red-950/30 p-3 text-sm text-red-300";
+
+  return <p className={className}>{feedback.text}</p>;
 }
 
 function TextField({ label, value, onChange }: { label: string; value: string; onChange: (value: string) => void }) {
