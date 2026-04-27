@@ -26,7 +26,9 @@ export function DocumentTable({
             <TableHead>Title</TableHead>
             <TableHead>Text preview</TableHead>
             <TableHead>Created</TableHead>
-            <TableHead>Action</TableHead>
+            <TableHead className="sticky right-0 bg-slate-950 text-right shadow-[-12px_0_18px_rgba(2,6,23,0.85)]">
+              Action
+            </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -38,8 +40,8 @@ export function DocumentTable({
                 {document.text_preview || document.text || "Unavailable"}
               </TableCell>
               <TableCell className="whitespace-nowrap text-xs">{document.created_at || "Unavailable"}</TableCell>
-              <TableCell>
-                <Button variant="ghost" onClick={() => onSelect(document.id)}>
+              <TableCell className="sticky right-0 bg-slate-950 text-right shadow-[-12px_0_18px_rgba(2,6,23,0.85)]">
+                <Button variant="secondary" onClick={() => onSelect(document.id)}>
                   View detail
                 </Button>
               </TableCell>

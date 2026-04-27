@@ -10,6 +10,7 @@ export function RelevanceJudgmentTable({ judgments }: { judgments: RelevanceJudg
     return (
       <p className="rounded-lg border border-slate-800 p-4 text-sm text-slate-400">
         No relevance judgments found for the current filters.
+        Exact query or document external ID filters may not match any qrels.
       </p>
     );
   }

@@ -30,7 +30,9 @@ export function ChunkTable({
             <TableHead>Tokens</TableHead>
             <TableHead>Strategy</TableHead>
             <TableHead>Text preview</TableHead>
-            <TableHead>Action</TableHead>
+            <TableHead className="sticky right-0 bg-slate-950 text-right shadow-[-12px_0_18px_rgba(2,6,23,0.85)]">
+              Action
+            </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -52,8 +54,8 @@ export function ChunkTable({
                 {chunk.chunking_strategy || "Unavailable"} {chunk.chunking_version || ""}
               </TableCell>
               <TableCell className="min-w-96 max-w-xl text-slate-400">{chunk.text_preview || chunk.text || "Unavailable"}</TableCell>
-              <TableCell>
-                <Button variant="ghost" onClick={() => onSelect(chunk.id)}>
+              <TableCell className="sticky right-0 bg-slate-950 text-right shadow-[-12px_0_18px_rgba(2,6,23,0.85)]">
+                <Button variant="secondary" onClick={() => onSelect(chunk.id)}>
                   View detail
                 </Button>
               </TableCell>

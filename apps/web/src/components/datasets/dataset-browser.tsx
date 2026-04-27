@@ -366,18 +366,24 @@ export function DatasetBrowser() {
           onPrevious={() => loadQrels(selectedDatasetId, qrels.limit, Math.max(0, qrels.offset - qrels.limit))}
           onNext={() => loadQrels(selectedDatasetId, qrels.limit, qrels.offset + qrels.limit)}
         >
-          <input
-            className="rounded-md border border-slate-700 bg-slate-950 px-2 py-1 text-sm text-slate-100"
-            placeholder="query external ID"
-            value={queryExternalId}
-            onChange={(event) => setQueryExternalId(event.target.value)}
-          />
-          <input
-            className="rounded-md border border-slate-700 bg-slate-950 px-2 py-1 text-sm text-slate-100"
-            placeholder="document external ID"
-            value={documentExternalId}
-            onChange={(event) => setDocumentExternalId(event.target.value)}
-          />
+          <label className="text-xs text-slate-500">
+            Query external ID
+            <input
+              className="ml-2 rounded-md border border-slate-700 bg-slate-950 px-2 py-1 text-sm text-slate-100"
+              placeholder="exact ID"
+              value={queryExternalId}
+              onChange={(event) => setQueryExternalId(event.target.value)}
+            />
+          </label>
+          <label className="text-xs text-slate-500">
+            Document external ID
+            <input
+              className="ml-2 rounded-md border border-slate-700 bg-slate-950 px-2 py-1 text-sm text-slate-100"
+              placeholder="exact ID"
+              value={documentExternalId}
+              onChange={(event) => setDocumentExternalId(event.target.value)}
+            />
+          </label>
           <Button
             variant="secondary"
             onClick={() =>
@@ -390,6 +396,9 @@ export function DatasetBrowser() {
             Apply filters
           </Button>
         </CorpusSearchControls>
+        <p className="text-xs text-slate-500">
+          Use exact query or document external IDs, for example 659 or 1215116.
+        </p>
         {qrels.error ? <p className="rounded-lg border border-red-900/70 p-4 text-sm text-red-300">{qrels.error}</p> : null}
         {qrels.loading ? <p className="rounded-lg border border-slate-800 p-4 text-sm text-slate-400">Loading relevance judgments...</p> : <RelevanceJudgmentTable judgments={qrels.items} />}
       </div>

@@ -23,7 +23,9 @@ export function BenchmarkQueryTable({
             <TableHead>Split</TableHead>
             <TableHead>Query text</TableHead>
             <TableHead>Created</TableHead>
-            <TableHead>Action</TableHead>
+            <TableHead className="sticky right-0 bg-slate-950 text-right shadow-[-12px_0_18px_rgba(2,6,23,0.85)]">
+              Action
+            </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -35,8 +37,8 @@ export function BenchmarkQueryTable({
               </TableCell>
               <TableCell className="min-w-96 text-slate-300">{query.text}</TableCell>
               <TableCell className="whitespace-nowrap text-xs">{query.created_at || "Unavailable"}</TableCell>
-              <TableCell>
-                <Button variant="ghost" onClick={() => onSelect(query.id)}>
+              <TableCell className="sticky right-0 bg-slate-950 text-right shadow-[-12px_0_18px_rgba(2,6,23,0.85)]">
+                <Button variant="secondary" onClick={() => onSelect(query.id)}>
                   View detail
                 </Button>
               </TableCell>
