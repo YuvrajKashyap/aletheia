@@ -1,10 +1,11 @@
-import { SkeletonPage } from "@/components/layout/skeleton-page";
+import { Suspense } from "react";
+
+import { TraceBrowser } from "@/components/traces/trace-browser";
 
 export default function TracesPage() {
   return (
-    <SkeletonPage
-      title="Query Traces"
-      intent="Query Traces will inspect stage latency, retrieval candidates, fusion movement, and rerank movement."
-    />
+    <Suspense fallback={null}>
+      <TraceBrowser />
+    </Suspense>
   );
 }

@@ -89,22 +89,65 @@ export type ExperimentConfigListResponse = {
   items?: ExperimentConfigItem[];
 };
 
+export type SearchMode = "bm25" | "dense" | "hybrid" | "hybrid_rerank";
+
 export type TraceListItem = {
-  trace_id?: string;
-  query_id?: string;
-  query_text?: string;
-  retrieval_mode?: string;
-  status?: string;
+  trace_id: string;
+  query_id: string;
+  query_text: string;
+  retrieval_mode: SearchMode;
+  status: string;
   total_latency_ms?: number | null;
   result_count?: number | null;
-  created_at?: string;
+  created_at?: string | null;
 };
 
 export type TraceListResponse = {
-  total?: number;
-  limit?: number;
-  offset?: number;
-  items?: TraceListItem[];
+  total: number;
+  limit: number;
+  offset: number;
+  items: TraceListItem[];
+};
+
+export type TraceCandidateItem = {
+  id?: string;
+  source: string;
+  final_rank?: number | null;
+  bm25_rank?: number | null;
+  dense_rank?: number | null;
+  fusion_rank?: number | null;
+  rerank_rank?: number | null;
+  bm25_score?: number | null;
+  dense_score?: number | null;
+  fusion_score?: number | null;
+  reranker_score?: number | null;
+  chunk_id?: string | null;
+  document_id?: string | null;
+  metadata_json?: Record<string, unknown>;
+  created_at?: string | null;
+};
+
+export type TraceDetailResponse = {
+  trace_id: string;
+  query_id: string;
+  query_text: string;
+  retrieval_mode: SearchMode;
+  index_version_id?: string | null;
+  status: string;
+  total_latency_ms?: number | null;
+  trace_schema_version?: string | null;
+  trace_json: Record<string, unknown>;
+  ranking_summary?: Record<string, unknown>;
+  candidates: TraceCandidateItem[];
+  candidates_by_source?: Record<string, TraceCandidateItem[]>;
+  created_at?: string | null;
+};
+
+export type TraceCandidateListResponse = {
+  total: number;
+  limit: number;
+  offset: number;
+  items: TraceCandidateItem[];
 };
 
 export type DatasetItem = {
@@ -138,8 +181,6 @@ export type SavedQueryListResponse = {
   offset?: number;
   items?: SavedQueryItem[];
 };
-
-export type SearchMode = "bm25" | "dense" | "hybrid" | "hybrid_rerank";
 
 export type SearchRequest = {
   query: string;

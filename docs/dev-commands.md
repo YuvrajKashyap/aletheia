@@ -1753,3 +1753,56 @@ Manual Search Lab checks:
 - Run a hybrid query with `bm25_candidate_k=50`, `dense_candidate_k=50`, and `rrf_k=60`.
 - Run a hybrid rerank query with `hybrid_candidate_k=50`, `rerank_top_n=25`, and `rrf_k=60`.
 - Confirm `query_id`, `trace_id`, latency fields, ranked chunks, and score breakdowns are shown from the backend response.
+
+## Step 30 Query Trace UI
+
+The `/traces` route is now a real Query Trace UI for search observability. It lists real traces from FastAPI only and supports retrieval mode and status filters. It can deep-link to a trace with `?traceId=<trace_id>`.
+
+The trace UI shows:
+
+- trace list with mode, status, latency, query ID, and trace ID
+- trace detail metadata and index version information
+- request parameters
+- pipeline stage latency for BM25, dense, fusion, and reranker stages when present
+- candidate provenance grouped by source
+- rank movement for hybrid rerank traces when present
+- raw trace JSON for debugging
+
+Search Lab trace links use `/traces?traceId=<trace_id>`. Backend API must be running before browser validation.
+
+Start infrastructure:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/dev.ps1
+
+Start API:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/api.ps1
+
+Start web:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web.ps1
+
+Frontend validation:
+
+    cd apps/web
+    npm run typecheck
+    npm run build
+    npm run lint
+    cd ../..
+
+Scripted frontend validation:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web-build.ps1
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web-lint.ps1
+
+Doctor:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/doctor.ps1
+
+Manual trace checks:
+
+- Open `http://localhost:3000/traces`.
+- Filter by `hybrid_rerank` and `completed` if rerank traces exist.
+- Open a trace from the list.
+- Confirm stages, ranking summary, candidates, rank movement, and raw JSON render from backend trace data.
+- Open `http://localhost:3000/traces?traceId=<trace_id>` with a real trace ID.
