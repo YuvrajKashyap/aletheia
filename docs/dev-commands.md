@@ -1806,3 +1806,59 @@ Manual trace checks:
 - Open a trace from the list.
 - Confirm stages, ranking summary, candidates, rank movement, and raw JSON render from backend trace data.
 - Open `http://localhost:3000/traces?traceId=<trace_id>` with a real trace ID.
+
+## Step 31 Evaluation Dashboard UI
+
+The `/evaluations` route is now a real Evaluation Dashboard UI. It reads real evaluation API data and does not display fake benchmark results, fake reports, or invented chart entries.
+
+The dashboard shows:
+
+- recent real evaluation runs
+- status filtering
+- metric cards for Recall@5, Recall@10, MRR@10, NDCG@10, latency, and failed queries
+- charts built only from real run metric and latency fields
+- selected run metadata and config JSON
+- first 50 per-query evaluation results
+- trace links from query results to `/traces?traceId=<trace_id>`
+- report metadata, summary JSON, and optional full report JSON
+
+Backend API must be running before browser validation.
+
+Start infrastructure:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/dev.ps1
+
+Start API:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/api.ps1
+
+Start web:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web.ps1
+
+Frontend validation:
+
+    cd apps/web
+    npm install
+    npm run typecheck
+    npm run build
+    npm run lint
+    cd ../..
+
+Scripted frontend validation:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web-build.ps1
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web-lint.ps1
+
+Doctor:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/doctor.ps1
+
+Manual evaluation checks:
+
+- Open `http://localhost:3000/evaluations`.
+- Confirm the run table contains real backend evaluation runs.
+- Select completed BM25, dense, hybrid, or hybrid rerank runs if available.
+- Confirm metric cards and charts only render real numeric fields.
+- Confirm per-query result trace links open the Query Trace UI.
+- Confirm missing reports show an unavailable state rather than invented report content.

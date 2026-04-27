@@ -53,25 +53,70 @@ export type IndexStatusResponse = {
 };
 
 export type EvaluationRunItem = {
-  id?: string;
-  name?: string;
-  status?: string;
+  id: string;
+  name: string;
+  dataset_id?: string | null;
+  index_version_id?: string | null;
+  experiment_config_id?: string | null;
+  status: string;
+  query_count: number;
+  failed_query_count: number;
+  recall_at_5?: number | null;
   recall_at_10?: number | null;
   mrr_at_10?: number | null;
   ndcg_at_10?: number | null;
-  config_json?: {
-    retrieval_mode?: string;
-    experiment_config_name?: string;
-  };
+  avg_latency_ms?: number | null;
+  p50_latency_ms?: number | null;
+  p95_latency_ms?: number | null;
   report_path?: string | null;
-  created_at?: string;
+  created_at?: string | null;
+  started_at?: string | null;
+  completed_at?: string | null;
+  config_json?: Record<string, unknown>;
 };
 
 export type EvaluationRunListResponse = {
-  total?: number;
-  limit?: number;
-  offset?: number;
-  items?: EvaluationRunItem[];
+  total: number;
+  limit: number;
+  offset: number;
+  items: EvaluationRunItem[];
+};
+
+export type EvaluationRunDetail = EvaluationRunItem & {
+  config_json?: Record<string, unknown>;
+  notes?: string | null;
+};
+
+export type EvaluationQueryResultItem = {
+  id: string;
+  evaluation_run_id: string;
+  benchmark_query_id?: string | null;
+  query_external_id: string;
+  query_text: string;
+  recall_at_5?: number | null;
+  recall_at_10?: number | null;
+  mrr_at_10?: number | null;
+  ndcg_at_10?: number | null;
+  latency_ms?: number | null;
+  trace_id?: string | null;
+  error_message?: string | null;
+  created_at?: string | null;
+};
+
+export type EvaluationQueryResultListResponse = {
+  total: number;
+  limit: number;
+  offset: number;
+  items: EvaluationQueryResultItem[];
+};
+
+export type EvaluationReportResponse = {
+  evaluation_run_id: string;
+  report_path?: string | null;
+  report_format?: string | null;
+  summary_json?: Record<string, unknown>;
+  report_json?: Record<string, unknown> | null;
+  warning?: string | null;
 };
 
 export type ExperimentConfigItem = {

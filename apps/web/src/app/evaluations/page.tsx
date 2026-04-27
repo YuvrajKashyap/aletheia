@@ -1,10 +1,5 @@
-import { SkeletonPage } from "@/components/layout/skeleton-page";
+import { EvaluationDashboard } from "@/components/evaluations/evaluation-dashboard";
 
 export default function EvaluationsPage() {
-  return (
-    <SkeletonPage
-      title="Evaluations"
-      intent="Evaluations will summarize qrels-backed runs, query results, and stored evaluation reports."
-    />
-  );
+  return <EvaluationDashboard />;
 }

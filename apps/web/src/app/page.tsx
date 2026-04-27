@@ -104,6 +104,11 @@ function formatMetric(value?: number | null) {
   return typeof value === "number" ? value.toFixed(3) : "unavailable";
 }
 
+function evaluationMode(config?: Record<string, unknown>) {
+  const value = config?.retrieval_mode;
+  return typeof value === "string" ? value : "mode unknown";
+}
+
 function shortId(value?: string | null) {
   return value ? value.slice(0, 8) : "unavailable";
 }
@@ -251,7 +256,7 @@ export default async function OverviewPage() {
                     evaluationItems.map((run) => (
                       <TableRow key={run.id}>
                         <TableCell className="font-medium text-slate-100">{run.name || "unnamed run"}</TableCell>
-                        <TableCell>{run.config_json?.retrieval_mode || "mode unknown"}</TableCell>
+                        <TableCell>{evaluationMode(run.config_json)}</TableCell>
                         <TableCell>
                           <Badge tone={tone(run.status)}>{run.status || "unknown"}</Badge>
                         </TableCell>
