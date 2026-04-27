@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 import { ReplayStatusBadge } from "@/components/replay/replay-status-badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -5,6 +7,26 @@ import type { QueryReplayItem } from "@/lib/api/types";
 
 function shortId(value?: string | null) {
   return value ? value.slice(0, 8) : "Unavailable";
+}
+
+function TraceLink({ traceId, label }: { traceId?: string | null; label: string }) {
+  if (!traceId) {
+    return <span className="text-slate-500">Unavailable</span>;
+  }
+
+  return (
+    <div className="flex min-w-32 flex-col gap-1">
+      <span className="font-mono text-xs text-slate-300">{shortId(traceId)}</span>
+      <Link
+        aria-label={`Open ${label} ${traceId}`}
+        className="w-fit rounded-md border border-cyan-800 bg-cyan-950/30 px-2 py-0.5 text-xs font-medium text-cyan-200 underline-offset-4 hover:border-cyan-500 hover:text-cyan-100 hover:underline focus:outline-none focus:ring-2 focus:ring-cyan-400/70"
+        href={`/traces?traceId=${encodeURIComponent(traceId)}`}
+        title={`Open trace ${traceId}`}
+      >
+        Open trace
+      </Link>
+    </div>
+  );
 }
 
 export function QueryReplayTable({
@@ -47,8 +69,12 @@ export function QueryReplayTable({
                 <ReplayStatusBadge status={replay.status} />
               </TableCell>
               <TableCell className="font-mono text-xs">{shortId(replay.saved_query_id)}</TableCell>
-              <TableCell className="font-mono text-xs">{shortId(replay.target_trace_id)}</TableCell>
-              <TableCell className="font-mono text-xs">{shortId(replay.source_trace_id)}</TableCell>
+              <TableCell>
+                <TraceLink traceId={replay.target_trace_id} label="target trace" />
+              </TableCell>
+              <TableCell>
+                <TraceLink traceId={replay.source_trace_id} label="source trace" />
+              </TableCell>
               <TableCell className="font-mono text-xs">{shortId(replay.experiment_config_id)}</TableCell>
               <TableCell className="whitespace-nowrap text-xs">{replay.created_at || "Unavailable"}</TableCell>
               <TableCell className="whitespace-nowrap text-xs">{replay.completed_at || "Unavailable"}</TableCell>

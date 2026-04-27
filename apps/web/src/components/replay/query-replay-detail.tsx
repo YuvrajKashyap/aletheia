@@ -89,9 +89,17 @@ function TraceField({ label, traceId }: { label: string; traceId?: string | null
     <div>
       <div className="text-slate-500">{label}</div>
       {traceId ? (
-        <Link className="break-all font-mono text-xs text-cyan-300 hover:text-cyan-100" href={`/traces?traceId=${encodeURIComponent(traceId)}`}>
-          {traceId}
-        </Link>
+        <div className="mt-1 flex flex-wrap items-center gap-2">
+          <span className="font-mono text-xs text-slate-300">{traceId.slice(0, 8)}</span>
+          <Link
+            aria-label={`Open ${label.toLowerCase()} ${traceId}`}
+            className="inline-flex items-center rounded-md border border-cyan-700 bg-cyan-950/40 px-2 py-1 text-xs font-medium text-cyan-200 underline-offset-4 hover:border-cyan-400 hover:text-cyan-100 hover:underline focus:outline-none focus:ring-2 focus:ring-cyan-400/70"
+            href={`/traces?traceId=${encodeURIComponent(traceId)}`}
+            title={`Open trace ${traceId}`}
+          >
+            Open trace
+          </Link>
+        </div>
       ) : (
         <div className="text-slate-400">Unavailable</div>
       )}
