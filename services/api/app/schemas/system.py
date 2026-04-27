@@ -1,4 +1,5 @@
 from datetime import datetime
+from uuid import UUID
 
 from pydantic import BaseModel
 
@@ -71,3 +72,22 @@ class RerankerModelStatusResponse(BaseModel):
     loaded: bool
     cache_dir: str
     error: str | None = None
+
+
+class SystemEventItem(BaseModel):
+    id: UUID
+    event_type: str
+    severity: str
+    message: str
+    request_id: str | None = None
+    job_id: str | None = None
+    trace_id: UUID | None = None
+    metadata_json: dict
+    created_at: datetime
+
+
+class SystemEventListResponse(BaseModel):
+    total: int
+    limit: int
+    offset: int
+    items: list[SystemEventItem]

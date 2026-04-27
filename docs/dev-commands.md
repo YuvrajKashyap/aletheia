@@ -2111,3 +2111,66 @@ Manual replay checks:
 - Select a query replay and confirm trace links open Query Traces.
 - Use admin actions only with a local admin API key.
 - Confirm queued jobs show real job status and do not fake completion.
+
+## Step 36 System Health UI
+
+The `/system` route is now a real System Health UI. It reads backend and infrastructure status through FastAPI system endpoints only.
+
+The page shows:
+
+- API and Postgres health
+- Redis queue reachability and job count
+- worker heartbeat rows when the worker is running
+- OpenSearch and Qdrant health
+- embedding and reranker model status
+- recent system events from the backend `system_events` table
+
+No fake uptime, SLA, worker state, queue data, model status, or events are displayed. If an endpoint fails, the page shows the real error for that service. Worker heartbeat requires the worker process to be running.
+
+Start infrastructure:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/dev.ps1
+
+Start API:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/api.ps1
+
+Start worker:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/worker.ps1
+
+Start web:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/web.ps1
+
+Backend checks:
+
+    Invoke-RestMethod http://localhost:8000/api/v1/health
+    Invoke-RestMethod http://localhost:8000/api/v1/health/db
+    Invoke-RestMethod http://localhost:8000/api/v1/system/queue
+    Invoke-RestMethod http://localhost:8000/api/v1/system/worker-heartbeats
+    Invoke-RestMethod http://localhost:8000/api/v1/system/opensearch
+    Invoke-RestMethod http://localhost:8000/api/v1/system/qdrant
+    Invoke-RestMethod http://localhost:8000/api/v1/system/models/embedding
+    Invoke-RestMethod http://localhost:8000/api/v1/system/models/reranker
+    Invoke-RestMethod "http://localhost:8000/api/v1/system/events?limit=5&offset=0"
+
+Frontend validation:
+
+    cd apps/web
+    npm run typecheck
+    npm run build
+    npm run lint
+    cd ../..
+
+Doctor:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/doctor.ps1
+
+Manual system checks:
+
+- Open `http://localhost:3000/system`.
+- Confirm each service card uses real FastAPI responses.
+- Stop FastAPI and confirm the page shows backend unreachable errors without fake health data.
+- Start the worker and confirm worker heartbeat data appears when available.
+- Confirm system event filters only show real backend events.

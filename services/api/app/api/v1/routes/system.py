@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from redis.exceptions import RedisError
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.api.dependencies.admin import AdminContext, require_admin
@@ -8,7 +8,7 @@ from app.db.session import get_db
 from app.jobs import queue as job_queue
 from app.ml.embeddings import get_embedding_model_status
 from app.ml.reranker import get_reranker_model_status
-from app.models.system import WorkerHeartbeat
+from app.models.system import SystemEvent, WorkerHeartbeat
 from app.search.opensearch_client import check_opensearch_health
 from app.search.qdrant_client import check_qdrant_health
 from app.schemas.system import (
@@ -20,6 +20,8 @@ from app.schemas.system import (
     QdrantHealthResponse,
     QueueStatusResponse,
     RerankerModelStatusResponse,
+    SystemEventItem,
+    SystemEventListResponse,
     WorkerHeartbeatItem,
     WorkerHeartbeatListResponse,
 )
@@ -109,4 +111,48 @@ async def worker_heartbeats(
             )
             for worker in workers
         ]
+    )
+
+
+@router.get("/events", response_model=SystemEventListResponse)
+async def system_events(
+    event_type: str | None = Query(default=None),
+    severity: str | None = Query(default=None),
+    limit: int = Query(default=50, ge=1, le=200),
+    offset: int = Query(default=0, ge=0),
+    db: Session = Depends(get_db),
+) -> SystemEventListResponse:
+    filters = []
+    if event_type:
+        filters.append(SystemEvent.event_type == event_type)
+    if severity:
+        filters.append(SystemEvent.severity == severity)
+
+    total_statement = select(func.count()).select_from(SystemEvent)
+    items_statement = select(SystemEvent).order_by(SystemEvent.created_at.desc()).offset(offset).limit(limit)
+    if filters:
+        total_statement = total_statement.where(*filters)
+        items_statement = items_statement.where(*filters)
+
+    total = db.scalar(total_statement) or 0
+    events = db.scalars(items_statement).all()
+
+    return SystemEventListResponse(
+        total=total,
+        limit=limit,
+        offset=offset,
+        items=[
+            SystemEventItem(
+                id=event.id,
+                event_type=event.event_type,
+                severity=event.severity,
+                message=event.message,
+                request_id=event.request_id,
+                job_id=event.job_id,
+                trace_id=event.trace_id,
+                metadata_json=event.metadata_json,
+                created_at=event.created_at,
+            )
+            for event in events
+        ],
     )

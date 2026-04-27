@@ -13,7 +13,8 @@ const navItems = [
   { href: "/experiments", label: "Experiments" },
   { href: "/indexes", label: "Index Console" },
   { href: "/replay", label: "Replay Lab" },
-  { href: "/datasets", label: "Datasets" }
+  { href: "/datasets", label: "Datasets" },
+  { href: "/system", label: "System Health" }
 ];
 
 export function Sidebar() {

@@ -29,6 +29,62 @@ export type QdrantHealthResponse = {
   error?: string | null;
 };
 
+export type QueueStatusResponse = {
+  queue?: string;
+  job_count?: number;
+  status?: string;
+  error?: string | null;
+};
+
+export type WorkerHeartbeatItem = {
+  id?: string;
+  worker_name: string;
+  queue_name?: string | null;
+  status: string;
+  current_job_id?: string | null;
+  metadata_json?: Record<string, unknown>;
+  last_seen_at?: string | null;
+  created_at?: string | null;
+  updated_at?: string | null;
+};
+
+export type WorkerHeartbeatListResponse = {
+  total?: number;
+  limit?: number;
+  offset?: number;
+  items?: WorkerHeartbeatItem[];
+  workers?: WorkerHeartbeatItem[];
+  worker_heartbeats?: WorkerHeartbeatItem[];
+};
+
+export type ModelStatusResponse = {
+  model_name?: string;
+  device?: string;
+  loaded?: boolean;
+  embedding_dimension?: number | null;
+  cache_dir?: string | null;
+  error?: string | null;
+};
+
+export type SystemEventItem = {
+  id: string;
+  event_type: string;
+  severity: string;
+  message: string;
+  request_id?: string | null;
+  job_id?: string | null;
+  trace_id?: string | null;
+  metadata_json?: Record<string, unknown>;
+  created_at?: string | null;
+};
+
+export type SystemEventListResponse = {
+  total: number;
+  limit: number;
+  offset: number;
+  items: SystemEventItem[];
+};
+
 export type IndexVersionItem = {
   id: string;
   dataset_id?: string | null;

@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from uuid import UUID
 
 from fastapi.testclient import TestClient
 
@@ -142,6 +143,44 @@ def test_worker_heartbeat_endpoint_serializes_workers() -> None:
     payload = response.json()
     assert payload["workers"][0]["worker_name"] == "worker-a"
     assert payload["workers"][0]["metadata_json"] == {"hostname": "test-host"}
+
+
+def test_system_events_endpoint_serializes_events() -> None:
+    class FakeEvent:
+        id = UUID("11111111-1111-1111-1111-111111111111")
+        event_type = "worker_error"
+        severity = "error"
+        message = "worker failed"
+        request_id = "req-123"
+        job_id = "job-123"
+        trace_id = UUID("22222222-2222-2222-2222-222222222222")
+        metadata_json = {"queue": "default"}
+        created_at = datetime(2026, 4, 25, tzinfo=timezone.utc)
+
+    class FakeScalars:
+        def all(self) -> list[FakeEvent]:
+            return [FakeEvent()]
+
+    class FakeDb:
+        def scalar(self, statement) -> int:
+            return 1
+
+        def scalars(self, statement) -> FakeScalars:
+            return FakeScalars()
+
+    app.dependency_overrides[get_db] = lambda: FakeDb()
+    try:
+        response = client.get("/api/v1/system/events?limit=10&offset=0")
+    finally:
+        app.dependency_overrides.clear()
+
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["total"] == 1
+    assert payload["limit"] == 10
+    assert payload["items"][0]["event_type"] == "worker_error"
+    assert payload["items"][0]["severity"] == "error"
+    assert payload["items"][0]["metadata_json"] == {"queue": "default"}
 
 
 def test_opensearch_health_route_returns_mocked_status(monkeypatch) -> None:

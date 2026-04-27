@@ -12,6 +12,21 @@ function list(metadata: Record<string, unknown> | undefined, key: string): strin
   return Array.isArray(value) ? value.map((item) => String(item)) : [];
 }
 
+function datasetLabel(metadata: Record<string, unknown> | undefined) {
+  const name = scalar(metadata, "dataset_name");
+  const version = scalar(metadata, "dataset_version");
+  if (name === "Unavailable" && version === "Unavailable") {
+    return "Unavailable";
+  }
+  if (version === "Unavailable") {
+    return name;
+  }
+  if (name === "Unavailable") {
+    return version;
+  }
+  return `${name} ${version}`;
+}
+
 export function SavedQueryDetailPanel({ query }: { query: SavedQueryDetail | null }) {
   if (!query) {
     return <p className="rounded-lg border border-slate-800 p-4 text-sm text-slate-400">Select a saved query to inspect metadata and qrels context.</p>;
@@ -34,7 +49,7 @@ export function SavedQueryDetailPanel({ query }: { query: SavedQueryDetail | nul
           <div className="grid gap-3 text-sm md:grid-cols-2">
             <Field label="Saved query ID" value={query.id} mono />
             <Field label="Dataset ID" value={query.dataset_id || "Unavailable"} mono />
-            <Field label="Dataset" value={`${scalar(query.metadata_json, "dataset_name")} ${scalar(query.metadata_json, "dataset_version")}`} />
+            <Field label="Dataset" value={datasetLabel(query.metadata_json)} />
             <Field label="Benchmark query ID" value={scalar(query.metadata_json, "benchmark_query_id")} mono />
             <Field label="Query external ID" value={scalar(query.metadata_json, "query_external_id")} mono />
             <Field label="Relevance count" value={scalar(query.metadata_json, "relevance_count")} />
