@@ -12,7 +12,9 @@ SUPPORTED_RETRIEVAL_MODES = {"bm25", "dense", "hybrid", "hybrid_rerank"}
 
 class StartEvaluationRequest(BaseModel):
     name: str | None = None
-    retrieval_mode: str
+    retrieval_mode: str | None = None
+    experiment_config_id: UUID | None = None
+    experiment_config_name: str | None = None
     dataset_name: str = "beir/scifact"
     dataset_version: str = "test"
     index_version_id: UUID | None = None
@@ -29,15 +31,23 @@ class StartEvaluationRequest(BaseModel):
 
     @field_validator("retrieval_mode")
     @classmethod
-    def retrieval_mode_supported(cls, value: str) -> str:
+    def retrieval_mode_supported(cls, value: str | None) -> str | None:
+        if value is None:
+            return value
         if value not in SUPPORTED_RETRIEVAL_MODES:
             raise ValueError("retrieval_mode must be bm25, dense, hybrid, or hybrid_rerank")
         return value
 
     @model_validator(mode="after")
     def validate_candidate_depths(self) -> "StartEvaluationRequest":
+        if self.retrieval_mode is None and not self.experiment_config_id and not self.experiment_config_name:
+            raise ValueError(
+                "retrieval_mode is required unless experiment_config_id or experiment_config_name is provided"
+            )
         if self.candidate_k is not None and self.candidate_k < self.top_k:
             raise ValueError("candidate_k must be greater than or equal to top_k")
+        if self.retrieval_mode is None:
+            return self
         if self.retrieval_mode in {"hybrid", "hybrid_rerank"}:
             if self.bm25_candidate_k is not None and self.bm25_candidate_k < self.top_k:
                 raise ValueError("bm25_candidate_k must be greater than or equal to top_k")
@@ -56,7 +66,7 @@ class StartEvaluationResponse(BaseModel):
     job_id: str
     queue: str
     status: str
-    retrieval_mode: str
+    retrieval_mode: str | None = None
     message: str
 
 
@@ -65,6 +75,7 @@ class EvaluationRunItem(BaseModel):
     name: str
     dataset_id: UUID | str
     index_version_id: UUID | str | None
+    experiment_config_id: UUID | str | None = None
     status: str
     query_count: int
     failed_query_count: int

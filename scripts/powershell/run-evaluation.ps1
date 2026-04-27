@@ -1,7 +1,8 @@
 param(
-    [Parameter(Mandatory = $true)]
     [ValidateSet("bm25", "dense", "hybrid", "hybrid_rerank")]
     [string]$Mode,
+    [string]$ExperimentConfigId,
+    [string]$ExperimentConfigName,
     [string]$Name,
     [string]$DatasetName = "beir/scifact",
     [string]$DatasetVersion = "test",
@@ -32,13 +33,21 @@ try {
     Set-Location $ApiRoot
     $ArgsList = @(
         "-m", "app.cli.run_evaluation",
-        "--mode", $Mode,
         "--dataset-name", $DatasetName,
         "--dataset-version", $DatasetVersion,
         "--query-offset", "$QueryOffset",
         "--top-k", "$TopK",
         "--rrf-k", "$RrfK"
     )
+    if (-not [string]::IsNullOrWhiteSpace($Mode)) {
+        $ArgsList += @("--mode", $Mode)
+    }
+    if (-not [string]::IsNullOrWhiteSpace($ExperimentConfigId)) {
+        $ArgsList += @("--experiment-config-id", $ExperimentConfigId)
+    }
+    if (-not [string]::IsNullOrWhiteSpace($ExperimentConfigName)) {
+        $ArgsList += @("--experiment-config-name", $ExperimentConfigName)
+    }
     if (-not [string]::IsNullOrWhiteSpace($Name)) {
         $ArgsList += @("--name", $Name)
     }

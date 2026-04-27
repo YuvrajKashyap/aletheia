@@ -129,6 +129,43 @@ def test_runner_writes_rows_and_scores_document_ids(monkeypatch) -> None:
     assert summary["latency_summary"]["avg_latency_ms"] == 12.5
 
 
+def test_runner_uses_experiment_config_as_source_of_truth(monkeypatch) -> None:
+    patch_basics(monkeypatch)
+    config = SimpleNamespace(
+        id=UUID("00000000-0000-0000-0000-000000000020"),
+        name="bm25_baseline",
+        retrieval_mode="bm25",
+        top_k_final=5,
+        bm25_candidate_k=7,
+        dense_candidate_k=0,
+        hybrid_candidate_k=0,
+        rerank_top_n=0,
+        fusion_params_json={},
+    )
+    monkeypatch.setattr(runner, "_resolve_experiment_config", lambda *args, **kwargs: config)
+    monkeypatch.setattr(runner, "run_search", lambda *args, **kwargs: search_response())
+    monkeypatch.setattr(
+        runner,
+        "load_relevance_for_benchmark_query",
+        lambda db, query_id: {"relevant_document_ids": ["d2"], "relevance_by_id": {"d2": 1}},
+    )
+    db = FakeDb()
+
+    summary = runner.run_offline_evaluation(
+        db,
+        name="configured eval",
+        retrieval_mode="dense",
+        candidate_k=100,
+        experiment_config_id=str(config.id),
+    )
+
+    eval_run = [item for item in db.added if isinstance(item, EvaluationRun)][0]
+    assert summary["retrieval_mode"] == "bm25"
+    assert summary["experiment_config_name"] == "bm25_baseline"
+    assert eval_run.experiment_config_id == config.id
+    assert eval_run.config_json["candidate_k"] == 7
+
+
 def test_runner_continues_after_query_failure(monkeypatch) -> None:
     queries = [benchmark_query("q1"), benchmark_query("q2")]
     patch_basics(monkeypatch, queries=queries)

@@ -25,6 +25,7 @@ def fake_run(run_id: str = "00000000-0000-0000-0000-000000000001"):
         name="BM25 eval",
         dataset_id=UUID("00000000-0000-0000-0000-000000000002"),
         index_version_id=UUID("00000000-0000-0000-0000-000000000003"),
+        experiment_config_id=None,
         status="completed",
         query_count=5,
         failed_query_count=0,
@@ -98,7 +99,7 @@ def test_start_evaluation_with_admin_key_enqueues(monkeypatch) -> None:
             "job_id": "job-1",
             "queue": "default",
             "status": "queued",
-            "retrieval_mode": kwargs["retrieval_mode"],
+            "retrieval_mode": kwargs.get("retrieval_mode"),
             "message": "Evaluation job enqueued.",
         }
 
@@ -113,6 +114,31 @@ def test_start_evaluation_with_admin_key_enqueues(monkeypatch) -> None:
     assert response.json()["job_id"] == "job-1"
     assert calls[0]["retrieval_mode"] == "bm25"
     assert calls[0]["query_limit"] == 5
+
+
+def test_start_evaluation_with_experiment_config_without_mode(monkeypatch) -> None:
+    calls = []
+
+    def fake_enqueue(**kwargs):
+        calls.append(kwargs)
+        return {
+            "job_id": "job-1",
+            "queue": "default",
+            "status": "queued",
+            "retrieval_mode": None,
+            "message": "Evaluation job enqueued.",
+        }
+
+    monkeypatch.setattr("app.api.v1.routes.evaluations.job_queue.enqueue_evaluation_job", fake_enqueue)
+    response = client.post(
+        "/api/v1/evaluations/runs",
+        json={"experiment_config_name": "bm25_baseline", "query_limit": 5},
+        headers={"X-Admin-API-Key": "replace-me"},
+    )
+
+    assert response.status_code == 200
+    assert calls[0]["retrieval_mode"] is None
+    assert calls[0]["experiment_config_name"] == "bm25_baseline"
 
 
 def test_start_evaluation_unsupported_mode_fails_validation() -> None:

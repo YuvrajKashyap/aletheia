@@ -6,7 +6,7 @@ from app.evaluation.runner import run_offline_evaluation
 
 def run_evaluation_job(
     name: str,
-    retrieval_mode: str,
+    retrieval_mode: str | None = None,
     dataset_name: str = "beir/scifact",
     dataset_version: str = "test",
     index_version_id: str | None = None,
@@ -20,6 +20,8 @@ def run_evaluation_job(
     rerank_top_n: int | None = None,
     rrf_k: int = 60,
     notes: str | None = None,
+    experiment_config_id: str | None = None,
+    experiment_config_name: str | None = None,
     rq_job_id: str | None = None,
 ) -> dict:
     db = SessionLocal()
@@ -41,6 +43,8 @@ def run_evaluation_job(
             rerank_top_n=rerank_top_n,
             rrf_k=rrf_k,
             notes=notes,
+            experiment_config_id=experiment_config_id,
+            experiment_config_name=experiment_config_name,
         )
     finally:
         db.close()

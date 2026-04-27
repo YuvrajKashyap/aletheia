@@ -8,6 +8,7 @@ from rq.job import Job
 from app.core.config import get_settings
 from app.core.redis import get_redis_connection
 from app.evaluation.jobs import run_evaluation_job
+from app.experiments.jobs import run_evaluation_comparison_job
 from app.ingestion.jobs import run_scifact_ingestion_job
 from app.indexing.jobs import build_lexical_index_job, build_vector_index_job
 from app.jobs.health import ping_job
@@ -140,7 +141,7 @@ def enqueue_vector_index_build_job(
 
 def enqueue_evaluation_job(
     name: str,
-    retrieval_mode: str,
+    retrieval_mode: str | None = None,
     dataset_name: str = "beir/scifact",
     dataset_version: str = "test",
     index_version_id: str | None = None,
@@ -154,6 +155,8 @@ def enqueue_evaluation_job(
     rerank_top_n: int | None = None,
     rrf_k: int = 60,
     notes: str | None = None,
+    experiment_config_id: str | None = None,
+    experiment_config_name: str | None = None,
 ) -> dict:
     queue = get_queue()
     job = queue.enqueue(
@@ -173,6 +176,8 @@ def enqueue_evaluation_job(
         rerank_top_n=rerank_top_n,
         rrf_k=rrf_k,
         notes=notes,
+        experiment_config_id=experiment_config_id,
+        experiment_config_name=experiment_config_name,
     )
     return {
         "job_id": job.id,
@@ -180,6 +185,40 @@ def enqueue_evaluation_job(
         "status": _serialize_status(job.get_status(refresh=True)),
         "retrieval_mode": retrieval_mode,
         "message": "Evaluation job enqueued.",
+    }
+
+
+def enqueue_evaluation_comparison_job(
+    name: str,
+    experiment_config_ids: list[str] | None = None,
+    experiment_config_names: list[str] | None = None,
+    use_defaults: bool = False,
+    dataset_name: str = "beir/scifact",
+    dataset_version: str = "test",
+    index_version_id: str | None = None,
+    query_limit: int | None = None,
+    query_offset: int = 0,
+    notes: str | None = None,
+) -> dict:
+    queue = get_queue()
+    job = queue.enqueue(
+        run_evaluation_comparison_job,
+        name=name,
+        experiment_config_ids=experiment_config_ids,
+        experiment_config_names=experiment_config_names,
+        use_defaults=use_defaults,
+        dataset_name=dataset_name,
+        dataset_version=dataset_version,
+        index_version_id=index_version_id,
+        query_limit=query_limit,
+        query_offset=query_offset,
+        notes=notes,
+    )
+    return {
+        "job_id": job.id,
+        "queue": queue.name,
+        "status": _serialize_status(job.get_status(refresh=True)),
+        "message": "Evaluation comparison job enqueued.",
     }
 
 

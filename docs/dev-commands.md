@@ -1415,6 +1415,80 @@ Evaluation DB inspection:
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from evaluation_query_results;"
     docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select report_format, report_path, created_at from evaluation_reports order by created_at desc limit 5;"
 
+## Step 26 experiment configs and comparison matrix
+
+Step 26 adds reusable experiment configs and a comparison matrix built from real evaluation runs.
+
+Experiment configs define retrieval parameters for repeatable evaluations:
+
+- `bm25_baseline`
+- `dense_baseline`
+- `hybrid_rrf_default`
+- `hybrid_rerank_default`
+
+Comparison rules:
+
+- Comparison rows come from real `evaluation_runs`.
+- Evaluation runs launched from a config store `experiment_config_id`.
+- Metrics are not tuned or faked; if a mode misses relevant documents, the metrics remain low or zero.
+- Comparison reports are written to `reports/evaluations/comparisons`.
+- Sync comparison is available through CLI; async comparison is available through API/RQ.
+- Query replay, frontend work, chatbot behavior, and fake benchmark results are not part of this step.
+
+Seed default configs:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/seed-experiment-configs.ps1
+
+Inspect configs:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select id, name, retrieval_mode, bm25_candidate_k, dense_candidate_k, hybrid_candidate_k, rerank_top_n, top_k_final, fusion_method, is_default from experiment_configs order by name;"
+
+Run limited sync comparison:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/run-comparison.ps1 -UseDefaults -QueryLimit 5 -Name "Step 26 default comparison" -Notes "Step 26 sync comparison validation"
+
+Inspect evaluation runs with configs:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select er.name, er.status, er.query_count, er.failed_query_count, er.recall_at_10, er.mrr_at_10, er.ndcg_at_10, ec.name as config_name, ec.retrieval_mode from evaluation_runs er left join experiment_configs ec on er.experiment_config_id = ec.id order by er.created_at desc limit 12;"
+
+Comparison reports:
+
+    dir reports\evaluations\comparisons
+
+API list configs:
+
+    Invoke-RestMethod "http://localhost:8000/api/v1/experiments/configs?limit=10&offset=0"
+
+API seed defaults:
+
+    Invoke-RestMethod -Method Post -Uri http://localhost:8000/api/v1/experiments/configs/seed-defaults -Headers @{"X-Admin-API-Key"="replace-me"}
+
+Async comparison:
+
+    $body = @{
+      name = "Step 26 async default comparison"
+      use_defaults = $true
+      query_limit = 3
+      notes = "Step 26 async comparison validation"
+    } | ConvertTo-Json
+
+    $job = Invoke-RestMethod -Method Post -Uri http://localhost:8000/api/v1/experiments/comparisons -ContentType "application/json" -Headers @{"X-Admin-API-Key"="replace-me"} -Body $body
+
+Job status:
+
+    Invoke-RestMethod "http://localhost:8000/api/v1/system/jobs/$($job.job_id)"
+
+PowerShell helpers:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/list-experiment-configs.ps1
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/start-comparison-job.ps1 -UseDefaults -QueryLimit 3 -Name "Step 26 helper async comparison" -Notes "helper validation"
+
+Final DB checks:
+
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from experiment_configs;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select count(*) from evaluation_runs where experiment_config_id is not null;"
+    docker exec aletheia-postgres psql -U aletheia -d aletheia -c "select name, status, query_count, failed_query_count, recall_at_10, mrr_at_10, ndcg_at_10 from evaluation_runs order by created_at desc limit 10;"
+
 Report files:
 
     dir reports\evaluations

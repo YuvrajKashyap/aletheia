@@ -26,6 +26,7 @@ def test_evaluation_job_opens_session_calls_runner_and_closes(monkeypatch) -> No
         query_limit=5,
         top_k=10,
         candidate_k=10,
+        experiment_config_name="bm25_baseline",
         rq_job_id="rq-1",
     )
 
@@ -35,5 +36,5 @@ def test_evaluation_job_opens_session_calls_runner_and_closes(monkeypatch) -> No
     assert calls[0]["retrieval_mode"] == "bm25"
     assert calls[0]["query_limit"] == 5
     assert calls[0]["candidate_k"] == 10
+    assert calls[0]["experiment_config_name"] == "bm25_baseline"
     assert session.closed is True
-

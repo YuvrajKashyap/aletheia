@@ -36,9 +36,20 @@ def test_valid_hybrid_rerank_request() -> None:
     assert request.rerank_top_n == 25
 
 
+def test_valid_experiment_config_request_without_mode() -> None:
+    request = StartEvaluationRequest(experiment_config_name="bm25_baseline")
+    assert request.retrieval_mode is None
+    assert request.experiment_config_name == "bm25_baseline"
+
+
 def test_invalid_mode_rejected() -> None:
     with pytest.raises(ValidationError):
         StartEvaluationRequest(retrieval_mode="hybrid_rerank_eval")
+
+
+def test_mode_or_experiment_config_required() -> None:
+    with pytest.raises(ValidationError, match="retrieval_mode is required"):
+        StartEvaluationRequest()
 
 
 def test_candidate_constraints_rejected() -> None:

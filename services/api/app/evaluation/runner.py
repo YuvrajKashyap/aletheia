@@ -16,9 +16,15 @@ from app.evaluation.correctness import (
 from app.evaluation.latency import summarize_latencies
 from app.evaluation.metrics import aggregate_query_metrics
 from app.evaluation.reporting import write_evaluation_report
+from app.experiments.service import (
+    experiment_config_to_evaluation_params,
+    get_experiment_config,
+    get_experiment_config_by_name,
+)
 from app.indexing.service import get_active_index_version
 from app.models.datasets import BenchmarkQuery, Dataset
 from app.models.evaluation import EvaluationQueryResult, EvaluationReport, EvaluationRun
+from app.models.experiments import ExperimentConfig
 from app.models.indexing import IndexVersion
 from app.schemas.search import SearchRequest
 from app.search.service import run_search
@@ -32,7 +38,7 @@ def utc_now() -> datetime:
 
 
 def _validate_inputs(
-    retrieval_mode: str,
+    retrieval_mode: str | None,
     query_limit: int | None,
     query_offset: int,
     top_k: int,
@@ -109,8 +115,9 @@ def _evaluation_config(
     hybrid_candidate_k: int | None,
     rerank_top_n: int | None,
     rrf_k: int,
+    experiment_config: ExperimentConfig | None = None,
 ) -> dict[str, Any]:
-    return {
+    config = {
         "retrieval_mode": retrieval_mode,
         "dataset_name": dataset_name,
         "dataset_version": dataset_version,
@@ -125,6 +132,28 @@ def _evaluation_config(
         "rerank_top_n": rerank_top_n,
         "rrf_k": rrf_k,
     }
+    if experiment_config is not None:
+        config["experiment_config_id"] = normalize_id(experiment_config.id)
+        config["experiment_config_name"] = experiment_config.name
+    return config
+
+
+def _resolve_experiment_config(
+    db: Session,
+    experiment_config_id: str | None,
+    experiment_config_name: str | None,
+) -> ExperimentConfig | None:
+    if experiment_config_id:
+        config = get_experiment_config(db, experiment_config_id)
+        if config is None:
+            raise LookupError(f"Experiment config not found: {experiment_config_id}")
+        return config
+    if experiment_config_name:
+        config = get_experiment_config_by_name(db, experiment_config_name)
+        if config is None:
+            raise LookupError(f"Experiment config not found: {experiment_config_name}")
+        return config
+    return None
 
 
 def _build_search_request(
@@ -211,8 +240,9 @@ def _summary(
     retrieval_mode: str,
     aggregate_metrics: dict,
     latency_summary: dict,
+    experiment_config: ExperimentConfig | None = None,
 ) -> dict:
-    return {
+    summary = {
         "evaluation_run_id": normalize_id(evaluation_run.id),
         "name": evaluation_run.name,
         "retrieval_mode": retrieval_mode,
@@ -225,12 +255,16 @@ def _summary(
         "latency_summary": latency_summary,
         "report_path": evaluation_run.report_path,
     }
+    if experiment_config is not None:
+        summary["experiment_config_id"] = normalize_id(experiment_config.id)
+        summary["experiment_config_name"] = experiment_config.name
+    return summary
 
 
 def run_offline_evaluation(
     db: Session,
     name: str,
-    retrieval_mode: str,
+    retrieval_mode: str | None = None,
     dataset_name: str = "beir/scifact",
     dataset_version: str = "test",
     index_version_id: str | None = None,
@@ -244,8 +278,22 @@ def run_offline_evaluation(
     rerank_top_n: int | None = None,
     rrf_k: int = 60,
     notes: str | None = None,
+    experiment_config_id: str | None = None,
+    experiment_config_name: str | None = None,
 ) -> dict:
+    experiment_config = _resolve_experiment_config(db, experiment_config_id, experiment_config_name)
+    if experiment_config is not None:
+        config_params = experiment_config_to_evaluation_params(experiment_config)
+        retrieval_mode = config_params["retrieval_mode"]
+        top_k = config_params["top_k"]
+        candidate_k = config_params.get("candidate_k")
+        bm25_candidate_k = config_params.get("bm25_candidate_k")
+        dense_candidate_k = config_params.get("dense_candidate_k")
+        hybrid_candidate_k = config_params.get("hybrid_candidate_k")
+        rerank_top_n = config_params.get("rerank_top_n")
+        rrf_k = config_params.get("rrf_k", rrf_k)
     _validate_inputs(retrieval_mode, query_limit, query_offset, top_k, rrf_k)
+    assert retrieval_mode is not None
     dataset = _get_dataset(db, dataset_name, dataset_version)
     index_version = _resolve_index_version(db, dataset.id, index_version_id)
     config = _evaluation_config(
@@ -262,11 +310,13 @@ def run_offline_evaluation(
         hybrid_candidate_k,
         rerank_top_n,
         rrf_k,
+        experiment_config=experiment_config,
     )
     evaluation_run = EvaluationRun(
         name=name,
         dataset_id=dataset.id,
         index_version_id=index_version.id,
+        experiment_config_id=experiment_config.id if experiment_config else None,
         status="running",
         started_at=utc_now(),
         query_count=0,
@@ -369,6 +419,14 @@ def run_offline_evaluation(
             },
             "retrieval_mode": retrieval_mode,
             "index_version_id": normalize_id(index_version.id),
+            "experiment_config": (
+                {
+                    "id": normalize_id(experiment_config.id),
+                    "name": experiment_config.name,
+                }
+                if experiment_config is not None
+                else None
+            ),
             "config": config,
             "aggregate_metrics": {
                 **aggregate_metrics,
@@ -393,7 +451,14 @@ def run_offline_evaluation(
         )
         db.commit()
         db.refresh(evaluation_run)
-        return _summary(evaluation_run, dataset, retrieval_mode, aggregate_metrics, latency_summary)
+        return _summary(
+            evaluation_run,
+            dataset,
+            retrieval_mode,
+            aggregate_metrics,
+            latency_summary,
+            experiment_config=experiment_config,
+        )
     except Exception:
         evaluation_run.status = "failed"
         evaluation_run.completed_at = utc_now()

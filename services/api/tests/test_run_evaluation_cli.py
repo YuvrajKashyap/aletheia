@@ -64,3 +64,33 @@ def test_run_evaluation_cli_returns_nonzero_on_error(monkeypatch, capsys) -> Non
     payload = json.loads(capsys.readouterr().err)
     assert payload["status"] == "error"
 
+
+def test_run_evaluation_cli_accepts_experiment_config_without_mode(monkeypatch, capsys) -> None:
+    calls = []
+
+    def fake_runner(db, **kwargs):
+        calls.append(kwargs)
+        return {
+            "evaluation_run_id": "run-1",
+            "name": kwargs["name"],
+            "retrieval_mode": "bm25",
+            "status": "completed",
+        }
+
+    monkeypatch.setattr(run_evaluation, "SessionLocal", lambda: FakeSession())
+    monkeypatch.setattr(run_evaluation, "run_offline_evaluation", fake_runner)
+    monkeypatch.setattr(
+        "sys.argv",
+        [
+            "run_evaluation.py",
+            "--experiment-config-name",
+            "bm25_baseline",
+            "--query-limit",
+            "3",
+        ],
+    )
+
+    assert run_evaluation.main() == 0
+    json.loads(capsys.readouterr().out)
+    assert calls[0]["retrieval_mode"] is None
+    assert calls[0]["experiment_config_name"] == "bm25_baseline"

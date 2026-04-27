@@ -33,6 +33,7 @@ def _run_item(run: EvaluationRun) -> EvaluationRunItem:
         name=run.name,
         dataset_id=run.dataset_id,
         index_version_id=run.index_version_id,
+        experiment_config_id=run.experiment_config_id,
         status=run.status,
         query_count=run.query_count,
         failed_query_count=run.failed_query_count,
@@ -76,8 +77,9 @@ def _result_item(result: EvaluationQueryResult) -> EvaluationQueryResultItem:
     )
 
 
-def _default_name(retrieval_mode: str) -> str:
-    return f"{retrieval_mode} evaluation {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+def _default_name(retrieval_mode: str | None) -> str:
+    label = retrieval_mode or "configured"
+    return f"{label} evaluation {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
 
 
 def list_evaluation_runs_query(
@@ -158,6 +160,10 @@ async def start_evaluation_run(
         result = job_queue.enqueue_evaluation_job(
             name=name,
             retrieval_mode=request.retrieval_mode,
+            experiment_config_id=str(request.experiment_config_id)
+            if request.experiment_config_id
+            else None,
+            experiment_config_name=request.experiment_config_name,
             dataset_name=request.dataset_name,
             dataset_version=request.dataset_version,
             index_version_id=str(request.index_version_id) if request.index_version_id else None,

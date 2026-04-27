@@ -11,7 +11,9 @@ from app.evaluation.runner import run_offline_evaluation
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run a synchronous offline benchmark evaluation.")
-    parser.add_argument("--mode", required=True, choices=["bm25", "dense", "hybrid", "hybrid_rerank"])
+    parser.add_argument("--mode", choices=["bm25", "dense", "hybrid", "hybrid_rerank"])
+    parser.add_argument("--experiment-config-id")
+    parser.add_argument("--experiment-config-name")
     parser.add_argument("--name")
     parser.add_argument("--dataset-name", default="beir/scifact")
     parser.add_argument("--dataset-version", default="test")
@@ -29,9 +31,10 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def _default_name(mode: str) -> str:
+def _default_name(mode: str | None, config_name: str | None) -> str:
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    return f"{mode} evaluation {timestamp}"
+    label = mode or config_name or "configured"
+    return f"{label} evaluation {timestamp}"
 
 
 def main() -> int:
@@ -40,8 +43,10 @@ def main() -> int:
         with SessionLocal() as db:
             summary = run_offline_evaluation(
                 db,
-                name=args.name or _default_name(args.mode),
+                name=args.name or _default_name(args.mode, args.experiment_config_name),
                 retrieval_mode=args.mode,
+                experiment_config_id=args.experiment_config_id,
+                experiment_config_name=args.experiment_config_name,
                 dataset_name=args.dataset_name,
                 dataset_version=args.dataset_version,
                 index_version_id=args.index_version_id,
