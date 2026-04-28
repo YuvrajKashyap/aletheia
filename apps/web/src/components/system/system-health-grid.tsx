@@ -1,5 +1,6 @@
 import { ServiceHealthCard } from "@/components/system/service-health-card";
 import type { OperationalStatus } from "@/components/system/operational-status-badge";
+import { workerOperationalStatus, workerTimestamp } from "@/components/system/worker-status";
 import type {
   DbHealthResponse,
   HealthResponse,
@@ -92,14 +93,14 @@ export function SystemHealthGrid({
       <ServiceHealthCard
         title="Worker"
         description="Latest worker heartbeat."
-        status={workers.error ? "error" : worker ? statusFromHealth(worker.status) : "warning"}
+        status={workerOperationalStatus(worker, workers.error)}
         error={workers.error}
         fields={[
           { label: "Worker", value: worker?.worker_name },
           { label: "Queue", value: worker?.queue_name },
           { label: "Status", value: worker?.status || (workers.data ? "No recent worker heartbeat" : undefined) },
           { label: "Current job", value: worker?.current_job_id, mono: true },
-          { label: "Last seen", value: worker?.last_seen_at }
+          { label: "Last seen", value: worker ? workerTimestamp(worker) : undefined }
         ]}
       />
       <ServiceHealthCard
