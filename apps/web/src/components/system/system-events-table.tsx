@@ -99,13 +99,21 @@ export function SystemEventsTable({
                     <TableCell className="min-w-72 text-slate-200">{event.message}</TableCell>
                     <TableCell className="font-mono text-xs">{short(event.request_id)}</TableCell>
                     <TableCell className="font-mono text-xs">{short(event.job_id)}</TableCell>
-                    <TableCell className="font-mono text-xs">
+                    <TableCell>
                       {event.trace_id ? (
-                        <Link className="text-cyan-200 underline-offset-4 hover:underline" href={`/traces?traceId=${encodeURIComponent(event.trace_id)}`}>
-                          {short(event.trace_id)}
-                        </Link>
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="font-mono text-xs text-slate-300">{short(event.trace_id)}</span>
+                          <Link
+                            aria-label={`Open trace ${event.trace_id}`}
+                            className="inline-flex items-center rounded-md border border-cyan-700 bg-cyan-950/40 px-2 py-1 text-xs font-medium text-cyan-200 underline-offset-4 hover:border-cyan-400 hover:text-cyan-100 hover:underline focus:outline-none focus:ring-2 focus:ring-cyan-400/70"
+                            href={`/traces?traceId=${encodeURIComponent(event.trace_id)}`}
+                            title={`Open trace ${event.trace_id}`}
+                          >
+                            Open trace
+                          </Link>
+                        </div>
                       ) : (
-                        "Unavailable"
+                        <span className="text-slate-400">Unavailable</span>
                       )}
                     </TableCell>
                     <TableCell className="font-mono text-xs">{event.created_at || "Unavailable"}</TableCell>
