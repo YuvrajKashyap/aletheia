@@ -2205,3 +2205,40 @@ Manual integration checks:
 - Confirm overview cards use live backend data or honest unavailable states.
 - From `/experiments`, click `Open evaluation` and confirm `/evaluations?runId=<id>` opens that run.
 - Confirm trace links across Search Lab, Evaluation results, Replay Lab, and System Health open `/traces?traceId=<id>`.
+
+## Step 38 Deployment Readiness and Production Config Hardening
+
+Step 38 prepares the repository for deployment without deploying any provider resources.
+
+What changed:
+
+- API and worker Dockerfiles are available under `services/api`.
+- API and worker are separate images and separate processes.
+- `.dockerignore` excludes local env files, node modules, build output, data, reports, and model caches.
+- `.env.production.example` lists production placeholders only.
+- Deployment guides are available in `docs/deployment.md`, `docs/deploy-vercel.md`, `docs/deploy-neon.md`, and `docs/deploy-backend.md`.
+- The frontend remains Vercel build-safe. Runtime pages show real API errors when the backend is unavailable.
+- No fake production data, fake metrics, or fake health states are introduced.
+
+Production readiness check:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/production-build-check.ps1
+
+Docker image checks:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/docker-build-api.ps1
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/docker-build-worker.ps1
+
+Direct Docker commands:
+
+    docker build -f services/api/Dockerfile -t aletheia-api:local .
+    docker build -f services/api/Dockerfile.worker -t aletheia-worker:local .
+
+Deployment docs:
+
+    docs/deployment.md
+    docs/deploy-vercel.md
+    docs/deploy-neon.md
+    docs/deploy-backend.md
+
+Actual provider setup comes after this step. Do not commit real secrets. Put real production values in provider dashboards or secret managers.
