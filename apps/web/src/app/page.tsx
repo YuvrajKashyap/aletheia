@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { getEvaluationRunModeLabel } from "@/components/evaluations/evaluation-run-labels";
 import { AppShell } from "@/components/layout/app-shell";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -18,6 +19,7 @@ import {
   getSavedQueries
 } from "@/lib/api/overview";
 import { getSystemEvents } from "@/lib/api/system";
+import type { EvaluationRunItem } from "@/lib/api/types";
 import { formatMetric, formatNumber, formatShortId } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
@@ -104,9 +106,9 @@ function ErrorBlock({ title, message }: { title: string; message: string }) {
   );
 }
 
-function evaluationMode(config?: Record<string, unknown>) {
-  const value = config?.retrieval_mode;
-  return typeof value === "string" ? value : "mode unknown";
+function overviewEvaluationMode(run: EvaluationRunItem) {
+  const label = getEvaluationRunModeLabel(run);
+  return label === "Unknown mode" ? "Unavailable" : label;
 }
 
 function shortId(value?: string | null) {
@@ -263,7 +265,7 @@ export default async function OverviewPage() {
                     evaluationItems.map((run) => (
                       <TableRow key={run.id}>
                         <TableCell className="font-medium text-slate-100">{run.name || "unnamed run"}</TableCell>
-                        <TableCell>{evaluationMode(run.config_json)}</TableCell>
+                        <TableCell>{overviewEvaluationMode(run)}</TableCell>
                         <TableCell>
                           <Badge tone={tone(run.status)}>{run.status || "unknown"}</Badge>
                         </TableCell>
