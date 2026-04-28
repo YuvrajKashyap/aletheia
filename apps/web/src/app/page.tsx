@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { AppShell } from "@/components/layout/app-shell";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -15,6 +17,8 @@ import {
   getRecentTraces,
   getSavedQueries
 } from "@/lib/api/overview";
+import { getSystemEvents } from "@/lib/api/system";
+import { formatMetric, formatNumber, formatShortId } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
@@ -38,7 +42,7 @@ function tone(status?: string | null): "neutral" | "good" | "warn" | "bad" {
   if (["ok", "healthy", "ready", "completed", "active"].includes(normalized)) {
     return "good";
   }
-  if (["degraded", "running", "building"].includes(normalized)) {
+  if (["degraded", "running", "building", "warning", "warn"].includes(normalized)) {
     return "warn";
   }
   if (["error", "failed", "unhealthy"].includes(normalized)) {
@@ -100,21 +104,17 @@ function ErrorBlock({ title, message }: { title: string; message: string }) {
   );
 }
 
-function formatMetric(value?: number | null) {
-  return typeof value === "number" ? value.toFixed(3) : "unavailable";
-}
-
 function evaluationMode(config?: Record<string, unknown>) {
   const value = config?.retrieval_mode;
   return typeof value === "string" ? value : "mode unknown";
 }
 
 function shortId(value?: string | null) {
-  return value ? value.slice(0, 8) : "unavailable";
+  return formatShortId(value).toLowerCase();
 }
 
 export default async function OverviewPage() {
-  const [health, dbHealth, openSearch, qdrant, indexStatus, evalRuns, configs, traces, datasets, savedQueries] =
+  const [health, dbHealth, openSearch, qdrant, indexStatus, evalRuns, configs, traces, datasets, savedQueries, systemEvents] =
     await Promise.all([
       load(getHealth()),
       load(getDbHealth()),
@@ -125,7 +125,8 @@ export default async function OverviewPage() {
       load(getExperimentConfigs(8)),
       load(getRecentTraces(5)),
       load(getDatasets()),
-      load(getSavedQueries(5))
+      load(getSavedQueries(5)),
+      load(getSystemEvents({ limit: 5, offset: 0 }))
     ]);
 
   const activeIndex = indexStatus.ok ? indexStatus.data.active_index_version : null;
@@ -134,6 +135,7 @@ export default async function OverviewPage() {
   const traceItems = traces.ok ? traces.data.items || [] : [];
   const datasetItems = datasets.ok ? (Array.isArray(datasets.data) ? datasets.data : datasets.data.items || []) : [];
   const savedQueryItems = savedQueries.ok ? savedQueries.data.items || [] : [];
+  const systemEventItems = systemEvents.ok ? systemEvents.data.items || [] : [];
 
   return (
     <AppShell>
@@ -145,8 +147,8 @@ export default async function OverviewPage() {
               Hybrid Retrieval, Reranking & Evaluation Platform
             </h1>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
-              Frontend foundation connected to the real FastAPI backend. Values below come from live
-              API responses or show explicit unavailable states.
+              Integrated control surface for search, traces, evaluations, experiments, replay, indexes, datasets, and system health.
+              Values below come from live API responses or show explicit unavailable states.
             </p>
           </div>
           <div className="font-mono text-xs text-slate-500">Backend: {API_BASE_URL}</div>
@@ -179,12 +181,16 @@ export default async function OverviewPage() {
                     <div className="font-mono text-slate-300">{activeIndex.id || "unavailable"}</div>
                   </div>
                   <div>
+                    <div className="text-slate-500">Documents</div>
+                    <div className="text-slate-100">{formatNumber(activeIndex.document_count)}</div>
+                  </div>
+                  <div>
                     <div className="text-slate-500">Chunks</div>
-                    <div className="text-slate-100">{activeIndex.chunk_count ?? "unavailable"}</div>
+                    <div className="text-slate-100">{formatNumber(activeIndex.chunk_count)}</div>
                   </div>
                   <div>
                     <div className="text-slate-500">Vectors</div>
-                    <div className="text-slate-100">{activeIndex.vector_count ?? "unavailable"}</div>
+                    <div className="text-slate-100">{formatNumber(activeIndex.vector_count)}</div>
                   </div>
                   <div>
                     <div className="text-slate-500">Lexical index</div>
@@ -219,10 +225,11 @@ export default async function OverviewPage() {
                       <div className="font-medium text-slate-100">{dataset.name || "unnamed dataset"}</div>
                       <div className="mt-1 text-xs text-slate-500">version {dataset.version || "unknown"}</div>
                       <div className="mt-2 grid grid-cols-3 gap-2 text-xs text-slate-400">
-                        <span>docs {dataset.document_count ?? "n/a"}</span>
-                        <span>queries {dataset.benchmark_query_count ?? "n/a"}</span>
-                        <span>qrels {dataset.relevance_judgment_count ?? "n/a"}</span>
+                        <span>docs {formatNumber(dataset.document_count)}</span>
+                        <span>chunks {formatNumber(dataset.chunk_count)}</span>
+                        <span>qrels {formatNumber(dataset.relevance_judgment_count)}</span>
                       </div>
+                      <div className="mt-1 text-xs text-slate-400">queries {formatNumber(dataset.benchmark_query_count)}</div>
                     </div>
                   ))}
                 </div>
@@ -260,9 +267,9 @@ export default async function OverviewPage() {
                         <TableCell>
                           <Badge tone={tone(run.status)}>{run.status || "unknown"}</Badge>
                         </TableCell>
-                        <TableCell>{formatMetric(run.recall_at_10)}</TableCell>
-                        <TableCell>{formatMetric(run.mrr_at_10)}</TableCell>
-                        <TableCell>{formatMetric(run.ndcg_at_10)}</TableCell>
+                        <TableCell>{formatMetric(run.recall_at_10, 3)}</TableCell>
+                        <TableCell>{formatMetric(run.mrr_at_10, 3)}</TableCell>
+                        <TableCell>{formatMetric(run.ndcg_at_10, 3)}</TableCell>
                       </TableRow>
                     ))
                   ) : (
@@ -352,7 +359,75 @@ export default async function OverviewPage() {
             </CardContent>
           </Card>
         </section>
+
+        <section className="grid gap-4 xl:grid-cols-3">
+          <Card className="xl:col-span-2">
+            <CardHeader>
+              <CardTitle>Recent System Events</CardTitle>
+              <CardDescription>{systemEvents.ok ? `${systemEvents.data.total ?? systemEventItems.length} events available` : "Data unavailable"}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              {!systemEvents.ok ? (
+                <p className="text-sm text-red-300">{systemEvents.error}</p>
+              ) : (
+                <div className="space-y-2">
+                  {systemEventItems.map((event) => (
+                    <div key={event.id} className="grid gap-2 rounded-md border border-slate-800 px-3 py-2 text-sm md:grid-cols-[120px_1fr_auto]">
+                      <Badge tone={tone(event.severity)}>{event.severity || "unknown"}</Badge>
+                      <div>
+                        <div className="font-medium text-slate-100">{event.event_type || "event type unavailable"}</div>
+                        <div className="mt-1 text-xs text-slate-500">{event.message || "message unavailable"}</div>
+                      </div>
+                      {event.trace_id ? (
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="font-mono text-xs text-slate-400">{shortId(event.trace_id)}</span>
+                          <Link
+                            className="inline-flex h-7 items-center rounded-md border border-cyan-800 bg-cyan-950/40 px-2 text-xs font-medium text-cyan-200 transition hover:border-cyan-500 hover:text-cyan-100 focus:outline-none focus:ring-2 focus:ring-cyan-400/70"
+                            href={`/traces?traceId=${encodeURIComponent(event.trace_id)}`}
+                          >
+                            Open trace
+                          </Link>
+                        </div>
+                      ) : null}
+                    </div>
+                  ))}
+                  {!systemEventItems.length ? <p className="text-sm text-slate-400">No system events returned.</p> : null}
+                </div>
+              )}
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Product Surfaces</CardTitle>
+              <CardDescription>Direct paths into the integrated retrieval platform.</CardDescription>
+            </CardHeader>
+            <CardContent className="grid gap-2">
+              {quickLinks.map((link) => (
+                <Link
+                  className="rounded-md border border-slate-800 px-3 py-2 text-sm text-slate-200 transition hover:border-cyan-700 hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-400/70"
+                  href={link.href}
+                  key={link.href}
+                >
+                  <div className="font-medium">{link.label}</div>
+                  <div className="mt-1 text-xs text-slate-500">{link.description}</div>
+                </Link>
+              ))}
+            </CardContent>
+          </Card>
+        </section>
       </div>
     </AppShell>
   );
 }
+
+const quickLinks = [
+  { href: "/search", label: "Search Lab", description: "Run BM25, dense, hybrid, and reranked retrieval." },
+  { href: "/traces", label: "Query Traces", description: "Inspect trace stages, candidates, and rank movement." },
+  { href: "/evaluations", label: "Evaluations", description: "Review qrels-backed metrics and per-query results." },
+  { href: "/experiments", label: "Experiments", description: "Compare configs and latency versus quality tradeoffs." },
+  { href: "/indexes", label: "Index Console", description: "Inspect index versions, jobs, and retrieval backends." },
+  { href: "/datasets", label: "Dataset Browser", description: "Browse corpus documents, chunks, queries, and qrels." },
+  { href: "/replay", label: "Replay Lab", description: "Replay saved queries and compare trace outputs." },
+  { href: "/system", label: "System Health", description: "Check API, queue, workers, models, and events." }
+];

@@ -2174,3 +2174,34 @@ Manual system checks:
 - Stop FastAPI and confirm the page shows backend unreachable errors without fake health data.
 - Start the worker and confirm worker heartbeat data appears when available.
 - Confirm system event filters only show real backend events.
+
+## Step 37 Full App Integration Polish and Deep Links
+
+Step 37 tightens the frontend integration across the completed app surfaces. The Overview page now summarizes the full retrieval platform and links into Search Lab, Query Traces, Evaluations, Experiments, Index Console, Dataset Browser, Replay Lab, and System Health.
+
+Deep links:
+
+- Query traces use `/traces?traceId=<trace_id>`.
+- Evaluation runs use `/evaluations?runId=<evaluation_run_id>`.
+- Experiment Matrix evaluation actions link to the selected run through `/evaluations?runId=<evaluation_run_id>`.
+
+The Overview page still uses real FastAPI data only. Failed sections show section-level errors or unavailable states. No fake metrics, fake health, fake traces, fake replay data, or generated answers are displayed.
+
+Validation:
+
+    cd apps/web
+    npm run typecheck
+    npm run build
+    npm run lint
+    cd ../..
+
+Doctor:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/doctor.ps1
+
+Manual integration checks:
+
+- Open `http://localhost:3000/`.
+- Confirm overview cards use live backend data or honest unavailable states.
+- From `/experiments`, click `Open evaluation` and confirm `/evaluations?runId=<id>` opens that run.
+- Confirm trace links across Search Lab, Evaluation results, Replay Lab, and System Health open `/traces?traceId=<id>`.

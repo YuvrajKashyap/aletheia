@@ -62,6 +62,7 @@ EXPECTED_FILES = [
     "apps/web/src/lib/api/datasets.ts",
     "apps/web/src/lib/api/replay.ts",
     "apps/web/src/lib/api/system.ts",
+    "apps/web/src/lib/format.ts",
     "apps/web/src/components/layout/app-shell.tsx",
     "apps/web/src/components/search/search-lab.tsx",
     "apps/web/src/components/search/search-form.tsx",

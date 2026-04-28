@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { AppShell } from "@/components/layout/app-shell";
 import { EvaluationLatencyChart } from "@/components/evaluations/evaluation-latency-chart";
@@ -51,7 +52,15 @@ const initialFilters: Filters = {
   limit: 25
 };
 
+function runIdFromLocation(): string | null {
+  if (typeof window === "undefined") {
+    return null;
+  }
+  return new URLSearchParams(window.location.search).get("runId");
+}
+
 export function EvaluationDashboard() {
+  const router = useRouter();
   const [filters, setFilters] = useState<Filters>(initialFilters);
   const [runs, setRuns] = useState<EvaluationRunItem[]>([]);
   const [detailsByRunId, setDetailsByRunId] = useState<Record<string, EvaluationRunDetail>>({});
@@ -77,7 +86,7 @@ export function EvaluationDashboard() {
       });
       setRuns(response.items || []);
       setDetailsByRunId({});
-      setSelectedRunId((current) => current || response.items?.[0]?.id || null);
+      setSelectedRunId((current) => current || runIdFromLocation() || response.items?.[0]?.id || null);
     } catch (caught) {
       setRuns([]);
       setSelectedRunId(null);
@@ -144,13 +153,34 @@ export function EvaluationDashboard() {
     }
   }, [loadRunDetail, selectedRunId]);
 
+  useEffect(() => {
+    const handlePopState = () => {
+      setSelectedRunId(runIdFromLocation());
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
   const labeledRuns = useMemo(
-    () =>
-      runs.map((run) => {
+    () => {
+      const mergedRuns = runs.map((run) => {
         const runDetail = detailsByRunId[run.id];
         return runDetail ? { ...run, ...runDetail, config_json: runDetail.config_json } : run;
-      }),
-    [detailsByRunId, runs]
+      });
+      if (detail && !mergedRuns.some((run) => run.id === detail.id)) {
+        return [detail, ...mergedRuns];
+      }
+      return mergedRuns;
+    },
+    [detail, detailsByRunId, runs]
+  );
+
+  const selectRun = useCallback(
+    (runId: string) => {
+      setSelectedRunId(runId);
+      router.push(`/evaluations?runId=${encodeURIComponent(runId)}`, { scroll: false });
+    },
+    [router]
   );
 
   return (
@@ -179,6 +209,7 @@ export function EvaluationDashboard() {
             setDetail(null);
             setResults([]);
             setReport(null);
+            router.replace("/evaluations", { scroll: false });
           }}
           onRefresh={() => setRefreshCounter((current) => current + 1)}
         />
@@ -202,7 +233,7 @@ export function EvaluationDashboard() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            {listLoading ? <LoadingBlock /> : <EvaluationRunTable runs={labeledRuns} selectedRunId={selectedRunId} onSelect={setSelectedRunId} />}
+            {listLoading ? <LoadingBlock /> : <EvaluationRunTable runs={labeledRuns} selectedRunId={selectedRunId} onSelect={selectRun} />}
           </CardContent>
         </Card>
 

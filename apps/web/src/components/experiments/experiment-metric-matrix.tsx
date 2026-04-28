@@ -59,13 +59,16 @@ export function ExperimentMetricMatrix({ rows }: ExperimentMetricMatrixProps) {
               <TableCell>
                 {row.latestRun ? (
                   <div className="space-y-2">
-                    <Link className="font-medium text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline" href="/evaluations">
+                    <Link
+                      className="font-medium text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline"
+                      href={`/evaluations?runId=${encodeURIComponent(row.latestRun.id)}`}
+                    >
                       {row.latestRun.name}
                     </Link>
                     <div>
                       <Link
                         className="inline-flex h-7 items-center rounded-md border border-cyan-800 bg-cyan-950/40 px-2 text-xs font-medium text-cyan-200 transition hover:border-cyan-500 hover:bg-cyan-900/50 hover:text-cyan-100 focus:outline-none focus:ring-2 focus:ring-cyan-400/70"
-                        href="/evaluations"
+                        href={`/evaluations?runId=${encodeURIComponent(row.latestRun.id)}`}
                       >
                         Open evaluation
                       </Link>
