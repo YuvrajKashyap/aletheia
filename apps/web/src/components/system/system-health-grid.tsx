@@ -42,7 +42,8 @@ export function SystemHealthGrid({
   openSearch,
   qdrant,
   embedding,
-  reranker
+  reranker,
+  snapshotMode = false
 }: {
   api: Result<HealthResponse>;
   db: Result<DbHealthResponse>;
@@ -52,7 +53,96 @@ export function SystemHealthGrid({
   qdrant: Result<QdrantHealthResponse>;
   embedding: Result<ModelStatusResponse>;
   reranker: Result<ModelStatusResponse>;
+  snapshotMode?: boolean;
 }) {
+  if (snapshotMode) {
+    return (
+      <div className="grid gap-4 xl:grid-cols-2">
+        <ServiceHealthCard
+          title="Public hosted frontend"
+          description="Vercel-hosted Next.js snapshot demo."
+          status="healthy"
+          fields={[
+            { label: "Status", value: "available" },
+            { label: "Mode", value: "public snapshot" }
+          ]}
+        />
+        <ServiceHealthCard
+          title="Static snapshot data"
+          description="Real exported outputs served from /demo-data."
+          status="healthy"
+          fields={[
+            { label: "Status", value: "available" },
+            { label: "Source", value: "/demo-data/system.json", mono: true }
+          ]}
+        />
+        <ServiceHealthCard
+          title="Live backend API"
+          description="FastAPI is not hosted for the public snapshot demo."
+          status="warning"
+          fields={[
+            { label: "Status", value: "disabled publicly" },
+            { label: "Local stack", value: "FastAPI available in live local mode" }
+          ]}
+        />
+        <ServiceHealthCard
+          title="Redis/RQ"
+          description="Queue infrastructure is local-only in snapshot mode."
+          status="warning"
+          fields={[
+            { label: "Status", value: "local full stack only" },
+            { label: "Public jobs", value: "disabled" }
+          ]}
+        />
+        <ServiceHealthCard
+          title="Worker"
+          description="Workers run in the local full stack."
+          status="warning"
+          fields={[
+            { label: "Status", value: "local full stack only" },
+            { label: "Public jobs", value: "disabled" }
+          ]}
+        />
+        <ServiceHealthCard
+          title="OpenSearch"
+          description="BM25 lexical retrieval backend."
+          status="warning"
+          fields={[
+            { label: "Status", value: "local full stack only" },
+            { label: "Public retrieval", value: "precomputed snapshot outputs" }
+          ]}
+        />
+        <ServiceHealthCard
+          title="Qdrant"
+          description="Dense vector retrieval backend."
+          status="warning"
+          fields={[
+            { label: "Status", value: "local full stack only" },
+            { label: "Public retrieval", value: "precomputed snapshot outputs" }
+          ]}
+        />
+        <ServiceHealthCard
+          title="Embedding model"
+          description="Dense retrieval embedding model."
+          status="warning"
+          fields={[
+            { label: "Model", value: "BAAI/bge-small-en-v1.5" },
+            { label: "Status", value: "local full stack only" }
+          ]}
+        />
+        <ServiceHealthCard
+          title="Reranker model"
+          description="Hybrid rerank cross-encoder."
+          status="warning"
+          fields={[
+            { label: "Model", value: "cross-encoder/ms-marco-MiniLM-L-6-v2" },
+            { label: "Status", value: "local full stack only" }
+          ]}
+        />
+      </div>
+    );
+  }
+
   const worker = latestWorker(workers.data || []);
   return (
     <div className="grid gap-4 xl:grid-cols-2">

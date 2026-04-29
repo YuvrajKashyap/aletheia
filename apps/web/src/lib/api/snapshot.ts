@@ -337,21 +337,21 @@ export async function getSnapshotIndexJobs(params: { indexVersionId?: string; jo
 
 export function getSnapshotOpenSearchHealth(): OpenSearchHealthResponse {
   return {
-    status: "snapshot_only",
+    status: "local_only",
     url: "local full stack only",
     cluster_name: null,
     version: null,
-    error: "OpenSearch is not hosted in public snapshot mode."
+    error: null
   };
 }
 
 export function getSnapshotQdrantHealth(): QdrantHealthResponse {
   return {
-    status: "snapshot_only",
+    status: "local_only",
     url: "local full stack only",
     version: null,
     collections_count: null,
-    error: "Qdrant is not hosted in public snapshot mode."
+    error: null
   };
 }
 
@@ -536,8 +536,8 @@ export function getSnapshotQueueStatus() {
   return {
     queue: "local full stack only",
     job_count: 0,
-    status: "disabled",
-    error: "Redis/RQ is not hosted in public snapshot mode."
+    status: "local_only",
+    error: null
   };
 }
 
@@ -556,6 +556,6 @@ export function getSnapshotModelStatus(modelName: string) {
     device: "local full stack only",
     loaded: false,
     cache_dir: null,
-    error: "Models are not loaded in public snapshot mode."
+    error: null
   };
 }

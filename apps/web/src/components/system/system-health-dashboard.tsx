@@ -175,6 +175,7 @@ export function SystemHealthDashboard() {
           isLoading={isLoading}
           lastRefreshedAt={lastRefreshedAt}
           failedCount={failedCount}
+          snapshotMode={snapshotMode}
           onRefresh={() => setRefreshCounter((current) => current + 1)}
         />
 
@@ -199,19 +200,21 @@ export function SystemHealthDashboard() {
           qdrant={qdrant}
           embedding={embedding}
           reranker={reranker}
+          snapshotMode={snapshotMode}
         />
 
         <div className="grid gap-4 xl:grid-cols-2">
-          <QueueStatusPanel queue={queue.data} error={queue.error} />
+          <QueueStatusPanel queue={queue.data} error={queue.error} snapshotMode={snapshotMode} />
           <ModelStatusPanel
             embedding={embedding.data}
             embeddingError={embedding.error}
             reranker={reranker.data}
             rerankerError={reranker.error}
+            snapshotMode={snapshotMode}
           />
         </div>
 
-        <WorkerHeartbeatPanel workers={workersList} error={workers.error} />
+        <WorkerHeartbeatPanel workers={workersList} error={workers.error} snapshotMode={snapshotMode} />
 
         <SystemEventsTable
           events={events.data?.items || []}

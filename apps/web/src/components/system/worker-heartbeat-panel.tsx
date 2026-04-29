@@ -18,16 +18,33 @@ function ageSince(worker: WorkerHeartbeatItem) {
   return `${Math.floor(minutes / 60)}h`;
 }
 
-export function WorkerHeartbeatPanel({ workers, error }: { workers: WorkerHeartbeatItem[]; error?: string | null }) {
+export function WorkerHeartbeatPanel({
+  workers,
+  error,
+  snapshotMode = false
+}: {
+  workers: WorkerHeartbeatItem[];
+  error?: string | null;
+  snapshotMode?: boolean;
+}) {
   return (
     <Card>
       <CardHeader>
         <CardTitle>Worker heartbeats</CardTitle>
-        <CardDescription>Worker liveness from backend heartbeat rows.</CardDescription>
+        <CardDescription>
+          {snapshotMode
+            ? "Workers run in the local full stack. Public snapshot mode serves exported outputs only."
+            : "Worker liveness from backend heartbeat rows."}
+        </CardDescription>
       </CardHeader>
       <CardContent>
-        {error ? <p className="text-sm text-red-300">{error}</p> : null}
-        {!error && !workers.length ? <p className="text-sm text-amber-300">No recent worker heartbeat.</p> : null}
+        {snapshotMode ? (
+          <p className="text-sm text-amber-300">
+            Worker heartbeats are local full stack only. Hosted snapshot mode does not run Redis/RQ workers.
+          </p>
+        ) : null}
+        {!snapshotMode && error ? <p className="text-sm text-red-300">{error}</p> : null}
+        {!snapshotMode && !error && !workers.length ? <p className="text-sm text-amber-300">No recent worker heartbeat.</p> : null}
         {workers.length ? (
           <div className="overflow-x-auto">
             <Table>

@@ -6,13 +6,32 @@ export function ModelStatusPanel({
   embedding,
   embeddingError,
   reranker,
-  rerankerError
+  rerankerError,
+  snapshotMode = false
 }: {
   embedding: ModelStatusResponse | null;
   embeddingError?: string | null;
   reranker: ModelStatusResponse | null;
   rerankerError?: string | null;
+  snapshotMode?: boolean;
 }) {
+  if (snapshotMode) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>Model status</CardTitle>
+          <CardDescription>
+            Models are used by the full local stack, not loaded in the hosted snapshot.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-4 lg:grid-cols-2">
+          <SnapshotModelCard title="Embedding model" modelName="BAAI/bge-small-en-v1.5" />
+          <SnapshotModelCard title="Reranker model" modelName="cross-encoder/ms-marco-MiniLM-L-6-v2" />
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
     <Card>
       <CardHeader>
@@ -24,6 +43,22 @@ export function ModelStatusPanel({
         <ModelCard title="Reranker model" model={reranker} error={rerankerError} />
       </CardContent>
     </Card>
+  );
+}
+
+function SnapshotModelCard({ title, modelName }: { title: string; modelName: string }) {
+  return (
+    <div className="rounded-lg border border-slate-800 bg-slate-950/60 p-4">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <h3 className="text-sm font-semibold text-slate-100">{title}</h3>
+        <OperationalStatusBadge status="warning" />
+      </div>
+      <div className="mt-4 space-y-2 text-sm">
+        <Field label="Model" value={modelName} />
+        <Field label="Status" value="local full stack only" />
+        <Field label="Hosted snapshot" value="not loaded publicly" />
+      </div>
+    </div>
   );
 }
 

@@ -2,7 +2,34 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { OperationalStatusBadge } from "@/components/system/operational-status-badge";
 import type { QueueStatusResponse } from "@/lib/api/types";
 
-export function QueueStatusPanel({ queue, error }: { queue: QueueStatusResponse | null; error?: string | null }) {
+export function QueueStatusPanel({
+  queue,
+  error,
+  snapshotMode = false
+}: {
+  queue: QueueStatusResponse | null;
+  error?: string | null;
+  snapshotMode?: boolean;
+}) {
+  if (snapshotMode) {
+    return (
+      <Card>
+        <CardHeader>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <CardTitle>Queue status</CardTitle>
+            <OperationalStatusBadge status="warning" />
+          </div>
+          <CardDescription>Redis/RQ is local-only in public snapshot mode.</CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-3 text-sm md:grid-cols-3">
+          <Field label="Queue" value="local full stack only" />
+          <Field label="Public jobs" value="disabled" />
+          <Field label="Status" value="Public snapshot mode does not run Redis/RQ." />
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
     <Card>
       <CardHeader>
