@@ -1814,6 +1814,30 @@ See:
 
     docs/golden-smoke.md
 
+## Step 45 Final Technical Documentation
+
+Step 45 adds serious technical documentation for architecture, retrieval design, evaluation methodology, tradeoffs, runbooks, Atlas integration, and interview preparation.
+
+Read:
+
+    docs/docs-index.md
+    docs/architecture.md
+    docs/retrieval-design.md
+    docs/evaluation.md
+    docs/tradeoffs.md
+    docs/atlas-integration.md
+    docs/interview-notes.md
+    docs/runbooks/slow-query.md
+    docs/runbooks/index-failure.md
+    docs/runbooks/eval-regression.md
+
+Validation:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/doctor.ps1
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/ci-check.ps1
+
+The final README is intentionally not part of this step.
+
 Manual Search Lab checks:
 
 - Open `http://localhost:3000/search`.
