@@ -70,6 +70,7 @@ data/benchmarks/*
 reports/*
 !reports/.gitkeep
 !reports/smoke/
+reports/smoke/*.json
 !reports/smoke/.gitkeep
 
 # Model and ML caches
