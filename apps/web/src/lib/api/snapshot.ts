@@ -145,12 +145,47 @@ export async function runSnapshotSearch(request: SearchRequest): Promise<SearchR
   }
 
   const response = record(match.search_response);
+  const traceId = String(response.trace_id || match.trace_id || "");
+  const trace = traceId ? await getSnapshotTrace(traceId).catch(() => null) : null;
+  const traceJson = record(trace?.trace_json);
+  const traceIndexVersion = record(traceJson.index_version);
+  const activeIndexVersion = traceIndexVersion.id ? {} : record((await getSnapshotIndexStatus().catch(() => null))?.active_index_version);
+  const indexVersion = traceIndexVersion.id ? traceIndexVersion : activeIndexVersion;
+
   return {
     ...response,
     query_id: String(response.query_id || match.query_id || ""),
-    trace_id: String(response.trace_id || match.trace_id || ""),
+    trace_id: traceId,
     query: String(response.query || match.query || request.query),
     retrieval_mode: (response.retrieval_mode || match.retrieval_mode || request.retrieval_mode) as SearchMode,
+    index_version_id:
+      stringValue(response.index_version_id) ||
+      stringValue(trace?.index_version_id) ||
+      stringValue(traceJson.index_version_id) ||
+      stringValue(indexVersion.id) ||
+      null,
+    index_name:
+      stringValue(response.index_name) ||
+      stringValue(traceJson.index_name) ||
+      stringValue(indexVersion.lexical_index_name) ||
+      stringValue(record(indexVersion.config_json).last_lexical_index_name) ||
+      null,
+    lexical_index_name:
+      stringValue(response.lexical_index_name) ||
+      stringValue(traceJson.index_name) ||
+      stringValue(indexVersion.lexical_index_name) ||
+      stringValue(record(indexVersion.config_json).last_lexical_index_name) ||
+      null,
+    collection_name:
+      stringValue(response.collection_name) ||
+      stringValue(indexVersion.vector_collection_name) ||
+      stringValue(record(indexVersion.config_json).qdrant_collection) ||
+      null,
+    vector_collection_name:
+      stringValue(response.vector_collection_name) ||
+      stringValue(indexVersion.vector_collection_name) ||
+      stringValue(record(indexVersion.config_json).qdrant_collection) ||
+      null,
     top_k: Number(response.top_k || request.top_k),
     result_count: Number(response.result_count || match.result_count || 0),
     results: array(response.results || match.results)

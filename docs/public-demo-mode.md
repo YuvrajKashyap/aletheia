@@ -64,6 +64,8 @@ NEXT_PUBLIC_DEMO_MODE=snapshot
 
 The frontend can be served for near-zero cost because snapshot files are static. Pages converted to snapshot mode use those files. Pages not yet converted should still show honest unavailable states if no live backend exists.
 
+Use `docs/public-demo-qa.md` for the hosted QA checklist before sharing the public demo.
+
 ## What Recruiters Can Use
 
 The public demo can show:

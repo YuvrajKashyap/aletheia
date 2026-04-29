@@ -51,6 +51,7 @@ EXPECTED_FILES = [
     "docs/deploy-neon.md",
     "docs/deploy-backend.md",
     "docs/public-demo-mode.md",
+    "docs/public-demo-qa.md",
     ".env.example",
     ".env.production.example",
     ".gitignore",
