@@ -49,14 +49,19 @@ export function IndexAdminPanel({ selectedVersion, onChanged }: IndexAdminPanelP
 
   if (snapshotMode) {
     return (
-      <Card className="border-slate-800 bg-slate-950/70">
+      <Card className="border-cyan-900/60 bg-cyan-950/10">
         <CardHeader>
-          <CardTitle>Admin actions disabled</CardTitle>
+          <CardTitle>Public snapshot actions</CardTitle>
           <CardDescription>
-            Index admin actions are disabled in public snapshot mode. Snapshot data shows index metadata exported from
-            the full local stack. Run locally to create, activate, rollback, or rebuild indexes.
+            Index admin actions are intentionally disabled in public snapshot mode.
           </CardDescription>
         </CardHeader>
+        <CardContent>
+          <p className="text-sm leading-6 text-slate-400">
+            Snapshot data shows index metadata exported from the full local stack. Run locally to create, activate,
+            rollback, or rebuild indexes.
+          </p>
+        </CardContent>
       </Card>
     );
   }

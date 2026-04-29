@@ -31,14 +31,19 @@ export function ExperimentAdminPanel({ onDataChanged }: ExperimentAdminPanelProp
 
   if (snapshotMode) {
     return (
-      <Card className="border-slate-800 bg-slate-950/70">
+      <Card className="border-cyan-900/60 bg-cyan-950/10">
         <CardHeader>
-          <CardTitle>Admin actions disabled</CardTitle>
+          <CardTitle>Public snapshot actions</CardTitle>
           <CardDescription>
-            Admin comparison jobs are disabled in public snapshot mode. Run the full local stack to launch new
-            comparisons.
+            Admin comparison jobs are intentionally disabled in public snapshot mode.
           </CardDescription>
         </CardHeader>
+        <CardContent>
+          <p className="text-sm leading-6 text-slate-400">
+            The experiment rows and metrics are real exported outputs. Run the full local stack to seed configs or launch
+            new comparison jobs.
+          </p>
+        </CardContent>
       </Card>
     );
   }

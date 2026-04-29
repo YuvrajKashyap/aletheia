@@ -56,14 +56,19 @@ export function ReplayAdminPanel({
 
   if (snapshotMode) {
     return (
-      <Card>
+      <Card className="border-cyan-900/60 bg-cyan-950/10">
         <CardHeader>
-          <CardTitle>Admin actions disabled</CardTitle>
+          <CardTitle>Public snapshot actions</CardTitle>
           <CardDescription>
-            Replay actions are disabled in public snapshot mode. The rows above are real replay outputs exported from
-            the full local stack.
+            Replay actions are intentionally disabled in public snapshot mode.
           </CardDescription>
         </CardHeader>
+        <CardContent>
+          <p className="text-sm leading-6 text-slate-400">
+            The rows above are real replay outputs exported from the full local stack. Run locally to seed golden
+            queries, create saved queries, or launch new replay jobs.
+          </p>
+        </CardContent>
       </Card>
     );
   }

@@ -73,6 +73,7 @@ EXPECTED_FILES = [
     "docs/golden-smoke.md",
     "docs/public-demo-mode.md",
     "docs/public-demo-qa.md",
+    "docs/screenshots.md",
     "docs/runbooks/slow-query.md",
     "docs/runbooks/index-failure.md",
     "docs/runbooks/eval-regression.md",
@@ -404,6 +405,7 @@ EXPECTED_FILES = [
     "reports/smoke/.gitkeep",
     "reports/benchmarks/.gitkeep",
     "reports/benchmarks/README.md",
+    "docs/assets/screenshots/.gitkeep",
     "reports/evaluations/comparisons/.gitkeep",
     "reports/replays/.gitkeep",
 ]

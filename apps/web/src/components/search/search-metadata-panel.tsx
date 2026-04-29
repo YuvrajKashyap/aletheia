@@ -11,7 +11,7 @@ type MetadataPanelProps = {
 
 function valueOrUnknown(value?: string | number | null): string {
   if (value === null || value === undefined || value === "") {
-    return "unavailable";
+    return "Unavailable";
   }
   return String(value);
 }

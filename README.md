@@ -273,6 +273,10 @@ Full benchmark and evaluation jobs do not run in default GitHub CI because they 
 - [Benchmark results](docs/benchmark-results.md)
 - [Architecture diagrams](docs/diagrams/README.md)
 
+## Screenshots
+
+Screenshot capture checklist is available in [docs/screenshots.md](docs/screenshots.md). Final image assets will be added after the last visual QA pass so README screenshots reflect real public snapshot or local live states.
+
 ## Limitations
 
 - The public demo is snapshot-backed, not live arbitrary hosted retrieval.

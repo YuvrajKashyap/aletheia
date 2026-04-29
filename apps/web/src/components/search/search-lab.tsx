@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import { AppShell } from "@/components/layout/app-shell";
 import { LatencyPanel } from "@/components/search/latency-panel";
-import { SearchForm, type SearchFormState, validateSearchForm } from "@/components/search/search-form";
+import { SearchForm, buildSearchRequest, type SearchFormState, validateSearchForm } from "@/components/search/search-form";
 import { SearchMetadataPanel } from "@/components/search/search-metadata-panel";
 import { SearchResults } from "@/components/search/search-results";
 import { Badge } from "@/components/ui/badge";
@@ -77,13 +77,7 @@ export function SearchLab() {
     };
   }, [snapshotMode]);
 
-  async function submit(request: SearchRequest) {
-    const nextValidationError = validateSearchForm(formState);
-    setValidationError(nextValidationError);
-    if (nextValidationError) {
-      return;
-    }
-
+  async function executeSearch(request: SearchRequest) {
     setIsLoading(true);
     setError(null);
     setResponse(null);
@@ -109,6 +103,28 @@ export function SearchLab() {
     } finally {
       setIsLoading(false);
     }
+  }
+
+  async function submit(request: SearchRequest) {
+    const nextValidationError = validateSearchForm(formState);
+    setValidationError(nextValidationError);
+    if (nextValidationError) {
+      return;
+    }
+
+    await executeSearch(request);
+  }
+
+  async function loadSnapshotScenario(scenario: SnapshotScenario) {
+    const nextState = {
+      ...formState,
+      query: scenario.query || "",
+      retrievalMode: scenario.retrieval_mode || "bm25",
+      topK: scenario.result_count || formState.topK
+    };
+    setFormState(nextState);
+    setValidationError(null);
+    await executeSearch(buildSearchRequest(nextState));
   }
 
   return (
@@ -138,16 +154,7 @@ export function SearchLab() {
               <SnapshotScenarioPicker
                 error={scenarioError}
                 scenarios={scenarios}
-                onSelect={(scenario) => {
-                  setFormState({
-                    ...formState,
-                    query: scenario.query || "",
-                    retrievalMode: scenario.retrieval_mode || "bm25",
-                    topK: scenario.result_count || formState.topK
-                  });
-                  setValidationError(null);
-                  setError(null);
-                }}
+                onSelect={(scenario) => void loadSnapshotScenario(scenario)}
               />
             ) : null}
             <SearchForm
@@ -232,6 +239,7 @@ function SnapshotScenarioPicker({
                   {scenario.retrieval_mode ? getSearchModeLabel(scenario.retrieval_mode) : "Mode unavailable"} |{" "}
                   {scenario.result_count ?? 0} results
                 </span>
+                <span className="mt-2 inline-flex text-xs font-semibold text-cyan-200">Load exported results</span>
               </button>
             ))}
           </div>
@@ -247,7 +255,7 @@ function SnapshotScenarioPicker({
           }}
           disabled={!scenarios.length}
         >
-          Select first scenario
+          Load first scenario
         </Button>
       </CardContent>
     </Card>

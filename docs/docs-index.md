@@ -40,6 +40,10 @@ This index helps readers navigate Aletheia's technical documentation.
 
 - `docs/diagrams/README.md`: Mermaid architecture diagrams and system maps
 
+## Demo Assets
+
+- `docs/screenshots.md`: screenshot capture plan for real public snapshot and local live states
+
 ## Future Integration
 
 - `docs/atlas-integration.md`: planned Atlas integration model
