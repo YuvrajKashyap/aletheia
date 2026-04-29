@@ -1,0 +1,12 @@
+{
+  "mode": "warn",
+  "description": "Warn-only local regression thresholds for a small qrels-backed SciFact golden smoke run. These are smoke thresholds only, not final benchmark targets.",
+  "query_limit": 5,
+  "retrieval_mode": "hybrid",
+  "thresholds": {
+    "failed_query_count_max": 0,
+    "recall_at_10_min": 0.2,
+    "mrr_at_10_min": 0.0,
+    "ndcg_at_10_min": 0.0
+  }
+}

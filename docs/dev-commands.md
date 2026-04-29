@@ -1780,6 +1780,40 @@ See:
 
     docs/ci.md
 
+## Step 44 Local Golden Regression Smoke
+
+Step 44 adds a manual local golden smoke check for qrels-backed retrieval sanity. It is not part of the default GitHub CI gate.
+
+Run the default hybrid smoke:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/run-golden-smoke.ps1 -Mode hybrid -QueryLimit 5 -TopK 10 -Notes "Local validation"
+
+Threshold config:
+
+    configs/golden-smoke-thresholds.json
+
+Default report path:
+
+    reports/smoke/golden-smoke-latest.json
+
+Important:
+
+- This is local-only.
+- It assumes the full local stack is already running.
+- It may require Postgres, OpenSearch, Qdrant, Redis, active indexes, and local model cache depending on retrieval mode.
+- It writes real evaluation run/report rows through the existing evaluation runner.
+- Thresholds are warn-only smoke sanity thresholds by default, not benchmark targets.
+
+Recommended times to run it:
+
+- before major retrieval changes
+- before README metric updates
+- before refreshing public demo snapshots
+
+See:
+
+    docs/golden-smoke.md
+
 Manual Search Lab checks:
 
 - Open `http://localhost:3000/search`.

@@ -69,6 +69,8 @@ data/benchmarks/*
 # Generated reports
 reports/*
 !reports/.gitkeep
+!reports/smoke/
+!reports/smoke/.gitkeep
 
 # Model and ML caches
 .cache/

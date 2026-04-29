@@ -18,6 +18,7 @@ Aletheia CI is a fast correctness gate for code quality, type safety, and reposi
 - SciFact ingestion or chunking
 - Index builds
 - Evaluation runs
+- Golden smoke runs
 - Hugging Face model downloads
 
 ## Why
@@ -25,6 +26,8 @@ Aletheia CI is a fast correctness gate for code quality, type safety, and reposi
 CI is a fast correctness gate. It should catch broken tests, lint failures, type errors, broken snapshot builds, and missing required files without starting expensive infrastructure.
 
 Full retrieval integration remains local-only because it depends on Docker services, search indexes, vector collections, queue workers, and model availability. Those checks are validated manually or through dedicated local scripts.
+
+The local golden smoke check is separate from GitHub CI. It uses the real full stack and qrels-backed SciFact behavior, so it remains a manual local validation step.
 
 ## Local Reproduction
 
