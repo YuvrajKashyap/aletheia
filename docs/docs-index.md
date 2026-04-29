@@ -24,6 +24,7 @@ This index helps readers navigate Aletheia's technical documentation.
 
 - `docs/ci.md`: GitHub Actions and local CI
 - `docs/golden-smoke.md`: local qrels-backed golden smoke check
+- `docs/benchmark-results.md`: final benchmark methodology and result placeholder
 
 ## Runbooks
 

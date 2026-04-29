@@ -72,6 +72,10 @@ reports/*
 !reports/smoke/
 reports/smoke/*.json
 !reports/smoke/.gitkeep
+!reports/benchmarks/
+reports/benchmarks/*.json
+!reports/benchmarks/.gitkeep
+!reports/benchmarks/README.md
 
 # Model and ML caches
 .cache/

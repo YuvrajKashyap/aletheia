@@ -1838,6 +1838,36 @@ Validation:
 
 The final README is intentionally not part of this step.
 
+## Step 47 Final Benchmark Suite Tooling
+
+Step 47 adds local tooling for reproducible final SciFact benchmark runs. It does not add fake metrics and does not run benchmarks in default GitHub CI.
+
+Dry run planned benchmark work:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/run-final-benchmark-suite.ps1 -DryRun
+
+Run the default suite locally:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/run-final-benchmark-suite.ps1
+
+Run without the sampled rerank benchmark:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/run-final-benchmark-suite.ps1 -SkipRerank
+
+Run full rerank only if local runtime is acceptable:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/run-final-benchmark-suite.ps1 -RerankFull
+
+Config:
+
+    configs/final-benchmark-suite.json
+
+Generated reports:
+
+    reports/benchmarks
+
+Generated benchmark JSON files are ignored by default. Do not copy benchmark metrics into docs or README unless they were generated and reviewed.
+
 Manual Search Lab checks:
 
 - Open `http://localhost:3000/search`.

@@ -1,0 +1,47 @@
+{
+  "description": "Final reproducible benchmark suite for Aletheia README and interview materials.",
+  "dataset_name": "beir/scifact",
+  "dataset_version": "test",
+  "index_version": "active",
+  "default_top_k": 10,
+  "runs": [
+    {
+      "name": "BM25 full SciFact benchmark",
+      "retrieval_mode": "bm25",
+      "query_limit": null,
+      "top_k": 10,
+      "candidate_k": 10,
+      "notes": "Full 300-query SciFact benchmark."
+    },
+    {
+      "name": "Dense full SciFact benchmark",
+      "retrieval_mode": "dense",
+      "query_limit": null,
+      "top_k": 10,
+      "candidate_k": 10,
+      "notes": "Full 300-query SciFact benchmark using BAAI/bge-small-en-v1.5."
+    },
+    {
+      "name": "Hybrid RRF full SciFact benchmark",
+      "retrieval_mode": "hybrid",
+      "query_limit": null,
+      "top_k": 10,
+      "bm25_candidate_k": 50,
+      "dense_candidate_k": 50,
+      "rrf_k": 60,
+      "notes": "Full 300-query SciFact benchmark using Reciprocal Rank Fusion."
+    },
+    {
+      "name": "Hybrid rerank sampled SciFact benchmark",
+      "retrieval_mode": "hybrid_rerank",
+      "query_limit": 50,
+      "top_k": 10,
+      "bm25_candidate_k": 50,
+      "dense_candidate_k": 50,
+      "hybrid_candidate_k": 50,
+      "rerank_top_n": 25,
+      "rrf_k": 60,
+      "notes": "Sampled rerank benchmark. Increase query_limit to null for full run if local runtime is acceptable."
+    }
+  ]
+}
