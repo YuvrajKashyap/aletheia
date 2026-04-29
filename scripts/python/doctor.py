@@ -42,6 +42,7 @@ EXPECTED_DIRS = [
 ]
 
 EXPECTED_FILES = [
+    "README.md",
     "PROJECT_CHARTER.md",
     "AGENTS.md",
     "docs/product-spec.md",

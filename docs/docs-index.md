@@ -2,6 +2,10 @@
 
 This index helps readers navigate Aletheia's technical documentation.
 
+## Project Entry Point
+
+- `README.md`: GitHub project overview, public demo, benchmark summary, setup, and quality gates
+
 ## Core Project Docs
 
 - `PROJECT_CHARTER.md`: project identity and constraints
