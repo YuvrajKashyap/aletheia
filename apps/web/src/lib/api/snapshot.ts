@@ -56,26 +56,59 @@ type PageParams = {
   offset?: number;
 };
 
+const SNAPSHOT_FILES = new Set<string>([
+  "manifest.json",
+  "overview.json",
+  "index-status.json",
+  "datasets.json",
+  "documents-sample.json",
+  "chunks-sample.json",
+  "benchmark-queries-sample.json",
+  "relevance-judgments-sample.json",
+  "search-scenarios.json",
+  "traces.json",
+  "evaluations.json",
+  "experiments.json",
+  "replay.json",
+  "system.json"
+]);
+
+function assertSnapshotFileName(fileName: string): asserts fileName is SnapshotFileName {
+  if (fileName.includes("..") || fileName.includes("/") || fileName.includes("\\") || !SNAPSHOT_FILES.has(fileName)) {
+    throw new Error(`Snapshot file ${fileName} is not allowed.`);
+  }
+}
+
 function snapshotUrl(fileName: string): string {
-  const path = `/demo-data/${fileName}`;
-  if (typeof window !== "undefined") {
-    return path;
-  }
+  return `/demo-data/${fileName}`;
+}
 
-  const configured = process.env.NEXT_PUBLIC_SITE_URL;
-  if (configured) {
-    return `${configured.replace(/\/+$/, "")}${path}`;
-  }
+async function importNodeModule<T>(specifier: string): Promise<T> {
+  const dynamicImport = new Function("specifier", "return import(specifier)") as (specifier: string) => Promise<T>;
+  return dynamicImport(specifier);
+}
 
-  const vercelUrl = process.env.VERCEL_URL;
-  if (vercelUrl) {
-    return `https://${vercelUrl.replace(/\/+$/, "")}${path}`;
-  }
+async function readSnapshotFileFromDisk<T>(fileName: SnapshotFileName): Promise<T> {
+  const fs = await importNodeModule<{ readFile: (path: string, encoding: "utf8") => Promise<string> }>(
+    "node:fs/promises"
+  );
+  const path = await importNodeModule<{ join: (...parts: string[]) => string }>("node:path");
+  const filePath = path.join(process.cwd(), "public", "demo-data", fileName);
 
-  return `http://localhost:3000${path}`;
+  try {
+    return JSON.parse(await fs.readFile(filePath, "utf8")) as T;
+  } catch {
+    throw new Error(`Snapshot file ${fileName} is unavailable.`);
+  }
 }
 
 export async function fetchSnapshotFile<T>(fileName: SnapshotFileName): Promise<T> {
+  assertSnapshotFileName(fileName);
+
+  if (typeof window === "undefined") {
+    return readSnapshotFileFromDisk<T>(fileName);
+  }
+
   const response = await fetch(snapshotUrl(fileName), {
     cache: "no-store",
     headers: {
