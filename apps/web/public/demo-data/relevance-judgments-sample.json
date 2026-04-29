@@ -1,0 +1,405 @@
+{
+  "items": [
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "464511",
+      "document_id": "f235112c-cc76-4a7e-ad96-1db32e096a33",
+      "id": "949c0e83-20f7-4b52-ab1f-55759affed27",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "464511",
+          "iteration": "0",
+          "query_id": "452",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "452",
+      "query_id": "ef336f6c-8c92-42e2-ac9c-b1566097e352",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "13980338",
+      "document_id": "009feb3f-0d13-4ad8-9a55-8cdbdc2dbd8c",
+      "id": "a851e94c-9a24-4aa0-937b-340b14a3a909",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "13980338",
+          "iteration": "0",
+          "query_id": "508",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "508",
+      "query_id": "823c02e4-999d-4b58-9dca-a7d56da4b8e1",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "18399038",
+      "document_id": "776689b8-aeb5-4d3c-a6f0-6424cb12f33a",
+      "id": "e645030e-4d0f-4cd5-b236-9a73b68b6bac",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "18399038",
+          "iteration": "0",
+          "query_id": "437",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "437",
+      "query_id": "c3549043-671e-442a-800c-c15668e5fc6a",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "12804937",
+      "document_id": "b46b4c57-136c-4f6a-ba86-f835e0aafa59",
+      "id": "d3e51903-b086-49b2-80c8-491f5eed35cd",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "12804937",
+          "iteration": "0",
+          "query_id": "452",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "452",
+      "query_id": "ef336f6c-8c92-42e2-ac9c-b1566097e352",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "56893404",
+      "document_id": "466d8d0e-160f-4bf3-81b8-273c3090c1de",
+      "id": "bd4fcff3-c80a-46b7-b6f5-db985f69add6",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "56893404",
+          "iteration": "0",
+          "query_id": "491",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "491",
+      "query_id": "ba1c90c7-bd2f-49d0-86d9-b1ff4e4ef219",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "30774694",
+      "document_id": "3f42b9fb-b7a3-4a66-91ad-c633085aa1af",
+      "id": "61682e23-303c-412a-86eb-2d746ea0be17",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "30774694",
+          "iteration": "0",
+          "query_id": "507",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "507",
+      "query_id": "d9a155ac-5456-4da1-b151-d07ec734b716",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "6309659",
+      "document_id": "70c33d1e-1426-4ac8-9750-c15a900dbc26",
+      "id": "ab576c0e-0835-4263-bfb2-95d6ebffb4b7",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "6309659",
+          "iteration": "0",
+          "query_id": "415",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "415",
+      "query_id": "a10b6d75-957e-4957-8224-4b7891f93e06",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "14637235",
+      "document_id": "ac0e388d-3bee-418b-8b46-52cbd9f40c94",
+      "id": "f59db1aa-8fb0-44c3-a167-d5c937abeb40",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "14637235",
+          "iteration": "0",
+          "query_id": "436",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "436",
+      "query_id": "03ea5ead-affe-4271-9621-2ca70a10e051",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "4423559",
+      "document_id": "edaccca6-c86d-402b-a31b-80bc9f129cc0",
+      "id": "1ef5d3a6-7a56-4378-b41b-9b1697cd36ac",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "4423559",
+          "iteration": "0",
+          "query_id": "440",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "440",
+      "query_id": "9dd7b8d2-5da1-48f1-a067-8ed91330e48a",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "10165258",
+      "document_id": "22990c44-b982-4376-ad5a-54b4d0156f59",
+      "id": "c8b1c423-8bb4-4966-8699-5ddfb80172c9",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "10165258",
+          "iteration": "0",
+          "query_id": "443",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "443",
+      "query_id": "8faa06e5-3914-4a36-9d35-bda0f0dfa972",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "18678095",
+      "document_id": "da507d3c-733b-49dd-a9ee-572d7777c758",
+      "id": "8ce12e45-78e4-434b-81cf-461b7345de1d",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "18678095",
+          "iteration": "0",
+          "query_id": "475",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "475",
+      "query_id": "2d8c146a-5515-4563-8ea0-c02fa3de25bf",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "14767844",
+      "document_id": "00ac85d4-0184-45e2-bc01-dee6d5a11ee5",
+      "id": "46225f6e-8682-49c3-892f-eeff2841e728",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "14767844",
+          "iteration": "0",
+          "query_id": "478",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "478",
+      "query_id": "7440bd88-e334-4691-946b-f382bf7c852b",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "17930286",
+      "document_id": "b09a2715-4b9e-4400-8a7b-38b8c941a3a2",
+      "id": "5b128129-81e8-4696-9926-3444003f280f",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "17930286",
+          "iteration": "0",
+          "query_id": "501",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "501",
+      "query_id": "33b37694-878c-4fd5-b2d3-f25a15c13c87",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "13071728",
+      "document_id": "a33b1ad7-2d21-4e15-b4fa-bd633e7b25bf",
+      "id": "b795d830-a9ec-4553-bcab-c285eeda4780",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "13071728",
+          "iteration": "0",
+          "query_id": "502",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "502",
+      "query_id": "6b927380-bff9-4a66-bd21-862c102cb75a",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "14924526",
+      "document_id": "82a183c8-a860-4608-bb77-eb4da63f7edd",
+      "id": "8b0c6dae-00d3-4792-91e2-cd91a625d458",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "14924526",
+          "iteration": "0",
+          "query_id": "410",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "410",
+      "query_id": "dab690dd-8677-4cf2-afbd-915e37d27a5b",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "14924526",
+      "document_id": "82a183c8-a860-4608-bb77-eb4da63f7edd",
+      "id": "96e1f74d-cda2-441a-8b9d-2b6424182b5f",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "14924526",
+          "iteration": "0",
+          "query_id": "411",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "411",
+      "query_id": "9799c4ce-aef0-4c24-ba26-5b09502d8031",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "11172205",
+      "document_id": "8a2f5b33-9809-47f0-9c41-f118d447a097",
+      "id": "6fadc6b5-438c-46e3-8db3-486cee0644bc",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "11172205",
+          "iteration": "0",
+          "query_id": "421",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "421",
+      "query_id": "b033b656-b323-406e-898d-e38af6f08112",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "28937856",
+      "document_id": "0f11de24-d080-494a-9efd-733f4d6981f0",
+      "id": "488f6f38-ea0d-45c8-9e79-c26ad1d707a7",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "28937856",
+          "iteration": "0",
+          "query_id": "431",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "431",
+      "query_id": "ab161393-7cd3-4cfc-9f7a-a7f4a5644639",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "4423559",
+      "document_id": "edaccca6-c86d-402b-a31b-80bc9f129cc0",
+      "id": "36504bca-61fd-4b2e-b5c4-545033c67588",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "4423559",
+          "iteration": "0",
+          "query_id": "439",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "439",
+      "query_id": "9b3a8752-92fe-4724-af93-74383baa08f9",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "13230773",
+      "document_id": "50c3220c-aa37-416e-b8e0-8ac5853fc10a",
+      "id": "2db8399f-763d-48ad-a856-18b57d02c9f3",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "13230773",
+          "iteration": "0",
+          "query_id": "513",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "513",
+      "query_id": "ba88c0e9-e6b4-427a-9a1b-40e28fdedf7d",
+      "relevance_score": 1.0
+    }
+  ],
+  "total": 339
+}

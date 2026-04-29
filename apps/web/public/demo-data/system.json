@@ -1,0 +1,667 @@
+{
+  "backend_live": false,
+  "explanation": "Public snapshot mode serves real exported outputs from the local full stack. It does not claim live hosted infrastructure health.",
+  "live_admin_actions_enabled": false,
+  "local_full_stack_components": [
+    "FastAPI",
+    "Postgres",
+    "Redis/RQ",
+    "OpenSearch",
+    "Qdrant",
+    "embedding model",
+    "reranker"
+  ],
+  "mode": "snapshot",
+  "public_hosted_components": [
+    "Vercel frontend",
+    "Neon schema",
+    "static snapshot data"
+  ],
+  "system_events": [
+    {
+      "created_at": "2026-04-27T23:00:44.255889+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "9d18c8d8-3bc0-4357-b356-7bb1a640c89b",
+      "job_id": null,
+      "message": "Slow hybrid search completed in 1160.1 ms.",
+      "metadata_json": {
+        "query_id": "921cd2fe-4a78-485e-aa0d-9c69349c6821",
+        "retrieval_mode": "hybrid",
+        "total_latency_ms": 1160.1
+      },
+      "request_id": "replay:c667e7e6-dd78-494c-b386-4d1e8d65d464",
+      "severity": "warning",
+      "trace_id": "4798676e-a907-49bb-8b55-0adc96f55406"
+    },
+    {
+      "created_at": "2026-04-27T22:31:44.386111+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "c97969d3-c775-4261-9522-535770b467df",
+      "job_id": null,
+      "message": "Slow hybrid search completed in 1277.63 ms.",
+      "metadata_json": {
+        "query_id": "6176792c-ddd9-4e06-961e-c16c571c6251",
+        "retrieval_mode": "hybrid",
+        "total_latency_ms": 1277.63
+      },
+      "request_id": "replay:c667e7e6-dd78-494c-b386-4d1e8d65d464",
+      "severity": "warning",
+      "trace_id": "5a52c37c-871e-46e6-891d-6ba9c908a70f"
+    },
+    {
+      "created_at": "2026-04-27T22:31:42.929546+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "366f9ea9-ac92-427e-a01a-9e9af4dda1ad",
+      "job_id": null,
+      "message": "Slow hybrid search completed in 91466.58 ms.",
+      "metadata_json": {
+        "query_id": "21a71aa4-ae45-4cac-98fc-e64ffebc4bd9",
+        "retrieval_mode": "hybrid",
+        "total_latency_ms": 91466.58
+      },
+      "request_id": "replay:c667e7e6-dd78-494c-b386-4d1e8d65d464",
+      "severity": "warning",
+      "trace_id": "e89c0071-4a32-48ea-91ac-a3f560f67647"
+    },
+    {
+      "created_at": "2026-04-27T14:55:34.757191+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "5791485c-4eca-43d5-a3d1-74ed6cae210f",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 1480.92 ms.",
+      "metadata_json": {
+        "query_id": "35fd317a-7e49-4649-bd71-8f497019d114",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 1480.92
+      },
+      "request_id": "eval:99762ea5-99c4-47f8-b911-45736b14f2ed:1012",
+      "severity": "warning",
+      "trace_id": "1e22c171-4283-487a-b54d-93fba04c9ffc"
+    },
+    {
+      "created_at": "2026-04-27T14:55:33.196026+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "0a06ddfd-afc9-4b79-8b5d-6212c9df8892",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 1306.32 ms.",
+      "metadata_json": {
+        "query_id": "9a3c4255-4835-471e-b4cd-6fae24aba18d",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 1306.32
+      },
+      "request_id": "eval:99762ea5-99c4-47f8-b911-45736b14f2ed:100",
+      "severity": "warning",
+      "trace_id": "5064a10d-ab1e-4591-8508-645b0bcfe905"
+    },
+    {
+      "created_at": "2026-04-27T14:55:31.809333+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "ce655f23-a708-476e-8807-440b7090be05",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 1800.75 ms.",
+      "metadata_json": {
+        "query_id": "e2d34793-e2f9-485f-90b5-7395781f01cb",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 1800.75
+      },
+      "request_id": "eval:99762ea5-99c4-47f8-b911-45736b14f2ed:1",
+      "severity": "warning",
+      "trace_id": "783f072f-fe12-4b3f-b4fe-6232654e22e5"
+    },
+    {
+      "created_at": "2026-04-27T14:55:26.400505+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "6215d1ce-bdca-4bbb-b2a9-738f466d52e3",
+      "job_id": null,
+      "message": "Slow dense search completed in 1071.85 ms.",
+      "metadata_json": {
+        "query_id": "c6c1df76-4166-421a-a460-ca2875390d2f",
+        "retrieval_mode": "dense",
+        "total_latency_ms": 1071.85
+      },
+      "request_id": "eval:b304903a-9989-42a0-a73f-e771bc4e3c32:1",
+      "severity": "warning",
+      "trace_id": "77aafafc-3779-48a3-a605-dbaec2b1415e"
+    },
+    {
+      "created_at": "2026-04-27T05:17:24.906695+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "bdfe60ec-9bfa-488d-b323-c449a5c77088",
+      "job_id": null,
+      "message": "Slow dense search completed in 62205.6 ms.",
+      "metadata_json": {
+        "query_id": "eadf1f39-b663-4ded-b4eb-5e89e9bce882",
+        "retrieval_mode": "dense",
+        "total_latency_ms": 62205.6
+      },
+      "request_id": "08fb73dd-42ae-4761-b0ca-8761a80f3b9d",
+      "severity": "warning",
+      "trace_id": "785b42d1-8dfc-49c9-83d2-eee1b43d5d68"
+    },
+    {
+      "created_at": "2026-04-27T03:58:01.243652+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "909e277f-8284-484b-b0e5-3905339ad58a",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 17164.29 ms.",
+      "metadata_json": {
+        "query_id": "52d48424-2482-4c04-a90e-903d5d97cd85",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 17164.29
+      },
+      "request_id": "63c7e566-05d6-4e4e-a888-d88a43a34516",
+      "severity": "warning",
+      "trace_id": "1ce1e121-165d-478e-8c11-e3c096762bf8"
+    },
+    {
+      "created_at": "2026-04-27T03:37:00.428709+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "3701bd0b-120f-4965-b0ea-ad52c82a3780",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 7114.41 ms.",
+      "metadata_json": {
+        "query_id": "68d16ddd-7d2a-4dbf-8782-5b6cbc5d97e1",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 7114.41
+      },
+      "request_id": "ebd5c764-ac54-4309-ac90-1ef3bf1d8850",
+      "severity": "warning",
+      "trace_id": "0d0277a6-10ba-43f2-8500-f615205b6c33"
+    },
+    {
+      "created_at": "2026-04-27T03:28:14.244294+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "923472df-36e1-45a4-a6f9-f5591af10ce1",
+      "job_id": null,
+      "message": "Slow hybrid search completed in 1042.15 ms.",
+      "metadata_json": {
+        "query_id": "828e102d-43f8-45be-8daa-3332443806b6",
+        "retrieval_mode": "hybrid",
+        "total_latency_ms": 1042.15
+      },
+      "request_id": "2575f9bc-b493-4d7c-aab8-feea3b649120",
+      "severity": "warning",
+      "trace_id": "6d2f0afc-2f86-4d4f-b48a-b2c073557c3f"
+    },
+    {
+      "created_at": "2026-04-27T03:24:04.629666+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "eccd99de-38ac-42f9-8c8e-4151d4baa09a",
+      "job_id": null,
+      "message": "Slow dense search completed in 48822.46 ms.",
+      "metadata_json": {
+        "query_id": "03e15862-0072-4459-ae4a-bad736778dff",
+        "retrieval_mode": "dense",
+        "total_latency_ms": 48822.46
+      },
+      "request_id": "0eaec820-dbb6-4989-95e8-2d3a4837bea0",
+      "severity": "warning",
+      "trace_id": "8ba95a85-4486-4b71-ab86-fa8a497ea885"
+    },
+    {
+      "created_at": "2026-04-27T02:31:31.016208+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "64810afc-0470-4ec2-97cb-1d8179d8bd29",
+      "job_id": null,
+      "message": "Slow hybrid search completed in 1362.65 ms.",
+      "metadata_json": {
+        "query_id": "fea16070-9070-4214-89fc-5c1df755c3a5",
+        "retrieval_mode": "hybrid",
+        "total_latency_ms": 1362.65
+      },
+      "request_id": "replay:c667e7e6-dd78-494c-b386-4d1e8d65d464",
+      "severity": "warning",
+      "trace_id": "be88568f-2db9-48cb-99c3-3a15c59ebae1"
+    },
+    {
+      "created_at": "2026-04-27T02:29:12.375828+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "f5c4acb4-980e-4d83-91d5-a23dc6c35514",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 1563.29 ms.",
+      "metadata_json": {
+        "query_id": "638a376d-aa99-4fbe-b485-b8dacbda2e7f",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 1563.29
+      },
+      "request_id": "replay:189fb3c2-8554-447b-9a15-00220ac32573",
+      "severity": "warning",
+      "trace_id": "54946a58-820a-4bfd-9df7-039f963e7e80"
+    },
+    {
+      "created_at": "2026-04-27T02:29:10.693988+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "dfe5f16c-f4aa-4e16-9087-961155eb60f8",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 1597.05 ms.",
+      "metadata_json": {
+        "query_id": "f1e50666-3705-4eb6-9d05-da185f3f35ff",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 1597.05
+      },
+      "request_id": "replay:be171388-fbba-4afb-ada9-feb5a6d9f3cd",
+      "severity": "warning",
+      "trace_id": "a2c31bbc-bcc4-4e4f-b19b-29a6d47ab6e3"
+    },
+    {
+      "created_at": "2026-04-27T02:29:08.959820+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "4f4f3565-a012-423f-9853-0231e37ca154",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 14992.26 ms.",
+      "metadata_json": {
+        "query_id": "83618cf7-0bf9-452c-9ef7-78f9095de443",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 14992.26
+      },
+      "request_id": "replay:c667e7e6-dd78-494c-b386-4d1e8d65d464",
+      "severity": "warning",
+      "trace_id": "49ba15a1-21a5-4007-9ef7-a19d17d7eb64"
+    },
+    {
+      "created_at": "2026-04-27T02:28:10.133043+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "010614d7-61dd-425b-8d14-3a41de75f822",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 20904.94 ms.",
+      "metadata_json": {
+        "query_id": "ec17cbc0-6178-4ebd-9273-ca1472feb0ab",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 20904.94
+      },
+      "request_id": "replay:97432a0c-12bc-4a85-b83f-81c849ae1406",
+      "severity": "warning",
+      "trace_id": "00a4f90c-c982-43aa-b633-82bb257abfac"
+    },
+    {
+      "created_at": "2026-04-27T01:54:09.028747+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "62a1f081-01e2-4960-9e74-e12efc9ba79c",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 1315.22 ms.",
+      "metadata_json": {
+        "query_id": "2b91b560-69ae-42ae-96ca-abd591fddf0e",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 1315.22
+      },
+      "request_id": "eval:8a37db32-64b8-4000-ad4c-4290c10fb6d9:1012",
+      "severity": "warning",
+      "trace_id": "37a9e908-f8d6-4d01-a135-196db43f4cac"
+    },
+    {
+      "created_at": "2026-04-27T01:54:07.631538+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "a8810dcf-58fd-4b52-85a3-c2d2e9fde2a6",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 1212.8 ms.",
+      "metadata_json": {
+        "query_id": "a1ab1d20-90dc-4414-aaff-f7590d037a81",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 1212.8
+      },
+      "request_id": "eval:8a37db32-64b8-4000-ad4c-4290c10fb6d9:100",
+      "severity": "warning",
+      "trace_id": "7d14870e-4a66-4547-addd-0814221e7fa2"
+    },
+    {
+      "created_at": "2026-04-27T01:54:06.347230+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "e182749d-8016-4e13-9d19-0759e7ce572b",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 1201.16 ms.",
+      "metadata_json": {
+        "query_id": "6ee1ca74-684c-4c24-9ad8-63b375a26ec6",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 1201.16
+      },
+      "request_id": "eval:8a37db32-64b8-4000-ad4c-4290c10fb6d9:1",
+      "severity": "warning",
+      "trace_id": "89dfefeb-9557-42ce-9d50-15b6d1d54a33"
+    },
+    {
+      "created_at": "2026-04-27T01:53:43.482515+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "bd1b8995-22db-4ff1-99bb-45c07c6fe074",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 1321.59 ms.",
+      "metadata_json": {
+        "query_id": "a40682e2-299b-484a-a1e5-98bb8ed7fc93",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 1321.59
+      },
+      "request_id": "eval:cf9c5142-377d-4bca-9442-4569a843e0ea:1012",
+      "severity": "warning",
+      "trace_id": "b050941a-b116-4dc7-8c2d-4da199009f6e"
+    },
+    {
+      "created_at": "2026-04-27T01:53:42.087260+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "667e778d-29bb-4d30-b18e-31346762a07e",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 1276.34 ms.",
+      "metadata_json": {
+        "query_id": "7eb63431-d73e-44da-9b99-13a837df2705",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 1276.34
+      },
+      "request_id": "eval:cf9c5142-377d-4bca-9442-4569a843e0ea:100",
+      "severity": "warning",
+      "trace_id": "3aac76ff-4228-404e-a3c4-0b8f029563f8"
+    },
+    {
+      "created_at": "2026-04-27T01:53:40.727673+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "fa8bd6e6-08d5-4a59-88b0-491102b0c336",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 4453.97 ms.",
+      "metadata_json": {
+        "query_id": "44071ab1-96bf-4a6c-afb9-e995a9049d81",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 4453.97
+      },
+      "request_id": "eval:cf9c5142-377d-4bca-9442-4569a843e0ea:1",
+      "severity": "warning",
+      "trace_id": "8dcd54ad-c56f-406c-9aca-0f8ff24bcfa4"
+    },
+    {
+      "created_at": "2026-04-27T01:53:33.416180+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "500ee392-8fde-4acf-b076-40e499d1a29b",
+      "job_id": null,
+      "message": "Slow dense search completed in 12465.83 ms.",
+      "metadata_json": {
+        "query_id": "3df4df5b-223e-45a3-b34a-e6d52c05d821",
+        "retrieval_mode": "dense",
+        "total_latency_ms": 12465.83
+      },
+      "request_id": "eval:2be2e636-d42c-4650-82bd-43974b9aaeb8:1",
+      "severity": "warning",
+      "trace_id": "847d88dd-519d-40e4-89ae-b9d0a412f7cd"
+    },
+    {
+      "created_at": "2026-04-27T01:45:53.376260+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "0dbe51fd-794e-4f73-9e6a-0ea7664b0a04",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 1145.15 ms.",
+      "metadata_json": {
+        "query_id": "15c62804-b7e8-4458-bea0-2c8e3ff39e9d",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 1145.15
+      },
+      "request_id": "eval:181d294e-63a7-4a57-a071-649c1960f145:1019",
+      "severity": "warning",
+      "trace_id": "b8eec0aa-4be9-4731-9811-960fd716f703"
+    },
+    {
+      "created_at": "2026-04-27T01:45:52.160141+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "a00481c4-e0e4-48a7-9557-2e190c8b75e1",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 1195.78 ms.",
+      "metadata_json": {
+        "query_id": "632de3d9-e86b-44fd-a03f-55219ffa09ba",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 1195.78
+      },
+      "request_id": "eval:181d294e-63a7-4a57-a071-649c1960f145:1014",
+      "severity": "warning",
+      "trace_id": "48ae49ce-95bd-41fe-aca9-d8adb539c3fa"
+    },
+    {
+      "created_at": "2026-04-27T01:45:50.895823+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "05f208b6-9023-43fc-a639-1802d4c74232",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 1255.67 ms.",
+      "metadata_json": {
+        "query_id": "72d02dc0-a4ee-46e1-a271-5b4353907b42",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 1255.67
+      },
+      "request_id": "eval:181d294e-63a7-4a57-a071-649c1960f145:1012",
+      "severity": "warning",
+      "trace_id": "07b4dd71-f9cc-4f56-abf7-3aef7ee8f5c6"
+    },
+    {
+      "created_at": "2026-04-27T01:45:49.571301+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "d0387cea-e0e3-497c-b8af-589758b8ad7d",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 1141.96 ms.",
+      "metadata_json": {
+        "query_id": "93524b36-6b97-4930-8dc5-b7995612e099",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 1141.96
+      },
+      "request_id": "eval:181d294e-63a7-4a57-a071-649c1960f145:100",
+      "severity": "warning",
+      "trace_id": "ee829342-32ef-43eb-ad54-f1688fc385dd"
+    },
+    {
+      "created_at": "2026-04-27T01:45:48.356391+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "d256fa35-9e36-475b-b594-599e5d5ff6dd",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 4530.47 ms.",
+      "metadata_json": {
+        "query_id": "6e92dda2-787e-4b92-a8f8-3a15f4c31b84",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 4530.47
+      },
+      "request_id": "eval:181d294e-63a7-4a57-a071-649c1960f145:1",
+      "severity": "warning",
+      "trace_id": "07ba9530-e7af-4996-ace4-33686bba0550"
+    },
+    {
+      "created_at": "2026-04-27T01:45:39.352536+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "57d9b20b-0eb0-4845-869e-161783f591ff",
+      "job_id": null,
+      "message": "Slow dense search completed in 53317.58 ms.",
+      "metadata_json": {
+        "query_id": "d3bf3453-f0fd-40ec-828f-e121caba0f9a",
+        "retrieval_mode": "dense",
+        "total_latency_ms": 53317.58
+      },
+      "request_id": "eval:61a6bc35-293f-405c-a713-4ecd8285b277:1",
+      "severity": "warning",
+      "trace_id": "82eb5fdb-54bd-44ae-909a-8aa03cdb5775"
+    },
+    {
+      "created_at": "2026-04-27T01:17:01.636840+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "d1986ff2-b347-43e3-a842-fd7912f0d433",
+      "job_id": null,
+      "message": "Slow dense search completed in 14600.56 ms.",
+      "metadata_json": {
+        "query_id": "2f2bbaac-0ad9-49c0-8709-0bab31fdac78",
+        "retrieval_mode": "dense",
+        "total_latency_ms": 14600.56
+      },
+      "request_id": "eval:049c48ff-d818-48b9-bc74-358bf96ce5a7:1",
+      "severity": "warning",
+      "trace_id": "b7b540e6-e26a-487c-9cb5-9ea060035b37"
+    },
+    {
+      "created_at": "2026-04-26T23:52:54.259660+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "6b5bc03f-f6d8-4bb2-988b-ecb93d7c8bd9",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 1890.61 ms.",
+      "metadata_json": {
+        "query_id": "ffedc1b6-ae9f-4b51-b0f6-9e9b8b78f5c5",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 1890.61
+      },
+      "request_id": "eval:557b34de-b7c9-46e9-b822-a1bc3cdfe079:1012",
+      "severity": "warning",
+      "trace_id": "43f36691-d282-4863-a2ca-b6492864cb2f"
+    },
+    {
+      "created_at": "2026-04-26T23:52:52.278283+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "613f0183-2e12-417b-a880-6ff91192f214",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 1776.08 ms.",
+      "metadata_json": {
+        "query_id": "fdeeeb76-9401-447f-b22d-53baa33a701b",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 1776.08
+      },
+      "request_id": "eval:557b34de-b7c9-46e9-b822-a1bc3cdfe079:100",
+      "severity": "warning",
+      "trace_id": "a310a9de-407a-4419-8354-85f822b958c7"
+    },
+    {
+      "created_at": "2026-04-26T23:52:50.377826+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "8815e2dc-0368-4eb5-8467-eb91603e453b",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 21568.86 ms.",
+      "metadata_json": {
+        "query_id": "b3b9e831-c320-4eaa-a868-35f2bc0b955c",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 21568.86
+      },
+      "request_id": "eval:557b34de-b7c9-46e9-b822-a1bc3cdfe079:1",
+      "severity": "warning",
+      "trace_id": "7af8b165-fab5-47d6-af00-74ac90b47b88"
+    },
+    {
+      "created_at": "2026-04-26T23:51:46.477477+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "87548110-e6ff-4ce7-8c02-67bfa4e49bd6",
+      "job_id": null,
+      "message": "Slow hybrid search completed in 14350.37 ms.",
+      "metadata_json": {
+        "query_id": "442bc1d3-bedd-4c81-9197-468aa1f675e0",
+        "retrieval_mode": "hybrid",
+        "total_latency_ms": 14350.37
+      },
+      "request_id": "eval:da1c4277-3ce4-4ce4-a26e-c5dc079b5b78:1",
+      "severity": "warning",
+      "trace_id": "2f822a9f-46b5-455f-acb3-d7b902477351"
+    },
+    {
+      "created_at": "2026-04-26T23:51:26.102135+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "f0457ddb-5f82-45cf-95fd-0eca37650b03",
+      "job_id": null,
+      "message": "Slow dense search completed in 1132.4 ms.",
+      "metadata_json": {
+        "query_id": "f522c3ff-6028-4fde-900c-f478fb1ccc24",
+        "retrieval_mode": "dense",
+        "total_latency_ms": 1132.4
+      },
+      "request_id": "eval:cba942c5-0592-41d9-a738-e7bfe555a47f:1041",
+      "severity": "warning",
+      "trace_id": "ee116d86-6855-4789-beac-ce170cacf9a2"
+    },
+    {
+      "created_at": "2026-04-26T23:51:24.910388+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "91817b83-30c5-4d68-a5a6-e93a8153fd6e",
+      "job_id": null,
+      "message": "Slow dense search completed in 1117.96 ms.",
+      "metadata_json": {
+        "query_id": "da20556b-010e-4783-8e61-be658a5e4528",
+        "retrieval_mode": "dense",
+        "total_latency_ms": 1117.96
+      },
+      "request_id": "eval:cba942c5-0592-41d9-a738-e7bfe555a47f:1029",
+      "severity": "warning",
+      "trace_id": "ab64c5ac-8c94-455d-accc-19a75bba1dab"
+    },
+    {
+      "created_at": "2026-04-26T23:51:20.536670+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "6a85408a-4a97-4f9d-9e0e-53b80c54098f",
+      "job_id": null,
+      "message": "Slow dense search completed in 1301.2 ms.",
+      "metadata_json": {
+        "query_id": "ef92b151-a2b4-47ec-9ad3-06072e7789ae",
+        "retrieval_mode": "dense",
+        "total_latency_ms": 1301.2
+      },
+      "request_id": "eval:cba942c5-0592-41d9-a738-e7bfe555a47f:1014",
+      "severity": "warning",
+      "trace_id": "d74b9509-c7e0-420e-968a-930da160544c"
+    },
+    {
+      "created_at": "2026-04-26T23:51:17.326347+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "8ef33561-b284-4aaf-8e0a-df8e73453c08",
+      "job_id": null,
+      "message": "Slow dense search completed in 21093.96 ms.",
+      "metadata_json": {
+        "query_id": "3512284b-7051-40d4-92ca-e1aa25502a3f",
+        "retrieval_mode": "dense",
+        "total_latency_ms": 21093.96
+      },
+      "request_id": "eval:cba942c5-0592-41d9-a738-e7bfe555a47f:1",
+      "severity": "warning",
+      "trace_id": "32e6014a-d280-412c-bc77-66def4d11ddc"
+    },
+    {
+      "created_at": "2026-04-26T23:36:02.258582+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "b7dae54a-1e13-4071-afd0-62baa3ae8528",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 66774.6 ms.",
+      "metadata_json": {
+        "query_id": "d7a91f78-2f55-4b9f-9355-4d3afaf9e4a2",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 66774.6
+      },
+      "request_id": "91f2bd63-e624-4f2a-bf56-05767b7439e0",
+      "severity": "warning",
+      "trace_id": "367afd7d-2cc9-460d-a327-c7c10e586bbc"
+    },
+    {
+      "created_at": "2026-04-26T22:49:29.618235+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "cb696dc0-faef-4a38-9163-25a6066322de",
+      "job_id": null,
+      "message": "Slow bm25 search completed in 1181.31 ms.",
+      "metadata_json": {
+        "query_id": "a0e71ea4-bba9-462a-beda-a75866ce8358",
+        "retrieval_mode": "bm25",
+        "total_latency_ms": 1181.31
+      },
+      "request_id": "4fdea5b6-aa93-43a0-9c84-45e20667c35f",
+      "severity": "warning",
+      "trace_id": "fcbfc424-6ed4-473f-8189-492218ee2484"
+    },
+    {
+      "created_at": "2026-04-26T22:36:21.324510+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "9c33f2a1-a35e-4731-b833-2a46ba9898a4",
+      "job_id": null,
+      "message": "Slow hybrid_rerank search completed in 5525.59 ms.",
+      "metadata_json": {
+        "query_id": "0e32d320-88d8-4bfc-b326-0d5417415e68",
+        "retrieval_mode": "hybrid_rerank",
+        "total_latency_ms": 5525.59
+      },
+      "request_id": "d630f1cf-7ec3-458e-87af-3aa59eb1fc12",
+      "severity": "warning",
+      "trace_id": "1f2a5b51-cf09-4b04-a552-51fbdc5a74c4"
+    },
+    {
+      "created_at": "2026-04-26T22:36:14.670128+00:00",
+      "event_type": "SLOW_SEARCH_QUERY",
+      "id": "42b215b0-827e-4535-ad21-6df101b5bf90",
+      "job_id": null,
+      "message": "Slow dense search completed in 42692.2 ms.",
+      "metadata_json": {
+        "query_id": "9f2a0ef5-17b3-4354-b362-1c50d80509f8",
+        "retrieval_mode": "dense",
+        "total_latency_ms": 42692.2
+      },
+      "request_id": "3c193ed9-f02b-4323-a085-31f9d572f659",
+      "severity": "warning",
+      "trace_id": "416adfcd-438f-4fb8-9934-cfd401bc16b5"
+    }
+  ]
+}

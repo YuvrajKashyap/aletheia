@@ -1,0 +1,325 @@
+{
+  "items": [
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "208",
+      "id": "9c44757b-e991-4d3f-854e-e860afc28a27",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "208",
+          "text": "CHEK2 is not associated with breast cancer."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "CHEK2 is not associated with breast cancer."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "118",
+      "id": "4a07a1d9-8625-4651-804f-2acad5e6072d",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "118",
+          "text": "Antibiotic induced alterations in the gut microbiome reduce resistance against Clostridium difficile"
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "Antibiotic induced alterations in the gut microbiome reduce resistance against Clostridium difficile"
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "113",
+      "id": "0ac73554-6c96-497f-8d4a-30320622f537",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "113",
+          "text": "Angiotensin converting enzyme inhibitors are associated with increased risk for functional renal insufficiency."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "Angiotensin converting enzyme inhibitors are associated with increased risk for functional renal insufficiency."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "115",
+      "id": "f1f47d01-8c66-41b0-a773-6551e6e2737f",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "115",
+          "text": "Anthrax spores can be disposed of easily after they are dispersed."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "Anthrax spores can be disposed of easily after they are dispersed."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "42",
+      "id": "eb9f56df-bb3f-4d52-bc3e-67d46a2398b9",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "42",
+          "text": "A high microerythrocyte count raises vulnerability to severe anemia in homozygous alpha (+)- thalassemia trait subjects."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "A high microerythrocyte count raises vulnerability to severe anemia in homozygous alpha (+)- thalassemia trait subjects."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "48",
+      "id": "ab15d9ce-c92d-4d34-84d7-fcac5797ef75",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "48",
+          "text": "A total of 1,000 people in the UK are asymptomatic carriers of vCJD infection."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "A total of 1,000 people in the UK are asymptomatic carriers of vCJD infection."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "49",
+      "id": "27103692-19ae-478f-b286-a099602a548d",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "49",
+          "text": "ADAR1 binds to Dicer to cleave pre-miRNA."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "ADAR1 binds to Dicer to cleave pre-miRNA."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "50",
+      "id": "23cbf75b-aea6-40f0-8449-cea5f09b15e4",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "50",
+          "text": "AIRE is expressed in some skin tumors."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "AIRE is expressed in some skin tumors."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "51",
+      "id": "715270b0-b618-42d4-bc94-1d5d97879cca",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "51",
+          "text": "ALDH1 expression is associated with better breast cancer outcomes."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "ALDH1 expression is associated with better breast cancer outcomes."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "53",
+      "id": "f08fc700-6b2b-43f3-a39f-16dfb0f9d79c",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "53",
+          "text": "ALDH1 expression is associated with poorer prognosis in breast cancer."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "ALDH1 expression is associated with poorer prognosis in breast cancer."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "54",
+      "id": "c4b3f53b-d872-4430-966e-3b11c3156b1f",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "54",
+          "text": "AMP-activated protein kinase (AMPK) activation increases inflammation-related fibrosis in the lungs."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "AMP-activated protein kinase (AMPK) activation increases inflammation-related fibrosis in the lungs."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "56",
+      "id": "5b5542c9-0fd7-4d0c-9fff-51d4d7e38a06",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "56",
+          "text": "APOE4 expression in iPSC-derived neurons increases AlphaBeta production and tau phosphorylation causing GABA neuron degeneration."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "APOE4 expression in iPSC-derived neurons increases AlphaBeta production and tau phosphorylation causing GABA neuron degeneration."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "57",
+      "id": "28988156-5d07-45ae-b39b-3d2381a0bd2d",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "57",
+          "text": "APOE4 expression in iPSC-derived neurons increases AlphaBeta production and tau phosphorylation, delaying GABA neuron degeneration."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "APOE4 expression in iPSC-derived neurons increases AlphaBeta production and tau phosphorylation, delaying GABA neuron degeneration."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "70",
+      "id": "54e6a3c3-0307-4060-8851-c4ac2c134f3d",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "70",
+          "text": "Activation of PPM1D suppresses p53 function."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "Activation of PPM1D suppresses p53 function."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "72",
+      "id": "340b3fec-7062-429f-859c-6143a8c01b44",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "72",
+          "text": "Activator-inhibitor pairs are provided dorsally by Admpchordin."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "Activator-inhibitor pairs are provided dorsally by Admpchordin."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "75",
+      "id": "1c500c81-81b4-4ec9-9b36-3b95c94fdfb1",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "75",
+          "text": "Active H. pylori urease has a polymeric structure that compromises two subunits, UreA and UreB."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "Active H. pylori urease has a polymeric structure that compromises two subunits, UreA and UreB."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "94",
+      "id": "1d835c0f-e062-4e59-a397-90af6272842d",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "94",
+          "text": "Albendazole is used to treat lymphatic filariasis."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "Albendazole is used to treat lymphatic filariasis."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "99",
+      "id": "1ed2c30c-50a8-42e0-9286-48efab74d863",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "99",
+          "text": "Alizarin forms hydrogen bonds with residues involved in PGAM1 substrate binding."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "Alizarin forms hydrogen bonds with residues involved in PGAM1 substrate binding."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "100",
+      "id": "7e9038a1-dcd7-4c4e-9efc-7d9328c77e86",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "100",
+          "text": "All hematopoietic stem cells segregate their chromosomes randomly."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "All hematopoietic stem cells segregate their chromosomes randomly."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "124",
+      "id": "36db2c68-b482-4e60-aa7d-ad1fa68d0c0e",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "124",
+          "text": "Antiretroviral therapy reduces rates of tuberculosis across a broad range of CD4 strata."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "Antiretroviral therapy reduces rates of tuberculosis across a broad range of CD4 strata."
+    }
+  ],
+  "total": 300
+}

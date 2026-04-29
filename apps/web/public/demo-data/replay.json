@@ -1,0 +1,1392 @@
+{
+  "query_replays": [
+    {
+      "comparison_json": {
+        "errors": [],
+        "experiment_config_id": "",
+        "experiment_config_name": null,
+        "latency_ms": 525.82,
+        "metrics": {
+          "hit_at_10": 1.0,
+          "hit_at_5": 1.0,
+          "latency_ms": 525.82,
+          "matched_relevant_document_ids": [
+            "810129d3-4147-4219-919c-c4dfc60fcfd9"
+          ],
+          "missed_relevant_document_ids": [],
+          "mrr_at_10": 0.5,
+          "ndcg_at_10": 0.6309297535714575,
+          "ranked_document_ids": [
+            "a6c4eaf8-0213-41b3-9402-3f5e0529a270",
+            "810129d3-4147-4219-919c-c4dfc60fcfd9",
+            "ea89bad3-eee1-4a7a-adb2-bd740fc5a819",
+            "16400f2b-260a-48a4-a0b7-78cbf9ae9aa2",
+            "98fe7caf-6b5e-4b5c-a528-8b22f7a60b65",
+            "2da85d01-2cc2-434e-a10b-faad5a77c147",
+            "de23502d-aad0-48ba-99dd-3a9abf871785",
+            "d6df2a87-2e1a-47c7-a934-fe04e2b9599c",
+            "9027b7a3-2f81-4f3a-a757-2cacaee107c0",
+            "9f87f6b5-1c42-4961-ac28-74d015e11592"
+          ],
+          "recall_at_10": 1.0,
+          "recall_at_5": 1.0,
+          "reciprocal_rank_at_10": 0.5,
+          "relevant_count": 1,
+          "relevant_document_ids": [
+            "810129d3-4147-4219-919c-c4dfc60fcfd9"
+          ],
+          "retrieved_count": 10
+        },
+        "query_text": "Recurrent mutations occur frequently within CTCF anchor sites adjacent to oncogenes.",
+        "rank_comparison": null,
+        "ranked_document_ids": [
+          "a6c4eaf8-0213-41b3-9402-3f5e0529a270",
+          "810129d3-4147-4219-919c-c4dfc60fcfd9",
+          "ea89bad3-eee1-4a7a-adb2-bd740fc5a819",
+          "16400f2b-260a-48a4-a0b7-78cbf9ae9aa2",
+          "98fe7caf-6b5e-4b5c-a528-8b22f7a60b65",
+          "2da85d01-2cc2-434e-a10b-faad5a77c147",
+          "de23502d-aad0-48ba-99dd-3a9abf871785",
+          "d6df2a87-2e1a-47c7-a934-fe04e2b9599c",
+          "9027b7a3-2f81-4f3a-a757-2cacaee107c0",
+          "9f87f6b5-1c42-4961-ac28-74d015e11592"
+        ],
+        "retrieval_mode": "hybrid",
+        "saved_query_id": "189fb3c2-8554-447b-9a15-00220ac32573",
+        "source_trace_id": "",
+        "started_by": "golden_replay",
+        "target_query_id": "ed938e9e-8a5f-4848-8c55-7818a86e0aed",
+        "target_trace_id": "e44c7454-d6fe-4d3f-9e14-ec86ae40c427",
+        "top_k": 10,
+        "warnings": []
+      },
+      "completed_at": "2026-04-27T23:00:45.502618+00:00",
+      "created_at": "2026-04-27T23:00:45.503607+00:00",
+      "error_message": null,
+      "experiment_config_id": null,
+      "id": "732ac08c-f31f-4846-8d14-b39f49e08530",
+      "index_version_id": "bd5147c0-4349-45c8-8e97-7e1bc4095895",
+      "original_query_id": null,
+      "saved_query_id": "189fb3c2-8554-447b-9a15-00220ac32573",
+      "source_trace_id": null,
+      "started_at": "2026-04-27T23:00:44.901678+00:00",
+      "status": "completed",
+      "target_trace_id": "e44c7454-d6fe-4d3f-9e14-ec86ae40c427",
+      "updated_at": "2026-04-27T23:00:45.503607+00:00"
+    },
+    {
+      "comparison_json": {
+        "errors": [],
+        "experiment_config_id": "",
+        "experiment_config_name": null,
+        "latency_ms": 520.66,
+        "metrics": {
+          "hit_at_10": 1.0,
+          "hit_at_5": 1.0,
+          "latency_ms": 520.66,
+          "matched_relevant_document_ids": [
+            "42edaaa1-b381-401d-9579-53fa1421c888",
+            "68d8ccce-7c1f-4d4b-ac85-3367796515d7",
+            "3aa6ab1d-27c8-4926-a9c8-87b875ead8f9"
+          ],
+          "missed_relevant_document_ids": [],
+          "mrr_at_10": 1.0,
+          "ndcg_at_10": 0.9469024295259745,
+          "ranked_document_ids": [
+            "42edaaa1-b381-401d-9579-53fa1421c888",
+            "68d8ccce-7c1f-4d4b-ac85-3367796515d7",
+            "5b2ca05b-822d-4c4e-964b-6487964afa0a",
+            "9ac446da-e4a1-4a30-ad92-e37e9cb7c020",
+            "3aa6ab1d-27c8-4926-a9c8-87b875ead8f9",
+            "374af62f-4a6b-4aab-b2d8-e8261293116f",
+            "566725a0-b16c-44de-9fab-51b95650be8c",
+            "3dfac881-1dc6-4073-89c1-d5dc0949b14f",
+            "c500b8fa-ada2-4543-bf5d-3f4c0c875e51",
+            "489abf57-459f-49a6-9e2a-77c02e50cc9e"
+          ],
+          "recall_at_10": 1.0,
+          "recall_at_5": 1.0,
+          "reciprocal_rank_at_10": 1.0,
+          "relevant_count": 3,
+          "relevant_document_ids": [
+            "42edaaa1-b381-401d-9579-53fa1421c888",
+            "68d8ccce-7c1f-4d4b-ac85-3367796515d7",
+            "3aa6ab1d-27c8-4926-a9c8-87b875ead8f9"
+          ],
+          "retrieved_count": 10
+        },
+        "query_text": "Reduced responsiveness to interleukin-2 in regulatory T cells is associated with greater resistance to autoimmune diseases such as Type 1 Diabetes.",
+        "rank_comparison": null,
+        "ranked_document_ids": [
+          "42edaaa1-b381-401d-9579-53fa1421c888",
+          "68d8ccce-7c1f-4d4b-ac85-3367796515d7",
+          "5b2ca05b-822d-4c4e-964b-6487964afa0a",
+          "9ac446da-e4a1-4a30-ad92-e37e9cb7c020",
+          "3aa6ab1d-27c8-4926-a9c8-87b875ead8f9",
+          "374af62f-4a6b-4aab-b2d8-e8261293116f",
+          "566725a0-b16c-44de-9fab-51b95650be8c",
+          "3dfac881-1dc6-4073-89c1-d5dc0949b14f",
+          "c500b8fa-ada2-4543-bf5d-3f4c0c875e51",
+          "489abf57-459f-49a6-9e2a-77c02e50cc9e"
+        ],
+        "retrieval_mode": "hybrid",
+        "saved_query_id": "be171388-fbba-4afb-ada9-feb5a6d9f3cd",
+        "source_trace_id": "",
+        "started_by": "golden_replay",
+        "target_query_id": "a5eb2927-1ef1-4c95-8154-79878794cd89",
+        "target_trace_id": "6e7f3dac-1cc5-429b-a3c7-359642f7d740",
+        "top_k": 10,
+        "warnings": []
+      },
+      "completed_at": "2026-04-27T23:00:44.893376+00:00",
+      "created_at": "2026-04-27T23:00:44.894388+00:00",
+      "error_message": null,
+      "experiment_config_id": null,
+      "id": "83018d6e-c38a-48a9-b65d-12e9d93e36cd",
+      "index_version_id": "bd5147c0-4349-45c8-8e97-7e1bc4095895",
+      "original_query_id": null,
+      "saved_query_id": "be171388-fbba-4afb-ada9-feb5a6d9f3cd",
+      "source_trace_id": null,
+      "started_at": "2026-04-27T23:00:44.293324+00:00",
+      "status": "completed",
+      "target_trace_id": "6e7f3dac-1cc5-429b-a3c7-359642f7d740",
+      "updated_at": "2026-04-27T23:00:44.894388+00:00"
+    },
+    {
+      "comparison_json": {
+        "errors": [],
+        "experiment_config_id": "",
+        "experiment_config_name": null,
+        "latency_ms": 1160.1,
+        "metrics": {
+          "hit_at_10": 1.0,
+          "hit_at_5": 1.0,
+          "latency_ms": 1160.1,
+          "matched_relevant_document_ids": [
+            "2ad561c4-5936-44a3-b9f3-c76b635f35f9",
+            "bb049644-0245-4fb5-8894-af5860c3752c"
+          ],
+          "missed_relevant_document_ids": [],
+          "mrr_at_10": 0.2,
+          "ndcg_at_10": 0.4415801103577823,
+          "ranked_document_ids": [
+            "7d43368c-2600-4bca-82ab-4b21c8ac4838",
+            "fd8cf1f1-01a2-4858-a826-74e3e3a37ca4",
+            "ea70ac96-d7c2-4b7d-9574-b2d0333bd553",
+            "16e939f5-73ac-42ce-979f-021ad4141790",
+            "2ad561c4-5936-44a3-b9f3-c76b635f35f9",
+            "b71a393e-e8eb-4042-a2f2-1291a5d3113c",
+            "bb049644-0245-4fb5-8894-af5860c3752c",
+            "58cc7543-b219-43fe-aa31-7828b61b1f21",
+            "f0032199-abd0-49b5-a3df-eff90418f48b",
+            "e13752d2-2702-4cff-8e19-362688f979fa"
+          ],
+          "recall_at_10": 1.0,
+          "recall_at_5": 0.5,
+          "reciprocal_rank_at_10": 0.2,
+          "relevant_count": 2,
+          "relevant_document_ids": [
+            "bb049644-0245-4fb5-8894-af5860c3752c",
+            "2ad561c4-5936-44a3-b9f3-c76b635f35f9"
+          ],
+          "retrieved_count": 10
+        },
+        "query_text": "Replacement of histone H2A with H2A.Z slows gene activation in yeasts by stabilizing +1 nucleosomes.",
+        "rank_comparison": null,
+        "ranked_document_ids": [
+          "7d43368c-2600-4bca-82ab-4b21c8ac4838",
+          "fd8cf1f1-01a2-4858-a826-74e3e3a37ca4",
+          "ea70ac96-d7c2-4b7d-9574-b2d0333bd553",
+          "16e939f5-73ac-42ce-979f-021ad4141790",
+          "2ad561c4-5936-44a3-b9f3-c76b635f35f9",
+          "b71a393e-e8eb-4042-a2f2-1291a5d3113c",
+          "bb049644-0245-4fb5-8894-af5860c3752c",
+          "58cc7543-b219-43fe-aa31-7828b61b1f21",
+          "f0032199-abd0-49b5-a3df-eff90418f48b",
+          "e13752d2-2702-4cff-8e19-362688f979fa"
+        ],
+        "retrieval_mode": "hybrid",
+        "saved_query_id": "c667e7e6-dd78-494c-b386-4d1e8d65d464",
+        "source_trace_id": "",
+        "started_by": "golden_replay",
+        "target_query_id": "921cd2fe-4a78-485e-aa0d-9c69349c6821",
+        "target_trace_id": "4798676e-a907-49bb-8b55-0adc96f55406",
+        "top_k": 10,
+        "warnings": []
+      },
+      "completed_at": "2026-04-27T23:00:44.278751+00:00",
+      "created_at": "2026-04-27T23:00:44.278751+00:00",
+      "error_message": null,
+      "experiment_config_id": null,
+      "id": "99f9990d-cbb5-4a91-83b0-7d905108de49",
+      "index_version_id": "bd5147c0-4349-45c8-8e97-7e1bc4095895",
+      "original_query_id": null,
+      "saved_query_id": "c667e7e6-dd78-494c-b386-4d1e8d65d464",
+      "source_trace_id": null,
+      "started_at": "2026-04-27T23:00:43.019756+00:00",
+      "status": "completed",
+      "target_trace_id": "4798676e-a907-49bb-8b55-0adc96f55406",
+      "updated_at": "2026-04-27T23:00:44.278751+00:00"
+    },
+    {
+      "comparison_json": {
+        "errors": [],
+        "experiment_config_id": "",
+        "experiment_config_name": null,
+        "latency_ms": 1277.63,
+        "metrics": {
+          "hit_at_10": 1.0,
+          "hit_at_5": 1.0,
+          "latency_ms": 1277.63,
+          "matched_relevant_document_ids": [
+            "2ad561c4-5936-44a3-b9f3-c76b635f35f9",
+            "bb049644-0245-4fb5-8894-af5860c3752c"
+          ],
+          "missed_relevant_document_ids": [],
+          "mrr_at_10": 0.2,
+          "ndcg_at_10": 0.4415801103577823,
+          "ranked_document_ids": [
+            "7d43368c-2600-4bca-82ab-4b21c8ac4838",
+            "fd8cf1f1-01a2-4858-a826-74e3e3a37ca4",
+            "ea70ac96-d7c2-4b7d-9574-b2d0333bd553",
+            "16e939f5-73ac-42ce-979f-021ad4141790",
+            "2ad561c4-5936-44a3-b9f3-c76b635f35f9",
+            "b71a393e-e8eb-4042-a2f2-1291a5d3113c",
+            "bb049644-0245-4fb5-8894-af5860c3752c",
+            "58cc7543-b219-43fe-aa31-7828b61b1f21",
+            "f0032199-abd0-49b5-a3df-eff90418f48b",
+            "e13752d2-2702-4cff-8e19-362688f979fa"
+          ],
+          "recall_at_10": 1.0,
+          "recall_at_5": 0.5,
+          "reciprocal_rank_at_10": 0.2,
+          "relevant_count": 2,
+          "relevant_document_ids": [
+            "bb049644-0245-4fb5-8894-af5860c3752c",
+            "2ad561c4-5936-44a3-b9f3-c76b635f35f9"
+          ],
+          "retrieved_count": 10
+        },
+        "query_text": "Replacement of histone H2A with H2A.Z slows gene activation in yeasts by stabilizing +1 nucleosomes.",
+        "rank_comparison": null,
+        "ranked_document_ids": [
+          "7d43368c-2600-4bca-82ab-4b21c8ac4838",
+          "fd8cf1f1-01a2-4858-a826-74e3e3a37ca4",
+          "ea70ac96-d7c2-4b7d-9574-b2d0333bd553",
+          "16e939f5-73ac-42ce-979f-021ad4141790",
+          "2ad561c4-5936-44a3-b9f3-c76b635f35f9",
+          "b71a393e-e8eb-4042-a2f2-1291a5d3113c",
+          "bb049644-0245-4fb5-8894-af5860c3752c",
+          "58cc7543-b219-43fe-aa31-7828b61b1f21",
+          "f0032199-abd0-49b5-a3df-eff90418f48b",
+          "e13752d2-2702-4cff-8e19-362688f979fa"
+        ],
+        "retrieval_mode": "hybrid",
+        "saved_query_id": "c667e7e6-dd78-494c-b386-4d1e8d65d464",
+        "source_trace_id": "",
+        "started_by": "rq",
+        "target_query_id": "6176792c-ddd9-4e06-961e-c16c571c6251",
+        "target_trace_id": "5a52c37c-871e-46e6-891d-6ba9c908a70f",
+        "top_k": 10,
+        "warnings": []
+      },
+      "completed_at": "2026-04-27T22:31:44.403778+00:00",
+      "created_at": "2026-04-27T22:31:44.404849+00:00",
+      "error_message": null,
+      "experiment_config_id": null,
+      "id": "ab230266-325b-42b4-9459-599bb74ea834",
+      "index_version_id": "bd5147c0-4349-45c8-8e97-7e1bc4095895",
+      "original_query_id": null,
+      "saved_query_id": "c667e7e6-dd78-494c-b386-4d1e8d65d464",
+      "source_trace_id": null,
+      "started_at": "2026-04-27T22:31:43.045559+00:00",
+      "status": "completed",
+      "target_trace_id": "5a52c37c-871e-46e6-891d-6ba9c908a70f",
+      "updated_at": "2026-04-27T22:31:44.404849+00:00"
+    },
+    {
+      "comparison_json": {
+        "errors": [],
+        "experiment_config_id": "",
+        "experiment_config_name": null,
+        "latency_ms": 91466.58,
+        "metrics": {
+          "hit_at_10": 1.0,
+          "hit_at_5": 1.0,
+          "latency_ms": 91466.58,
+          "matched_relevant_document_ids": [
+            "2ad561c4-5936-44a3-b9f3-c76b635f35f9",
+            "bb049644-0245-4fb5-8894-af5860c3752c"
+          ],
+          "missed_relevant_document_ids": [],
+          "mrr_at_10": 0.2,
+          "ndcg_at_10": 0.4415801103577823,
+          "ranked_document_ids": [
+            "7d43368c-2600-4bca-82ab-4b21c8ac4838",
+            "fd8cf1f1-01a2-4858-a826-74e3e3a37ca4",
+            "ea70ac96-d7c2-4b7d-9574-b2d0333bd553",
+            "16e939f5-73ac-42ce-979f-021ad4141790",
+            "2ad561c4-5936-44a3-b9f3-c76b635f35f9",
+            "b71a393e-e8eb-4042-a2f2-1291a5d3113c",
+            "bb049644-0245-4fb5-8894-af5860c3752c",
+            "58cc7543-b219-43fe-aa31-7828b61b1f21",
+            "f0032199-abd0-49b5-a3df-eff90418f48b",
+            "e13752d2-2702-4cff-8e19-362688f979fa"
+          ],
+          "recall_at_10": 1.0,
+          "recall_at_5": 0.5,
+          "reciprocal_rank_at_10": 0.2,
+          "relevant_count": 2,
+          "relevant_document_ids": [
+            "bb049644-0245-4fb5-8894-af5860c3752c",
+            "2ad561c4-5936-44a3-b9f3-c76b635f35f9"
+          ],
+          "retrieved_count": 10
+        },
+        "query_text": "Replacement of histone H2A with H2A.Z slows gene activation in yeasts by stabilizing +1 nucleosomes.",
+        "rank_comparison": null,
+        "ranked_document_ids": [
+          "7d43368c-2600-4bca-82ab-4b21c8ac4838",
+          "fd8cf1f1-01a2-4858-a826-74e3e3a37ca4",
+          "ea70ac96-d7c2-4b7d-9574-b2d0333bd553",
+          "16e939f5-73ac-42ce-979f-021ad4141790",
+          "2ad561c4-5936-44a3-b9f3-c76b635f35f9",
+          "b71a393e-e8eb-4042-a2f2-1291a5d3113c",
+          "bb049644-0245-4fb5-8894-af5860c3752c",
+          "58cc7543-b219-43fe-aa31-7828b61b1f21",
+          "f0032199-abd0-49b5-a3df-eff90418f48b",
+          "e13752d2-2702-4cff-8e19-362688f979fa"
+        ],
+        "retrieval_mode": "hybrid",
+        "saved_query_id": "c667e7e6-dd78-494c-b386-4d1e8d65d464",
+        "source_trace_id": "",
+        "started_by": "rq",
+        "target_query_id": "21a71aa4-ae45-4cac-98fc-e64ffebc4bd9",
+        "target_trace_id": "e89c0071-4a32-48ea-91ac-a3f560f67647",
+        "top_k": 10,
+        "warnings": []
+      },
+      "completed_at": "2026-04-27T22:31:42.975143+00:00",
+      "created_at": "2026-04-27T22:31:42.978612+00:00",
+      "error_message": null,
+      "experiment_config_id": null,
+      "id": "1a3da94f-18fc-48b3-bda6-1e5eb3c59c07",
+      "index_version_id": "bd5147c0-4349-45c8-8e97-7e1bc4095895",
+      "original_query_id": null,
+      "saved_query_id": "c667e7e6-dd78-494c-b386-4d1e8d65d464",
+      "source_trace_id": null,
+      "started_at": "2026-04-27T22:30:11.323036+00:00",
+      "status": "completed",
+      "target_trace_id": "e89c0071-4a32-48ea-91ac-a3f560f67647",
+      "updated_at": "2026-04-27T22:31:42.978612+00:00"
+    },
+    {
+      "comparison_json": {
+        "errors": [],
+        "experiment_config_id": "",
+        "experiment_config_name": null,
+        "latency_ms": 555.82,
+        "metrics": {
+          "hit_at_10": 1.0,
+          "hit_at_5": 1.0,
+          "latency_ms": 555.82,
+          "matched_relevant_document_ids": [
+            "810129d3-4147-4219-919c-c4dfc60fcfd9"
+          ],
+          "missed_relevant_document_ids": [],
+          "mrr_at_10": 0.5,
+          "ndcg_at_10": 0.6309297535714575,
+          "ranked_document_ids": [
+            "a6c4eaf8-0213-41b3-9402-3f5e0529a270",
+            "810129d3-4147-4219-919c-c4dfc60fcfd9",
+            "ea89bad3-eee1-4a7a-adb2-bd740fc5a819",
+            "16400f2b-260a-48a4-a0b7-78cbf9ae9aa2",
+            "98fe7caf-6b5e-4b5c-a528-8b22f7a60b65",
+            "2da85d01-2cc2-434e-a10b-faad5a77c147",
+            "de23502d-aad0-48ba-99dd-3a9abf871785",
+            "d6df2a87-2e1a-47c7-a934-fe04e2b9599c",
+            "9027b7a3-2f81-4f3a-a757-2cacaee107c0",
+            "9f87f6b5-1c42-4961-ac28-74d015e11592"
+          ],
+          "recall_at_10": 1.0,
+          "recall_at_5": 1.0,
+          "reciprocal_rank_at_10": 0.5,
+          "relevant_count": 1,
+          "relevant_document_ids": [
+            "810129d3-4147-4219-919c-c4dfc60fcfd9"
+          ],
+          "retrieved_count": 10
+        },
+        "query_text": "Recurrent mutations occur frequently within CTCF anchor sites adjacent to oncogenes.",
+        "rank_comparison": null,
+        "ranked_document_ids": [
+          "a6c4eaf8-0213-41b3-9402-3f5e0529a270",
+          "810129d3-4147-4219-919c-c4dfc60fcfd9",
+          "ea89bad3-eee1-4a7a-adb2-bd740fc5a819",
+          "16400f2b-260a-48a4-a0b7-78cbf9ae9aa2",
+          "98fe7caf-6b5e-4b5c-a528-8b22f7a60b65",
+          "2da85d01-2cc2-434e-a10b-faad5a77c147",
+          "de23502d-aad0-48ba-99dd-3a9abf871785",
+          "d6df2a87-2e1a-47c7-a934-fe04e2b9599c",
+          "9027b7a3-2f81-4f3a-a757-2cacaee107c0",
+          "9f87f6b5-1c42-4961-ac28-74d015e11592"
+        ],
+        "retrieval_mode": "hybrid",
+        "saved_query_id": "189fb3c2-8554-447b-9a15-00220ac32573",
+        "source_trace_id": "",
+        "started_by": "golden_replay",
+        "target_query_id": "f9832e3d-d9f3-4ebc-a2ee-1164625fef75",
+        "target_trace_id": "d1b690cd-99b5-4734-b275-fa6c2649820e",
+        "top_k": 10,
+        "warnings": []
+      },
+      "completed_at": "2026-04-27T02:32:40.693949+00:00",
+      "created_at": "2026-04-27T02:32:40.693949+00:00",
+      "error_message": null,
+      "experiment_config_id": null,
+      "id": "f97c2490-cb31-40f8-b08d-b84f01e052dc",
+      "index_version_id": "bd5147c0-4349-45c8-8e97-7e1bc4095895",
+      "original_query_id": null,
+      "saved_query_id": "189fb3c2-8554-447b-9a15-00220ac32573",
+      "source_trace_id": null,
+      "started_at": "2026-04-27T02:32:40.065587+00:00",
+      "status": "completed",
+      "target_trace_id": "d1b690cd-99b5-4734-b275-fa6c2649820e",
+      "updated_at": "2026-04-27T02:32:40.693949+00:00"
+    },
+    {
+      "comparison_json": {
+        "errors": [],
+        "experiment_config_id": "",
+        "experiment_config_name": null,
+        "latency_ms": 562.16,
+        "metrics": {
+          "hit_at_10": 1.0,
+          "hit_at_5": 1.0,
+          "latency_ms": 562.16,
+          "matched_relevant_document_ids": [
+            "42edaaa1-b381-401d-9579-53fa1421c888",
+            "68d8ccce-7c1f-4d4b-ac85-3367796515d7",
+            "3aa6ab1d-27c8-4926-a9c8-87b875ead8f9"
+          ],
+          "missed_relevant_document_ids": [],
+          "mrr_at_10": 1.0,
+          "ndcg_at_10": 0.9469024295259745,
+          "ranked_document_ids": [
+            "42edaaa1-b381-401d-9579-53fa1421c888",
+            "68d8ccce-7c1f-4d4b-ac85-3367796515d7",
+            "5b2ca05b-822d-4c4e-964b-6487964afa0a",
+            "9ac446da-e4a1-4a30-ad92-e37e9cb7c020",
+            "3aa6ab1d-27c8-4926-a9c8-87b875ead8f9",
+            "374af62f-4a6b-4aab-b2d8-e8261293116f",
+            "566725a0-b16c-44de-9fab-51b95650be8c",
+            "3dfac881-1dc6-4073-89c1-d5dc0949b14f",
+            "c500b8fa-ada2-4543-bf5d-3f4c0c875e51",
+            "489abf57-459f-49a6-9e2a-77c02e50cc9e"
+          ],
+          "recall_at_10": 1.0,
+          "recall_at_5": 1.0,
+          "reciprocal_rank_at_10": 1.0,
+          "relevant_count": 3,
+          "relevant_document_ids": [
+            "42edaaa1-b381-401d-9579-53fa1421c888",
+            "68d8ccce-7c1f-4d4b-ac85-3367796515d7",
+            "3aa6ab1d-27c8-4926-a9c8-87b875ead8f9"
+          ],
+          "retrieved_count": 10
+        },
+        "query_text": "Reduced responsiveness to interleukin-2 in regulatory T cells is associated with greater resistance to autoimmune diseases such as Type 1 Diabetes.",
+        "rank_comparison": null,
+        "ranked_document_ids": [
+          "42edaaa1-b381-401d-9579-53fa1421c888",
+          "68d8ccce-7c1f-4d4b-ac85-3367796515d7",
+          "5b2ca05b-822d-4c4e-964b-6487964afa0a",
+          "9ac446da-e4a1-4a30-ad92-e37e9cb7c020",
+          "3aa6ab1d-27c8-4926-a9c8-87b875ead8f9",
+          "374af62f-4a6b-4aab-b2d8-e8261293116f",
+          "566725a0-b16c-44de-9fab-51b95650be8c",
+          "3dfac881-1dc6-4073-89c1-d5dc0949b14f",
+          "c500b8fa-ada2-4543-bf5d-3f4c0c875e51",
+          "489abf57-459f-49a6-9e2a-77c02e50cc9e"
+        ],
+        "retrieval_mode": "hybrid",
+        "saved_query_id": "be171388-fbba-4afb-ada9-feb5a6d9f3cd",
+        "source_trace_id": "",
+        "started_by": "golden_replay",
+        "target_query_id": "34226f50-5328-46f6-9d5a-e377f041c1fa",
+        "target_trace_id": "793c1ea0-a2f5-4950-b7e4-bb35a3107908",
+        "top_k": 10,
+        "warnings": []
+      },
+      "completed_at": "2026-04-27T02:32:40.050590+00:00",
+      "created_at": "2026-04-27T02:32:40.050590+00:00",
+      "error_message": null,
+      "experiment_config_id": null,
+      "id": "615cfd25-7ae6-4a61-bb87-44a1ebfdbc6f",
+      "index_version_id": "bd5147c0-4349-45c8-8e97-7e1bc4095895",
+      "original_query_id": null,
+      "saved_query_id": "be171388-fbba-4afb-ada9-feb5a6d9f3cd",
+      "source_trace_id": null,
+      "started_at": "2026-04-27T02:32:39.412172+00:00",
+      "status": "completed",
+      "target_trace_id": "793c1ea0-a2f5-4950-b7e4-bb35a3107908",
+      "updated_at": "2026-04-27T02:32:40.050590+00:00"
+    },
+    {
+      "comparison_json": {
+        "errors": [],
+        "experiment_config_id": "",
+        "experiment_config_name": null,
+        "latency_ms": 498.16,
+        "metrics": {
+          "hit_at_10": 1.0,
+          "hit_at_5": 1.0,
+          "latency_ms": 498.16,
+          "matched_relevant_document_ids": [
+            "2ad561c4-5936-44a3-b9f3-c76b635f35f9",
+            "bb049644-0245-4fb5-8894-af5860c3752c"
+          ],
+          "missed_relevant_document_ids": [],
+          "mrr_at_10": 0.2,
+          "ndcg_at_10": 0.4415801103577823,
+          "ranked_document_ids": [
+            "7d43368c-2600-4bca-82ab-4b21c8ac4838",
+            "fd8cf1f1-01a2-4858-a826-74e3e3a37ca4",
+            "ea70ac96-d7c2-4b7d-9574-b2d0333bd553",
+            "16e939f5-73ac-42ce-979f-021ad4141790",
+            "2ad561c4-5936-44a3-b9f3-c76b635f35f9",
+            "b71a393e-e8eb-4042-a2f2-1291a5d3113c",
+            "bb049644-0245-4fb5-8894-af5860c3752c",
+            "58cc7543-b219-43fe-aa31-7828b61b1f21",
+            "f0032199-abd0-49b5-a3df-eff90418f48b",
+            "e13752d2-2702-4cff-8e19-362688f979fa"
+          ],
+          "recall_at_10": 1.0,
+          "recall_at_5": 0.5,
+          "reciprocal_rank_at_10": 0.2,
+          "relevant_count": 2,
+          "relevant_document_ids": [
+            "bb049644-0245-4fb5-8894-af5860c3752c",
+            "2ad561c4-5936-44a3-b9f3-c76b635f35f9"
+          ],
+          "retrieved_count": 10
+        },
+        "query_text": "Replacement of histone H2A with H2A.Z slows gene activation in yeasts by stabilizing +1 nucleosomes.",
+        "rank_comparison": null,
+        "ranked_document_ids": [
+          "7d43368c-2600-4bca-82ab-4b21c8ac4838",
+          "fd8cf1f1-01a2-4858-a826-74e3e3a37ca4",
+          "ea70ac96-d7c2-4b7d-9574-b2d0333bd553",
+          "16e939f5-73ac-42ce-979f-021ad4141790",
+          "2ad561c4-5936-44a3-b9f3-c76b635f35f9",
+          "b71a393e-e8eb-4042-a2f2-1291a5d3113c",
+          "bb049644-0245-4fb5-8894-af5860c3752c",
+          "58cc7543-b219-43fe-aa31-7828b61b1f21",
+          "f0032199-abd0-49b5-a3df-eff90418f48b",
+          "e13752d2-2702-4cff-8e19-362688f979fa"
+        ],
+        "retrieval_mode": "hybrid",
+        "saved_query_id": "c667e7e6-dd78-494c-b386-4d1e8d65d464",
+        "source_trace_id": "",
+        "started_by": "golden_replay",
+        "target_query_id": "34d2b027-8c94-4a83-b0a0-cf7d526f4717",
+        "target_trace_id": "db837328-a9f4-4d20-b277-caedc39db206",
+        "top_k": 10,
+        "warnings": []
+      },
+      "completed_at": "2026-04-27T02:32:39.398139+00:00",
+      "created_at": "2026-04-27T02:32:39.398139+00:00",
+      "error_message": null,
+      "experiment_config_id": null,
+      "id": "2ee20519-62a5-4fad-928e-c0d907b94866",
+      "index_version_id": "bd5147c0-4349-45c8-8e97-7e1bc4095895",
+      "original_query_id": null,
+      "saved_query_id": "c667e7e6-dd78-494c-b386-4d1e8d65d464",
+      "source_trace_id": null,
+      "started_at": "2026-04-27T02:32:38.822947+00:00",
+      "status": "completed",
+      "target_trace_id": "db837328-a9f4-4d20-b277-caedc39db206",
+      "updated_at": "2026-04-27T02:32:39.398139+00:00"
+    },
+    {
+      "comparison_json": {
+        "errors": [],
+        "experiment_config_id": "",
+        "experiment_config_name": null,
+        "latency_ms": 536.13,
+        "metrics": {
+          "hit_at_10": 1.0,
+          "hit_at_5": 1.0,
+          "latency_ms": 536.13,
+          "matched_relevant_document_ids": [
+            "810129d3-4147-4219-919c-c4dfc60fcfd9"
+          ],
+          "missed_relevant_document_ids": [],
+          "mrr_at_10": 0.5,
+          "ndcg_at_10": 0.6309297535714575,
+          "ranked_document_ids": [
+            "a6c4eaf8-0213-41b3-9402-3f5e0529a270",
+            "810129d3-4147-4219-919c-c4dfc60fcfd9",
+            "ea89bad3-eee1-4a7a-adb2-bd740fc5a819",
+            "16400f2b-260a-48a4-a0b7-78cbf9ae9aa2",
+            "98fe7caf-6b5e-4b5c-a528-8b22f7a60b65",
+            "2da85d01-2cc2-434e-a10b-faad5a77c147",
+            "de23502d-aad0-48ba-99dd-3a9abf871785",
+            "d6df2a87-2e1a-47c7-a934-fe04e2b9599c",
+            "9027b7a3-2f81-4f3a-a757-2cacaee107c0",
+            "9f87f6b5-1c42-4961-ac28-74d015e11592"
+          ],
+          "recall_at_10": 1.0,
+          "recall_at_5": 1.0,
+          "reciprocal_rank_at_10": 0.5,
+          "relevant_count": 1,
+          "relevant_document_ids": [
+            "810129d3-4147-4219-919c-c4dfc60fcfd9"
+          ],
+          "retrieved_count": 10
+        },
+        "query_text": "Recurrent mutations occur frequently within CTCF anchor sites adjacent to oncogenes.",
+        "rank_comparison": null,
+        "ranked_document_ids": [
+          "a6c4eaf8-0213-41b3-9402-3f5e0529a270",
+          "810129d3-4147-4219-919c-c4dfc60fcfd9",
+          "ea89bad3-eee1-4a7a-adb2-bd740fc5a819",
+          "16400f2b-260a-48a4-a0b7-78cbf9ae9aa2",
+          "98fe7caf-6b5e-4b5c-a528-8b22f7a60b65",
+          "2da85d01-2cc2-434e-a10b-faad5a77c147",
+          "de23502d-aad0-48ba-99dd-3a9abf871785",
+          "d6df2a87-2e1a-47c7-a934-fe04e2b9599c",
+          "9027b7a3-2f81-4f3a-a757-2cacaee107c0",
+          "9f87f6b5-1c42-4961-ac28-74d015e11592"
+        ],
+        "retrieval_mode": "hybrid",
+        "saved_query_id": "189fb3c2-8554-447b-9a15-00220ac32573",
+        "source_trace_id": "",
+        "started_by": "golden_replay",
+        "target_query_id": "540e06ac-1eed-4ff7-8257-a51ef3af1d49",
+        "target_trace_id": "a48884fe-808a-46d1-a53f-c6b5b1dddf76",
+        "top_k": 10,
+        "warnings": []
+      },
+      "completed_at": "2026-04-27T02:31:32.476446+00:00",
+      "created_at": "2026-04-27T02:31:32.477457+00:00",
+      "error_message": null,
+      "experiment_config_id": null,
+      "id": "48101d45-28c8-4e89-8a31-cf0b3b7eefa4",
+      "index_version_id": "bd5147c0-4349-45c8-8e97-7e1bc4095895",
+      "original_query_id": null,
+      "saved_query_id": "189fb3c2-8554-447b-9a15-00220ac32573",
+      "source_trace_id": null,
+      "started_at": "2026-04-27T02:31:31.854279+00:00",
+      "status": "completed",
+      "target_trace_id": "a48884fe-808a-46d1-a53f-c6b5b1dddf76",
+      "updated_at": "2026-04-27T02:31:32.477457+00:00"
+    },
+    {
+      "comparison_json": {
+        "errors": [],
+        "experiment_config_id": "",
+        "experiment_config_name": null,
+        "latency_ms": 617.36,
+        "metrics": {
+          "hit_at_10": 1.0,
+          "hit_at_5": 1.0,
+          "latency_ms": 617.36,
+          "matched_relevant_document_ids": [
+            "42edaaa1-b381-401d-9579-53fa1421c888",
+            "68d8ccce-7c1f-4d4b-ac85-3367796515d7",
+            "3aa6ab1d-27c8-4926-a9c8-87b875ead8f9"
+          ],
+          "missed_relevant_document_ids": [],
+          "mrr_at_10": 1.0,
+          "ndcg_at_10": 0.9469024295259745,
+          "ranked_document_ids": [
+            "42edaaa1-b381-401d-9579-53fa1421c888",
+            "68d8ccce-7c1f-4d4b-ac85-3367796515d7",
+            "5b2ca05b-822d-4c4e-964b-6487964afa0a",
+            "9ac446da-e4a1-4a30-ad92-e37e9cb7c020",
+            "3aa6ab1d-27c8-4926-a9c8-87b875ead8f9",
+            "374af62f-4a6b-4aab-b2d8-e8261293116f",
+            "566725a0-b16c-44de-9fab-51b95650be8c",
+            "3dfac881-1dc6-4073-89c1-d5dc0949b14f",
+            "c500b8fa-ada2-4543-bf5d-3f4c0c875e51",
+            "489abf57-459f-49a6-9e2a-77c02e50cc9e"
+          ],
+          "recall_at_10": 1.0,
+          "recall_at_5": 1.0,
+          "reciprocal_rank_at_10": 1.0,
+          "relevant_count": 3,
+          "relevant_document_ids": [
+            "42edaaa1-b381-401d-9579-53fa1421c888",
+            "68d8ccce-7c1f-4d4b-ac85-3367796515d7",
+            "3aa6ab1d-27c8-4926-a9c8-87b875ead8f9"
+          ],
+          "retrieved_count": 10
+        },
+        "query_text": "Reduced responsiveness to interleukin-2 in regulatory T cells is associated with greater resistance to autoimmune diseases such as Type 1 Diabetes.",
+        "rank_comparison": null,
+        "ranked_document_ids": [
+          "42edaaa1-b381-401d-9579-53fa1421c888",
+          "68d8ccce-7c1f-4d4b-ac85-3367796515d7",
+          "5b2ca05b-822d-4c4e-964b-6487964afa0a",
+          "9ac446da-e4a1-4a30-ad92-e37e9cb7c020",
+          "3aa6ab1d-27c8-4926-a9c8-87b875ead8f9",
+          "374af62f-4a6b-4aab-b2d8-e8261293116f",
+          "566725a0-b16c-44de-9fab-51b95650be8c",
+          "3dfac881-1dc6-4073-89c1-d5dc0949b14f",
+          "c500b8fa-ada2-4543-bf5d-3f4c0c875e51",
+          "489abf57-459f-49a6-9e2a-77c02e50cc9e"
+        ],
+        "retrieval_mode": "hybrid",
+        "saved_query_id": "be171388-fbba-4afb-ada9-feb5a6d9f3cd",
+        "source_trace_id": "",
+        "started_by": "golden_replay",
+        "target_query_id": "83f0f4fb-49f3-4a50-9aca-834daf744197",
+        "target_trace_id": "1d353e80-ed5d-40e1-836d-f66fd4e09025",
+        "top_k": 10,
+        "warnings": []
+      },
+      "completed_at": "2026-04-27T02:31:31.835843+00:00",
+      "created_at": "2026-04-27T02:31:31.836856+00:00",
+      "error_message": null,
+      "experiment_config_id": null,
+      "id": "4bcd81b5-9632-4296-aaa7-252108fda0a3",
+      "index_version_id": "bd5147c0-4349-45c8-8e97-7e1bc4095895",
+      "original_query_id": null,
+      "saved_query_id": "be171388-fbba-4afb-ada9-feb5a6d9f3cd",
+      "source_trace_id": null,
+      "started_at": "2026-04-27T02:31:31.113071+00:00",
+      "status": "completed",
+      "target_trace_id": "1d353e80-ed5d-40e1-836d-f66fd4e09025",
+      "updated_at": "2026-04-27T02:31:31.836856+00:00"
+    },
+    {
+      "comparison_json": {
+        "errors": [],
+        "experiment_config_id": "",
+        "experiment_config_name": null,
+        "latency_ms": 1362.65,
+        "metrics": {
+          "hit_at_10": 1.0,
+          "hit_at_5": 1.0,
+          "latency_ms": 1362.65,
+          "matched_relevant_document_ids": [
+            "2ad561c4-5936-44a3-b9f3-c76b635f35f9",
+            "bb049644-0245-4fb5-8894-af5860c3752c"
+          ],
+          "missed_relevant_document_ids": [],
+          "mrr_at_10": 0.2,
+          "ndcg_at_10": 0.4415801103577823,
+          "ranked_document_ids": [
+            "7d43368c-2600-4bca-82ab-4b21c8ac4838",
+            "fd8cf1f1-01a2-4858-a826-74e3e3a37ca4",
+            "ea70ac96-d7c2-4b7d-9574-b2d0333bd553",
+            "16e939f5-73ac-42ce-979f-021ad4141790",
+            "2ad561c4-5936-44a3-b9f3-c76b635f35f9",
+            "b71a393e-e8eb-4042-a2f2-1291a5d3113c",
+            "bb049644-0245-4fb5-8894-af5860c3752c",
+            "58cc7543-b219-43fe-aa31-7828b61b1f21",
+            "f0032199-abd0-49b5-a3df-eff90418f48b",
+            "e13752d2-2702-4cff-8e19-362688f979fa"
+          ],
+          "recall_at_10": 1.0,
+          "recall_at_5": 0.5,
+          "reciprocal_rank_at_10": 0.2,
+          "relevant_count": 2,
+          "relevant_document_ids": [
+            "bb049644-0245-4fb5-8894-af5860c3752c",
+            "2ad561c4-5936-44a3-b9f3-c76b635f35f9"
+          ],
+          "retrieved_count": 10
+        },
+        "query_text": "Replacement of histone H2A with H2A.Z slows gene activation in yeasts by stabilizing +1 nucleosomes.",
+        "rank_comparison": null,
+        "ranked_document_ids": [
+          "7d43368c-2600-4bca-82ab-4b21c8ac4838",
+          "fd8cf1f1-01a2-4858-a826-74e3e3a37ca4",
+          "ea70ac96-d7c2-4b7d-9574-b2d0333bd553",
+          "16e939f5-73ac-42ce-979f-021ad4141790",
+          "2ad561c4-5936-44a3-b9f3-c76b635f35f9",
+          "b71a393e-e8eb-4042-a2f2-1291a5d3113c",
+          "bb049644-0245-4fb5-8894-af5860c3752c",
+          "58cc7543-b219-43fe-aa31-7828b61b1f21",
+          "f0032199-abd0-49b5-a3df-eff90418f48b",
+          "e13752d2-2702-4cff-8e19-362688f979fa"
+        ],
+        "retrieval_mode": "hybrid",
+        "saved_query_id": "c667e7e6-dd78-494c-b386-4d1e8d65d464",
+        "source_trace_id": "",
+        "started_by": "golden_replay",
+        "target_query_id": "fea16070-9070-4214-89fc-5c1df755c3a5",
+        "target_trace_id": "be88568f-2db9-48cb-99c3-3a15c59ebae1",
+        "top_k": 10,
+        "warnings": []
+      },
+      "completed_at": "2026-04-27T02:31:31.070022+00:00",
+      "created_at": "2026-04-27T02:31:31.076024+00:00",
+      "error_message": null,
+      "experiment_config_id": null,
+      "id": "6eead413-a3e1-482e-82ca-65a11ad1ccf8",
+      "index_version_id": "bd5147c0-4349-45c8-8e97-7e1bc4095895",
+      "original_query_id": null,
+      "saved_query_id": "c667e7e6-dd78-494c-b386-4d1e8d65d464",
+      "source_trace_id": null,
+      "started_at": "2026-04-27T02:31:29.532870+00:00",
+      "status": "completed",
+      "target_trace_id": "be88568f-2db9-48cb-99c3-3a15c59ebae1",
+      "updated_at": "2026-04-27T02:31:31.076024+00:00"
+    },
+    {
+      "comparison_json": {
+        "errors": [],
+        "experiment_config_id": "",
+        "experiment_config_name": null,
+        "latency_ms": 1563.29,
+        "metrics": {
+          "hit_at_10": 1.0,
+          "hit_at_5": 1.0,
+          "latency_ms": 1563.29,
+          "matched_relevant_document_ids": [
+            "810129d3-4147-4219-919c-c4dfc60fcfd9"
+          ],
+          "missed_relevant_document_ids": [],
+          "mrr_at_10": 1.0,
+          "ndcg_at_10": 1.0,
+          "ranked_document_ids": [
+            "810129d3-4147-4219-919c-c4dfc60fcfd9",
+            "98fe7caf-6b5e-4b5c-a528-8b22f7a60b65",
+            "08ea53ca-934e-4e49-be4b-1f693e7b6d08",
+            "a6c4eaf8-0213-41b3-9402-3f5e0529a270",
+            "2da85d01-2cc2-434e-a10b-faad5a77c147",
+            "16400f2b-260a-48a4-a0b7-78cbf9ae9aa2",
+            "656aba83-a020-4e8e-8c58-89f19fd9cb9e",
+            "9027b7a3-2f81-4f3a-a757-2cacaee107c0",
+            "d9031de9-53ab-4272-84ad-6983c1a83e55",
+            "9528a366-598c-42ca-96fc-1680db3504b0"
+          ],
+          "recall_at_10": 1.0,
+          "recall_at_5": 1.0,
+          "reciprocal_rank_at_10": 1.0,
+          "relevant_count": 1,
+          "relevant_document_ids": [
+            "810129d3-4147-4219-919c-c4dfc60fcfd9"
+          ],
+          "retrieved_count": 10
+        },
+        "query_text": "Recurrent mutations occur frequently within CTCF anchor sites adjacent to oncogenes.",
+        "rank_comparison": null,
+        "ranked_document_ids": [
+          "810129d3-4147-4219-919c-c4dfc60fcfd9",
+          "98fe7caf-6b5e-4b5c-a528-8b22f7a60b65",
+          "08ea53ca-934e-4e49-be4b-1f693e7b6d08",
+          "a6c4eaf8-0213-41b3-9402-3f5e0529a270",
+          "2da85d01-2cc2-434e-a10b-faad5a77c147",
+          "16400f2b-260a-48a4-a0b7-78cbf9ae9aa2",
+          "656aba83-a020-4e8e-8c58-89f19fd9cb9e",
+          "9027b7a3-2f81-4f3a-a757-2cacaee107c0",
+          "d9031de9-53ab-4272-84ad-6983c1a83e55",
+          "9528a366-598c-42ca-96fc-1680db3504b0"
+        ],
+        "retrieval_mode": "hybrid_rerank",
+        "saved_query_id": "189fb3c2-8554-447b-9a15-00220ac32573",
+        "source_trace_id": "",
+        "started_by": "golden_replay",
+        "target_query_id": "638a376d-aa99-4fbe-b485-b8dacbda2e7f",
+        "target_trace_id": "54946a58-820a-4bfd-9df7-039f963e7e80",
+        "top_k": 10,
+        "warnings": []
+      },
+      "completed_at": "2026-04-27T02:29:12.399833+00:00",
+      "created_at": "2026-04-27T02:29:12.400833+00:00",
+      "error_message": null,
+      "experiment_config_id": null,
+      "id": "7300f736-cd47-453a-9d40-596a28cbbaa7",
+      "index_version_id": "bd5147c0-4349-45c8-8e97-7e1bc4095895",
+      "original_query_id": null,
+      "saved_query_id": "189fb3c2-8554-447b-9a15-00220ac32573",
+      "source_trace_id": null,
+      "started_at": "2026-04-27T02:29:10.730651+00:00",
+      "status": "completed",
+      "target_trace_id": "54946a58-820a-4bfd-9df7-039f963e7e80",
+      "updated_at": "2026-04-27T02:29:12.400833+00:00"
+    },
+    {
+      "comparison_json": {
+        "errors": [],
+        "experiment_config_id": "",
+        "experiment_config_name": null,
+        "latency_ms": 1597.05,
+        "metrics": {
+          "hit_at_10": 1.0,
+          "hit_at_5": 1.0,
+          "latency_ms": 1597.05,
+          "matched_relevant_document_ids": [
+            "42edaaa1-b381-401d-9579-53fa1421c888",
+            "68d8ccce-7c1f-4d4b-ac85-3367796515d7"
+          ],
+          "missed_relevant_document_ids": [
+            "3aa6ab1d-27c8-4926-a9c8-87b875ead8f9"
+          ],
+          "mrr_at_10": 1.0,
+          "ndcg_at_10": 0.7653606369886217,
+          "ranked_document_ids": [
+            "42edaaa1-b381-401d-9579-53fa1421c888",
+            "68d8ccce-7c1f-4d4b-ac85-3367796515d7",
+            "5b2ca05b-822d-4c4e-964b-6487964afa0a",
+            "374af62f-4a6b-4aab-b2d8-e8261293116f",
+            "9ac446da-e4a1-4a30-ad92-e37e9cb7c020",
+            "3dfac881-1dc6-4073-89c1-d5dc0949b14f",
+            "a103a8ea-0699-482b-919b-399b7ed680e1",
+            "a9104464-3b47-478d-a4b6-14f4c4ffa1b9",
+            "566725a0-b16c-44de-9fab-51b95650be8c",
+            "bb2e1980-5964-41a2-a421-c8a0bc2e6424"
+          ],
+          "recall_at_10": 0.6666666666666666,
+          "recall_at_5": 0.6666666666666666,
+          "reciprocal_rank_at_10": 1.0,
+          "relevant_count": 3,
+          "relevant_document_ids": [
+            "42edaaa1-b381-401d-9579-53fa1421c888",
+            "68d8ccce-7c1f-4d4b-ac85-3367796515d7",
+            "3aa6ab1d-27c8-4926-a9c8-87b875ead8f9"
+          ],
+          "retrieved_count": 10
+        },
+        "query_text": "Reduced responsiveness to interleukin-2 in regulatory T cells is associated with greater resistance to autoimmune diseases such as Type 1 Diabetes.",
+        "rank_comparison": null,
+        "ranked_document_ids": [
+          "42edaaa1-b381-401d-9579-53fa1421c888",
+          "68d8ccce-7c1f-4d4b-ac85-3367796515d7",
+          "5b2ca05b-822d-4c4e-964b-6487964afa0a",
+          "374af62f-4a6b-4aab-b2d8-e8261293116f",
+          "9ac446da-e4a1-4a30-ad92-e37e9cb7c020",
+          "3dfac881-1dc6-4073-89c1-d5dc0949b14f",
+          "a103a8ea-0699-482b-919b-399b7ed680e1",
+          "a9104464-3b47-478d-a4b6-14f4c4ffa1b9",
+          "566725a0-b16c-44de-9fab-51b95650be8c",
+          "bb2e1980-5964-41a2-a421-c8a0bc2e6424"
+        ],
+        "retrieval_mode": "hybrid_rerank",
+        "saved_query_id": "be171388-fbba-4afb-ada9-feb5a6d9f3cd",
+        "source_trace_id": "",
+        "started_by": "golden_replay",
+        "target_query_id": "f1e50666-3705-4eb6-9d05-da185f3f35ff",
+        "target_trace_id": "a2c31bbc-bcc4-4e4f-b19b-29a6d47ab6e3",
+        "top_k": 10,
+        "warnings": []
+      },
+      "completed_at": "2026-04-27T02:29:10.715356+00:00",
+      "created_at": "2026-04-27T02:29:10.715356+00:00",
+      "error_message": null,
+      "experiment_config_id": null,
+      "id": "e6d659d2-f67a-4f41-a8c0-30dfb23a08c0",
+      "index_version_id": "bd5147c0-4349-45c8-8e97-7e1bc4095895",
+      "original_query_id": null,
+      "saved_query_id": "be171388-fbba-4afb-ada9-feb5a6d9f3cd",
+      "source_trace_id": null,
+      "started_at": "2026-04-27T02:29:09.015848+00:00",
+      "status": "completed",
+      "target_trace_id": "a2c31bbc-bcc4-4e4f-b19b-29a6d47ab6e3",
+      "updated_at": "2026-04-27T02:29:10.715356+00:00"
+    },
+    {
+      "comparison_json": {
+        "errors": [],
+        "experiment_config_id": "",
+        "experiment_config_name": null,
+        "latency_ms": 14992.26,
+        "metrics": {
+          "hit_at_10": 1.0,
+          "hit_at_5": 0.0,
+          "latency_ms": 14992.26,
+          "matched_relevant_document_ids": [
+            "bb049644-0245-4fb5-8894-af5860c3752c"
+          ],
+          "missed_relevant_document_ids": [
+            "2ad561c4-5936-44a3-b9f3-c76b635f35f9"
+          ],
+          "mrr_at_10": 0.1,
+          "ndcg_at_10": 0.17723928678404774,
+          "ranked_document_ids": [
+            "f0032199-abd0-49b5-a3df-eff90418f48b",
+            "7d43368c-2600-4bca-82ab-4b21c8ac4838",
+            "58cc7543-b219-43fe-aa31-7828b61b1f21",
+            "ea70ac96-d7c2-4b7d-9574-b2d0333bd553",
+            "fd8cf1f1-01a2-4858-a826-74e3e3a37ca4",
+            "68f959e0-0e9a-454f-b1b2-5e2714b2c31f",
+            "db1b91d2-f6b4-44c8-9cf5-84b12a72fb67",
+            "b71a393e-e8eb-4042-a2f2-1291a5d3113c",
+            "16e939f5-73ac-42ce-979f-021ad4141790",
+            "bb049644-0245-4fb5-8894-af5860c3752c"
+          ],
+          "recall_at_10": 0.5,
+          "recall_at_5": 0.0,
+          "reciprocal_rank_at_10": 0.1,
+          "relevant_count": 2,
+          "relevant_document_ids": [
+            "bb049644-0245-4fb5-8894-af5860c3752c",
+            "2ad561c4-5936-44a3-b9f3-c76b635f35f9"
+          ],
+          "retrieved_count": 10
+        },
+        "query_text": "Replacement of histone H2A with H2A.Z slows gene activation in yeasts by stabilizing +1 nucleosomes.",
+        "rank_comparison": null,
+        "ranked_document_ids": [
+          "f0032199-abd0-49b5-a3df-eff90418f48b",
+          "7d43368c-2600-4bca-82ab-4b21c8ac4838",
+          "58cc7543-b219-43fe-aa31-7828b61b1f21",
+          "ea70ac96-d7c2-4b7d-9574-b2d0333bd553",
+          "fd8cf1f1-01a2-4858-a826-74e3e3a37ca4",
+          "68f959e0-0e9a-454f-b1b2-5e2714b2c31f",
+          "db1b91d2-f6b4-44c8-9cf5-84b12a72fb67",
+          "b71a393e-e8eb-4042-a2f2-1291a5d3113c",
+          "16e939f5-73ac-42ce-979f-021ad4141790",
+          "bb049644-0245-4fb5-8894-af5860c3752c"
+        ],
+        "retrieval_mode": "hybrid_rerank",
+        "saved_query_id": "c667e7e6-dd78-494c-b386-4d1e8d65d464",
+        "source_trace_id": "",
+        "started_by": "golden_replay",
+        "target_query_id": "83618cf7-0bf9-452c-9ef7-78f9095de443",
+        "target_trace_id": "49ba15a1-21a5-4007-9ef7-a19d17d7eb64",
+        "top_k": 10,
+        "warnings": []
+      },
+      "completed_at": "2026-04-27T02:29:08.992826+00:00",
+      "created_at": "2026-04-27T02:29:08.994825+00:00",
+      "error_message": null,
+      "experiment_config_id": null,
+      "id": "b7fd8d0f-22d9-4daa-be3f-bc39de10a0fa",
+      "index_version_id": "bd5147c0-4349-45c8-8e97-7e1bc4095895",
+      "original_query_id": null,
+      "saved_query_id": "c667e7e6-dd78-494c-b386-4d1e8d65d464",
+      "source_trace_id": null,
+      "started_at": "2026-04-27T02:28:53.848392+00:00",
+      "status": "completed",
+      "target_trace_id": "49ba15a1-21a5-4007-9ef7-a19d17d7eb64",
+      "updated_at": "2026-04-27T02:29:08.994825+00:00"
+    },
+    {
+      "comparison_json": {
+        "errors": [],
+        "experiment_config_id": "",
+        "experiment_config_name": null,
+        "latency_ms": 20904.94,
+        "metrics": {
+          "hit_at_10": 0.0,
+          "hit_at_5": 0.0,
+          "latency_ms": 20904.94,
+          "matched_relevant_document_ids": [],
+          "missed_relevant_document_ids": [
+            "b2b4c9b3-c659-46b8-a7d8-6a217ef55213"
+          ],
+          "mrr_at_10": 0.0,
+          "ndcg_at_10": 0.0,
+          "ranked_document_ids": [
+            "48921261-8d62-4d8a-8db6-857497e81d32",
+            "b69189b4-2f9a-4351-b131-f4729668d721",
+            "dae4f81f-d2fe-44d3-a77e-0f17b4e3fabe",
+            "1bab0314-7eaf-4950-8552-9ec6ffab78a1",
+            "03cd3ad0-98c3-4bb4-946e-ad4bc0b5027e",
+            "ceea947d-1ec3-4fa4-b56e-f37f408cc6d6",
+            "ad1b07c2-a80e-4b70-a797-c4bd6608c0df",
+            "a99e4a72-7b16-4514-bd08-23c99dd2679f",
+            "b3c4cbd9-4104-4e18-a898-00b115e6b360",
+            "ab30ad09-1e27-44dd-8a61-58cc614d00e1"
+          ],
+          "recall_at_10": 0.0,
+          "recall_at_5": 0.0,
+          "reciprocal_rank_at_10": 0.0,
+          "relevant_count": 1,
+          "relevant_document_ids": [
+            "b2b4c9b3-c659-46b8-a7d8-6a217ef55213"
+          ],
+          "retrieved_count": 10
+        },
+        "query_text": "0-dimensional biomaterials show inductive properties.",
+        "rank_comparison": null,
+        "ranked_document_ids": [
+          "48921261-8d62-4d8a-8db6-857497e81d32",
+          "b69189b4-2f9a-4351-b131-f4729668d721",
+          "dae4f81f-d2fe-44d3-a77e-0f17b4e3fabe",
+          "1bab0314-7eaf-4950-8552-9ec6ffab78a1",
+          "03cd3ad0-98c3-4bb4-946e-ad4bc0b5027e",
+          "ceea947d-1ec3-4fa4-b56e-f37f408cc6d6",
+          "ad1b07c2-a80e-4b70-a797-c4bd6608c0df",
+          "a99e4a72-7b16-4514-bd08-23c99dd2679f",
+          "b3c4cbd9-4104-4e18-a898-00b115e6b360",
+          "ab30ad09-1e27-44dd-8a61-58cc614d00e1"
+        ],
+        "retrieval_mode": "hybrid_rerank",
+        "saved_query_id": "97432a0c-12bc-4a85-b83f-81c849ae1406",
+        "source_trace_id": "",
+        "started_by": "manual",
+        "target_query_id": "ec17cbc0-6178-4ebd-9273-ca1472feb0ab",
+        "target_trace_id": "00a4f90c-c982-43aa-b633-82bb257abfac",
+        "top_k": 10,
+        "warnings": []
+      },
+      "completed_at": "2026-04-27T02:28:10.174012+00:00",
+      "created_at": "2026-04-27T02:28:10.175683+00:00",
+      "error_message": null,
+      "experiment_config_id": null,
+      "id": "370216ba-c41b-483e-b97b-a85abcf64cbf",
+      "index_version_id": "bd5147c0-4349-45c8-8e97-7e1bc4095895",
+      "original_query_id": null,
+      "saved_query_id": "97432a0c-12bc-4a85-b83f-81c849ae1406",
+      "source_trace_id": null,
+      "started_at": "2026-04-27T02:27:49.091471+00:00",
+      "status": "completed",
+      "target_trace_id": "00a4f90c-c982-43aa-b633-82bb257abfac",
+      "updated_at": "2026-04-27T02:28:10.175683+00:00"
+    }
+  ],
+  "saved_queries": [
+    {
+      "created_at": "2026-04-27T23:13:27.967715+00:00",
+      "dataset_id": null,
+      "id": "afd2dfa4-1060-468b-9820-f4d26bc049db",
+      "metadata_json": {},
+      "name": "Manual UI validation query",
+      "source": "manual",
+      "text": "Does Replay Lab store manual saved queries?",
+      "updated_at": "2026-04-27T23:13:27.967715+00:00"
+    },
+    {
+      "created_at": "2026-04-27T02:27:14.500950+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "id": "c667e7e6-dd78-494c-b386-4d1e8d65d464",
+      "metadata_json": {
+        "benchmark_query_id": "7102c496-9138-4536-a779-4e3526ff341c",
+        "dataset_name": "beir/scifact",
+        "dataset_version": "test",
+        "query_external_id": "1041",
+        "relevance_count": 2,
+        "relevant_document_external_ids": [
+          "16626264",
+          "25254425"
+        ],
+        "relevant_document_ids": [
+          "bb049644-0245-4fb5-8894-af5860c3752c",
+          "2ad561c4-5936-44a3-b9f3-c76b635f35f9"
+        ],
+        "source": "golden_scifact"
+      },
+      "name": "SciFact 1041",
+      "source": "golden_scifact",
+      "text": "Replacement of histone H2A with H2A.Z slows gene activation in yeasts by stabilizing +1 nucleosomes.",
+      "updated_at": "2026-04-27T02:27:14.500950+00:00"
+    },
+    {
+      "created_at": "2026-04-27T02:27:14.496943+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "id": "be171388-fbba-4afb-ada9-feb5a6d9f3cd",
+      "metadata_json": {
+        "benchmark_query_id": "aea761f1-9c95-419f-95ee-fb7d8c48a5d2",
+        "dataset_name": "beir/scifact",
+        "dataset_version": "test",
+        "query_external_id": "1029",
+        "relevance_count": 3,
+        "relevant_document_external_ids": [
+          "11899391",
+          "13923140",
+          "13940200"
+        ],
+        "relevant_document_ids": [
+          "42edaaa1-b381-401d-9579-53fa1421c888",
+          "68d8ccce-7c1f-4d4b-ac85-3367796515d7",
+          "3aa6ab1d-27c8-4926-a9c8-87b875ead8f9"
+        ],
+        "source": "golden_scifact"
+      },
+      "name": "SciFact 1029",
+      "source": "golden_scifact",
+      "text": "Reduced responsiveness to interleukin-2 in regulatory T cells is associated with greater resistance to autoimmune diseases such as Type 1 Diabetes.",
+      "updated_at": "2026-04-27T02:27:14.496943+00:00"
+    },
+    {
+      "created_at": "2026-04-27T02:27:14.491945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "id": "189fb3c2-8554-447b-9a15-00220ac32573",
+      "metadata_json": {
+        "benchmark_query_id": "291773fa-5fde-4818-a5af-cbc244ac16c0",
+        "dataset_name": "beir/scifact",
+        "dataset_version": "test",
+        "query_external_id": "1024",
+        "relevance_count": 1,
+        "relevant_document_external_ids": [
+          "5373138"
+        ],
+        "relevant_document_ids": [
+          "810129d3-4147-4219-919c-c4dfc60fcfd9"
+        ],
+        "source": "golden_scifact"
+      },
+      "name": "SciFact 1024",
+      "source": "golden_scifact",
+      "text": "Recurrent mutations occur frequently within CTCF anchor sites adjacent to oncogenes.",
+      "updated_at": "2026-04-27T02:27:14.491945+00:00"
+    },
+    {
+      "created_at": "2026-04-27T02:27:14.486934+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "id": "50a8bc02-cffc-40c6-94e0-1e5fd5f625db",
+      "metadata_json": {
+        "benchmark_query_id": "3a0e95ff-fe67-4e00-b1a5-8894c614d75d",
+        "dataset_name": "beir/scifact",
+        "dataset_version": "test",
+        "query_external_id": "1021",
+        "relevance_count": 1,
+        "relevant_document_external_ids": [
+          "9433958"
+        ],
+        "relevant_document_ids": [
+          "3bc913c5-54bb-4a48-9127-602fee68bd50"
+        ],
+        "source": "golden_scifact"
+      },
+      "name": "SciFact 1021",
+      "source": "golden_scifact",
+      "text": "Rapid up-regulation and higher basal expression of interferon-induced genes reduce survival of granule cell neurons that are infected by West Nile virus.",
+      "updated_at": "2026-04-27T02:27:14.486934+00:00"
+    },
+    {
+      "created_at": "2026-04-27T02:27:14.481430+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "id": "baf43cd8-1c8b-4602-aac5-db216acca869",
+      "metadata_json": {
+        "benchmark_query_id": "d38e021d-7b1e-458b-be89-4562295361b0",
+        "dataset_name": "beir/scifact",
+        "dataset_version": "test",
+        "query_external_id": "1020",
+        "relevance_count": 1,
+        "relevant_document_external_ids": [
+          "9433958"
+        ],
+        "relevant_document_ids": [
+          "3bc913c5-54bb-4a48-9127-602fee68bd50"
+        ],
+        "source": "golden_scifact"
+      },
+      "name": "SciFact 1020",
+      "source": "golden_scifact",
+      "text": "Rapid up-regulation and higher basal expression of interferon-induced genes increase survival of granule cell neurons that are infected by West Nile virus.",
+      "updated_at": "2026-04-27T02:27:14.481430+00:00"
+    },
+    {
+      "created_at": "2026-04-27T02:27:14.475430+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "id": "f3342669-fd72-4945-abdb-3a6221e35e8b",
+      "metadata_json": {
+        "benchmark_query_id": "41e77316-bec3-4e24-b49b-876318824dee",
+        "dataset_name": "beir/scifact",
+        "dataset_version": "test",
+        "query_external_id": "1019",
+        "relevance_count": 1,
+        "relevant_document_external_ids": [
+          "11603066"
+        ],
+        "relevant_document_ids": [
+          "7070836f-6ffe-472e-8ba9-e92d2e19a5e8"
+        ],
+        "source": "golden_scifact"
+      },
+      "name": "SciFact 1019",
+      "source": "golden_scifact",
+      "text": "Rapid phosphotransfer rates govern fidelity in two component systems",
+      "updated_at": "2026-04-27T02:27:14.475430+00:00"
+    },
+    {
+      "created_at": "2026-04-27T02:27:14.470423+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "id": "35b0e6e1-9b1a-485e-a08c-755fcd6e6989",
+      "metadata_json": {
+        "benchmark_query_id": "596f317a-5d29-4de7-9f27-25936f8cfb92",
+        "dataset_name": "beir/scifact",
+        "dataset_version": "test",
+        "query_external_id": "1014",
+        "relevance_count": 1,
+        "relevant_document_external_ids": [
+          "6277638"
+        ],
+        "relevant_document_ids": [
+          "a0495e2b-9922-464f-9ec0-c83c438638b2"
+        ],
+        "source": "golden_scifact"
+      },
+      "name": "SciFact 1014",
+      "source": "golden_scifact",
+      "text": "Rapamycin decreases the concentration of triacylglycerols in fruit flies.",
+      "updated_at": "2026-04-27T02:27:14.470423+00:00"
+    },
+    {
+      "created_at": "2026-04-27T02:27:14.465416+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "id": "9e1faa7c-434e-40e1-8bb0-679ae49d6f41",
+      "metadata_json": {
+        "benchmark_query_id": "673c08c6-4dd6-464c-857c-68dbef18b546",
+        "dataset_name": "beir/scifact",
+        "dataset_version": "test",
+        "query_external_id": "1012",
+        "relevance_count": 1,
+        "relevant_document_external_ids": [
+          "9745001"
+        ],
+        "relevant_document_ids": [
+          "095975fa-bf78-4ada-8aff-0455b0de50aa"
+        ],
+        "source": "golden_scifact"
+      },
+      "name": "SciFact 1012",
+      "source": "golden_scifact",
+      "text": "Radioiodine treatment of non-toxic multinodular goitre reduces thyroid volume.",
+      "updated_at": "2026-04-27T02:27:14.465416+00:00"
+    },
+    {
+      "created_at": "2026-04-27T02:27:14.458960+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "id": "dc53c6d5-6928-4284-833f-cd7da8244749",
+      "metadata_json": {
+        "benchmark_query_id": "7e9038a1-dcd7-4c4e-9efc-7d9328c77e86",
+        "dataset_name": "beir/scifact",
+        "dataset_version": "test",
+        "query_external_id": "100",
+        "relevance_count": 1,
+        "relevant_document_external_ids": [
+          "4381486"
+        ],
+        "relevant_document_ids": [
+          "dc94c153-87b6-4bd6-a09c-a9011eb8f2a8"
+        ],
+        "source": "golden_scifact"
+      },
+      "name": "SciFact 100",
+      "source": "golden_scifact",
+      "text": "All hematopoietic stem cells segregate their chromosomes randomly.",
+      "updated_at": "2026-04-27T02:27:14.458960+00:00"
+    },
+    {
+      "created_at": "2026-04-27T02:27:14.446451+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "id": "97432a0c-12bc-4a85-b83f-81c849ae1406",
+      "metadata_json": {
+        "benchmark_query_id": "748b2e6c-3e9e-40d7-96d2-c5df45715a20",
+        "dataset_name": "beir/scifact",
+        "dataset_version": "test",
+        "query_external_id": "1",
+        "relevance_count": 1,
+        "relevant_document_external_ids": [
+          "31715818"
+        ],
+        "relevant_document_ids": [
+          "b2b4c9b3-c659-46b8-a7d8-6a217ef55213"
+        ],
+        "source": "golden_scifact"
+      },
+      "name": "SciFact 1",
+      "source": "golden_scifact",
+      "text": "0-dimensional biomaterials show inductive properties.",
+      "updated_at": "2026-04-27T02:27:14.446451+00:00"
+    }
+  ]
+}

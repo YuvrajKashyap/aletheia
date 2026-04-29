@@ -2242,3 +2242,51 @@ Deployment docs:
     docs/deploy-backend.md
 
 Actual provider setup comes after this step. Do not commit real secrets. Put real production values in provider dashboards or secret managers.
+
+## Step 40 Public Demo Snapshot Mode Foundation
+
+Step 40 adds the foundation for a public, cost-aware snapshot demo. Local and development mode still use the real FastAPI backend. Hosted snapshot mode uses static JSON exported from the real local full stack.
+
+Snapshot mode framing:
+
+- The public demo uses real precomputed traces, evaluations, index metadata, dataset samples, qrels, and replay outputs.
+- Live public retrieval, index rebuilds, and admin jobs are disabled to avoid always-on search and ML infrastructure costs.
+- The full live stack still runs locally through FastAPI, Postgres, Redis/RQ, OpenSearch, Qdrant, embeddings, and reranking.
+- No fake data, fake search results, fake traces, fake qrels, or fake metrics are introduced.
+
+Frontend env:
+
+    NEXT_PUBLIC_DEMO_MODE=live
+
+Use this for Vercel snapshot deployments:
+
+    NEXT_PUBLIC_DEMO_MODE=snapshot
+
+Export real snapshot data from the local full stack:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/export-demo-snapshot.ps1
+
+Snapshot files are written to:
+
+    apps/web/public/demo-data
+
+Frontend validation:
+
+    cd apps/web
+    npm run typecheck
+    npm run build
+    npm run lint
+    cd ../..
+
+Backend validation:
+
+    .\services\api\.venv\Scripts\python.exe -m pytest services/api/tests
+    .\services\api\.venv\Scripts\python.exe -m ruff check services/api/app services/api/tests
+
+Doctor:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/doctor.ps1
+
+Public demo docs:
+
+    docs/public-demo-mode.md

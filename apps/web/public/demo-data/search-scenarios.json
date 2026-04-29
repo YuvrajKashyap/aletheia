@@ -1,0 +1,3005 @@
+{
+  "items": [
+    {
+      "explanation": "Real precomputed retrieval output exported from a stored query trace. No live hosted retrieval is run for this scenario.",
+      "label": "bm25 trace",
+      "latency_ms": 493.53,
+      "query": "heart attack",
+      "query_id": "53fe2603-91f9-4ba9-a087-de59f2801228",
+      "result_count": 5,
+      "results": [
+        {
+          "chunk_external_id": "23983289:0",
+          "chunk_id": "76f106c7-7228-417b-9e67-6d65d0112558",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "23983289",
+          "document_id": "a862b6da-37d7-4bd7-a948-b316e621a68c",
+          "metadata_json": {
+            "chunk_external_id": "23983289:0",
+            "document_external_id": "23983289",
+            "metadata_json": {
+              "source_document_external_id": "23983289",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "score_breakdown": {
+              "bm25": 10.1184845
+            },
+            "title": "Accuracy of ICD-9-CM codes for identifying cardiovascular and stroke risk factors."
+          },
+          "rank": 1,
+          "score": 10.1184845,
+          "score_breakdown": {
+            "bm25_rank": 1,
+            "bm25_score": 10.1184845,
+            "dense_rank": null,
+            "dense_score": null,
+            "fusion_rank": null,
+            "fusion_score": null,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "OBJECTIVES We sought to determine which ICD-9-CM codes in Medicare Part A data identify cardiovascular and stroke risk factors. DESIGN AND PARTICIPANTS This was a cross-sectional study comparing ICD-9-CM data to structured medical record review from 23,657 Medicare beneficiaries aged 20 to 105 years who had atrial fibrillation. MEASUREMENTS Quality improvement organizations used standardized abstraction instruments to determine the presence of 9 cardiovascular and stroke risk factors. Using the ...",
+          "title": "Accuracy of ICD-9-CM codes for identifying cardiovascular and stroke risk factors.",
+          "token_count": 241
+        },
+        {
+          "chunk_external_id": "20945963:0",
+          "chunk_id": "4bfd3d2a-fc35-4aaa-88a8-b7d132db7d20",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "20945963",
+          "document_id": "804c0499-b8e2-49ba-bd79-ae82748cad16",
+          "metadata_json": {
+            "chunk_external_id": "20945963:0",
+            "document_external_id": "20945963",
+            "metadata_json": {
+              "source_document_external_id": "20945963",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "score_breakdown": {
+              "bm25": 9.308817
+            },
+            "title": "Clinical epidemiology of heart failure."
+          },
+          "rank": 2,
+          "score": 9.308817,
+          "score_breakdown": {
+            "bm25_rank": 2,
+            "bm25_score": 9.308817,
+            "dense_rank": null,
+            "dense_score": null,
+            "fusion_rank": null,
+            "fusion_score": null,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "The aim of this paper is to review the clinical epidemiology of heart failure. The last paper comprehensively addressing the epidemiology of heart failure in Heart appeared in 2000. Despite an increase in manuscripts describing epidemiological aspects of heart failure since the 1990s, additional information is still needed, as indicated by various editorials.",
+          "title": "Clinical epidemiology of heart failure.",
+          "token_count": 53
+        },
+        {
+          "chunk_external_id": "6148876:0",
+          "chunk_id": "d32fe70c-6053-467b-bd39-1c19d29e0179",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "6148876",
+          "document_id": "46805866-3eb7-489a-8427-af81a5967cba",
+          "metadata_json": {
+            "chunk_external_id": "6148876:0",
+            "document_external_id": "6148876",
+            "metadata_json": {
+              "source_document_external_id": "6148876",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "score_breakdown": {
+              "bm25": 9.03894
+            },
+            "title": "Islet1 derivatives in the heart are of both neural crest and second heart field origin."
+          },
+          "rank": 3,
+          "score": 9.03894,
+          "score_breakdown": {
+            "bm25_rank": 3,
+            "bm25_score": 9.03894,
+            "dense_rank": null,
+            "dense_score": null,
+            "fusion_rank": null,
+            "fusion_score": null,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "RATIONALE Islet1 (Isl1) has been proposed as a marker of cardiac progenitor cells derived from the second heart field and is utilized to identify and purify cardiac progenitors from murine and human specimens for ex vivo expansion. The use of Isl1 as a specific second heart field marker is dependent on its exclusion from other cardiac lineages such as neural crest. OBJECTIVE Determine whether Isl1 is expressed by cardiac neural crest. METHODS AND RESULTS We used an intersectional fate-mapping sy...",
+          "title": "Islet1 derivatives in the heart are of both neural crest and second heart field origin.",
+          "token_count": 207
+        },
+        {
+          "chunk_external_id": "37207226:0",
+          "chunk_id": "bc6f2fb2-3a4e-4ad4-b502-e1e9fa1b098d",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "37207226",
+          "document_id": "aec4146f-7907-45e3-8b7a-bee7ef2ca3cf",
+          "metadata_json": {
+            "chunk_external_id": "37207226:0",
+            "document_external_id": "37207226",
+            "metadata_json": {
+              "source_document_external_id": "37207226",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "score_breakdown": {
+              "bm25": 8.830766
+            },
+            "title": "Lipid metabolism and toxicity in the heart."
+          },
+          "rank": 4,
+          "score": 8.830766,
+          "score_breakdown": {
+            "bm25_rank": 4,
+            "bm25_score": 8.830766,
+            "dense_rank": null,
+            "dense_score": null,
+            "fusion_rank": null,
+            "fusion_score": null,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "The heart has both the greatest caloric needs and the most robust oxidation of fatty acids (FAs). Under pathological conditions such as obesity and type 2 diabetes, cardiac uptake and oxidation are not balanced and hearts accumulate lipid potentially leading to cardiac lipotoxicity. We will first review the pathways utilized by the heart to acquire FAs from the circulation and to store triglyceride intracellularly. Then we will describe mouse models in which excess lipid accumulation causes hear...",
+          "title": "Lipid metabolism and toxicity in the heart.",
+          "token_count": 100
+        },
+        {
+          "chunk_external_id": "31889025:0",
+          "chunk_id": "af43c841-81a8-4a16-a510-a5382889284d",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "31889025",
+          "document_id": "d02aa354-1e2f-4280-887a-0f53d5e51f7f",
+          "metadata_json": {
+            "chunk_external_id": "31889025:0",
+            "document_external_id": "31889025",
+            "metadata_json": {
+              "source_document_external_id": "31889025",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "score_breakdown": {
+              "bm25": 8.709545
+            },
+            "title": "The progression from hypertension to congestive heart failure."
+          },
+          "rank": 5,
+          "score": 8.709545,
+          "score_breakdown": {
+            "bm25_rank": 5,
+            "bm25_score": 8.709545,
+            "dense_rank": null,
+            "dense_score": null,
+            "fusion_rank": null,
+            "fusion_score": null,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "OBJECTIVES - To study the relative and population-attributable risks of hypertension for the development of congestive heart failure (CHF), to assess the time course of progression from hypertension to CHF, and to identify risk factors that contribute to the development of overt heart failure in hypertensive subjects. DESIGN - Inception cohort study. SETTING - General community. PARTICIPANTS - Original Framingham Heart Study and Framingham Offspring Study participants aged 40 to 89 years and fre...",
+          "title": "The progression from hypertension to congestive heart failure.",
+          "token_count": 333
+        }
+      ],
+      "retrieval_mode": "bm25",
+      "scenario_id": "bm25_ee87a94e-1a94-4ee6-8d56-fd0f70ebcd27",
+      "search_response": {
+        "latency_ms": 493.53,
+        "query": "heart attack",
+        "query_id": "53fe2603-91f9-4ba9-a087-de59f2801228",
+        "result_count": 5,
+        "results": [
+          {
+            "chunk_external_id": "23983289:0",
+            "chunk_id": "76f106c7-7228-417b-9e67-6d65d0112558",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "23983289",
+            "document_id": "a862b6da-37d7-4bd7-a948-b316e621a68c",
+            "metadata_json": {
+              "chunk_external_id": "23983289:0",
+              "document_external_id": "23983289",
+              "metadata_json": {
+                "source_document_external_id": "23983289",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "score_breakdown": {
+                "bm25": 10.1184845
+              },
+              "title": "Accuracy of ICD-9-CM codes for identifying cardiovascular and stroke risk factors."
+            },
+            "rank": 1,
+            "score": 10.1184845,
+            "score_breakdown": {
+              "bm25_rank": 1,
+              "bm25_score": 10.1184845,
+              "dense_rank": null,
+              "dense_score": null,
+              "fusion_rank": null,
+              "fusion_score": null,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "OBJECTIVES We sought to determine which ICD-9-CM codes in Medicare Part A data identify cardiovascular and stroke risk factors. DESIGN AND PARTICIPANTS This was a cross-sectional study comparing ICD-9-CM data to structured medical record review from 23,657 Medicare beneficiaries aged 20 to 105 years who had atrial fibrillation. MEASUREMENTS Quality improvement organizations used standardized abstraction instruments to determine the presence of 9 cardiovascular and stroke risk factors. Using the ...",
+            "title": "Accuracy of ICD-9-CM codes for identifying cardiovascular and stroke risk factors.",
+            "token_count": 241
+          },
+          {
+            "chunk_external_id": "20945963:0",
+            "chunk_id": "4bfd3d2a-fc35-4aaa-88a8-b7d132db7d20",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "20945963",
+            "document_id": "804c0499-b8e2-49ba-bd79-ae82748cad16",
+            "metadata_json": {
+              "chunk_external_id": "20945963:0",
+              "document_external_id": "20945963",
+              "metadata_json": {
+                "source_document_external_id": "20945963",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "score_breakdown": {
+                "bm25": 9.308817
+              },
+              "title": "Clinical epidemiology of heart failure."
+            },
+            "rank": 2,
+            "score": 9.308817,
+            "score_breakdown": {
+              "bm25_rank": 2,
+              "bm25_score": 9.308817,
+              "dense_rank": null,
+              "dense_score": null,
+              "fusion_rank": null,
+              "fusion_score": null,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "The aim of this paper is to review the clinical epidemiology of heart failure. The last paper comprehensively addressing the epidemiology of heart failure in Heart appeared in 2000. Despite an increase in manuscripts describing epidemiological aspects of heart failure since the 1990s, additional information is still needed, as indicated by various editorials.",
+            "title": "Clinical epidemiology of heart failure.",
+            "token_count": 53
+          },
+          {
+            "chunk_external_id": "6148876:0",
+            "chunk_id": "d32fe70c-6053-467b-bd39-1c19d29e0179",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "6148876",
+            "document_id": "46805866-3eb7-489a-8427-af81a5967cba",
+            "metadata_json": {
+              "chunk_external_id": "6148876:0",
+              "document_external_id": "6148876",
+              "metadata_json": {
+                "source_document_external_id": "6148876",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "score_breakdown": {
+                "bm25": 9.03894
+              },
+              "title": "Islet1 derivatives in the heart are of both neural crest and second heart field origin."
+            },
+            "rank": 3,
+            "score": 9.03894,
+            "score_breakdown": {
+              "bm25_rank": 3,
+              "bm25_score": 9.03894,
+              "dense_rank": null,
+              "dense_score": null,
+              "fusion_rank": null,
+              "fusion_score": null,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "RATIONALE Islet1 (Isl1) has been proposed as a marker of cardiac progenitor cells derived from the second heart field and is utilized to identify and purify cardiac progenitors from murine and human specimens for ex vivo expansion. The use of Isl1 as a specific second heart field marker is dependent on its exclusion from other cardiac lineages such as neural crest. OBJECTIVE Determine whether Isl1 is expressed by cardiac neural crest. METHODS AND RESULTS We used an intersectional fate-mapping sy...",
+            "title": "Islet1 derivatives in the heart are of both neural crest and second heart field origin.",
+            "token_count": 207
+          },
+          {
+            "chunk_external_id": "37207226:0",
+            "chunk_id": "bc6f2fb2-3a4e-4ad4-b502-e1e9fa1b098d",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "37207226",
+            "document_id": "aec4146f-7907-45e3-8b7a-bee7ef2ca3cf",
+            "metadata_json": {
+              "chunk_external_id": "37207226:0",
+              "document_external_id": "37207226",
+              "metadata_json": {
+                "source_document_external_id": "37207226",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "score_breakdown": {
+                "bm25": 8.830766
+              },
+              "title": "Lipid metabolism and toxicity in the heart."
+            },
+            "rank": 4,
+            "score": 8.830766,
+            "score_breakdown": {
+              "bm25_rank": 4,
+              "bm25_score": 8.830766,
+              "dense_rank": null,
+              "dense_score": null,
+              "fusion_rank": null,
+              "fusion_score": null,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "The heart has both the greatest caloric needs and the most robust oxidation of fatty acids (FAs). Under pathological conditions such as obesity and type 2 diabetes, cardiac uptake and oxidation are not balanced and hearts accumulate lipid potentially leading to cardiac lipotoxicity. We will first review the pathways utilized by the heart to acquire FAs from the circulation and to store triglyceride intracellularly. Then we will describe mouse models in which excess lipid accumulation causes hear...",
+            "title": "Lipid metabolism and toxicity in the heart.",
+            "token_count": 100
+          },
+          {
+            "chunk_external_id": "31889025:0",
+            "chunk_id": "af43c841-81a8-4a16-a510-a5382889284d",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "31889025",
+            "document_id": "d02aa354-1e2f-4280-887a-0f53d5e51f7f",
+            "metadata_json": {
+              "chunk_external_id": "31889025:0",
+              "document_external_id": "31889025",
+              "metadata_json": {
+                "source_document_external_id": "31889025",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "score_breakdown": {
+                "bm25": 8.709545
+              },
+              "title": "The progression from hypertension to congestive heart failure."
+            },
+            "rank": 5,
+            "score": 8.709545,
+            "score_breakdown": {
+              "bm25_rank": 5,
+              "bm25_score": 8.709545,
+              "dense_rank": null,
+              "dense_score": null,
+              "fusion_rank": null,
+              "fusion_score": null,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "OBJECTIVES - To study the relative and population-attributable risks of hypertension for the development of congestive heart failure (CHF), to assess the time course of progression from hypertension to CHF, and to identify risk factors that contribute to the development of overt heart failure in hypertensive subjects. DESIGN - Inception cohort study. SETTING - General community. PARTICIPANTS - Original Framingham Heart Study and Framingham Offspring Study participants aged 40 to 89 years and fre...",
+            "title": "The progression from hypertension to congestive heart failure.",
+            "token_count": 333
+          }
+        ],
+        "retrieval_mode": "bm25",
+        "trace_id": "ee87a94e-1a94-4ee6-8d56-fd0f70ebcd27"
+      },
+      "trace_id": "ee87a94e-1a94-4ee6-8d56-fd0f70ebcd27"
+    },
+    {
+      "explanation": "Real precomputed retrieval output exported from a stored query trace. No live hosted retrieval is run for this scenario.",
+      "label": "hybrid trace",
+      "latency_ms": 525.82,
+      "query": "Recurrent mutations occur frequently within CTCF anchor sites adjacent to oncogenes.",
+      "query_id": "ed938e9e-8a5f-4848-8c55-7818a86e0aed",
+      "result_count": 10,
+      "results": [
+        {
+          "chunk_external_id": "8494570:0",
+          "chunk_id": "ae6c0013-fa2d-41be-ad05-862ca9186aa2",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "8494570",
+          "document_id": "a6c4eaf8-0213-41b3-9402-3f5e0529a270",
+          "metadata_json": {
+            "chunk_external_id": "8494570:0",
+            "document_external_id": "8494570",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "8494570",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rrf_k": 60,
+            "score_breakdown": {
+              "bm25": 22.769403,
+              "bm25_rank": 3,
+              "dense": 0.79097575,
+              "dense_rank": 1,
+              "fusion": 0.032266458495966696
+            },
+            "title": "Characterization of constitutive CTCF/cohesin loci: a possible role in establishing topological domains in mammalian genomes",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 1,
+          "score": 0.032266458495966696,
+          "score_breakdown": {
+            "bm25_rank": 3,
+            "bm25_score": 22.769403,
+            "dense_rank": 1,
+            "dense_score": 0.79097575,
+            "fusion_rank": 1,
+            "fusion_score": 0.032266458495966696,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "BACKGROUND Recent studies suggested that human/mammalian genomes are divided into large, discrete domains that are units of chromosome organization. CTCF, a CCCTC binding factor, has a diverse role in genome regulation including transcriptional regulation, chromosome-boundary insulation, DNA replication, and chromatin packaging. It remains unclear whether a subset of CTCF binding sites plays a functional role in establishing/maintaining chromatin topological domains. RESULTS We systematically an...",
+          "title": "Characterization of constitutive CTCF/cohesin loci: a possible role in establishing topological domains in mammalian genomes",
+          "token_count": 214
+        },
+        {
+          "chunk_external_id": "5373138:0",
+          "chunk_id": "4a832e54-780a-44cc-b227-3dbcbf945866",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "5373138",
+          "document_id": "810129d3-4147-4219-919c-c4dfc60fcfd9",
+          "metadata_json": {
+            "chunk_external_id": "5373138:0",
+            "document_external_id": "5373138",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "5373138",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rrf_k": 60,
+            "score_breakdown": {
+              "bm25": 28.957857,
+              "bm25_rank": 1,
+              "dense": 0.7789857,
+              "dense_rank": 5,
+              "fusion": 0.03177805800756621
+            },
+            "title": "3D Chromosome Regulatory Landscape of Human Pluripotent Cells.",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 2,
+          "score": 0.03177805800756621,
+          "score_breakdown": {
+            "bm25_rank": 1,
+            "bm25_score": 28.957857,
+            "dense_rank": 5,
+            "dense_score": 0.7789857,
+            "fusion_rank": 2,
+            "fusion_score": 0.03177805800756621,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "In this study, we describe the 3D chromosome regulatory landscape of human naive and primed embryonic stem cells. To devise this map, we identified transcriptional enhancers and insulators in these cells and placed them within the context of cohesin-associated CTCF-CTCF loops using cohesin ChIA-PET data. The CTCF-CTCF loops we identified form a chromosomal framework of insulated neighborhoods, which in turn form topologically associating domains (TADs) that are largely preserved during the trans...",
+          "title": "3D Chromosome Regulatory Landscape of Human Pluripotent Cells.",
+          "token_count": 149
+        },
+        {
+          "chunk_external_id": "14530534:0",
+          "chunk_id": "20fccde3-b9d1-4135-b651-588213bf346c",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "14530534",
+          "document_id": "ea89bad3-eee1-4a7a-adb2-bd740fc5a819",
+          "metadata_json": {
+            "chunk_external_id": "14530534:0",
+            "document_external_id": "14530534",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "14530534",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rrf_k": 60,
+            "score_breakdown": {
+              "bm25": 22.506403,
+              "bm25_rank": 4,
+              "dense": 0.7660953,
+              "dense_rank": 7,
+              "fusion": 0.03055037313432836
+            },
+            "title": "Comprehensive Identification and Annotation of Cell Type-Specific and Ubiquitous CTCF-Binding Sites in the Human Genome",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 3,
+          "score": 0.03055037313432836,
+          "score_breakdown": {
+            "bm25_rank": 4,
+            "bm25_score": 22.506403,
+            "dense_rank": 7,
+            "dense_score": 0.7660953,
+            "fusion_rank": 3,
+            "fusion_score": 0.03055037313432836,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "Chromatin insulators are DNA elements that regulate the level of gene expression either by preventing gene silencing through the maintenance of heterochromatin boundaries or by preventing gene activation by blocking interactions between enhancers and promoters. CCCTC-binding factor (CTCF), a ubiquitously expressed 11-zinc-finger DNA-binding protein, is the only protein implicated in the establishment of insulators in vertebrates. While CTCF has been implicated in diverse regulatory functions, CT...",
+          "title": "Comprehensive Identification and Annotation of Cell Type-Specific and Ubiquitous CTCF-Binding Sites in the Human Genome",
+          "token_count": 184
+        },
+        {
+          "chunk_external_id": "140874:0",
+          "chunk_id": "51457499-ed18-40ba-83ad-65df4af7189c",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "140874",
+          "document_id": "16400f2b-260a-48a4-a0b7-78cbf9ae9aa2",
+          "metadata_json": {
+            "chunk_external_id": "140874:0",
+            "document_external_id": "140874",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "140874",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rrf_k": 60,
+            "score_breakdown": {
+              "bm25": 21.952402,
+              "bm25_rank": 5,
+              "dense": 0.7602093,
+              "dense_rank": 11,
+              "fusion": 0.02946912242686891
+            },
+            "title": "CTCF binding at the H19 imprinting control region mediates maternally inherited higher-order chromatin conformation to restrict enhancer access to Igf2.",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 4,
+          "score": 0.02946912242686891,
+          "score_breakdown": {
+            "bm25_rank": 5,
+            "bm25_score": 21.952402,
+            "dense_rank": 11,
+            "dense_score": 0.7602093,
+            "fusion_rank": 4,
+            "fusion_score": 0.02946912242686891,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "It is thought that the H19 imprinting control region (ICR) directs the silencing of the maternally inherited Igf2 allele through a CTCF-dependent chromatin insulator. The ICR has been shown to interact physically with a silencer region in Igf2, differentially methylated region (DMR)1, but the role of CTCF in this chromatin loop and whether it restricts the physical access of distal enhancers to Igf2 is not known. We performed systematic chromosome conformation capture analyses in the Igf2/H19 re...",
+          "title": "CTCF binding at the H19 imprinting control region mediates maternally inherited higher-order chromatin conformation to restrict enhancer access to Igf2.",
+          "token_count": 224
+        },
+        {
+          "chunk_external_id": "24995939:0",
+          "chunk_id": "ee215bfb-3ba1-49dd-b583-90c071f8abb9",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "24995939",
+          "document_id": "98fe7caf-6b5e-4b5c-a528-8b22f7a60b65",
+          "metadata_json": {
+            "chunk_external_id": "24995939:0",
+            "document_external_id": "24995939",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "24995939",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rrf_k": 60,
+            "score_breakdown": {
+              "bm25": 27.173346,
+              "bm25_rank": 2,
+              "dense": 0.7565247,
+              "dense_rank": 15,
+              "fusion": 0.02946236559139785
+            },
+            "title": "Specific sites in the C terminus of CTCF interact with the SA2 subunit of the cohesin complex and are required for cohesin-dependent insulation activity.",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 5,
+          "score": 0.02946236559139785,
+          "score_breakdown": {
+            "bm25_rank": 2,
+            "bm25_score": 27.173346,
+            "dense_rank": 15,
+            "dense_score": 0.7565247,
+            "fusion_rank": 5,
+            "fusion_score": 0.02946236559139785,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "Recent studies have shown that the protein CTCF, which plays an important role in insulation and in large-scale organization of chromatin within the eukaryotic nucleus, depends for both activities on recruitment of the cohesin complex. We show here that the interaction of CTCF with the cohesin complex involves direct contacts between the cohesin subunit SA2 and specific regions of the C-terminal tail of CTCF. All other cohesin components are recruited through their interaction with SA2. Expressi...",
+          "title": "Specific sites in the C terminus of CTCF interact with the SA2 subunit of the cohesin complex and are required for cohesin-dependent insulation activity.",
+          "token_count": 174
+        },
+        {
+          "chunk_external_id": "26064942:0",
+          "chunk_id": "da4cb1e7-09bf-4754-897c-5859ac2e3bb5",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "26064942",
+          "document_id": "2da85d01-2cc2-434e-a10b-faad5a77c147",
+          "metadata_json": {
+            "chunk_external_id": "26064942:0",
+            "document_external_id": "26064942",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "26064942",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rrf_k": 60,
+            "score_breakdown": {
+              "bm25": 21.896496,
+              "bm25_rank": 6,
+              "dense": 0.7454586,
+              "dense_rank": 24,
+              "fusion": 0.027056277056277056
+            },
+            "title": "PGAP2 mutations, affecting the GPI-anchor-synthesis pathway, cause hyperphosphatasia with mental retardation syndrome.",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 6,
+          "score": 0.027056277056277056,
+          "score_breakdown": {
+            "bm25_rank": 6,
+            "bm25_score": 21.896496,
+            "dense_rank": 24,
+            "dense_score": 0.7454586,
+            "fusion_rank": 6,
+            "fusion_score": 0.027056277056277056,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "Recently, mutations in genes involved in the biosynthesis of the glycosylphosphatidylinositol (GPI) anchor have been identified in a new subclass of congenital disorders of glycosylation (CDGs) with a distinct spectrum of clinical features. To date, mutations have been identified in six genes (PIGA, PIGL, PIGM, PIGN, PIGO, and PIGV) encoding proteins in the GPI-anchor-synthesis pathway in individuals with severe neurological features, including seizures, muscular hypotonia, and intellectual disa...",
+          "title": "PGAP2 mutations, affecting the GPI-anchor-synthesis pathway, cause hyperphosphatasia with mental retardation syndrome.",
+          "token_count": 218
+        },
+        {
+          "chunk_external_id": "24896957:0",
+          "chunk_id": "01e28db6-bdfa-4f03-bcd1-f3031ebce6ab",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "24896957",
+          "document_id": "de23502d-aad0-48ba-99dd-3a9abf871785",
+          "metadata_json": {
+            "chunk_external_id": "24896957:0",
+            "document_external_id": "24896957",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "24896957",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rrf_k": 60,
+            "score_breakdown": {
+              "bm25": 16.453476,
+              "bm25_rank": 8,
+              "dense": 0.7463213,
+              "dense_rank": 23,
+              "fusion": 0.026754075124025514
+            },
+            "title": "Rate and molecular spectrum of spontaneous mutations in the bacterium Escherichia coli as determined by whole-genome sequencing.",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 7,
+          "score": 0.026754075124025514,
+          "score_breakdown": {
+            "bm25_rank": 8,
+            "bm25_score": 16.453476,
+            "dense_rank": 23,
+            "dense_score": 0.7463213,
+            "fusion_rank": 7,
+            "fusion_score": 0.026754075124025514,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "Knowledge of the rate and nature of spontaneous mutation is fundamental to understanding evolutionary and molecular processes. In this report, we analyze spontaneous mutations accumulated over thousands of generations by wild-type Escherichia coli and a derivative defective in mismatch repair (MMR), the primary pathway for correcting replication errors. The major conclusions are (i) the mutation rate of a wild-type E. coli strain is ~1 \u00d7 10(-3) per genome per generation; (ii) mutations in the wi...",
+          "title": "Rate and molecular spectrum of spontaneous mutations in the bacterium Escherichia coli as determined by whole-genome sequencing.",
+          "token_count": 265
+        },
+        {
+          "chunk_external_id": "4421547:0",
+          "chunk_id": "331a07df-1f66-49f3-8e06-fa6869cd83af",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "4421547",
+          "document_id": "d6df2a87-2e1a-47c7-a934-fe04e2b9599c",
+          "metadata_json": {
+            "chunk_external_id": "4421547:0",
+            "document_external_id": "4421547",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "4421547",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rrf_k": 60,
+            "score_breakdown": {
+              "bm25": 15.228141,
+              "bm25_rank": 11,
+              "dense": 0.7441406,
+              "dense_rank": 27,
+              "fusion": 0.02557875991581674
+            },
+            "title": "CTCF mediates methylation-sensitive enhancer-blocking activity at the H19/Igf2 locus.",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 8,
+          "score": 0.02557875991581674,
+          "score_breakdown": {
+            "bm25_rank": 11,
+            "bm25_score": 15.228141,
+            "dense_rank": 27,
+            "dense_score": 0.7441406,
+            "fusion_rank": 8,
+            "fusion_score": 0.02557875991581674,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "The Insulin-like growth factor 2 (Igf2) and H19 genes are imprinted, resulting in silencing of the maternal and paternal alleles, respectively. This event is dependent upon an imprinted-control region two kilobases upstream of H19 (refs 1, 2). On the paternal chromosome this element is methylated and required for the silencing of H19 (refs 2-4). On the maternal chromosome the region is unmethylated and required for silencing of the Igf2 gene 90 kilobases upstream. We have proposed that the unmet...",
+          "title": "CTCF mediates methylation-sensitive enhancer-blocking activity at the H19/Igf2 locus.",
+          "token_count": 197
+        },
+        {
+          "chunk_external_id": "4312169:0",
+          "chunk_id": "84ac883c-1aab-401b-a164-6c1ac71275f5",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "4312169",
+          "document_id": "9027b7a3-2f81-4f3a-a757-2cacaee107c0",
+          "metadata_json": {
+            "chunk_external_id": "4312169:0",
+            "document_external_id": "4312169",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "4312169",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rrf_k": 60,
+            "score_breakdown": {
+              "bm25": 15.812216,
+              "bm25_rank": 10,
+              "dense": 0.7407261,
+              "dense_rank": 33,
+              "fusion": 0.0250384024577573
+            },
+            "title": "Driver mutations in histone H3.3 and chromatin remodelling genes in paediatric glioblastoma",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 9,
+          "score": 0.0250384024577573,
+          "score_breakdown": {
+            "bm25_rank": 10,
+            "bm25_score": 15.812216,
+            "dense_rank": 33,
+            "dense_score": 0.7407261,
+            "fusion_rank": 9,
+            "fusion_score": 0.0250384024577573,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "Glioblastoma multiforme (GBM) is a lethal brain tumour in adults and children. However, DNA copy number and gene expression signatures indicate differences between adult and paediatric cases. To explore the genetic events underlying this distinction, we sequenced the exomes of 48 paediatric GBM samples. Somatic mutations in the H3.3-ATRX-DAXX chromatin remodelling pathway were identified in 44% of tumours (21/48). Recurrent mutations in H3F3A, which encodes the replication-independent histone 3 ...",
+          "title": "Driver mutations in histone H3.3 and chromatin remodelling genes in paediatric glioblastoma",
+          "token_count": 252
+        },
+        {
+          "chunk_external_id": "1921218:0",
+          "chunk_id": "b68061c4-2e4a-4001-990a-8d6918c1d384",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "1921218",
+          "document_id": "9f87f6b5-1c42-4961-ac28-74d015e11592",
+          "metadata_json": {
+            "chunk_external_id": "1921218:0",
+            "document_external_id": "1921218",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "1921218",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rrf_k": 60,
+            "score_breakdown": {
+              "bm25": 10.272376,
+              "bm25_rank": 46,
+              "dense": 0.76173675,
+              "dense_rank": 9,
+              "fusion": 0.02392671588733935
+            },
+            "title": "Detecting and targeting tumor relapse by its resistance to innate effectors at early recurrence",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 10,
+          "score": 0.02392671588733935,
+          "score_breakdown": {
+            "bm25_rank": 46,
+            "bm25_score": 10.272376,
+            "dense_rank": 9,
+            "dense_score": 0.76173675,
+            "fusion_rank": 10,
+            "fusion_score": 0.02392671588733935,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "Tumor recurrence represents a major clinical challenge. Our data show that emergent recurrent tumors acquire a phenotype radically different from that of their originating primary tumors. This phenotype allows them to evade a host-derived innate immune response elicited by the progression from minimal residual disease (MRD) to actively growing recurrence. Screening for this innate response predicted accurately in which mice recurrence would occur. Premature induction of recurrence resensitized M...",
+          "title": "Detecting and targeting tumor relapse by its resistance to innate effectors at early recurrence",
+          "token_count": 152
+        }
+      ],
+      "retrieval_mode": "hybrid",
+      "scenario_id": "hybrid_e44c7454-d6fe-4d3f-9e14-ec86ae40c427",
+      "search_response": {
+        "latency_ms": 525.82,
+        "query": "Recurrent mutations occur frequently within CTCF anchor sites adjacent to oncogenes.",
+        "query_id": "ed938e9e-8a5f-4848-8c55-7818a86e0aed",
+        "result_count": 10,
+        "results": [
+          {
+            "chunk_external_id": "8494570:0",
+            "chunk_id": "ae6c0013-fa2d-41be-ad05-862ca9186aa2",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "8494570",
+            "document_id": "a6c4eaf8-0213-41b3-9402-3f5e0529a270",
+            "metadata_json": {
+              "chunk_external_id": "8494570:0",
+              "document_external_id": "8494570",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "8494570",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rrf_k": 60,
+              "score_breakdown": {
+                "bm25": 22.769403,
+                "bm25_rank": 3,
+                "dense": 0.79097575,
+                "dense_rank": 1,
+                "fusion": 0.032266458495966696
+              },
+              "title": "Characterization of constitutive CTCF/cohesin loci: a possible role in establishing topological domains in mammalian genomes",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 1,
+            "score": 0.032266458495966696,
+            "score_breakdown": {
+              "bm25_rank": 3,
+              "bm25_score": 22.769403,
+              "dense_rank": 1,
+              "dense_score": 0.79097575,
+              "fusion_rank": 1,
+              "fusion_score": 0.032266458495966696,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "BACKGROUND Recent studies suggested that human/mammalian genomes are divided into large, discrete domains that are units of chromosome organization. CTCF, a CCCTC binding factor, has a diverse role in genome regulation including transcriptional regulation, chromosome-boundary insulation, DNA replication, and chromatin packaging. It remains unclear whether a subset of CTCF binding sites plays a functional role in establishing/maintaining chromatin topological domains. RESULTS We systematically an...",
+            "title": "Characterization of constitutive CTCF/cohesin loci: a possible role in establishing topological domains in mammalian genomes",
+            "token_count": 214
+          },
+          {
+            "chunk_external_id": "5373138:0",
+            "chunk_id": "4a832e54-780a-44cc-b227-3dbcbf945866",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "5373138",
+            "document_id": "810129d3-4147-4219-919c-c4dfc60fcfd9",
+            "metadata_json": {
+              "chunk_external_id": "5373138:0",
+              "document_external_id": "5373138",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "5373138",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rrf_k": 60,
+              "score_breakdown": {
+                "bm25": 28.957857,
+                "bm25_rank": 1,
+                "dense": 0.7789857,
+                "dense_rank": 5,
+                "fusion": 0.03177805800756621
+              },
+              "title": "3D Chromosome Regulatory Landscape of Human Pluripotent Cells.",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 2,
+            "score": 0.03177805800756621,
+            "score_breakdown": {
+              "bm25_rank": 1,
+              "bm25_score": 28.957857,
+              "dense_rank": 5,
+              "dense_score": 0.7789857,
+              "fusion_rank": 2,
+              "fusion_score": 0.03177805800756621,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "In this study, we describe the 3D chromosome regulatory landscape of human naive and primed embryonic stem cells. To devise this map, we identified transcriptional enhancers and insulators in these cells and placed them within the context of cohesin-associated CTCF-CTCF loops using cohesin ChIA-PET data. The CTCF-CTCF loops we identified form a chromosomal framework of insulated neighborhoods, which in turn form topologically associating domains (TADs) that are largely preserved during the trans...",
+            "title": "3D Chromosome Regulatory Landscape of Human Pluripotent Cells.",
+            "token_count": 149
+          },
+          {
+            "chunk_external_id": "14530534:0",
+            "chunk_id": "20fccde3-b9d1-4135-b651-588213bf346c",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "14530534",
+            "document_id": "ea89bad3-eee1-4a7a-adb2-bd740fc5a819",
+            "metadata_json": {
+              "chunk_external_id": "14530534:0",
+              "document_external_id": "14530534",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "14530534",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rrf_k": 60,
+              "score_breakdown": {
+                "bm25": 22.506403,
+                "bm25_rank": 4,
+                "dense": 0.7660953,
+                "dense_rank": 7,
+                "fusion": 0.03055037313432836
+              },
+              "title": "Comprehensive Identification and Annotation of Cell Type-Specific and Ubiquitous CTCF-Binding Sites in the Human Genome",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 3,
+            "score": 0.03055037313432836,
+            "score_breakdown": {
+              "bm25_rank": 4,
+              "bm25_score": 22.506403,
+              "dense_rank": 7,
+              "dense_score": 0.7660953,
+              "fusion_rank": 3,
+              "fusion_score": 0.03055037313432836,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "Chromatin insulators are DNA elements that regulate the level of gene expression either by preventing gene silencing through the maintenance of heterochromatin boundaries or by preventing gene activation by blocking interactions between enhancers and promoters. CCCTC-binding factor (CTCF), a ubiquitously expressed 11-zinc-finger DNA-binding protein, is the only protein implicated in the establishment of insulators in vertebrates. While CTCF has been implicated in diverse regulatory functions, CT...",
+            "title": "Comprehensive Identification and Annotation of Cell Type-Specific and Ubiquitous CTCF-Binding Sites in the Human Genome",
+            "token_count": 184
+          },
+          {
+            "chunk_external_id": "140874:0",
+            "chunk_id": "51457499-ed18-40ba-83ad-65df4af7189c",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "140874",
+            "document_id": "16400f2b-260a-48a4-a0b7-78cbf9ae9aa2",
+            "metadata_json": {
+              "chunk_external_id": "140874:0",
+              "document_external_id": "140874",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "140874",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rrf_k": 60,
+              "score_breakdown": {
+                "bm25": 21.952402,
+                "bm25_rank": 5,
+                "dense": 0.7602093,
+                "dense_rank": 11,
+                "fusion": 0.02946912242686891
+              },
+              "title": "CTCF binding at the H19 imprinting control region mediates maternally inherited higher-order chromatin conformation to restrict enhancer access to Igf2.",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 4,
+            "score": 0.02946912242686891,
+            "score_breakdown": {
+              "bm25_rank": 5,
+              "bm25_score": 21.952402,
+              "dense_rank": 11,
+              "dense_score": 0.7602093,
+              "fusion_rank": 4,
+              "fusion_score": 0.02946912242686891,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "It is thought that the H19 imprinting control region (ICR) directs the silencing of the maternally inherited Igf2 allele through a CTCF-dependent chromatin insulator. The ICR has been shown to interact physically with a silencer region in Igf2, differentially methylated region (DMR)1, but the role of CTCF in this chromatin loop and whether it restricts the physical access of distal enhancers to Igf2 is not known. We performed systematic chromosome conformation capture analyses in the Igf2/H19 re...",
+            "title": "CTCF binding at the H19 imprinting control region mediates maternally inherited higher-order chromatin conformation to restrict enhancer access to Igf2.",
+            "token_count": 224
+          },
+          {
+            "chunk_external_id": "24995939:0",
+            "chunk_id": "ee215bfb-3ba1-49dd-b583-90c071f8abb9",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "24995939",
+            "document_id": "98fe7caf-6b5e-4b5c-a528-8b22f7a60b65",
+            "metadata_json": {
+              "chunk_external_id": "24995939:0",
+              "document_external_id": "24995939",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "24995939",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rrf_k": 60,
+              "score_breakdown": {
+                "bm25": 27.173346,
+                "bm25_rank": 2,
+                "dense": 0.7565247,
+                "dense_rank": 15,
+                "fusion": 0.02946236559139785
+              },
+              "title": "Specific sites in the C terminus of CTCF interact with the SA2 subunit of the cohesin complex and are required for cohesin-dependent insulation activity.",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 5,
+            "score": 0.02946236559139785,
+            "score_breakdown": {
+              "bm25_rank": 2,
+              "bm25_score": 27.173346,
+              "dense_rank": 15,
+              "dense_score": 0.7565247,
+              "fusion_rank": 5,
+              "fusion_score": 0.02946236559139785,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "Recent studies have shown that the protein CTCF, which plays an important role in insulation and in large-scale organization of chromatin within the eukaryotic nucleus, depends for both activities on recruitment of the cohesin complex. We show here that the interaction of CTCF with the cohesin complex involves direct contacts between the cohesin subunit SA2 and specific regions of the C-terminal tail of CTCF. All other cohesin components are recruited through their interaction with SA2. Expressi...",
+            "title": "Specific sites in the C terminus of CTCF interact with the SA2 subunit of the cohesin complex and are required for cohesin-dependent insulation activity.",
+            "token_count": 174
+          },
+          {
+            "chunk_external_id": "26064942:0",
+            "chunk_id": "da4cb1e7-09bf-4754-897c-5859ac2e3bb5",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "26064942",
+            "document_id": "2da85d01-2cc2-434e-a10b-faad5a77c147",
+            "metadata_json": {
+              "chunk_external_id": "26064942:0",
+              "document_external_id": "26064942",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "26064942",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rrf_k": 60,
+              "score_breakdown": {
+                "bm25": 21.896496,
+                "bm25_rank": 6,
+                "dense": 0.7454586,
+                "dense_rank": 24,
+                "fusion": 0.027056277056277056
+              },
+              "title": "PGAP2 mutations, affecting the GPI-anchor-synthesis pathway, cause hyperphosphatasia with mental retardation syndrome.",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 6,
+            "score": 0.027056277056277056,
+            "score_breakdown": {
+              "bm25_rank": 6,
+              "bm25_score": 21.896496,
+              "dense_rank": 24,
+              "dense_score": 0.7454586,
+              "fusion_rank": 6,
+              "fusion_score": 0.027056277056277056,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "Recently, mutations in genes involved in the biosynthesis of the glycosylphosphatidylinositol (GPI) anchor have been identified in a new subclass of congenital disorders of glycosylation (CDGs) with a distinct spectrum of clinical features. To date, mutations have been identified in six genes (PIGA, PIGL, PIGM, PIGN, PIGO, and PIGV) encoding proteins in the GPI-anchor-synthesis pathway in individuals with severe neurological features, including seizures, muscular hypotonia, and intellectual disa...",
+            "title": "PGAP2 mutations, affecting the GPI-anchor-synthesis pathway, cause hyperphosphatasia with mental retardation syndrome.",
+            "token_count": 218
+          },
+          {
+            "chunk_external_id": "24896957:0",
+            "chunk_id": "01e28db6-bdfa-4f03-bcd1-f3031ebce6ab",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "24896957",
+            "document_id": "de23502d-aad0-48ba-99dd-3a9abf871785",
+            "metadata_json": {
+              "chunk_external_id": "24896957:0",
+              "document_external_id": "24896957",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "24896957",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rrf_k": 60,
+              "score_breakdown": {
+                "bm25": 16.453476,
+                "bm25_rank": 8,
+                "dense": 0.7463213,
+                "dense_rank": 23,
+                "fusion": 0.026754075124025514
+              },
+              "title": "Rate and molecular spectrum of spontaneous mutations in the bacterium Escherichia coli as determined by whole-genome sequencing.",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 7,
+            "score": 0.026754075124025514,
+            "score_breakdown": {
+              "bm25_rank": 8,
+              "bm25_score": 16.453476,
+              "dense_rank": 23,
+              "dense_score": 0.7463213,
+              "fusion_rank": 7,
+              "fusion_score": 0.026754075124025514,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "Knowledge of the rate and nature of spontaneous mutation is fundamental to understanding evolutionary and molecular processes. In this report, we analyze spontaneous mutations accumulated over thousands of generations by wild-type Escherichia coli and a derivative defective in mismatch repair (MMR), the primary pathway for correcting replication errors. The major conclusions are (i) the mutation rate of a wild-type E. coli strain is ~1 \u00d7 10(-3) per genome per generation; (ii) mutations in the wi...",
+            "title": "Rate and molecular spectrum of spontaneous mutations in the bacterium Escherichia coli as determined by whole-genome sequencing.",
+            "token_count": 265
+          },
+          {
+            "chunk_external_id": "4421547:0",
+            "chunk_id": "331a07df-1f66-49f3-8e06-fa6869cd83af",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "4421547",
+            "document_id": "d6df2a87-2e1a-47c7-a934-fe04e2b9599c",
+            "metadata_json": {
+              "chunk_external_id": "4421547:0",
+              "document_external_id": "4421547",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "4421547",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rrf_k": 60,
+              "score_breakdown": {
+                "bm25": 15.228141,
+                "bm25_rank": 11,
+                "dense": 0.7441406,
+                "dense_rank": 27,
+                "fusion": 0.02557875991581674
+              },
+              "title": "CTCF mediates methylation-sensitive enhancer-blocking activity at the H19/Igf2 locus.",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 8,
+            "score": 0.02557875991581674,
+            "score_breakdown": {
+              "bm25_rank": 11,
+              "bm25_score": 15.228141,
+              "dense_rank": 27,
+              "dense_score": 0.7441406,
+              "fusion_rank": 8,
+              "fusion_score": 0.02557875991581674,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "The Insulin-like growth factor 2 (Igf2) and H19 genes are imprinted, resulting in silencing of the maternal and paternal alleles, respectively. This event is dependent upon an imprinted-control region two kilobases upstream of H19 (refs 1, 2). On the paternal chromosome this element is methylated and required for the silencing of H19 (refs 2-4). On the maternal chromosome the region is unmethylated and required for silencing of the Igf2 gene 90 kilobases upstream. We have proposed that the unmet...",
+            "title": "CTCF mediates methylation-sensitive enhancer-blocking activity at the H19/Igf2 locus.",
+            "token_count": 197
+          },
+          {
+            "chunk_external_id": "4312169:0",
+            "chunk_id": "84ac883c-1aab-401b-a164-6c1ac71275f5",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "4312169",
+            "document_id": "9027b7a3-2f81-4f3a-a757-2cacaee107c0",
+            "metadata_json": {
+              "chunk_external_id": "4312169:0",
+              "document_external_id": "4312169",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "4312169",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rrf_k": 60,
+              "score_breakdown": {
+                "bm25": 15.812216,
+                "bm25_rank": 10,
+                "dense": 0.7407261,
+                "dense_rank": 33,
+                "fusion": 0.0250384024577573
+              },
+              "title": "Driver mutations in histone H3.3 and chromatin remodelling genes in paediatric glioblastoma",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 9,
+            "score": 0.0250384024577573,
+            "score_breakdown": {
+              "bm25_rank": 10,
+              "bm25_score": 15.812216,
+              "dense_rank": 33,
+              "dense_score": 0.7407261,
+              "fusion_rank": 9,
+              "fusion_score": 0.0250384024577573,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "Glioblastoma multiforme (GBM) is a lethal brain tumour in adults and children. However, DNA copy number and gene expression signatures indicate differences between adult and paediatric cases. To explore the genetic events underlying this distinction, we sequenced the exomes of 48 paediatric GBM samples. Somatic mutations in the H3.3-ATRX-DAXX chromatin remodelling pathway were identified in 44% of tumours (21/48). Recurrent mutations in H3F3A, which encodes the replication-independent histone 3 ...",
+            "title": "Driver mutations in histone H3.3 and chromatin remodelling genes in paediatric glioblastoma",
+            "token_count": 252
+          },
+          {
+            "chunk_external_id": "1921218:0",
+            "chunk_id": "b68061c4-2e4a-4001-990a-8d6918c1d384",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "1921218",
+            "document_id": "9f87f6b5-1c42-4961-ac28-74d015e11592",
+            "metadata_json": {
+              "chunk_external_id": "1921218:0",
+              "document_external_id": "1921218",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "1921218",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rrf_k": 60,
+              "score_breakdown": {
+                "bm25": 10.272376,
+                "bm25_rank": 46,
+                "dense": 0.76173675,
+                "dense_rank": 9,
+                "fusion": 0.02392671588733935
+              },
+              "title": "Detecting and targeting tumor relapse by its resistance to innate effectors at early recurrence",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 10,
+            "score": 0.02392671588733935,
+            "score_breakdown": {
+              "bm25_rank": 46,
+              "bm25_score": 10.272376,
+              "dense_rank": 9,
+              "dense_score": 0.76173675,
+              "fusion_rank": 10,
+              "fusion_score": 0.02392671588733935,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "Tumor recurrence represents a major clinical challenge. Our data show that emergent recurrent tumors acquire a phenotype radically different from that of their originating primary tumors. This phenotype allows them to evade a host-derived innate immune response elicited by the progression from minimal residual disease (MRD) to actively growing recurrence. Screening for this innate response predicted accurately in which mice recurrence would occur. Premature induction of recurrence resensitized M...",
+            "title": "Detecting and targeting tumor relapse by its resistance to innate effectors at early recurrence",
+            "token_count": 152
+          }
+        ],
+        "retrieval_mode": "hybrid",
+        "trace_id": "e44c7454-d6fe-4d3f-9e14-ec86ae40c427"
+      },
+      "trace_id": "e44c7454-d6fe-4d3f-9e14-ec86ae40c427"
+    },
+    {
+      "explanation": "Real precomputed retrieval output exported from a stored query trace. No live hosted retrieval is run for this scenario.",
+      "label": "hybrid_rerank trace",
+      "latency_ms": 1480.92,
+      "query": "Radioiodine treatment of non-toxic multinodular goitre reduces thyroid volume.",
+      "query_id": "35fd317a-7e49-4649-bd71-8f497019d114",
+      "result_count": 10,
+      "results": [
+        {
+          "chunk_external_id": "9745001:0",
+          "chunk_id": "77bb86c8-8a5e-492f-91b5-65d5fea1d701",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "9745001",
+          "document_id": "095975fa-bf78-4ada-8aff-0455b0de50aa",
+          "metadata_json": {
+            "chunk_external_id": "9745001:0",
+            "document_external_id": "9745001",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "9745001",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rerank_top_n": 25,
+            "rrf_k": 60,
+            "score_breakdown": {
+              "bm25": 76.2429,
+              "bm25_rank": 1,
+              "dense": 0.91361773,
+              "dense_rank": 1,
+              "fusion": 0.03278688524590164,
+              "fusion_rank": 1,
+              "rerank_rank": 1,
+              "reranker": 7.263471603393555
+            },
+            "title": "Radioiodine treatment of multinodular non-toxic goitre.",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 1,
+          "score": 7.263471603393555,
+          "score_breakdown": {
+            "bm25_rank": 1,
+            "bm25_score": 76.2429,
+            "dense_rank": 1,
+            "dense_score": 0.91361773,
+            "fusion_rank": 1,
+            "fusion_score": 0.03278688524590164,
+            "rerank_rank": 1,
+            "reranker_score": 7.263471603393555
+          },
+          "text": "OBJECTIVE To investigate the long term effect of radioactive iodine on thyroid function and size in patients with non-toxic multinodular goitre. DESIGN Consecutive patients with multinodular non-toxic goitre selected for radioactive iodine treatment and followed for a minimum of 12 months (median 48 months) after an intended dose of 3.7 MBq/g thyroid tissue corrected to a 100% uptake of iodine-131 in 24 hours. PATIENTS 69 patients with a growing multinodular non-toxic goitre causing local compre...",
+          "title": "Radioiodine treatment of multinodular non-toxic goitre.",
+          "token_count": 310
+        },
+        {
+          "chunk_external_id": "26026009:0",
+          "chunk_id": "3d781e43-f22b-4406-b0db-236a66541c93",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "26026009",
+          "document_id": "182f36a3-955d-4996-b3fe-486dcdc9187c",
+          "metadata_json": {
+            "chunk_external_id": "26026009:0",
+            "document_external_id": "26026009",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "26026009",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rerank_top_n": 25,
+            "rrf_k": 60,
+            "score_breakdown": {
+              "bm25": 50.503952,
+              "bm25_rank": 2,
+              "dense": 0.81424606,
+              "dense_rank": 3,
+              "fusion": 0.03200204813108039,
+              "fusion_rank": 2,
+              "rerank_rank": 2,
+              "reranker": 3.231438398361206
+            },
+            "title": "Magnetic resonance imaging for volume estimation of large multinodular goitres: a comparison with scintigraphy.",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 2,
+          "score": 3.231438398361206,
+          "score_breakdown": {
+            "bm25_rank": 2,
+            "bm25_score": 50.503952,
+            "dense_rank": 3,
+            "dense_score": 0.81424606,
+            "fusion_rank": 2,
+            "fusion_score": 0.03200204813108039,
+            "rerank_rank": 2,
+            "reranker_score": 3.231438398361206
+          },
+          "text": "As a result of increasing interest in non-surgical treatment for the reduction of goitre size the use of magnetic resonance (MR) imaging for volume estimation of large multinodular goitres was evaluated in 20 patients (three males and 17 females; age 61 +/- 21 years) with a multinodular goitre larger than 100 ml. In addition, MR measurements were compared with scintigraphic (SC) volume estimations. Intraobserver coefficient of variation (CV) of MR measurements was 2.2 +/- 2.0% (Observer 1) and i...",
+          "title": "Magnetic resonance imaging for volume estimation of large multinodular goitres: a comparison with scintigraphy.",
+          "token_count": 236
+        },
+        {
+          "chunk_external_id": "6751418:0",
+          "chunk_id": "18008484-94b0-43b5-bd0f-54581c1b9046",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "6751418",
+          "document_id": "31daff81-936a-45f2-a0c1-ec291667575f",
+          "metadata_json": {
+            "chunk_external_id": "6751418:0",
+            "document_external_id": "6751418",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "6751418",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rerank_top_n": 25,
+            "rrf_k": 60,
+            "score_breakdown": {
+              "bm25": 38.67667,
+              "bm25_rank": 3,
+              "dense": 0.81351864,
+              "dense_rank": 4,
+              "fusion": 0.03149801587301587,
+              "fusion_rank": 4,
+              "rerank_rank": 3,
+              "reranker": 0.22575481235980988
+            },
+            "title": "Dosimetry and risk estimates of radioiodine therapy for large, multinodular goiters.",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 3,
+          "score": 0.22575481235980988,
+          "score_breakdown": {
+            "bm25_rank": 3,
+            "bm25_score": 38.67667,
+            "dense_rank": 4,
+            "dense_score": 0.81351864,
+            "fusion_rank": 4,
+            "fusion_score": 0.03149801587301587,
+            "rerank_rank": 3,
+            "reranker_score": 0.22575481235980988
+          },
+          "text": "UNLABELLED In patients with a large, multinodular goiter (> 100 g), radiation absorbed doses in the thyroid, surrounding tissues and remainder of the body were estimated after therapeutic administration of 131I(3.7 MBq or 100 microCi/g of thyroid tissue retained at 24 hr). METHODS Thermoluminescent dosimeter (TLD) measurements were performed on 23 patients (12 euthyroid and 1I hyperthyroid; thyroid weight 222 +/- 72 g; 2.1 +/- 0.9 GBq 131I) on the skin over the thyroid, over the submandibular gl...",
+          "title": "Dosimetry and risk estimates of radioiodine therapy for large, multinodular goiters.",
+          "token_count": 334
+        },
+        {
+          "chunk_external_id": "43122426:0",
+          "chunk_id": "c1dacffe-7888-45ef-8714-17b487ddda95",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "43122426",
+          "document_id": "4ed52de9-afdc-4c17-b3a1-893d5cc95692",
+          "metadata_json": {
+            "chunk_external_id": "43122426:0",
+            "document_external_id": "43122426",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "43122426",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rerank_top_n": 25,
+            "rrf_k": 60,
+            "score_breakdown": {
+              "bm25": 37.80492,
+              "bm25_rank": 4,
+              "dense": 0.84429,
+              "dense_rank": 2,
+              "fusion": 0.031754032258064516,
+              "fusion_rank": 3,
+              "rerank_rank": 4,
+              "reranker": -0.9486848711967468
+            },
+            "title": "131-I radioiodine therapy for hyperthyroidism in patients with Graves' disease, uninodular goitre and multinodular goitre.",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 4,
+          "score": -0.9486848711967468,
+          "score_breakdown": {
+            "bm25_rank": 4,
+            "bm25_score": 37.80492,
+            "dense_rank": 2,
+            "dense_score": 0.84429,
+            "fusion_rank": 3,
+            "fusion_score": 0.031754032258064516,
+            "rerank_rank": 4,
+            "reranker_score": -0.9486848711967468
+          },
+          "text": "We studied 201 consecutive patients who received a relatively fixed dose of radioiodine for the treatment of hyperthyroidism between the years 1981-6. Patients with Graves' disease (170) were initially treated with a mean (SE) dose of 369 (10) MBq 131-I with a remission rate of 94% at 6 months and a cumulative relapse rate of 12% at one year and 21% at 5 years. The cumulative incidence of hypothyroidism was 26% at 3 months, 55% at 6 months, 61% at 1 year and 66% at 5 years. Patients with a unino...",
+          "title": "131-I radioiodine therapy for hyperthyroidism in patients with Graves' disease, uninodular goitre and multinodular goitre.",
+          "token_count": 216
+        },
+        {
+          "chunk_external_id": "37912677:0",
+          "chunk_id": "2eee157e-120a-43e9-81cb-c4703a736874",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "37912677",
+          "document_id": "4cc263e4-f914-4a1c-b491-8a9e03c3cb01",
+          "metadata_json": {
+            "chunk_external_id": "37912677:0",
+            "document_external_id": "37912677",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "37912677",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rerank_top_n": 25,
+            "rrf_k": 60,
+            "score_breakdown": {
+              "bm25": 22.33199,
+              "bm25_rank": 5,
+              "dense": 0.7812073,
+              "dense_rank": 5,
+              "fusion": 0.03076923076923077,
+              "fusion_rank": 5,
+              "rerank_rank": 5,
+              "reranker": -3.6430110931396484
+            },
+            "title": "Dose-response study on thyrotoxic patients undergoing positron emission tomography and radioiodine therapy",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 5,
+          "score": -3.6430110931396484,
+          "score_breakdown": {
+            "bm25_rank": 5,
+            "bm25_score": 22.33199,
+            "dense_rank": 5,
+            "dense_score": 0.7812073,
+            "fusion_rank": 5,
+            "fusion_score": 0.03076923076923077,
+            "rerank_rank": 5,
+            "reranker_score": -3.6430110931396484
+          },
+          "text": "With the acknowledged problems associated with assessment of functioning thyroid mass and hence radiation dose, our policy had been to give 75 MBq iodine-131 at 6-monthly intervals to patients with Graves' disease until they became euthyroid. Since positron emission tomography (PET) has been available at this hospital, the radiation dose to the thyroid has been calculated with an accuracy of \u223c20%, the thyroid mass being determined from an iodine-124 PET scan. A dose-response study has been carri...",
+          "title": "Dose-response study on thyrotoxic patients undergoing positron emission tomography and radioiodine therapy",
+          "token_count": 212
+        },
+        {
+          "chunk_external_id": "20544428:0",
+          "chunk_id": "73d4260a-be25-4bbc-b919-32736bd98c8a",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "20544428",
+          "document_id": "75abbbcf-f05d-4dd5-9e51-366536b7945d",
+          "metadata_json": {
+            "chunk_external_id": "20544428:0",
+            "document_external_id": "20544428",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "20544428",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rerank_top_n": 25,
+            "rrf_k": 60,
+            "score_breakdown": {
+              "bm25": 13.27432,
+              "bm25_rank": 10,
+              "fusion": 0.014285714285714285,
+              "fusion_rank": 18,
+              "rerank_rank": 6,
+              "reranker": -5.474645137786865
+            },
+            "title": "Blockade of adrenoreceptors inhibits the splenic response to stroke.",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 6,
+          "score": -5.474645137786865,
+          "score_breakdown": {
+            "bm25_rank": 10,
+            "bm25_score": 13.27432,
+            "dense_rank": null,
+            "dense_score": null,
+            "fusion_rank": 18,
+            "fusion_score": 0.014285714285714285,
+            "rerank_rank": 6,
+            "reranker_score": -5.474645137786865
+          },
+          "text": "Recent studies have highlighted the involvement of the peripheral immune system in delayed cellular degeneration after stroke. In the permanent middle cerebral artery occlusion (MCAO) model of stroke, the spleen decreases in size. This reduction occurs through the release of splenic immune cells. Systemic treatment with human umbilical cord blood cells (HUCBC) 24 h post-stroke blocks the reduction in spleen size while significantly reducing infarct volume. Splenectomy 2 weeks prior to MCAO also ...",
+          "title": "Blockade of adrenoreceptors inhibits the splenic response to stroke.",
+          "token_count": 252
+        },
+        {
+          "chunk_external_id": "140098548:0",
+          "chunk_id": "cf56b829-249a-4319-9c07-cc292111a435",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "140098548",
+          "document_id": "cca2b4c5-4711-47c4-810d-d43bcef692ab",
+          "metadata_json": {
+            "chunk_external_id": "140098548:0",
+            "document_external_id": "140098548",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "140098548",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rerank_top_n": 25,
+            "rrf_k": 60,
+            "score_breakdown": {
+              "dense": 0.71731246,
+              "dense_rank": 6,
+              "fusion": 0.015151515151515152,
+              "fusion_rank": 12,
+              "rerank_rank": 7,
+              "reranker": -5.715655326843262
+            },
+            "title": "Prevention of radiographic-contrast-agent-induced reductions in renal function by acetylcysteine.",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 7,
+          "score": -5.715655326843262,
+          "score_breakdown": {
+            "bm25_rank": null,
+            "bm25_score": null,
+            "dense_rank": 6,
+            "dense_score": 0.71731246,
+            "fusion_rank": 12,
+            "fusion_score": 0.015151515151515152,
+            "rerank_rank": 7,
+            "reranker_score": -5.715655326843262
+          },
+          "text": "BACKGROUND Radiographic contrast agents can cause a reduction in renal function that may be due to reactive oxygen species. Whether the reduction can be prevented by the administration of antioxidants is unknown. METHODS We prospectively studied 83 patients with chronic renal insufficiency (mean [+/-SD] serum creatinine concentration, 2.4+/-1.3 mg per deciliter [216+/-116 micromol per liter]) who were undergoing computed tomography with a nonionic, low-osmolality contrast agent. Patients were ra...",
+          "title": "Prevention of radiographic-contrast-agent-induced reductions in renal function by acetylcysteine.",
+          "token_count": 262
+        },
+        {
+          "chunk_external_id": "26045237:0",
+          "chunk_id": "c882cf36-c3ae-425b-9f6b-9cf708262915",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "26045237",
+          "document_id": "6b213597-df8c-41bf-8b7d-dd39f768e9cb",
+          "metadata_json": {
+            "chunk_external_id": "26045237:0",
+            "document_external_id": "26045237",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "26045237",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rerank_top_n": 25,
+            "rrf_k": 60,
+            "score_breakdown": {
+              "dense": 0.7149397,
+              "dense_rank": 7,
+              "fusion": 0.014925373134328358,
+              "fusion_rank": 14,
+              "rerank_rank": 8,
+              "reranker": -6.144611358642578
+            },
+            "title": "Safety and efficacy of RNAi therapy for transthyretin amyloidosis.",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 8,
+          "score": -6.144611358642578,
+          "score_breakdown": {
+            "bm25_rank": null,
+            "bm25_score": null,
+            "dense_rank": 7,
+            "dense_score": 0.7149397,
+            "fusion_rank": 14,
+            "fusion_score": 0.014925373134328358,
+            "rerank_rank": 8,
+            "reranker_score": -6.144611358642578
+          },
+          "text": "BACKGROUND Transthyretin amyloidosis is caused by the deposition of hepatocyte-derived transthyretin amyloid in peripheral nerves and the heart. A therapeutic approach mediated by RNA interference (RNAi) could reduce the production of transthyretin. METHODS We identified a potent antitransthyretin small interfering RNA, which was encapsulated in two distinct first- and second-generation formulations of lipid nanoparticles, generating ALN-TTR01 and ALN-TTR02, respectively. Each formulation was st...",
+          "title": "Safety and efficacy of RNAi therapy for transthyretin amyloidosis.",
+          "token_count": 267
+        },
+        {
+          "chunk_external_id": "26000593:0",
+          "chunk_id": "3c75ed6b-e6f6-4ba1-a25e-fa41b095dcf0",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "26000593",
+          "document_id": "4997efc8-8064-405c-9cf1-7e750423b2da",
+          "metadata_json": {
+            "chunk_external_id": "26000593:0",
+            "document_external_id": "26000593",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "26000593",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rerank_top_n": 25,
+            "rrf_k": 60,
+            "score_breakdown": {
+              "bm25": 8.967466,
+              "bm25_rank": 34,
+              "dense": 0.68382597,
+              "dense_rank": 26,
+              "fusion": 0.022266204849084613,
+              "fusion_rank": 10,
+              "rerank_rank": 9,
+              "reranker": -6.309751510620117
+            },
+            "title": "Effect of osteoporosis treatments on risk of non-vertebral fractures: review and meta-analysis of intention-to-treat studies",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 9,
+          "score": -6.309751510620117,
+          "score_breakdown": {
+            "bm25_rank": 34,
+            "bm25_score": 8.967466,
+            "dense_rank": 26,
+            "dense_score": 0.68382597,
+            "fusion_rank": 10,
+            "fusion_score": 0.022266204849084613,
+            "rerank_rank": 9,
+            "reranker_score": -6.309751510620117
+          },
+          "text": "Most osteoporosis treatments have proven efficacy in reducing the risk of vertebral fractures, whereas evidence is less straightforward for prevention of non-vertebral fractures. Conclusions as to the efficacy of a treatment should be based primarily on analyses of the intention to treat (ITT) population rather than on exploratory subgroup analyses; however, non-vertebral anti-fracture efficacy has been largely derived by post-hoc subgroup analyses. This review and meta-analysis was performed to...",
+          "title": "Effect of osteoporosis treatments on risk of non-vertebral fractures: review and meta-analysis of intention-to-treat studies",
+          "token_count": 266
+        },
+        {
+          "chunk_external_id": "9310407:0",
+          "chunk_id": "3d089e5b-e9a8-41a5-940f-076f0b72c611",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "9310407",
+          "document_id": "36088b8c-36c3-4b95-acf1-42f6843ad24f",
+          "metadata_json": {
+            "chunk_external_id": "9310407:0",
+            "document_external_id": "9310407",
+            "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+            "metadata_json": {
+              "source_document_external_id": "9310407",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "rerank_top_n": 25,
+            "rrf_k": 60,
+            "score_breakdown": {
+              "bm25": 10.554199,
+              "bm25_rank": 18,
+              "dense": 0.6960896,
+              "dense_rank": 17,
+              "fusion": 0.025807525807525808,
+              "fusion_rank": 6,
+              "rerank_rank": 10,
+              "reranker": -6.854363441467285
+            },
+            "title": "The intravascular volume effect of Ringer's lactate is below 20%: a prospective study in humans",
+            "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+          },
+          "rank": 10,
+          "score": -6.854363441467285,
+          "score_breakdown": {
+            "bm25_rank": 18,
+            "bm25_score": 10.554199,
+            "dense_rank": 17,
+            "dense_score": 0.6960896,
+            "fusion_rank": 6,
+            "fusion_score": 0.025807525807525808,
+            "rerank_rank": 10,
+            "reranker_score": -6.854363441467285
+          },
+          "text": "INTRODUCTION Isotonic crystalloids play a central role in perioperative fluid management. Isooncotic preparations of colloids (for example, human albumin or hydroxyethyl starch) remain nearly completely intravascular when infused to compensate for acute blood losses. Recent data were interpreted to indicate a comparable intravascular volume effect for crystalloids, challenging the occasionally suggested advantage of using colloids to treat hypovolemia. General physiological knowledge and clinica...",
+          "title": "The intravascular volume effect of Ringer's lactate is below 20%: a prospective study in humans",
+          "token_count": 344
+        }
+      ],
+      "retrieval_mode": "hybrid_rerank",
+      "scenario_id": "hybrid_rerank_1e22c171-4283-487a-b54d-93fba04c9ffc",
+      "search_response": {
+        "latency_ms": 1480.92,
+        "query": "Radioiodine treatment of non-toxic multinodular goitre reduces thyroid volume.",
+        "query_id": "35fd317a-7e49-4649-bd71-8f497019d114",
+        "result_count": 10,
+        "results": [
+          {
+            "chunk_external_id": "9745001:0",
+            "chunk_id": "77bb86c8-8a5e-492f-91b5-65d5fea1d701",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "9745001",
+            "document_id": "095975fa-bf78-4ada-8aff-0455b0de50aa",
+            "metadata_json": {
+              "chunk_external_id": "9745001:0",
+              "document_external_id": "9745001",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "9745001",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rerank_top_n": 25,
+              "rrf_k": 60,
+              "score_breakdown": {
+                "bm25": 76.2429,
+                "bm25_rank": 1,
+                "dense": 0.91361773,
+                "dense_rank": 1,
+                "fusion": 0.03278688524590164,
+                "fusion_rank": 1,
+                "rerank_rank": 1,
+                "reranker": 7.263471603393555
+              },
+              "title": "Radioiodine treatment of multinodular non-toxic goitre.",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 1,
+            "score": 7.263471603393555,
+            "score_breakdown": {
+              "bm25_rank": 1,
+              "bm25_score": 76.2429,
+              "dense_rank": 1,
+              "dense_score": 0.91361773,
+              "fusion_rank": 1,
+              "fusion_score": 0.03278688524590164,
+              "rerank_rank": 1,
+              "reranker_score": 7.263471603393555
+            },
+            "text": "OBJECTIVE To investigate the long term effect of radioactive iodine on thyroid function and size in patients with non-toxic multinodular goitre. DESIGN Consecutive patients with multinodular non-toxic goitre selected for radioactive iodine treatment and followed for a minimum of 12 months (median 48 months) after an intended dose of 3.7 MBq/g thyroid tissue corrected to a 100% uptake of iodine-131 in 24 hours. PATIENTS 69 patients with a growing multinodular non-toxic goitre causing local compre...",
+            "title": "Radioiodine treatment of multinodular non-toxic goitre.",
+            "token_count": 310
+          },
+          {
+            "chunk_external_id": "26026009:0",
+            "chunk_id": "3d781e43-f22b-4406-b0db-236a66541c93",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "26026009",
+            "document_id": "182f36a3-955d-4996-b3fe-486dcdc9187c",
+            "metadata_json": {
+              "chunk_external_id": "26026009:0",
+              "document_external_id": "26026009",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "26026009",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rerank_top_n": 25,
+              "rrf_k": 60,
+              "score_breakdown": {
+                "bm25": 50.503952,
+                "bm25_rank": 2,
+                "dense": 0.81424606,
+                "dense_rank": 3,
+                "fusion": 0.03200204813108039,
+                "fusion_rank": 2,
+                "rerank_rank": 2,
+                "reranker": 3.231438398361206
+              },
+              "title": "Magnetic resonance imaging for volume estimation of large multinodular goitres: a comparison with scintigraphy.",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 2,
+            "score": 3.231438398361206,
+            "score_breakdown": {
+              "bm25_rank": 2,
+              "bm25_score": 50.503952,
+              "dense_rank": 3,
+              "dense_score": 0.81424606,
+              "fusion_rank": 2,
+              "fusion_score": 0.03200204813108039,
+              "rerank_rank": 2,
+              "reranker_score": 3.231438398361206
+            },
+            "text": "As a result of increasing interest in non-surgical treatment for the reduction of goitre size the use of magnetic resonance (MR) imaging for volume estimation of large multinodular goitres was evaluated in 20 patients (three males and 17 females; age 61 +/- 21 years) with a multinodular goitre larger than 100 ml. In addition, MR measurements were compared with scintigraphic (SC) volume estimations. Intraobserver coefficient of variation (CV) of MR measurements was 2.2 +/- 2.0% (Observer 1) and i...",
+            "title": "Magnetic resonance imaging for volume estimation of large multinodular goitres: a comparison with scintigraphy.",
+            "token_count": 236
+          },
+          {
+            "chunk_external_id": "6751418:0",
+            "chunk_id": "18008484-94b0-43b5-bd0f-54581c1b9046",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "6751418",
+            "document_id": "31daff81-936a-45f2-a0c1-ec291667575f",
+            "metadata_json": {
+              "chunk_external_id": "6751418:0",
+              "document_external_id": "6751418",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "6751418",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rerank_top_n": 25,
+              "rrf_k": 60,
+              "score_breakdown": {
+                "bm25": 38.67667,
+                "bm25_rank": 3,
+                "dense": 0.81351864,
+                "dense_rank": 4,
+                "fusion": 0.03149801587301587,
+                "fusion_rank": 4,
+                "rerank_rank": 3,
+                "reranker": 0.22575481235980988
+              },
+              "title": "Dosimetry and risk estimates of radioiodine therapy for large, multinodular goiters.",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 3,
+            "score": 0.22575481235980988,
+            "score_breakdown": {
+              "bm25_rank": 3,
+              "bm25_score": 38.67667,
+              "dense_rank": 4,
+              "dense_score": 0.81351864,
+              "fusion_rank": 4,
+              "fusion_score": 0.03149801587301587,
+              "rerank_rank": 3,
+              "reranker_score": 0.22575481235980988
+            },
+            "text": "UNLABELLED In patients with a large, multinodular goiter (> 100 g), radiation absorbed doses in the thyroid, surrounding tissues and remainder of the body were estimated after therapeutic administration of 131I(3.7 MBq or 100 microCi/g of thyroid tissue retained at 24 hr). METHODS Thermoluminescent dosimeter (TLD) measurements were performed on 23 patients (12 euthyroid and 1I hyperthyroid; thyroid weight 222 +/- 72 g; 2.1 +/- 0.9 GBq 131I) on the skin over the thyroid, over the submandibular gl...",
+            "title": "Dosimetry and risk estimates of radioiodine therapy for large, multinodular goiters.",
+            "token_count": 334
+          },
+          {
+            "chunk_external_id": "43122426:0",
+            "chunk_id": "c1dacffe-7888-45ef-8714-17b487ddda95",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "43122426",
+            "document_id": "4ed52de9-afdc-4c17-b3a1-893d5cc95692",
+            "metadata_json": {
+              "chunk_external_id": "43122426:0",
+              "document_external_id": "43122426",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "43122426",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rerank_top_n": 25,
+              "rrf_k": 60,
+              "score_breakdown": {
+                "bm25": 37.80492,
+                "bm25_rank": 4,
+                "dense": 0.84429,
+                "dense_rank": 2,
+                "fusion": 0.031754032258064516,
+                "fusion_rank": 3,
+                "rerank_rank": 4,
+                "reranker": -0.9486848711967468
+              },
+              "title": "131-I radioiodine therapy for hyperthyroidism in patients with Graves' disease, uninodular goitre and multinodular goitre.",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 4,
+            "score": -0.9486848711967468,
+            "score_breakdown": {
+              "bm25_rank": 4,
+              "bm25_score": 37.80492,
+              "dense_rank": 2,
+              "dense_score": 0.84429,
+              "fusion_rank": 3,
+              "fusion_score": 0.031754032258064516,
+              "rerank_rank": 4,
+              "reranker_score": -0.9486848711967468
+            },
+            "text": "We studied 201 consecutive patients who received a relatively fixed dose of radioiodine for the treatment of hyperthyroidism between the years 1981-6. Patients with Graves' disease (170) were initially treated with a mean (SE) dose of 369 (10) MBq 131-I with a remission rate of 94% at 6 months and a cumulative relapse rate of 12% at one year and 21% at 5 years. The cumulative incidence of hypothyroidism was 26% at 3 months, 55% at 6 months, 61% at 1 year and 66% at 5 years. Patients with a unino...",
+            "title": "131-I radioiodine therapy for hyperthyroidism in patients with Graves' disease, uninodular goitre and multinodular goitre.",
+            "token_count": 216
+          },
+          {
+            "chunk_external_id": "37912677:0",
+            "chunk_id": "2eee157e-120a-43e9-81cb-c4703a736874",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "37912677",
+            "document_id": "4cc263e4-f914-4a1c-b491-8a9e03c3cb01",
+            "metadata_json": {
+              "chunk_external_id": "37912677:0",
+              "document_external_id": "37912677",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "37912677",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rerank_top_n": 25,
+              "rrf_k": 60,
+              "score_breakdown": {
+                "bm25": 22.33199,
+                "bm25_rank": 5,
+                "dense": 0.7812073,
+                "dense_rank": 5,
+                "fusion": 0.03076923076923077,
+                "fusion_rank": 5,
+                "rerank_rank": 5,
+                "reranker": -3.6430110931396484
+              },
+              "title": "Dose-response study on thyrotoxic patients undergoing positron emission tomography and radioiodine therapy",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 5,
+            "score": -3.6430110931396484,
+            "score_breakdown": {
+              "bm25_rank": 5,
+              "bm25_score": 22.33199,
+              "dense_rank": 5,
+              "dense_score": 0.7812073,
+              "fusion_rank": 5,
+              "fusion_score": 0.03076923076923077,
+              "rerank_rank": 5,
+              "reranker_score": -3.6430110931396484
+            },
+            "text": "With the acknowledged problems associated with assessment of functioning thyroid mass and hence radiation dose, our policy had been to give 75 MBq iodine-131 at 6-monthly intervals to patients with Graves' disease until they became euthyroid. Since positron emission tomography (PET) has been available at this hospital, the radiation dose to the thyroid has been calculated with an accuracy of \u223c20%, the thyroid mass being determined from an iodine-124 PET scan. A dose-response study has been carri...",
+            "title": "Dose-response study on thyrotoxic patients undergoing positron emission tomography and radioiodine therapy",
+            "token_count": 212
+          },
+          {
+            "chunk_external_id": "20544428:0",
+            "chunk_id": "73d4260a-be25-4bbc-b919-32736bd98c8a",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "20544428",
+            "document_id": "75abbbcf-f05d-4dd5-9e51-366536b7945d",
+            "metadata_json": {
+              "chunk_external_id": "20544428:0",
+              "document_external_id": "20544428",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "20544428",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rerank_top_n": 25,
+              "rrf_k": 60,
+              "score_breakdown": {
+                "bm25": 13.27432,
+                "bm25_rank": 10,
+                "fusion": 0.014285714285714285,
+                "fusion_rank": 18,
+                "rerank_rank": 6,
+                "reranker": -5.474645137786865
+              },
+              "title": "Blockade of adrenoreceptors inhibits the splenic response to stroke.",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 6,
+            "score": -5.474645137786865,
+            "score_breakdown": {
+              "bm25_rank": 10,
+              "bm25_score": 13.27432,
+              "dense_rank": null,
+              "dense_score": null,
+              "fusion_rank": 18,
+              "fusion_score": 0.014285714285714285,
+              "rerank_rank": 6,
+              "reranker_score": -5.474645137786865
+            },
+            "text": "Recent studies have highlighted the involvement of the peripheral immune system in delayed cellular degeneration after stroke. In the permanent middle cerebral artery occlusion (MCAO) model of stroke, the spleen decreases in size. This reduction occurs through the release of splenic immune cells. Systemic treatment with human umbilical cord blood cells (HUCBC) 24 h post-stroke blocks the reduction in spleen size while significantly reducing infarct volume. Splenectomy 2 weeks prior to MCAO also ...",
+            "title": "Blockade of adrenoreceptors inhibits the splenic response to stroke.",
+            "token_count": 252
+          },
+          {
+            "chunk_external_id": "140098548:0",
+            "chunk_id": "cf56b829-249a-4319-9c07-cc292111a435",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "140098548",
+            "document_id": "cca2b4c5-4711-47c4-810d-d43bcef692ab",
+            "metadata_json": {
+              "chunk_external_id": "140098548:0",
+              "document_external_id": "140098548",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "140098548",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rerank_top_n": 25,
+              "rrf_k": 60,
+              "score_breakdown": {
+                "dense": 0.71731246,
+                "dense_rank": 6,
+                "fusion": 0.015151515151515152,
+                "fusion_rank": 12,
+                "rerank_rank": 7,
+                "reranker": -5.715655326843262
+              },
+              "title": "Prevention of radiographic-contrast-agent-induced reductions in renal function by acetylcysteine.",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 7,
+            "score": -5.715655326843262,
+            "score_breakdown": {
+              "bm25_rank": null,
+              "bm25_score": null,
+              "dense_rank": 6,
+              "dense_score": 0.71731246,
+              "fusion_rank": 12,
+              "fusion_score": 0.015151515151515152,
+              "rerank_rank": 7,
+              "reranker_score": -5.715655326843262
+            },
+            "text": "BACKGROUND Radiographic contrast agents can cause a reduction in renal function that may be due to reactive oxygen species. Whether the reduction can be prevented by the administration of antioxidants is unknown. METHODS We prospectively studied 83 patients with chronic renal insufficiency (mean [+/-SD] serum creatinine concentration, 2.4+/-1.3 mg per deciliter [216+/-116 micromol per liter]) who were undergoing computed tomography with a nonionic, low-osmolality contrast agent. Patients were ra...",
+            "title": "Prevention of radiographic-contrast-agent-induced reductions in renal function by acetylcysteine.",
+            "token_count": 262
+          },
+          {
+            "chunk_external_id": "26045237:0",
+            "chunk_id": "c882cf36-c3ae-425b-9f6b-9cf708262915",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "26045237",
+            "document_id": "6b213597-df8c-41bf-8b7d-dd39f768e9cb",
+            "metadata_json": {
+              "chunk_external_id": "26045237:0",
+              "document_external_id": "26045237",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "26045237",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rerank_top_n": 25,
+              "rrf_k": 60,
+              "score_breakdown": {
+                "dense": 0.7149397,
+                "dense_rank": 7,
+                "fusion": 0.014925373134328358,
+                "fusion_rank": 14,
+                "rerank_rank": 8,
+                "reranker": -6.144611358642578
+              },
+              "title": "Safety and efficacy of RNAi therapy for transthyretin amyloidosis.",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 8,
+            "score": -6.144611358642578,
+            "score_breakdown": {
+              "bm25_rank": null,
+              "bm25_score": null,
+              "dense_rank": 7,
+              "dense_score": 0.7149397,
+              "fusion_rank": 14,
+              "fusion_score": 0.014925373134328358,
+              "rerank_rank": 8,
+              "reranker_score": -6.144611358642578
+            },
+            "text": "BACKGROUND Transthyretin amyloidosis is caused by the deposition of hepatocyte-derived transthyretin amyloid in peripheral nerves and the heart. A therapeutic approach mediated by RNA interference (RNAi) could reduce the production of transthyretin. METHODS We identified a potent antitransthyretin small interfering RNA, which was encapsulated in two distinct first- and second-generation formulations of lipid nanoparticles, generating ALN-TTR01 and ALN-TTR02, respectively. Each formulation was st...",
+            "title": "Safety and efficacy of RNAi therapy for transthyretin amyloidosis.",
+            "token_count": 267
+          },
+          {
+            "chunk_external_id": "26000593:0",
+            "chunk_id": "3c75ed6b-e6f6-4ba1-a25e-fa41b095dcf0",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "26000593",
+            "document_id": "4997efc8-8064-405c-9cf1-7e750423b2da",
+            "metadata_json": {
+              "chunk_external_id": "26000593:0",
+              "document_external_id": "26000593",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "26000593",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rerank_top_n": 25,
+              "rrf_k": 60,
+              "score_breakdown": {
+                "bm25": 8.967466,
+                "bm25_rank": 34,
+                "dense": 0.68382597,
+                "dense_rank": 26,
+                "fusion": 0.022266204849084613,
+                "fusion_rank": 10,
+                "rerank_rank": 9,
+                "reranker": -6.309751510620117
+              },
+              "title": "Effect of osteoporosis treatments on risk of non-vertebral fractures: review and meta-analysis of intention-to-treat studies",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 9,
+            "score": -6.309751510620117,
+            "score_breakdown": {
+              "bm25_rank": 34,
+              "bm25_score": 8.967466,
+              "dense_rank": 26,
+              "dense_score": 0.68382597,
+              "fusion_rank": 10,
+              "fusion_score": 0.022266204849084613,
+              "rerank_rank": 9,
+              "reranker_score": -6.309751510620117
+            },
+            "text": "Most osteoporosis treatments have proven efficacy in reducing the risk of vertebral fractures, whereas evidence is less straightforward for prevention of non-vertebral fractures. Conclusions as to the efficacy of a treatment should be based primarily on analyses of the intention to treat (ITT) population rather than on exploratory subgroup analyses; however, non-vertebral anti-fracture efficacy has been largely derived by post-hoc subgroup analyses. This review and meta-analysis was performed to...",
+            "title": "Effect of osteoporosis treatments on risk of non-vertebral fractures: review and meta-analysis of intention-to-treat studies",
+            "token_count": 266
+          },
+          {
+            "chunk_external_id": "9310407:0",
+            "chunk_id": "3d089e5b-e9a8-41a5-940f-076f0b72c611",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "9310407",
+            "document_id": "36088b8c-36c3-4b95-acf1-42f6843ad24f",
+            "metadata_json": {
+              "chunk_external_id": "9310407:0",
+              "document_external_id": "9310407",
+              "lexical_index_name": "aletheia-lexical-beir-scifact-test-scifact-document-v1-1-0-63195a04",
+              "metadata_json": {
+                "source_document_external_id": "9310407",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "rerank_top_n": 25,
+              "rrf_k": 60,
+              "score_breakdown": {
+                "bm25": 10.554199,
+                "bm25_rank": 18,
+                "dense": 0.6960896,
+                "dense_rank": 17,
+                "fusion": 0.025807525807525808,
+                "fusion_rank": 6,
+                "rerank_rank": 10,
+                "reranker": -6.854363441467285
+              },
+              "title": "The intravascular volume effect of Ringer's lactate is below 20%: a prospective study in humans",
+              "vector_collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6"
+            },
+            "rank": 10,
+            "score": -6.854363441467285,
+            "score_breakdown": {
+              "bm25_rank": 18,
+              "bm25_score": 10.554199,
+              "dense_rank": 17,
+              "dense_score": 0.6960896,
+              "fusion_rank": 6,
+              "fusion_score": 0.025807525807525808,
+              "rerank_rank": 10,
+              "reranker_score": -6.854363441467285
+            },
+            "text": "INTRODUCTION Isotonic crystalloids play a central role in perioperative fluid management. Isooncotic preparations of colloids (for example, human albumin or hydroxyethyl starch) remain nearly completely intravascular when infused to compensate for acute blood losses. Recent data were interpreted to indicate a comparable intravascular volume effect for crystalloids, challenging the occasionally suggested advantage of using colloids to treat hypovolemia. General physiological knowledge and clinica...",
+            "title": "The intravascular volume effect of Ringer's lactate is below 20%: a prospective study in humans",
+            "token_count": 344
+          }
+        ],
+        "retrieval_mode": "hybrid_rerank",
+        "trace_id": "1e22c171-4283-487a-b54d-93fba04c9ffc"
+      },
+      "trace_id": "1e22c171-4283-487a-b54d-93fba04c9ffc"
+    },
+    {
+      "explanation": "Real precomputed retrieval output exported from a stored query trace. No live hosted retrieval is run for this scenario.",
+      "label": "dense trace",
+      "latency_ms": 572.58,
+      "query": "Radioiodine treatment of non-toxic multinodular goitre reduces thyroid volume.",
+      "query_id": "95fe8810-9d36-46c0-a9fe-71f43327e6e1",
+      "result_count": 10,
+      "results": [
+        {
+          "chunk_external_id": "9745001:0",
+          "chunk_id": "77bb86c8-8a5e-492f-91b5-65d5fea1d701",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "9745001",
+          "document_id": "095975fa-bf78-4ada-8aff-0455b0de50aa",
+          "metadata_json": {
+            "chunk_external_id": "9745001:0",
+            "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+            "document_external_id": "9745001",
+            "metadata_json": {
+              "source_document_external_id": "9745001",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "query_embedding_dimension": 384,
+            "score_breakdown": {
+              "dense": 0.91361773
+            },
+            "title": "Radioiodine treatment of multinodular non-toxic goitre."
+          },
+          "rank": 1,
+          "score": 0.91361773,
+          "score_breakdown": {
+            "bm25_rank": null,
+            "bm25_score": null,
+            "dense_rank": 1,
+            "dense_score": 0.91361773,
+            "fusion_rank": null,
+            "fusion_score": null,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "OBJECTIVE To investigate the long term effect of radioactive iodine on thyroid function and size in patients with non-toxic multinodular goitre. DESIGN Consecutive patients with multinodular non-toxic goitre selected for radioactive iodine treatment and followed for a minimum of 12 months (median 48 months) after an intended dose of 3.7 MBq/g thyroid tissue corrected to a 100% uptake of iodine-131 in 24 hours. PATIENTS 69 patients with a growing multinodular non-toxic goitre causing local compre...",
+          "title": "Radioiodine treatment of multinodular non-toxic goitre.",
+          "token_count": 310
+        },
+        {
+          "chunk_external_id": "43122426:0",
+          "chunk_id": "c1dacffe-7888-45ef-8714-17b487ddda95",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "43122426",
+          "document_id": "4ed52de9-afdc-4c17-b3a1-893d5cc95692",
+          "metadata_json": {
+            "chunk_external_id": "43122426:0",
+            "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+            "document_external_id": "43122426",
+            "metadata_json": {
+              "source_document_external_id": "43122426",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "query_embedding_dimension": 384,
+            "score_breakdown": {
+              "dense": 0.84429
+            },
+            "title": "131-I radioiodine therapy for hyperthyroidism in patients with Graves' disease, uninodular goitre and multinodular goitre."
+          },
+          "rank": 2,
+          "score": 0.84429,
+          "score_breakdown": {
+            "bm25_rank": null,
+            "bm25_score": null,
+            "dense_rank": 2,
+            "dense_score": 0.84429,
+            "fusion_rank": null,
+            "fusion_score": null,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "We studied 201 consecutive patients who received a relatively fixed dose of radioiodine for the treatment of hyperthyroidism between the years 1981-6. Patients with Graves' disease (170) were initially treated with a mean (SE) dose of 369 (10) MBq 131-I with a remission rate of 94% at 6 months and a cumulative relapse rate of 12% at one year and 21% at 5 years. The cumulative incidence of hypothyroidism was 26% at 3 months, 55% at 6 months, 61% at 1 year and 66% at 5 years. Patients with a unino...",
+          "title": "131-I radioiodine therapy for hyperthyroidism in patients with Graves' disease, uninodular goitre and multinodular goitre.",
+          "token_count": 216
+        },
+        {
+          "chunk_external_id": "26026009:0",
+          "chunk_id": "3d781e43-f22b-4406-b0db-236a66541c93",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "26026009",
+          "document_id": "182f36a3-955d-4996-b3fe-486dcdc9187c",
+          "metadata_json": {
+            "chunk_external_id": "26026009:0",
+            "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+            "document_external_id": "26026009",
+            "metadata_json": {
+              "source_document_external_id": "26026009",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "query_embedding_dimension": 384,
+            "score_breakdown": {
+              "dense": 0.81424606
+            },
+            "title": "Magnetic resonance imaging for volume estimation of large multinodular goitres: a comparison with scintigraphy."
+          },
+          "rank": 3,
+          "score": 0.81424606,
+          "score_breakdown": {
+            "bm25_rank": null,
+            "bm25_score": null,
+            "dense_rank": 3,
+            "dense_score": 0.81424606,
+            "fusion_rank": null,
+            "fusion_score": null,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "As a result of increasing interest in non-surgical treatment for the reduction of goitre size the use of magnetic resonance (MR) imaging for volume estimation of large multinodular goitres was evaluated in 20 patients (three males and 17 females; age 61 +/- 21 years) with a multinodular goitre larger than 100 ml. In addition, MR measurements were compared with scintigraphic (SC) volume estimations. Intraobserver coefficient of variation (CV) of MR measurements was 2.2 +/- 2.0% (Observer 1) and i...",
+          "title": "Magnetic resonance imaging for volume estimation of large multinodular goitres: a comparison with scintigraphy.",
+          "token_count": 236
+        },
+        {
+          "chunk_external_id": "6751418:0",
+          "chunk_id": "18008484-94b0-43b5-bd0f-54581c1b9046",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "6751418",
+          "document_id": "31daff81-936a-45f2-a0c1-ec291667575f",
+          "metadata_json": {
+            "chunk_external_id": "6751418:0",
+            "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+            "document_external_id": "6751418",
+            "metadata_json": {
+              "source_document_external_id": "6751418",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "query_embedding_dimension": 384,
+            "score_breakdown": {
+              "dense": 0.81351864
+            },
+            "title": "Dosimetry and risk estimates of radioiodine therapy for large, multinodular goiters."
+          },
+          "rank": 4,
+          "score": 0.81351864,
+          "score_breakdown": {
+            "bm25_rank": null,
+            "bm25_score": null,
+            "dense_rank": 4,
+            "dense_score": 0.81351864,
+            "fusion_rank": null,
+            "fusion_score": null,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "UNLABELLED In patients with a large, multinodular goiter (> 100 g), radiation absorbed doses in the thyroid, surrounding tissues and remainder of the body were estimated after therapeutic administration of 131I(3.7 MBq or 100 microCi/g of thyroid tissue retained at 24 hr). METHODS Thermoluminescent dosimeter (TLD) measurements were performed on 23 patients (12 euthyroid and 1I hyperthyroid; thyroid weight 222 +/- 72 g; 2.1 +/- 0.9 GBq 131I) on the skin over the thyroid, over the submandibular gl...",
+          "title": "Dosimetry and risk estimates of radioiodine therapy for large, multinodular goiters.",
+          "token_count": 334
+        },
+        {
+          "chunk_external_id": "37912677:0",
+          "chunk_id": "2eee157e-120a-43e9-81cb-c4703a736874",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "37912677",
+          "document_id": "4cc263e4-f914-4a1c-b491-8a9e03c3cb01",
+          "metadata_json": {
+            "chunk_external_id": "37912677:0",
+            "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+            "document_external_id": "37912677",
+            "metadata_json": {
+              "source_document_external_id": "37912677",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "query_embedding_dimension": 384,
+            "score_breakdown": {
+              "dense": 0.7812073
+            },
+            "title": "Dose-response study on thyrotoxic patients undergoing positron emission tomography and radioiodine therapy"
+          },
+          "rank": 5,
+          "score": 0.7812073,
+          "score_breakdown": {
+            "bm25_rank": null,
+            "bm25_score": null,
+            "dense_rank": 5,
+            "dense_score": 0.7812073,
+            "fusion_rank": null,
+            "fusion_score": null,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "With the acknowledged problems associated with assessment of functioning thyroid mass and hence radiation dose, our policy had been to give 75 MBq iodine-131 at 6-monthly intervals to patients with Graves' disease until they became euthyroid. Since positron emission tomography (PET) has been available at this hospital, the radiation dose to the thyroid has been calculated with an accuracy of \u223c20%, the thyroid mass being determined from an iodine-124 PET scan. A dose-response study has been carri...",
+          "title": "Dose-response study on thyrotoxic patients undergoing positron emission tomography and radioiodine therapy",
+          "token_count": 212
+        },
+        {
+          "chunk_external_id": "140098548:0",
+          "chunk_id": "cf56b829-249a-4319-9c07-cc292111a435",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "140098548",
+          "document_id": "cca2b4c5-4711-47c4-810d-d43bcef692ab",
+          "metadata_json": {
+            "chunk_external_id": "140098548:0",
+            "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+            "document_external_id": "140098548",
+            "metadata_json": {
+              "source_document_external_id": "140098548",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "query_embedding_dimension": 384,
+            "score_breakdown": {
+              "dense": 0.71731246
+            },
+            "title": "Prevention of radiographic-contrast-agent-induced reductions in renal function by acetylcysteine."
+          },
+          "rank": 6,
+          "score": 0.71731246,
+          "score_breakdown": {
+            "bm25_rank": null,
+            "bm25_score": null,
+            "dense_rank": 6,
+            "dense_score": 0.71731246,
+            "fusion_rank": null,
+            "fusion_score": null,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "BACKGROUND Radiographic contrast agents can cause a reduction in renal function that may be due to reactive oxygen species. Whether the reduction can be prevented by the administration of antioxidants is unknown. METHODS We prospectively studied 83 patients with chronic renal insufficiency (mean [+/-SD] serum creatinine concentration, 2.4+/-1.3 mg per deciliter [216+/-116 micromol per liter]) who were undergoing computed tomography with a nonionic, low-osmolality contrast agent. Patients were ra...",
+          "title": "Prevention of radiographic-contrast-agent-induced reductions in renal function by acetylcysteine.",
+          "token_count": 262
+        },
+        {
+          "chunk_external_id": "26045237:0",
+          "chunk_id": "c882cf36-c3ae-425b-9f6b-9cf708262915",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "26045237",
+          "document_id": "6b213597-df8c-41bf-8b7d-dd39f768e9cb",
+          "metadata_json": {
+            "chunk_external_id": "26045237:0",
+            "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+            "document_external_id": "26045237",
+            "metadata_json": {
+              "source_document_external_id": "26045237",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "query_embedding_dimension": 384,
+            "score_breakdown": {
+              "dense": 0.7149397
+            },
+            "title": "Safety and efficacy of RNAi therapy for transthyretin amyloidosis."
+          },
+          "rank": 7,
+          "score": 0.7149397,
+          "score_breakdown": {
+            "bm25_rank": null,
+            "bm25_score": null,
+            "dense_rank": 7,
+            "dense_score": 0.7149397,
+            "fusion_rank": null,
+            "fusion_score": null,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "BACKGROUND Transthyretin amyloidosis is caused by the deposition of hepatocyte-derived transthyretin amyloid in peripheral nerves and the heart. A therapeutic approach mediated by RNA interference (RNAi) could reduce the production of transthyretin. METHODS We identified a potent antitransthyretin small interfering RNA, which was encapsulated in two distinct first- and second-generation formulations of lipid nanoparticles, generating ALN-TTR01 and ALN-TTR02, respectively. Each formulation was st...",
+          "title": "Safety and efficacy of RNAi therapy for transthyretin amyloidosis.",
+          "token_count": 267
+        },
+        {
+          "chunk_external_id": "27260630:0",
+          "chunk_id": "b5a4c20f-0824-4291-a122-9bdb981c94dc",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "27260630",
+          "document_id": "6fcafa14-393d-4d1b-8897-2c8c622110aa",
+          "metadata_json": {
+            "chunk_external_id": "27260630:0",
+            "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+            "document_external_id": "27260630",
+            "metadata_json": {
+              "source_document_external_id": "27260630",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "query_embedding_dimension": 384,
+            "score_breakdown": {
+              "dense": 0.71133924
+            },
+            "title": "Composition of gall bladder stones associated with octreotide: response to oral ursodeoxycholic acid."
+          },
+          "rank": 8,
+          "score": 0.71133924,
+          "score_breakdown": {
+            "bm25_rank": null,
+            "bm25_score": null,
+            "dense_rank": 8,
+            "dense_score": 0.71133924,
+            "fusion_rank": null,
+            "fusion_score": null,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "Octreotide, an effective treatment for acromegaly, induces gall bladder stones in 13-60% of patients. Because knowledge of stone composition is essential for studies of their pathogenesis, treatment, and prevention, this was investigated by direct and indirect methods in 14 octreotide treated acromegalic patients with gall stones. Chemical analysis of gall stones retrieved at cholecystectomy from two patients, showed that they contained 71% and 87% cholesterol by weight. In the remaining 12 pati...",
+          "title": "Composition of gall bladder stones associated with octreotide: response to oral ursodeoxycholic acid.",
+          "token_count": 274
+        },
+        {
+          "chunk_external_id": "25259746:0",
+          "chunk_id": "1e3d3149-20af-4668-8c61-a7f6627de2e6",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "25259746",
+          "document_id": "b28dc923-5da5-44d6-9670-7601fb9800c7",
+          "metadata_json": {
+            "chunk_external_id": "25259746:0",
+            "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+            "document_external_id": "25259746",
+            "metadata_json": {
+              "source_document_external_id": "25259746",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "query_embedding_dimension": 384,
+            "score_breakdown": {
+              "dense": 0.70904607
+            },
+            "title": "Increased growth after long-term oral 1alpha,25-vitamin D3 in childhood renal osteodystrophy."
+          },
+          "rank": 9,
+          "score": 0.70904607,
+          "score_breakdown": {
+            "bm25_rank": null,
+            "bm25_score": null,
+            "dense_rank": 9,
+            "dense_score": 0.70904607,
+            "fusion_rank": null,
+            "fusion_score": null,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "We evaluated oral 1,25-vitamin D3 for as long as 26 months in six prepubescent children with renal osteodystrophy previously treated with vitamin D2. Therapy was given at 14 to 41 ng per kilogram per day to correct hypocalcemia and reverse bone disease. Serum levels of 1,25-vitamin D3 were initially reduced at 15 +/- 5 pg per milliliter (mean +/- S.E.M.) and after treatment rose to 54 +/- 13. Serum calcium rose from 7.5 +/- 1.6 mg per deciliter (mean +/- S.D.) to 9.8 +/- 0.6 after one month (P l...",
+          "title": "Increased growth after long-term oral 1alpha,25-vitamin D3 in childhood renal osteodystrophy.",
+          "token_count": 242
+        },
+        {
+          "chunk_external_id": "3619931:0",
+          "chunk_id": "e64c3316-e4fd-44f1-b406-69a8b8761219",
+          "chunking_strategy": "scifact_document_v1",
+          "chunking_version": "1.0",
+          "document_external_id": "3619931",
+          "document_id": "1bd15a2d-25d5-4564-9bfc-871a8c10fae6",
+          "metadata_json": {
+            "chunk_external_id": "3619931:0",
+            "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+            "document_external_id": "3619931",
+            "metadata_json": {
+              "source_document_external_id": "3619931",
+              "strategy": "scifact_document_v1",
+              "version": "1.0"
+            },
+            "query_embedding_dimension": 384,
+            "score_breakdown": {
+              "dense": 0.7056122
+            },
+            "title": "Thyroid hormone inhibits lung fibrosis in mice by improving epithelial mitochondrial function"
+          },
+          "rank": 10,
+          "score": 0.7056122,
+          "score_breakdown": {
+            "bm25_rank": null,
+            "bm25_score": null,
+            "dense_rank": 10,
+            "dense_score": 0.7056122,
+            "fusion_rank": null,
+            "fusion_score": null,
+            "rerank_rank": null,
+            "reranker_score": null
+          },
+          "text": "Thyroid hormone (TH) is critical for the maintenance of cellular homeostasis during stress responses, but its role in lung fibrosis is unknown. Here we found that the activity and expression of iodothyronine deiodinase 2 (DIO2), an enzyme that activates TH, were higher in lungs from patients with idiopathic pulmonary fibrosis than in control individuals and were correlated with disease severity. We also found that Dio2-knockout mice exhibited enhanced bleomycin-induced lung fibrosis. Aerosolized...",
+          "title": "Thyroid hormone inhibits lung fibrosis in mice by improving epithelial mitochondrial function",
+          "token_count": 173
+        }
+      ],
+      "retrieval_mode": "dense",
+      "scenario_id": "dense_fb62328b-b2d1-442d-8175-5bcbdab99dae",
+      "search_response": {
+        "latency_ms": 572.58,
+        "query": "Radioiodine treatment of non-toxic multinodular goitre reduces thyroid volume.",
+        "query_id": "95fe8810-9d36-46c0-a9fe-71f43327e6e1",
+        "result_count": 10,
+        "results": [
+          {
+            "chunk_external_id": "9745001:0",
+            "chunk_id": "77bb86c8-8a5e-492f-91b5-65d5fea1d701",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "9745001",
+            "document_id": "095975fa-bf78-4ada-8aff-0455b0de50aa",
+            "metadata_json": {
+              "chunk_external_id": "9745001:0",
+              "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+              "document_external_id": "9745001",
+              "metadata_json": {
+                "source_document_external_id": "9745001",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "query_embedding_dimension": 384,
+              "score_breakdown": {
+                "dense": 0.91361773
+              },
+              "title": "Radioiodine treatment of multinodular non-toxic goitre."
+            },
+            "rank": 1,
+            "score": 0.91361773,
+            "score_breakdown": {
+              "bm25_rank": null,
+              "bm25_score": null,
+              "dense_rank": 1,
+              "dense_score": 0.91361773,
+              "fusion_rank": null,
+              "fusion_score": null,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "OBJECTIVE To investigate the long term effect of radioactive iodine on thyroid function and size in patients with non-toxic multinodular goitre. DESIGN Consecutive patients with multinodular non-toxic goitre selected for radioactive iodine treatment and followed for a minimum of 12 months (median 48 months) after an intended dose of 3.7 MBq/g thyroid tissue corrected to a 100% uptake of iodine-131 in 24 hours. PATIENTS 69 patients with a growing multinodular non-toxic goitre causing local compre...",
+            "title": "Radioiodine treatment of multinodular non-toxic goitre.",
+            "token_count": 310
+          },
+          {
+            "chunk_external_id": "43122426:0",
+            "chunk_id": "c1dacffe-7888-45ef-8714-17b487ddda95",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "43122426",
+            "document_id": "4ed52de9-afdc-4c17-b3a1-893d5cc95692",
+            "metadata_json": {
+              "chunk_external_id": "43122426:0",
+              "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+              "document_external_id": "43122426",
+              "metadata_json": {
+                "source_document_external_id": "43122426",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "query_embedding_dimension": 384,
+              "score_breakdown": {
+                "dense": 0.84429
+              },
+              "title": "131-I radioiodine therapy for hyperthyroidism in patients with Graves' disease, uninodular goitre and multinodular goitre."
+            },
+            "rank": 2,
+            "score": 0.84429,
+            "score_breakdown": {
+              "bm25_rank": null,
+              "bm25_score": null,
+              "dense_rank": 2,
+              "dense_score": 0.84429,
+              "fusion_rank": null,
+              "fusion_score": null,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "We studied 201 consecutive patients who received a relatively fixed dose of radioiodine for the treatment of hyperthyroidism between the years 1981-6. Patients with Graves' disease (170) were initially treated with a mean (SE) dose of 369 (10) MBq 131-I with a remission rate of 94% at 6 months and a cumulative relapse rate of 12% at one year and 21% at 5 years. The cumulative incidence of hypothyroidism was 26% at 3 months, 55% at 6 months, 61% at 1 year and 66% at 5 years. Patients with a unino...",
+            "title": "131-I radioiodine therapy for hyperthyroidism in patients with Graves' disease, uninodular goitre and multinodular goitre.",
+            "token_count": 216
+          },
+          {
+            "chunk_external_id": "26026009:0",
+            "chunk_id": "3d781e43-f22b-4406-b0db-236a66541c93",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "26026009",
+            "document_id": "182f36a3-955d-4996-b3fe-486dcdc9187c",
+            "metadata_json": {
+              "chunk_external_id": "26026009:0",
+              "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+              "document_external_id": "26026009",
+              "metadata_json": {
+                "source_document_external_id": "26026009",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "query_embedding_dimension": 384,
+              "score_breakdown": {
+                "dense": 0.81424606
+              },
+              "title": "Magnetic resonance imaging for volume estimation of large multinodular goitres: a comparison with scintigraphy."
+            },
+            "rank": 3,
+            "score": 0.81424606,
+            "score_breakdown": {
+              "bm25_rank": null,
+              "bm25_score": null,
+              "dense_rank": 3,
+              "dense_score": 0.81424606,
+              "fusion_rank": null,
+              "fusion_score": null,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "As a result of increasing interest in non-surgical treatment for the reduction of goitre size the use of magnetic resonance (MR) imaging for volume estimation of large multinodular goitres was evaluated in 20 patients (three males and 17 females; age 61 +/- 21 years) with a multinodular goitre larger than 100 ml. In addition, MR measurements were compared with scintigraphic (SC) volume estimations. Intraobserver coefficient of variation (CV) of MR measurements was 2.2 +/- 2.0% (Observer 1) and i...",
+            "title": "Magnetic resonance imaging for volume estimation of large multinodular goitres: a comparison with scintigraphy.",
+            "token_count": 236
+          },
+          {
+            "chunk_external_id": "6751418:0",
+            "chunk_id": "18008484-94b0-43b5-bd0f-54581c1b9046",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "6751418",
+            "document_id": "31daff81-936a-45f2-a0c1-ec291667575f",
+            "metadata_json": {
+              "chunk_external_id": "6751418:0",
+              "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+              "document_external_id": "6751418",
+              "metadata_json": {
+                "source_document_external_id": "6751418",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "query_embedding_dimension": 384,
+              "score_breakdown": {
+                "dense": 0.81351864
+              },
+              "title": "Dosimetry and risk estimates of radioiodine therapy for large, multinodular goiters."
+            },
+            "rank": 4,
+            "score": 0.81351864,
+            "score_breakdown": {
+              "bm25_rank": null,
+              "bm25_score": null,
+              "dense_rank": 4,
+              "dense_score": 0.81351864,
+              "fusion_rank": null,
+              "fusion_score": null,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "UNLABELLED In patients with a large, multinodular goiter (> 100 g), radiation absorbed doses in the thyroid, surrounding tissues and remainder of the body were estimated after therapeutic administration of 131I(3.7 MBq or 100 microCi/g of thyroid tissue retained at 24 hr). METHODS Thermoluminescent dosimeter (TLD) measurements were performed on 23 patients (12 euthyroid and 1I hyperthyroid; thyroid weight 222 +/- 72 g; 2.1 +/- 0.9 GBq 131I) on the skin over the thyroid, over the submandibular gl...",
+            "title": "Dosimetry and risk estimates of radioiodine therapy for large, multinodular goiters.",
+            "token_count": 334
+          },
+          {
+            "chunk_external_id": "37912677:0",
+            "chunk_id": "2eee157e-120a-43e9-81cb-c4703a736874",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "37912677",
+            "document_id": "4cc263e4-f914-4a1c-b491-8a9e03c3cb01",
+            "metadata_json": {
+              "chunk_external_id": "37912677:0",
+              "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+              "document_external_id": "37912677",
+              "metadata_json": {
+                "source_document_external_id": "37912677",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "query_embedding_dimension": 384,
+              "score_breakdown": {
+                "dense": 0.7812073
+              },
+              "title": "Dose-response study on thyrotoxic patients undergoing positron emission tomography and radioiodine therapy"
+            },
+            "rank": 5,
+            "score": 0.7812073,
+            "score_breakdown": {
+              "bm25_rank": null,
+              "bm25_score": null,
+              "dense_rank": 5,
+              "dense_score": 0.7812073,
+              "fusion_rank": null,
+              "fusion_score": null,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "With the acknowledged problems associated with assessment of functioning thyroid mass and hence radiation dose, our policy had been to give 75 MBq iodine-131 at 6-monthly intervals to patients with Graves' disease until they became euthyroid. Since positron emission tomography (PET) has been available at this hospital, the radiation dose to the thyroid has been calculated with an accuracy of \u223c20%, the thyroid mass being determined from an iodine-124 PET scan. A dose-response study has been carri...",
+            "title": "Dose-response study on thyrotoxic patients undergoing positron emission tomography and radioiodine therapy",
+            "token_count": 212
+          },
+          {
+            "chunk_external_id": "140098548:0",
+            "chunk_id": "cf56b829-249a-4319-9c07-cc292111a435",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "140098548",
+            "document_id": "cca2b4c5-4711-47c4-810d-d43bcef692ab",
+            "metadata_json": {
+              "chunk_external_id": "140098548:0",
+              "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+              "document_external_id": "140098548",
+              "metadata_json": {
+                "source_document_external_id": "140098548",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "query_embedding_dimension": 384,
+              "score_breakdown": {
+                "dense": 0.71731246
+              },
+              "title": "Prevention of radiographic-contrast-agent-induced reductions in renal function by acetylcysteine."
+            },
+            "rank": 6,
+            "score": 0.71731246,
+            "score_breakdown": {
+              "bm25_rank": null,
+              "bm25_score": null,
+              "dense_rank": 6,
+              "dense_score": 0.71731246,
+              "fusion_rank": null,
+              "fusion_score": null,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "BACKGROUND Radiographic contrast agents can cause a reduction in renal function that may be due to reactive oxygen species. Whether the reduction can be prevented by the administration of antioxidants is unknown. METHODS We prospectively studied 83 patients with chronic renal insufficiency (mean [+/-SD] serum creatinine concentration, 2.4+/-1.3 mg per deciliter [216+/-116 micromol per liter]) who were undergoing computed tomography with a nonionic, low-osmolality contrast agent. Patients were ra...",
+            "title": "Prevention of radiographic-contrast-agent-induced reductions in renal function by acetylcysteine.",
+            "token_count": 262
+          },
+          {
+            "chunk_external_id": "26045237:0",
+            "chunk_id": "c882cf36-c3ae-425b-9f6b-9cf708262915",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "26045237",
+            "document_id": "6b213597-df8c-41bf-8b7d-dd39f768e9cb",
+            "metadata_json": {
+              "chunk_external_id": "26045237:0",
+              "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+              "document_external_id": "26045237",
+              "metadata_json": {
+                "source_document_external_id": "26045237",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "query_embedding_dimension": 384,
+              "score_breakdown": {
+                "dense": 0.7149397
+              },
+              "title": "Safety and efficacy of RNAi therapy for transthyretin amyloidosis."
+            },
+            "rank": 7,
+            "score": 0.7149397,
+            "score_breakdown": {
+              "bm25_rank": null,
+              "bm25_score": null,
+              "dense_rank": 7,
+              "dense_score": 0.7149397,
+              "fusion_rank": null,
+              "fusion_score": null,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "BACKGROUND Transthyretin amyloidosis is caused by the deposition of hepatocyte-derived transthyretin amyloid in peripheral nerves and the heart. A therapeutic approach mediated by RNA interference (RNAi) could reduce the production of transthyretin. METHODS We identified a potent antitransthyretin small interfering RNA, which was encapsulated in two distinct first- and second-generation formulations of lipid nanoparticles, generating ALN-TTR01 and ALN-TTR02, respectively. Each formulation was st...",
+            "title": "Safety and efficacy of RNAi therapy for transthyretin amyloidosis.",
+            "token_count": 267
+          },
+          {
+            "chunk_external_id": "27260630:0",
+            "chunk_id": "b5a4c20f-0824-4291-a122-9bdb981c94dc",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "27260630",
+            "document_id": "6fcafa14-393d-4d1b-8897-2c8c622110aa",
+            "metadata_json": {
+              "chunk_external_id": "27260630:0",
+              "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+              "document_external_id": "27260630",
+              "metadata_json": {
+                "source_document_external_id": "27260630",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "query_embedding_dimension": 384,
+              "score_breakdown": {
+                "dense": 0.71133924
+              },
+              "title": "Composition of gall bladder stones associated with octreotide: response to oral ursodeoxycholic acid."
+            },
+            "rank": 8,
+            "score": 0.71133924,
+            "score_breakdown": {
+              "bm25_rank": null,
+              "bm25_score": null,
+              "dense_rank": 8,
+              "dense_score": 0.71133924,
+              "fusion_rank": null,
+              "fusion_score": null,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "Octreotide, an effective treatment for acromegaly, induces gall bladder stones in 13-60% of patients. Because knowledge of stone composition is essential for studies of their pathogenesis, treatment, and prevention, this was investigated by direct and indirect methods in 14 octreotide treated acromegalic patients with gall stones. Chemical analysis of gall stones retrieved at cholecystectomy from two patients, showed that they contained 71% and 87% cholesterol by weight. In the remaining 12 pati...",
+            "title": "Composition of gall bladder stones associated with octreotide: response to oral ursodeoxycholic acid.",
+            "token_count": 274
+          },
+          {
+            "chunk_external_id": "25259746:0",
+            "chunk_id": "1e3d3149-20af-4668-8c61-a7f6627de2e6",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "25259746",
+            "document_id": "b28dc923-5da5-44d6-9670-7601fb9800c7",
+            "metadata_json": {
+              "chunk_external_id": "25259746:0",
+              "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+              "document_external_id": "25259746",
+              "metadata_json": {
+                "source_document_external_id": "25259746",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "query_embedding_dimension": 384,
+              "score_breakdown": {
+                "dense": 0.70904607
+              },
+              "title": "Increased growth after long-term oral 1alpha,25-vitamin D3 in childhood renal osteodystrophy."
+            },
+            "rank": 9,
+            "score": 0.70904607,
+            "score_breakdown": {
+              "bm25_rank": null,
+              "bm25_score": null,
+              "dense_rank": 9,
+              "dense_score": 0.70904607,
+              "fusion_rank": null,
+              "fusion_score": null,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "We evaluated oral 1,25-vitamin D3 for as long as 26 months in six prepubescent children with renal osteodystrophy previously treated with vitamin D2. Therapy was given at 14 to 41 ng per kilogram per day to correct hypocalcemia and reverse bone disease. Serum levels of 1,25-vitamin D3 were initially reduced at 15 +/- 5 pg per milliliter (mean +/- S.E.M.) and after treatment rose to 54 +/- 13. Serum calcium rose from 7.5 +/- 1.6 mg per deciliter (mean +/- S.D.) to 9.8 +/- 0.6 after one month (P l...",
+            "title": "Increased growth after long-term oral 1alpha,25-vitamin D3 in childhood renal osteodystrophy.",
+            "token_count": 242
+          },
+          {
+            "chunk_external_id": "3619931:0",
+            "chunk_id": "e64c3316-e4fd-44f1-b406-69a8b8761219",
+            "chunking_strategy": "scifact_document_v1",
+            "chunking_version": "1.0",
+            "document_external_id": "3619931",
+            "document_id": "1bd15a2d-25d5-4564-9bfc-871a8c10fae6",
+            "metadata_json": {
+              "chunk_external_id": "3619931:0",
+              "collection_name": "aletheia-vector-beir-scifact-test-scifact-document-v1-1-0-baai-bge-small-en-v1-5-c9ccd2c6",
+              "document_external_id": "3619931",
+              "metadata_json": {
+                "source_document_external_id": "3619931",
+                "strategy": "scifact_document_v1",
+                "version": "1.0"
+              },
+              "query_embedding_dimension": 384,
+              "score_breakdown": {
+                "dense": 0.7056122
+              },
+              "title": "Thyroid hormone inhibits lung fibrosis in mice by improving epithelial mitochondrial function"
+            },
+            "rank": 10,
+            "score": 0.7056122,
+            "score_breakdown": {
+              "bm25_rank": null,
+              "bm25_score": null,
+              "dense_rank": 10,
+              "dense_score": 0.7056122,
+              "fusion_rank": null,
+              "fusion_score": null,
+              "rerank_rank": null,
+              "reranker_score": null
+            },
+            "text": "Thyroid hormone (TH) is critical for the maintenance of cellular homeostasis during stress responses, but its role in lung fibrosis is unknown. Here we found that the activity and expression of iodothyronine deiodinase 2 (DIO2), an enzyme that activates TH, were higher in lungs from patients with idiopathic pulmonary fibrosis than in control individuals and were correlated with disease severity. We also found that Dio2-knockout mice exhibited enhanced bleomycin-induced lung fibrosis. Aerosolized...",
+            "title": "Thyroid hormone inhibits lung fibrosis in mice by improving epithelial mitochondrial function",
+            "token_count": 173
+          }
+        ],
+        "retrieval_mode": "dense",
+        "trace_id": "fb62328b-b2d1-442d-8175-5bcbdab99dae"
+      },
+      "trace_id": "fb62328b-b2d1-442d-8175-5bcbdab99dae"
+    }
+  ],
+  "warnings": []
+}

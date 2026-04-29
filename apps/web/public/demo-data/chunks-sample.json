@@ -1,0 +1,405 @@
+{
+  "items": [
+    {
+      "char_end": 2783,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "0d133067d2b85b248e111b494690c7f08fbea14a089c664045e5042230ba6fbf",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "5b59e7e2-1186-41a4-8213-4232373f7609",
+      "external_id": "9394119:0",
+      "id": "8cbf5c00-ce54-4eaa-b548-c3f631939fd3",
+      "metadata_json": {
+        "source_document_external_id": "9394119",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "IMPORTANCE Limited information about the relationship between specific mutations in BRCA1 or BRCA2 (BRCA1/2) and cancer risk exists. OBJECTIVE To identify mutation-specific cancer risks for carriers of BRCA1/2. DESIGN, SETTING, AND PARTICIPANTS Observational study of women who were ascertained between 1937 and 2011 (median, 1999) and found to carry disease-associated BRCA1 or BRCA2 mutations. The international sample comprised 19,581 carriers of BRCA1 mutations and 11,900 carriers of BRCA2 mutat...",
+      "token_count": 451
+    },
+    {
+      "char_end": 1165,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "2a5f34df8260b5780392552df71b08f788abdab435ae3d186ee827383d57c7c3",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "7d43368c-2600-4bca-82ab-4b21c8ac4838",
+      "external_id": "9451052:0",
+      "id": "b736691a-4508-4972-8deb-30c1ec81b309",
+      "metadata_json": {
+        "source_document_external_id": "9451052",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Histone variant H2A.Z-containing nucleosomes are incorporated at most eukaryotic promoters. This incorporation is mediated by the conserved SWR1 complex, which replaces histone H2A in canonical nucleosomes with H2A.Z in an ATP-dependent manner. Here, we show that promoter-proximal nucleosomes are highly heterogeneous for H2A.Z in Saccharomyces cerevisiae, with substantial representation of nucleosomes containing one, two, or zero H2A.Z molecules. SWR1-catalyzed H2A.Z replacement in vitro occurs ...",
+      "token_count": 155
+    },
+    {
+      "char_end": 828,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "6dde1bd014bc8e07406295058da6300de113ffa6982e5184ce942d0b5679dbdc",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "455c770c-8e8e-405f-af63-2ff5b989582e",
+      "external_id": "9317504:0",
+      "id": "29b8c0ff-a97c-43dc-9778-6746e69d65a6",
+      "metadata_json": {
+        "source_document_external_id": "9317504",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "DESCRIPTION VARNA is a tool for the automated drawing, visualization and annotation of the secondary structure of RNA, designed as a companion software for web servers and databases. FEATURES VARNA implements four drawing algorithms, supports input/output using the classic formats dbn, ct, bpseq and RNAML and exports the drawing as five picture formats, either pixel-based (JPEG, PNG) or vector-based (SVG, EPS and XFIG). It also allows manual modification and structural annotation of the resultin...",
+      "token_count": 118
+    },
+    {
+      "char_end": 1247,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "974d6643d07f6b7bfa15e3f524ee785c9f7eb9454814da9eecde8f13a66a62ba",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "4d9a7ad9-aeac-4194-ae5c-48e4f1e462fc",
+      "external_id": "9393969:0",
+      "id": "552a6f77-4932-44a9-b12a-b0054553a365",
+      "metadata_json": {
+        "source_document_external_id": "9393969",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Organisms are constantly challenged by stresses and privations and require adaptive responses for their survival. The forkhead box O (FOXO) transcription factor DAF-16 (hereafter referred to as DAF-16/FOXO) is a central nexus in these responses, but despite its importance little is known about how it regulates its target genes. Proteomic identification of DAF-16/FOXO-binding partners in Caenorhabditis elegans and their subsequent functional evaluation by RNA interference revealed several candida...",
+      "token_count": 163
+    },
+    {
+      "char_end": 1540,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "2c7d6f1e75528debeba00a6bcd851bff513b1566364d2eb5111b3d39b2d20054",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "a9ea8392-47b4-4d6a-b348-d43b7b603283",
+      "external_id": "9420732:0",
+      "id": "79e47f78-c9ab-4a79-977d-808325b5cecb",
+      "metadata_json": {
+        "source_document_external_id": "9420732",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Cadherins and the immunoglobulin (Ig) proteins give rise to a multitude of surface receptors, which function as diverse cell adhesion molecules (CAMs) or signal-transducing receptors. These functions are often interdependent, and rely on a high degree of specificity in homophilic binding as well as heterophilic interactions. The Drosophila receptor Dscam is an exceptional example of homophilic binding specificity involved in a number of important biological processes, such as neural wiring and i...",
+      "token_count": 207
+    },
+    {
+      "char_end": 1961,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "d1391e7504d12adec37f1f053b712f903ccbb0ba9141e252c4d580408cf47cf9",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "32cbafde-2f77-422c-949c-67f5f7bfa941",
+      "external_id": "9440748:0",
+      "id": "d66463a5-ef43-43ba-9d7c-8c1717982418",
+      "metadata_json": {
+        "source_document_external_id": "9440748",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "BACKGROUND The major sites of obstruction in chronic obstructive pulmonary disease (COPD) are small airways (<2 mm in diameter). We wanted to determine whether there was a relationship between small-airway obstruction and emphysematous destruction in COPD. METHODS We used multidetector computed tomography (CT) to compare the number of airways measuring 2.0 to 2.5 mm in 78 patients who had various stages of COPD, as judged by scoring on the Global Initiative for Chronic Obstructive Lung Disease (...",
+      "token_count": 298
+    },
+    {
+      "char_end": 975,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "ef46547a111355345c9dd54cee35619ceb04f13039af1da54dee1c7efc3c30a2",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "877e5dda-5ada-4beb-8606-626f10b30949",
+      "external_id": "9872468:0",
+      "id": "12af47e7-7387-41a6-b1d8-e1e71ab4ca15",
+      "metadata_json": {
+        "source_document_external_id": "9872468",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "We present the latest version of the Molecular Evolutionary Genetics Analysis (Mega) software, which contains many sophisticated methods and tools for phylogenomics and phylomedicine. In this major upgrade, Mega has been optimized for use on 64-bit computing systems for analyzing larger datasets. Researchers can now explore and analyze tens of thousands of sequences in Mega The new version also provides an advanced wizard for building timetrees and includes a new functionality to automatically p...",
+      "token_count": 149
+    },
+    {
+      "char_end": 658,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "bc9e6dd76ecc99ede26959d3f086b5de73c1e429e2923b2cb4e62d562de5b69d",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "ad67d1b4-9fba-4f22-8d49-b97118803ccd",
+      "external_id": "9451684:0",
+      "id": "9b263168-7db3-470a-97a7-f4d96d0bf6d8",
+      "metadata_json": {
+        "source_document_external_id": "9451684",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Budding yeast grown under continuous, nutrient-limited conditions exhibit robust, highly periodic cycles in the form of respiratory bursts. Microarray studies reveal that over half of the yeast genome is expressed periodically during these metabolic cycles. Genes encoding proteins having a common function exhibit similar temporal expression patterns, and genes specifying functions associated with energy and metabolism tend to be expressed with exceptionally robust periodicity. Essential cellular...",
+      "token_count": 89
+    },
+    {
+      "char_end": 1407,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "02a580eb64f2151133979b8ed8dee274d2e32a3fa1bc558547e3c01d23386c8c",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "87adf51a-ca3b-4793-bd65-acf544c856c3",
+      "external_id": "935034:0",
+      "id": "d0540964-a594-4005-ae7e-9f5dc5e9ad11",
+      "metadata_json": {
+        "source_document_external_id": "935034",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Publisher Summary The classification of cell death can be based on morphological or biochemical criteria or on the circumstances of its occurrence. Currently, irreversible structural alteration provides the only unequivocal evidence of death; biochemical indicators of cell death that are universally applicable have to be precisely defined and studies of cell function or of reproductive capacity do not necessarily differentiate between death and dormant states from which recovery may be possible....",
+      "token_count": 203
+    },
+    {
+      "char_end": 1475,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "1aeb1d67108620e8f52e03b1e373495f468117cd9da305e1f941bdfb267a77b8",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "2557df3b-cdf7-4ed3-a643-e3b79f059955",
+      "external_id": "9379687:0",
+      "id": "0f9234f2-68b9-4d45-b6d4-0704f993bc0d",
+      "metadata_json": {
+        "source_document_external_id": "9379687",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "DNA polymerase \u03b5 (Pol \u03b5) is involved in DNA replication, repair, and cell-cycle checkpoint control in eukaryotic cells. Although the roles of replicative Pol \u03b1 and Pol \u03b4 in chromosomal DNA replication are relatively well understood and well documented, the precise role of Pol \u03b5 in chromosomal DNA replication is not well understood. This study uses a Xenopus egg extract DNA replication system to further elucidate the replicative role(s) played by Pol \u03b5. Previous studies show that the initiation t...",
+      "token_count": 225
+    },
+    {
+      "char_end": 620,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "44697512b0bf63d7e8704b1f1a598efe873ff3deac7f3c03df268882013a1e17",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "1670f4d2-7856-4c5b-a2a3-4391f45f6bd2",
+      "external_id": "94109411:0",
+      "id": "0046d658-5e44-41eb-9011-e5b3fbda5061",
+      "metadata_json": {
+        "source_document_external_id": "94109411",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "In this work, an innovated Si3N4 as an out-diffusion barrier layer to Au/Zn/Au contact system for p-type InP has been proposed. Before the contacts were annealed, Si3N4 layer was deposited on the Au(200\u00c5)/Zn(700\u00c5)/Au(200\u00c5), then the Si3N4 was removed by HF and a 2000A layer of pure gold was deposited to facilitate wire bonding. The specific contact resistance dropped to a minimum value of 6\u00d710-7 \u03a9 \u2022 cm2 (for an acceptor concentration of about 3\u00d71018 cm-3) and the contact became perfectly Ohmic. ...",
+      "token_count": 96
+    },
+    {
+      "char_end": 1117,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "3a4c1a5be523e86639e1e16efdd1ed399833d62e3d0cc7af506e0cb56ae90d4b",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "a2a420fb-89c6-48fe-86a5-1cec94947ecf",
+      "external_id": "9412420:0",
+      "id": "191e6d40-7882-4f35-b6d3-9b33f0239ada",
+      "metadata_json": {
+        "source_document_external_id": "9412420",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Mesenchymal stem cells (MSCs) commonly defined by in vitro functions have entered clinical application despite little definition of their function in residence. Here, we report genetic pulse-chase experiments that define osteoblastic cells as short-lived and nonreplicative, requiring replenishment from bone-marrow-derived, Mx1(+) stromal cells with \"MSC\" features. These cells respond to tissue stress and migrate to sites of injury, supplying new osteoblasts during fracture healing. Single cell t...",
+      "token_count": 149
+    },
+    {
+      "char_end": 1153,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "422e05ef411b9b6b33136bb36b7c690cd02d56e855bf04093575a02e43fbb6e2",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "3bc913c5-54bb-4a48-9127-602fee68bd50",
+      "external_id": "9433958:0",
+      "id": "01c6f944-ba5f-486d-88c3-6b621390368d",
+      "metadata_json": {
+        "source_document_external_id": "9433958",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Although susceptibility of neurons in the brain to microbial infection is a major determinant of clinical outcome, little is known about the molecular factors governing this vulnerability. Here we show that two types of neurons from distinct brain regions showed differential permissivity to replication of several positive-stranded RNA viruses. Granule cell neurons of the cerebellum and cortical neurons from the cerebral cortex have unique innate immune programs that confer differential susceptib...",
+      "token_count": 160
+    },
+    {
+      "char_end": 1466,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "ff9cb72b12030ee2e740a02e4f00851fe8dba14e548247060ce2c69b39801018",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "349a24bf-fcee-4620-88be-c2b83aaf0ce9",
+      "external_id": "94365950:0",
+      "id": "a03d21ae-633c-48ad-be05-fecb96d8f573",
+      "metadata_json": {
+        "source_document_external_id": "94365950",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Abstract Some techno-economical analyses and environmental impact evaluation have proved that bipolar membrane electrodialysis (BMED) is feasible for the reclamation of industrial saline water. However, to date, the technology cannot be put into practice due to some unsolved application-oriented problems, such as the requirements of BMED for feed solution, the availability of the produced acid and base, relatively high salt concentration of the effluent, and relatively low desalinating efficienc...",
+      "token_count": 202
+    },
+    {
+      "char_end": 887,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "fcd398e56f2bbba09cffd151d2ad0e2271751b87c49970275853bc8fc4694cc6",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "9cc351b4-472f-4cf7-9261-8782c3058948",
+      "external_id": "9696379:0",
+      "id": "dd7423cb-a7cb-4dd0-b1c6-9bc289b8191e",
+      "metadata_json": {
+        "source_document_external_id": "9696379",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Oscillations in patterns of expression of a large fraction of yeast genes are associated with the \"metabolic cycle,\" usually seen only in prestarved, continuous cultures of yeast. We used FISH of mRNA in individual cells to test the hypothesis that these oscillations happen in single cells drawn from unsynchronized cultures growing exponentially in chemostats. Gene-expression data from synchronized cultures were used to predict coincident appearance of mRNAs from pairs of genes in the unsynchron...",
+      "token_count": 129
+    },
+    {
+      "char_end": 718,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "03f97226ffe11fd87adc823dbf6fd6fe0880de81ca12eaca41145d7032cbf50e",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "b7dfbdbf-07dd-406a-8dee-06dbbc4a2b99",
+      "external_id": "9769310:0",
+      "id": "b94caca3-e1d5-4919-ab03-c8162b976048",
+      "metadata_json": {
+        "source_document_external_id": "9769310",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "The phenomenon of parental imprinting involves the preferential expression of one parental allele of a subset of chromosomal genes and has so far only been documented in the mouse. We show here, by exploiting sequence polymorphisms in exon nine of the human insulin\u2013like growth factor 2 (IGF2) gene, that only the paternally\u2013inherited allele is active in embryonic and extra\u2013embryonic cells from first trimester pregnancies. In addition, only the paternal allele is expressed in tissues from a patien...",
+      "token_count": 107
+    },
+    {
+      "char_end": 882,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "a5ce397314fe674b21cb549657b0e157e0bde6481fcaab956e7661daa7b2a065",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "8a0f2954-c3eb-4721-b4e5-f254280d9343",
+      "external_id": "9875570:0",
+      "id": "9fcd175f-aafe-4af4-913c-403c59abe333",
+      "metadata_json": {
+        "source_document_external_id": "9875570",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "DNA replication fidelity is a key determinant of genome stability and is central to the evolution of species and to the origins of human diseases. Here we review our current understanding of replication fidelity, with emphasis on structural and biochemical studies of DNA polymerases that provide new insights into the importance of hydrogen bonding, base pair geometry, and substrate-induced conformational changes to fidelity. These studies also reveal polymerase interactions with the DNA minor gr...",
+      "token_count": 130
+    },
+    {
+      "char_end": 1039,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "7299276db9795f482e97b5a8d4f9ca4ee4a5a482c6c6d10a4cee032cc68fa23a",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "12fd559f-481a-43f8-9652-85fd7ab4bdd7",
+      "external_id": "935538:0",
+      "id": "34100029-7ff3-4723-b3b4-78c022454673",
+      "metadata_json": {
+        "source_document_external_id": "935538",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "RNA-binding proteins are at the heart of posttranscriptional gene regulation, coordinating the processing, storage, and handling of cellular RNAs. We show here that GRSF1, previously implicated in the binding and selective translation of influenza mRNAs, is targeted to mitochondria where it forms granules that colocalize with foci of newly synthesized mtRNA next to mitochondrial nucleoids. GRSF1 preferentially binds RNAs transcribed from three contiguous genes on the light strand of mtDNA, the N...",
+      "token_count": 148
+    },
+    {
+      "char_end": 1537,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "f3943dff52133c46d57c6426872af5bac296e6c9285bd4bcf28ccac340fa0fe8",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "b53cabb2-bea5-4a1d-957a-ab93ae058c55",
+      "external_id": "9334631:0",
+      "id": "427473c3-c684-4b1b-9d9d-ce4c6ef96578",
+      "metadata_json": {
+        "source_document_external_id": "9334631",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "OBJECTIVE C-Reactive protein (CRP), a cardiovascular risk marker, could also participate in atherosclerosis. Atherosclerotic plaques express CRP and interleukin (IL)-10, a major antiinflammatory cytokine. IL-10 deficiency results in increased lesion formation, whereas IL-10 delivery attenuates lesions. We tested the effect of CRP on lipopolysaccharide (LPS)-induced IL-10 secretion in human monocyte-derived macrophages (HMDMs). METHODS AND RESULTS Incubation of HMDMs with CRP significantly decrea...",
+      "token_count": 192
+    },
+    {
+      "char_end": 1586,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "7bcd690c7c06200965e5233da399d01a19eae402ed41895c75b239f894e02bd3",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "559ed3fc-7571-4379-b2a7-4dadf33a7067",
+      "external_id": "9460704:0",
+      "id": "fbe27e77-ff16-44d7-aa2d-2659935b0208",
+      "metadata_json": {
+        "source_document_external_id": "9460704",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Differentiation therapy has emerged as a powerful way to target specific hematologic malignancies. One of the best examples is the use of all-trans retinoic acid (ATRA) in acute promyelocytic leukemia (APL), which has significantly improved the outcome for patients with this specific form of acute myeloid leukemia (AML). In considering how differentiation therapy could be used in other forms of AML, we predicted that compounds that induce terminal differentiation of megakaryocytes would be effec...",
+      "token_count": 231
+    }
+  ],
+  "total": 5183
+}

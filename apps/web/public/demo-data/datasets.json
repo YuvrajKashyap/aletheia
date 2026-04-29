@@ -1,0 +1,1516 @@
+{
+  "benchmark_query_samples": [
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "208",
+      "id": "9c44757b-e991-4d3f-854e-e860afc28a27",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "208",
+          "text": "CHEK2 is not associated with breast cancer."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "CHEK2 is not associated with breast cancer."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "118",
+      "id": "4a07a1d9-8625-4651-804f-2acad5e6072d",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "118",
+          "text": "Antibiotic induced alterations in the gut microbiome reduce resistance against Clostridium difficile"
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "Antibiotic induced alterations in the gut microbiome reduce resistance against Clostridium difficile"
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "113",
+      "id": "0ac73554-6c96-497f-8d4a-30320622f537",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "113",
+          "text": "Angiotensin converting enzyme inhibitors are associated with increased risk for functional renal insufficiency."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "Angiotensin converting enzyme inhibitors are associated with increased risk for functional renal insufficiency."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "115",
+      "id": "f1f47d01-8c66-41b0-a773-6551e6e2737f",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "115",
+          "text": "Anthrax spores can be disposed of easily after they are dispersed."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "Anthrax spores can be disposed of easily after they are dispersed."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "42",
+      "id": "eb9f56df-bb3f-4d52-bc3e-67d46a2398b9",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "42",
+          "text": "A high microerythrocyte count raises vulnerability to severe anemia in homozygous alpha (+)- thalassemia trait subjects."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "A high microerythrocyte count raises vulnerability to severe anemia in homozygous alpha (+)- thalassemia trait subjects."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "48",
+      "id": "ab15d9ce-c92d-4d34-84d7-fcac5797ef75",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "48",
+          "text": "A total of 1,000 people in the UK are asymptomatic carriers of vCJD infection."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "A total of 1,000 people in the UK are asymptomatic carriers of vCJD infection."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "49",
+      "id": "27103692-19ae-478f-b286-a099602a548d",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "49",
+          "text": "ADAR1 binds to Dicer to cleave pre-miRNA."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "ADAR1 binds to Dicer to cleave pre-miRNA."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "50",
+      "id": "23cbf75b-aea6-40f0-8449-cea5f09b15e4",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "50",
+          "text": "AIRE is expressed in some skin tumors."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "AIRE is expressed in some skin tumors."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "51",
+      "id": "715270b0-b618-42d4-bc94-1d5d97879cca",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "51",
+          "text": "ALDH1 expression is associated with better breast cancer outcomes."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "ALDH1 expression is associated with better breast cancer outcomes."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "53",
+      "id": "f08fc700-6b2b-43f3-a39f-16dfb0f9d79c",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "53",
+          "text": "ALDH1 expression is associated with poorer prognosis in breast cancer."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "ALDH1 expression is associated with poorer prognosis in breast cancer."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "54",
+      "id": "c4b3f53b-d872-4430-966e-3b11c3156b1f",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "54",
+          "text": "AMP-activated protein kinase (AMPK) activation increases inflammation-related fibrosis in the lungs."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "AMP-activated protein kinase (AMPK) activation increases inflammation-related fibrosis in the lungs."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "56",
+      "id": "5b5542c9-0fd7-4d0c-9fff-51d4d7e38a06",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "56",
+          "text": "APOE4 expression in iPSC-derived neurons increases AlphaBeta production and tau phosphorylation causing GABA neuron degeneration."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "APOE4 expression in iPSC-derived neurons increases AlphaBeta production and tau phosphorylation causing GABA neuron degeneration."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "57",
+      "id": "28988156-5d07-45ae-b39b-3d2381a0bd2d",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "57",
+          "text": "APOE4 expression in iPSC-derived neurons increases AlphaBeta production and tau phosphorylation, delaying GABA neuron degeneration."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "APOE4 expression in iPSC-derived neurons increases AlphaBeta production and tau phosphorylation, delaying GABA neuron degeneration."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "70",
+      "id": "54e6a3c3-0307-4060-8851-c4ac2c134f3d",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "70",
+          "text": "Activation of PPM1D suppresses p53 function."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "Activation of PPM1D suppresses p53 function."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "72",
+      "id": "340b3fec-7062-429f-859c-6143a8c01b44",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "72",
+          "text": "Activator-inhibitor pairs are provided dorsally by Admpchordin."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "Activator-inhibitor pairs are provided dorsally by Admpchordin."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "75",
+      "id": "1c500c81-81b4-4ec9-9b36-3b95c94fdfb1",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "75",
+          "text": "Active H. pylori urease has a polymeric structure that compromises two subunits, UreA and UreB."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "Active H. pylori urease has a polymeric structure that compromises two subunits, UreA and UreB."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "94",
+      "id": "1d835c0f-e062-4e59-a397-90af6272842d",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "94",
+          "text": "Albendazole is used to treat lymphatic filariasis."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "Albendazole is used to treat lymphatic filariasis."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "99",
+      "id": "1ed2c30c-50a8-42e0-9286-48efab74d863",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "99",
+          "text": "Alizarin forms hydrogen bonds with residues involved in PGAM1 substrate binding."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "Alizarin forms hydrogen bonds with residues involved in PGAM1 substrate binding."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "100",
+      "id": "7e9038a1-dcd7-4c4e-9efc-7d9328c77e86",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "100",
+          "text": "All hematopoietic stem cells segregate their chromosomes randomly."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "All hematopoietic stem cells segregate their chromosomes randomly."
+    },
+    {
+      "created_at": "2026-04-26T01:05:21.623438+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "124",
+      "id": "36db2c68-b482-4e60-aa7d-ad1fa68d0c0e",
+      "metadata_json": {
+        "raw_fields": {
+          "query_id": "124",
+          "text": "Antiretroviral therapy reduces rates of tuberculosis across a broad range of CD4 strata."
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "split": "test",
+      "text": "Antiretroviral therapy reduces rates of tuberculosis across a broad range of CD4 strata."
+    }
+  ],
+  "chunk_samples": [
+    {
+      "char_end": 2783,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "0d133067d2b85b248e111b494690c7f08fbea14a089c664045e5042230ba6fbf",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "5b59e7e2-1186-41a4-8213-4232373f7609",
+      "external_id": "9394119:0",
+      "id": "8cbf5c00-ce54-4eaa-b548-c3f631939fd3",
+      "metadata_json": {
+        "source_document_external_id": "9394119",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "IMPORTANCE Limited information about the relationship between specific mutations in BRCA1 or BRCA2 (BRCA1/2) and cancer risk exists. OBJECTIVE To identify mutation-specific cancer risks for carriers of BRCA1/2. DESIGN, SETTING, AND PARTICIPANTS Observational study of women who were ascertained between 1937 and 2011 (median, 1999) and found to carry disease-associated BRCA1 or BRCA2 mutations. The international sample comprised 19,581 carriers of BRCA1 mutations and 11,900 carriers of BRCA2 mutat...",
+      "token_count": 451
+    },
+    {
+      "char_end": 1165,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "2a5f34df8260b5780392552df71b08f788abdab435ae3d186ee827383d57c7c3",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "7d43368c-2600-4bca-82ab-4b21c8ac4838",
+      "external_id": "9451052:0",
+      "id": "b736691a-4508-4972-8deb-30c1ec81b309",
+      "metadata_json": {
+        "source_document_external_id": "9451052",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Histone variant H2A.Z-containing nucleosomes are incorporated at most eukaryotic promoters. This incorporation is mediated by the conserved SWR1 complex, which replaces histone H2A in canonical nucleosomes with H2A.Z in an ATP-dependent manner. Here, we show that promoter-proximal nucleosomes are highly heterogeneous for H2A.Z in Saccharomyces cerevisiae, with substantial representation of nucleosomes containing one, two, or zero H2A.Z molecules. SWR1-catalyzed H2A.Z replacement in vitro occurs ...",
+      "token_count": 155
+    },
+    {
+      "char_end": 828,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "6dde1bd014bc8e07406295058da6300de113ffa6982e5184ce942d0b5679dbdc",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "455c770c-8e8e-405f-af63-2ff5b989582e",
+      "external_id": "9317504:0",
+      "id": "29b8c0ff-a97c-43dc-9778-6746e69d65a6",
+      "metadata_json": {
+        "source_document_external_id": "9317504",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "DESCRIPTION VARNA is a tool for the automated drawing, visualization and annotation of the secondary structure of RNA, designed as a companion software for web servers and databases. FEATURES VARNA implements four drawing algorithms, supports input/output using the classic formats dbn, ct, bpseq and RNAML and exports the drawing as five picture formats, either pixel-based (JPEG, PNG) or vector-based (SVG, EPS and XFIG). It also allows manual modification and structural annotation of the resultin...",
+      "token_count": 118
+    },
+    {
+      "char_end": 1247,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "974d6643d07f6b7bfa15e3f524ee785c9f7eb9454814da9eecde8f13a66a62ba",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "4d9a7ad9-aeac-4194-ae5c-48e4f1e462fc",
+      "external_id": "9393969:0",
+      "id": "552a6f77-4932-44a9-b12a-b0054553a365",
+      "metadata_json": {
+        "source_document_external_id": "9393969",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Organisms are constantly challenged by stresses and privations and require adaptive responses for their survival. The forkhead box O (FOXO) transcription factor DAF-16 (hereafter referred to as DAF-16/FOXO) is a central nexus in these responses, but despite its importance little is known about how it regulates its target genes. Proteomic identification of DAF-16/FOXO-binding partners in Caenorhabditis elegans and their subsequent functional evaluation by RNA interference revealed several candida...",
+      "token_count": 163
+    },
+    {
+      "char_end": 1540,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "2c7d6f1e75528debeba00a6bcd851bff513b1566364d2eb5111b3d39b2d20054",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "a9ea8392-47b4-4d6a-b348-d43b7b603283",
+      "external_id": "9420732:0",
+      "id": "79e47f78-c9ab-4a79-977d-808325b5cecb",
+      "metadata_json": {
+        "source_document_external_id": "9420732",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Cadherins and the immunoglobulin (Ig) proteins give rise to a multitude of surface receptors, which function as diverse cell adhesion molecules (CAMs) or signal-transducing receptors. These functions are often interdependent, and rely on a high degree of specificity in homophilic binding as well as heterophilic interactions. The Drosophila receptor Dscam is an exceptional example of homophilic binding specificity involved in a number of important biological processes, such as neural wiring and i...",
+      "token_count": 207
+    },
+    {
+      "char_end": 1961,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "d1391e7504d12adec37f1f053b712f903ccbb0ba9141e252c4d580408cf47cf9",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "32cbafde-2f77-422c-949c-67f5f7bfa941",
+      "external_id": "9440748:0",
+      "id": "d66463a5-ef43-43ba-9d7c-8c1717982418",
+      "metadata_json": {
+        "source_document_external_id": "9440748",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "BACKGROUND The major sites of obstruction in chronic obstructive pulmonary disease (COPD) are small airways (<2 mm in diameter). We wanted to determine whether there was a relationship between small-airway obstruction and emphysematous destruction in COPD. METHODS We used multidetector computed tomography (CT) to compare the number of airways measuring 2.0 to 2.5 mm in 78 patients who had various stages of COPD, as judged by scoring on the Global Initiative for Chronic Obstructive Lung Disease (...",
+      "token_count": 298
+    },
+    {
+      "char_end": 975,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "ef46547a111355345c9dd54cee35619ceb04f13039af1da54dee1c7efc3c30a2",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "877e5dda-5ada-4beb-8606-626f10b30949",
+      "external_id": "9872468:0",
+      "id": "12af47e7-7387-41a6-b1d8-e1e71ab4ca15",
+      "metadata_json": {
+        "source_document_external_id": "9872468",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "We present the latest version of the Molecular Evolutionary Genetics Analysis (Mega) software, which contains many sophisticated methods and tools for phylogenomics and phylomedicine. In this major upgrade, Mega has been optimized for use on 64-bit computing systems for analyzing larger datasets. Researchers can now explore and analyze tens of thousands of sequences in Mega The new version also provides an advanced wizard for building timetrees and includes a new functionality to automatically p...",
+      "token_count": 149
+    },
+    {
+      "char_end": 658,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "bc9e6dd76ecc99ede26959d3f086b5de73c1e429e2923b2cb4e62d562de5b69d",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "ad67d1b4-9fba-4f22-8d49-b97118803ccd",
+      "external_id": "9451684:0",
+      "id": "9b263168-7db3-470a-97a7-f4d96d0bf6d8",
+      "metadata_json": {
+        "source_document_external_id": "9451684",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Budding yeast grown under continuous, nutrient-limited conditions exhibit robust, highly periodic cycles in the form of respiratory bursts. Microarray studies reveal that over half of the yeast genome is expressed periodically during these metabolic cycles. Genes encoding proteins having a common function exhibit similar temporal expression patterns, and genes specifying functions associated with energy and metabolism tend to be expressed with exceptionally robust periodicity. Essential cellular...",
+      "token_count": 89
+    },
+    {
+      "char_end": 1407,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "02a580eb64f2151133979b8ed8dee274d2e32a3fa1bc558547e3c01d23386c8c",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "87adf51a-ca3b-4793-bd65-acf544c856c3",
+      "external_id": "935034:0",
+      "id": "d0540964-a594-4005-ae7e-9f5dc5e9ad11",
+      "metadata_json": {
+        "source_document_external_id": "935034",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Publisher Summary The classification of cell death can be based on morphological or biochemical criteria or on the circumstances of its occurrence. Currently, irreversible structural alteration provides the only unequivocal evidence of death; biochemical indicators of cell death that are universally applicable have to be precisely defined and studies of cell function or of reproductive capacity do not necessarily differentiate between death and dormant states from which recovery may be possible....",
+      "token_count": 203
+    },
+    {
+      "char_end": 1475,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "1aeb1d67108620e8f52e03b1e373495f468117cd9da305e1f941bdfb267a77b8",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "2557df3b-cdf7-4ed3-a643-e3b79f059955",
+      "external_id": "9379687:0",
+      "id": "0f9234f2-68b9-4d45-b6d4-0704f993bc0d",
+      "metadata_json": {
+        "source_document_external_id": "9379687",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "DNA polymerase \u03b5 (Pol \u03b5) is involved in DNA replication, repair, and cell-cycle checkpoint control in eukaryotic cells. Although the roles of replicative Pol \u03b1 and Pol \u03b4 in chromosomal DNA replication are relatively well understood and well documented, the precise role of Pol \u03b5 in chromosomal DNA replication is not well understood. This study uses a Xenopus egg extract DNA replication system to further elucidate the replicative role(s) played by Pol \u03b5. Previous studies show that the initiation t...",
+      "token_count": 225
+    },
+    {
+      "char_end": 620,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "44697512b0bf63d7e8704b1f1a598efe873ff3deac7f3c03df268882013a1e17",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "1670f4d2-7856-4c5b-a2a3-4391f45f6bd2",
+      "external_id": "94109411:0",
+      "id": "0046d658-5e44-41eb-9011-e5b3fbda5061",
+      "metadata_json": {
+        "source_document_external_id": "94109411",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "In this work, an innovated Si3N4 as an out-diffusion barrier layer to Au/Zn/Au contact system for p-type InP has been proposed. Before the contacts were annealed, Si3N4 layer was deposited on the Au(200\u00c5)/Zn(700\u00c5)/Au(200\u00c5), then the Si3N4 was removed by HF and a 2000A layer of pure gold was deposited to facilitate wire bonding. The specific contact resistance dropped to a minimum value of 6\u00d710-7 \u03a9 \u2022 cm2 (for an acceptor concentration of about 3\u00d71018 cm-3) and the contact became perfectly Ohmic. ...",
+      "token_count": 96
+    },
+    {
+      "char_end": 1117,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "3a4c1a5be523e86639e1e16efdd1ed399833d62e3d0cc7af506e0cb56ae90d4b",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "a2a420fb-89c6-48fe-86a5-1cec94947ecf",
+      "external_id": "9412420:0",
+      "id": "191e6d40-7882-4f35-b6d3-9b33f0239ada",
+      "metadata_json": {
+        "source_document_external_id": "9412420",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Mesenchymal stem cells (MSCs) commonly defined by in vitro functions have entered clinical application despite little definition of their function in residence. Here, we report genetic pulse-chase experiments that define osteoblastic cells as short-lived and nonreplicative, requiring replenishment from bone-marrow-derived, Mx1(+) stromal cells with \"MSC\" features. These cells respond to tissue stress and migrate to sites of injury, supplying new osteoblasts during fracture healing. Single cell t...",
+      "token_count": 149
+    },
+    {
+      "char_end": 1153,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "422e05ef411b9b6b33136bb36b7c690cd02d56e855bf04093575a02e43fbb6e2",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "3bc913c5-54bb-4a48-9127-602fee68bd50",
+      "external_id": "9433958:0",
+      "id": "01c6f944-ba5f-486d-88c3-6b621390368d",
+      "metadata_json": {
+        "source_document_external_id": "9433958",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Although susceptibility of neurons in the brain to microbial infection is a major determinant of clinical outcome, little is known about the molecular factors governing this vulnerability. Here we show that two types of neurons from distinct brain regions showed differential permissivity to replication of several positive-stranded RNA viruses. Granule cell neurons of the cerebellum and cortical neurons from the cerebral cortex have unique innate immune programs that confer differential susceptib...",
+      "token_count": 160
+    },
+    {
+      "char_end": 1466,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "ff9cb72b12030ee2e740a02e4f00851fe8dba14e548247060ce2c69b39801018",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "349a24bf-fcee-4620-88be-c2b83aaf0ce9",
+      "external_id": "94365950:0",
+      "id": "a03d21ae-633c-48ad-be05-fecb96d8f573",
+      "metadata_json": {
+        "source_document_external_id": "94365950",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Abstract Some techno-economical analyses and environmental impact evaluation have proved that bipolar membrane electrodialysis (BMED) is feasible for the reclamation of industrial saline water. However, to date, the technology cannot be put into practice due to some unsolved application-oriented problems, such as the requirements of BMED for feed solution, the availability of the produced acid and base, relatively high salt concentration of the effluent, and relatively low desalinating efficienc...",
+      "token_count": 202
+    },
+    {
+      "char_end": 887,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "fcd398e56f2bbba09cffd151d2ad0e2271751b87c49970275853bc8fc4694cc6",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "9cc351b4-472f-4cf7-9261-8782c3058948",
+      "external_id": "9696379:0",
+      "id": "dd7423cb-a7cb-4dd0-b1c6-9bc289b8191e",
+      "metadata_json": {
+        "source_document_external_id": "9696379",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Oscillations in patterns of expression of a large fraction of yeast genes are associated with the \"metabolic cycle,\" usually seen only in prestarved, continuous cultures of yeast. We used FISH of mRNA in individual cells to test the hypothesis that these oscillations happen in single cells drawn from unsynchronized cultures growing exponentially in chemostats. Gene-expression data from synchronized cultures were used to predict coincident appearance of mRNAs from pairs of genes in the unsynchron...",
+      "token_count": 129
+    },
+    {
+      "char_end": 718,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "03f97226ffe11fd87adc823dbf6fd6fe0880de81ca12eaca41145d7032cbf50e",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "b7dfbdbf-07dd-406a-8dee-06dbbc4a2b99",
+      "external_id": "9769310:0",
+      "id": "b94caca3-e1d5-4919-ab03-c8162b976048",
+      "metadata_json": {
+        "source_document_external_id": "9769310",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "The phenomenon of parental imprinting involves the preferential expression of one parental allele of a subset of chromosomal genes and has so far only been documented in the mouse. We show here, by exploiting sequence polymorphisms in exon nine of the human insulin\u2013like growth factor 2 (IGF2) gene, that only the paternally\u2013inherited allele is active in embryonic and extra\u2013embryonic cells from first trimester pregnancies. In addition, only the paternal allele is expressed in tissues from a patien...",
+      "token_count": 107
+    },
+    {
+      "char_end": 882,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "a5ce397314fe674b21cb549657b0e157e0bde6481fcaab956e7661daa7b2a065",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "8a0f2954-c3eb-4721-b4e5-f254280d9343",
+      "external_id": "9875570:0",
+      "id": "9fcd175f-aafe-4af4-913c-403c59abe333",
+      "metadata_json": {
+        "source_document_external_id": "9875570",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "DNA replication fidelity is a key determinant of genome stability and is central to the evolution of species and to the origins of human diseases. Here we review our current understanding of replication fidelity, with emphasis on structural and biochemical studies of DNA polymerases that provide new insights into the importance of hydrogen bonding, base pair geometry, and substrate-induced conformational changes to fidelity. These studies also reveal polymerase interactions with the DNA minor gr...",
+      "token_count": 130
+    },
+    {
+      "char_end": 1039,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "7299276db9795f482e97b5a8d4f9ca4ee4a5a482c6c6d10a4cee032cc68fa23a",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "12fd559f-481a-43f8-9652-85fd7ab4bdd7",
+      "external_id": "935538:0",
+      "id": "34100029-7ff3-4723-b3b4-78c022454673",
+      "metadata_json": {
+        "source_document_external_id": "935538",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "RNA-binding proteins are at the heart of posttranscriptional gene regulation, coordinating the processing, storage, and handling of cellular RNAs. We show here that GRSF1, previously implicated in the binding and selective translation of influenza mRNAs, is targeted to mitochondria where it forms granules that colocalize with foci of newly synthesized mtRNA next to mitochondrial nucleoids. GRSF1 preferentially binds RNAs transcribed from three contiguous genes on the light strand of mtDNA, the N...",
+      "token_count": 148
+    },
+    {
+      "char_end": 1537,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "f3943dff52133c46d57c6426872af5bac296e6c9285bd4bcf28ccac340fa0fe8",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "b53cabb2-bea5-4a1d-957a-ab93ae058c55",
+      "external_id": "9334631:0",
+      "id": "427473c3-c684-4b1b-9d9d-ce4c6ef96578",
+      "metadata_json": {
+        "source_document_external_id": "9334631",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "OBJECTIVE C-Reactive protein (CRP), a cardiovascular risk marker, could also participate in atherosclerosis. Atherosclerotic plaques express CRP and interleukin (IL)-10, a major antiinflammatory cytokine. IL-10 deficiency results in increased lesion formation, whereas IL-10 delivery attenuates lesions. We tested the effect of CRP on lipopolysaccharide (LPS)-induced IL-10 secretion in human monocyte-derived macrophages (HMDMs). METHODS AND RESULTS Incubation of HMDMs with CRP significantly decrea...",
+      "token_count": 192
+    },
+    {
+      "char_end": 1586,
+      "char_start": 0,
+      "chunk_index": 0,
+      "chunking_strategy": "scifact_document_v1",
+      "chunking_version": "1.0",
+      "content_hash": "7bcd690c7c06200965e5233da399d01a19eae402ed41895c75b239f894e02bd3",
+      "created_at": "2026-04-26T01:19:03.983353+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_id": "559ed3fc-7571-4379-b2a7-4dadf33a7067",
+      "external_id": "9460704:0",
+      "id": "fbe27e77-ff16-44d7-aa2d-2659935b0208",
+      "metadata_json": {
+        "source_document_external_id": "9460704",
+        "strategy": "scifact_document_v1",
+        "version": "1.0"
+      },
+      "text": "Differentiation therapy has emerged as a powerful way to target specific hematologic malignancies. One of the best examples is the use of all-trans retinoic acid (ATRA) in acute promyelocytic leukemia (APL), which has significantly improved the outcome for patients with this specific form of acute myeloid leukemia (AML). In considering how differentiation therapy could be used in other forms of AML, we predicted that compounds that induce terminal differentiation of megakaryocytes would be effec...",
+      "token_count": 231
+    }
+  ],
+  "datasets": [
+    {
+      "benchmark_query_count": 300,
+      "chunk_count": 5183,
+      "created_at": "2026-04-26T01:04:04.298735+00:00",
+      "description": "BEIR SciFact corpus and benchmark metadata loaded via ir_datasets.",
+      "document_count": 5183,
+      "id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "license_name": null,
+      "license_url": null,
+      "metadata_json": {
+        "corpus_dataset_id": "beir/scifact",
+        "eval_dataset_id": "beir/scifact/test",
+        "name": "beir/scifact",
+        "source": "ir_datasets",
+        "source_url": "https://ir-datasets.com/beir.html#beir/scifact",
+        "version": "test"
+      },
+      "name": "beir/scifact",
+      "relevance_judgment_count": 339,
+      "source": "ir_datasets",
+      "source_url": "https://ir-datasets.com/beir.html#beir/scifact",
+      "updated_at": "2026-04-26T01:04:04.298735+00:00",
+      "version": "test"
+    }
+  ],
+  "document_samples": [
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "41159361",
+      "id": "a076914e-ec11-4c28-9c47-ee3cad917bac",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "41159361",
+          "text": "To understand changes in cyclic nucleotide metabolism in muscle disease states, the expression of phosphodiesterase (PDE) isozymes in normal mouse leg muscle was examined. Four subcellular fractions were generated by differential centrifugation at 10,000 x g and 100,000 x g. cAMP PDE activity was found predominately in the soluble fractions, while cGMP PDE activity was more evenly distributed amongst soluble and particulate fractions. Pharmacological inhibitors demonstrate that PDE4 represents the major cAMP hydrolyzing activity and PDE2 represents the major cGMP hydrolyzing activity in mouse leg muscle. PDE1 is expressed at low levels, while PDE3 and PDE5 are intermediate. Between 20 and 40% of total PDE activity remained in the presence of inhibitors for PDE1-PDE5, indicating that other PDE families contribute to the total PDE pool. Reverse-transcription PCR with family-specific primers showed expression of mRNA for PDE7-PDE9, supporting this conclusion. Total PDE activity was found to be elevated in tissue extracts from a mouse model of Duchenne's muscular dystrophy.",
+          "title": "Cyclic nucleotide phosphodiesterase isozymes expressed in mouse skeletal muscle."
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "To understand changes in cyclic nucleotide metabolism in muscle disease states, the expression of phosphodiesterase (PDE) isozymes in normal mouse leg muscle was examined. Four subcellular fractions were generated by differential centrifugation at 10,000 x g and 100,000 x g. cAMP PDE activity was found predominately in the soluble fractions, while cGMP PDE activity was more evenly distributed amongst soluble and particulate fractions. Pharmacological inhibitors demonstrate that PDE4 represents t...",
+      "title": "Cyclic nucleotide phosphodiesterase isozymes expressed in mouse skeletal muscle.",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    },
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "41239107",
+      "id": "d1e637b3-0134-4f4b-bb81-f91e7b8a6eb9",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "41239107",
+          "text": "In this study, we investigated the presence and role of immunoproteasome and its LMP2 subunit polymorphism at codon 60 in Alzheimer's disease (AD). Immunoproteasome was present in brain areas such as hippocampus and cerebellum and localized in neurons, astrocytes and endothelial cells. A higher expression of immunoproteasome was found in brain of AD patients than in brain of non-demented elderly, being its expression in young brain negligible or absent. Furthermore, AD affected regions showed a partial decrease in proteasome trypsin-like activity. The study of LMP2 polymorphism (R/H) showed that it does not influence LMP2 expression (neither the mRNA nor mature protein) in brain tissue. However, control brain areas of AD patients carrying the RR genotype showed an increased proteasome activity in comparison with RH carriers. To test whether this effect of the genotype might be related to AD onset we performed a genetic study, which allowed us to exclude an association of LMP2 codon 60 polymorphism with AD onset, despite its influence on the proteasome activity in human brain.",
+          "title": "Immunoproteasome and LMP2 polymorphism in aged and Alzheimer's disease brains."
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "In this study, we investigated the presence and role of immunoproteasome and its LMP2 subunit polymorphism at codon 60 in Alzheimer's disease (AD). Immunoproteasome was present in brain areas such as hippocampus and cerebellum and localized in neurons, astrocytes and endothelial cells. A higher expression of immunoproteasome was found in brain of AD patients than in brain of non-demented elderly, being its expression in young brain negligible or absent. Furthermore, AD affected regions showed a ...",
+      "title": "Immunoproteasome and LMP2 polymorphism in aged and Alzheimer's disease brains.",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    },
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "41074251",
+      "id": "ea9f7fbf-b778-4783-9e4a-177c2b583464",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "41074251",
+          "text": "BACKGROUND Knowledge, attitudes, and risk perception in relation to second primary cancer (SPC) screening and their impact on screening practices in cancer survivors are largely unknown. METHODS A total of 326 cancer survivors who had completed primary treatment for cancer >1 year previously were recruited from 6 oncology care outpatient clinics in the Republic of Korea. Survivors' knowledge, attitudes, perceived risk, and screening practices were assessed along with sociodemographic, behavioral, and clinical characteristics. Multivariate logistic regression was used to examine behavioral factors associated with the completion of all appropriate SPC screening according to national guidelines. RESULTS Approximately 37.7% of survivors had undergone all appropriate SPC screening tests. Survivors were found to have a high perceived risk of SPC, high perceived benefits of screening, and positive attitudes toward cancer screening. However, they had limited knowledge regarding SPC screening tests and few had received a recommendation from a physician to undergo SPC screening. Although there was no association found between perceived risk and positive attitudes with screening behavior, higher knowledge was noted to be significantly associated with the completion of all appropriate SPC screening (adjusted odds ratio, 1.81; 95% confidence interval, 1.03-3.33). CONCLUSIONS In the current study, cancer survivors were found to have limited knowledge regarding second cancer screening tests, which may have resulted in lower rates of completion of screening practices in this population.",
+          "title": "Knowledge, attitudes, risk perception, and cancer screening behaviors among cancer survivors."
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "BACKGROUND Knowledge, attitudes, and risk perception in relation to second primary cancer (SPC) screening and their impact on screening practices in cancer survivors are largely unknown. METHODS A total of 326 cancer survivors who had completed primary treatment for cancer >1 year previously were recruited from 6 oncology care outpatient clinics in the Republic of Korea. Survivors' knowledge, attitudes, perceived risk, and screening practices were assessed along with sociodemographic, behavioral...",
+      "title": "Knowledge, attitudes, risk perception, and cancer screening behaviors among cancer survivors.",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    },
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "41133176",
+      "id": "6fca3c75-e43b-4d5e-b7e1-a52a8f18f548",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "41133176",
+          "text": "Using a sensitive Northern blot hybridization technique, gene expression of superoxide dismutase (SOD), catalase, and glutathione peroxidase was studied in pancreatic islets and for comparison in various other mouse tissues (liver, kidney, brain, lung, skeletal muscle, heart muscle, adrenal gland, and pituitary gland). Gene expression of the antioxidant enzymes was usually in the range of +/- 50% of that in the liver. Only in pancreatic islets gene expression was substantially lower. The levels of the cytoplasmic Cu/Zn SOD and the mitochondrial Mn SOD gene expression were in the range of 30-40% of those in the liver. Glutathione peroxidase gene expression was 15%, and catalase gene expression was not at all detectable in pancreatic islets. These low levels of antioxidant enzyme gene expression may provide an explanation for the extraordinary sensitivity of pancreatic beta cells towards cytotoxic damage by diabetogenic compounds and during the development of human and animal diabetes.",
+          "title": "Low antioxidant enzyme gene expression in pancreatic islets compared with various other mouse tissues."
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "Using a sensitive Northern blot hybridization technique, gene expression of superoxide dismutase (SOD), catalase, and glutathione peroxidase was studied in pancreatic islets and for comparison in various other mouse tissues (liver, kidney, brain, lung, skeletal muscle, heart muscle, adrenal gland, and pituitary gland). Gene expression of the antioxidant enzymes was usually in the range of +/- 50% of that in the liver. Only in pancreatic islets gene expression was substantially lower. The levels ...",
+      "title": "Low antioxidant enzyme gene expression in pancreatic islets compared with various other mouse tissues.",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    },
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "41182002",
+      "id": "f8344ad6-e866-47a9-8484-62b82dff59ea",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "41182002",
+          "text": "The perception of spatially distributed sound sources was investigated by conducting two listening experiments in anechoic conditions with 13 loudspeakers evenly distributed in the frontal horizontal plane emitting incoherent noise signals. In the first experiment, widely distributed sound sources with gaps in their distribution emitted pink noise. The results indicated that the exact loudspeaker distribution could not be perceived accurately and that the width of the distribution was perceived to be narrower than it was in reality. Up to three spatially distributed loudspeakers that were simultaneously emitting sound could be individually perceived. In addition, the number of loudspeakers that were indicated as emitting sound was smaller than the actual number. In the second experiment, a reference with 13 loudspeakers and test cases with fewer loudspeakers were presented and their perceived spatial difference was rated. The effect of the noise bandwidth was of particular interest. Noise with different bandwidths centered around 500 and 4000 Hz was used. The results indicated that when the number of loudspeakers was increased from four to seven, the perceived auditory event was very similar to that perceived with 13 loudspeakers at all bandwidths. The perceived differences were larger in wideband noise than in narrow-band noise.",
+          "title": "Directional perception of distributed sound sources."
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "The perception of spatially distributed sound sources was investigated by conducting two listening experiments in anechoic conditions with 13 loudspeakers evenly distributed in the frontal horizontal plane emitting incoherent noise signals. In the first experiment, widely distributed sound sources with gaps in their distribution emitted pink noise. The results indicated that the exact loudspeaker distribution could not be perceived accurately and that the width of the distribution was perceived ...",
+      "title": "Directional perception of distributed sound sources.",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    },
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "41233511",
+      "id": "4e3282dc-28d4-47a5-9b1d-f30e2b379b17",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "41233511",
+          "text": "The Bruce treadmill protocol is suitable for children as young as age 4 years. Maximal endurance time may be used as the sole criterion of exercise capacity, and normal values were established with 327 children having an innocent heart murmur. Mean endurance time in boys increased from 10.4 minutes at age 4 to 5 years, to 14.1 minutes at age 13 to 15 years. Mean endurance time in girls increased from 9.5 minutes at age 4 to 5 years to 12.3 minutes at age 10 to 12 years. Mean maximal heart rate ranged from 193 to 206 beats/min. Age differences in mean maximal and submaximal heart rates were small. There were negative correlations between endurance time and the ratio of weight to height. There were negative correlations between heart rates at treadmill stages 1 to 3 and the endurance times. The correlation coefficient of endurance time with maximal oxygen uptake was 0.88, but for clinical purposes endurance time alone is a satisfactory indicator of exercise performance.",
+          "title": "Bruce treadmill test in children: normal values in a clinic population."
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "The Bruce treadmill protocol is suitable for children as young as age 4 years. Maximal endurance time may be used as the sole criterion of exercise capacity, and normal values were established with 327 children having an innocent heart murmur. Mean endurance time in boys increased from 10.4 minutes at age 4 to 5 years, to 14.1 minutes at age 13 to 15 years. Mean endurance time in girls increased from 9.5 minutes at age 4 to 5 years to 12.3 minutes at age 10 to 12 years. Mean maximal heart rate r...",
+      "title": "Bruce treadmill test in children: normal values in a clinic population.",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    },
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "40987633",
+      "id": "d1d325b8-d73a-4ca9-a0f9-22dbcf3222ac",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "40987633",
+          "text": "Charged multivesicular body protein 2B (CHMP2B) - a component of the endosomal complex required for transport-III (ESCRT-III) - is responsible for the vital membrane deformation functions in autophagy and endolysosomal trafficking. A dominant mutation in CHMP2B (CHMP2BIntron5) is associated with a subset of heritable frontotemporal dementia - frontotemporal dementia linked to chromosome 3 (FTD-3). ESCRT-III recruits Vps4, an AAA-ATPase that abscises the membrane during various cellular processes including autophagy and intraluminal vesicle formation. CHMP2BIntron5 results in a C-terminus truncation removing an important Vps4 binding site as well as eliminating the normal autoinhibitory resting state of CHMP2B. CHMP2B is expressed in most cell types but seems to be especially vital for proper neuronal function. CHMP2BIntron5-mediated phenotypes include misregulation of transmembrane receptors, accumulation of multilamellar structures, abnormal lysosomal morphology, down regulation of a brain-specific micro RNA (miRNA-124), abnormal dendritic spine morphology, decrease in dendritic arborization, and cell death. Currently, transgenic-fly,-mouse, and -human cell lines are being used to better understand the diverse phenotypes and develop therapeutic approaches for the CHMP2BIntron5-induced FTD-3. This article is part of a Special Issue entitled SI:Autophagy.",
+          "title": "The role of CHMP2BIntron5 in autophagy and frontotemporal dementia."
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "Charged multivesicular body protein 2B (CHMP2B) - a component of the endosomal complex required for transport-III (ESCRT-III) - is responsible for the vital membrane deformation functions in autophagy and endolysosomal trafficking. A dominant mutation in CHMP2B (CHMP2BIntron5) is associated with a subset of heritable frontotemporal dementia - frontotemporal dementia linked to chromosome 3 (FTD-3). ESCRT-III recruits Vps4, an AAA-ATPase that abscises the membrane during various cellular processes...",
+      "title": "The role of CHMP2BIntron5 in autophagy and frontotemporal dementia.",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    },
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "41024260",
+      "id": "75b1e281-92aa-4eb6-800a-ee38829f59b5",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "41024260",
+          "text": "Classical C2H2 zinc finger proteins are among the most abundant transcription factors found in eukaryotes, and the mechanisms through which they recognize their target genes have been extensively investigated. In general, a tandem array of three fingers separated by characteristic TGERP links is required for sequence-specific DNA recognition. Nevertheless, a significant number of zinc finger proteins do not contain a hallmark three-finger array of this type, raising the question of whether and how they contact DNA. We have examined the multi-finger protein ZNF217, which contains eight classical zinc fingers. ZNF217 is implicated as an oncogene and in repressing the E-cadherin gene. We show that two of its zinc fingers, 6 and 7, can mediate contacts with DNA. We examine its putative recognition site in the E-cadherin promoter and demonstrate that this is a suboptimal site. NMR analysis and mutagenesis is used to define the DNA binding surface of ZNF217, and we examine the specificity of the DNA binding activity using fluorescence anisotropy titrations. Finally, sequence analysis reveals that a variety of multi-finger proteins also contain two-finger units, and our data support the idea that these may constitute a distinct subclass of DNA recognition motif.",
+          "title": "The multi-zinc finger protein ZNF217 contacts DNA through a two-finger domain."
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "Classical C2H2 zinc finger proteins are among the most abundant transcription factors found in eukaryotes, and the mechanisms through which they recognize their target genes have been extensively investigated. In general, a tandem array of three fingers separated by characteristic TGERP links is required for sequence-specific DNA recognition. Nevertheless, a significant number of zinc finger proteins do not contain a hallmark three-finger array of this type, raising the question of whether and h...",
+      "title": "The multi-zinc finger protein ZNF217 contacts DNA through a two-finger domain.",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    },
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "41120293",
+      "id": "9ed8472d-8020-4910-b962-6bcf134c493c",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "41120293",
+          "text": "Obesity and insulin resistance are associated with chronic inflammation in metabolic tissues such as adipose tissue and the liver. Recently, growing evidence has implicated the intestinal immune system as an important contributor to metabolic disease. Obesity predisposes to altered intestinal immunity and is associated with changes to the gut microbiota, intestinal barrier function, gut-residing innate and adaptive immune cells, and oral tolerance to luminal antigens. Accordingly, the gut immune system may represent a novel therapeutic target for systemic inflammation in insulin resistance. This review discusses the emerging field of intestinal immunity in obesity-related insulin resistance and how it affects metabolic disease.",
+          "title": "The Intestinal Immune System in Obesity and Insulin Resistance."
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "Obesity and insulin resistance are associated with chronic inflammation in metabolic tissues such as adipose tissue and the liver. Recently, growing evidence has implicated the intestinal immune system as an important contributor to metabolic disease. Obesity predisposes to altered intestinal immunity and is associated with changes to the gut microbiota, intestinal barrier function, gut-residing innate and adaptive immune cells, and oral tolerance to luminal antigens. Accordingly, the gut immune...",
+      "title": "The Intestinal Immune System in Obesity and Insulin Resistance.",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    },
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "41131087",
+      "id": "c978be59-ea06-4c78-b6a9-bebe31fd81a7",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "41131087",
+          "text": "Human placental lactogen and unconjugated estriol concentrations in maternal serum were evaluated in 100 uneventful twin pregnancies, and these values were compared with those observed in 16 twin pregnancies associated with intrauterine growth retardation or single intrauterine fetal death. In pregnancies associated with intrauterine growth retardation (n = 8), human placental lactogen levels were at the lower limit of normal range for singleton pregnancies, whereas estriol levels were normal in most cases. When one of the fetuses had died before week 33 of pregnancy (n = 5), both human placental lactogen and estriol levels were low and they were almost at the levels in singleton pregnancy. When intrauterine fetal death occurred after week 36 of pregnancy (n = 3), both hormone levels remained normal until term. Thus human placental lactogen rather than estriol is a good indicator of intrauterine growth retardation in twin pregnancy. Both human placental lactogen and estriol are useful for the monitoring of the surviving fetus in the case of single intrauterine fetal death.",
+          "title": "Human placental lactogen and unconjugated estriol concentrations in twin pregnancy: monitoring of fetal development in intrauterine growth retardation and single intrauterine fetal death."
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "Human placental lactogen and unconjugated estriol concentrations in maternal serum were evaluated in 100 uneventful twin pregnancies, and these values were compared with those observed in 16 twin pregnancies associated with intrauterine growth retardation or single intrauterine fetal death. In pregnancies associated with intrauterine growth retardation (n = 8), human placental lactogen levels were at the lower limit of normal range for singleton pregnancies, whereas estriol levels were normal in...",
+      "title": "Human placental lactogen and unconjugated estriol concentrations in twin pregnancy: monitoring of fetal development in intrauterine growth retardation and single intrauterine fetal death.",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    },
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "41161366",
+      "id": "3577d085-1529-45d3-b8c1-9a8cee23fe50",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "41161366",
+          "text": "The effect of exercise on ventilatory function was studied in 7 patients with asthma. Three showed appreciable decrease in forced expiratory volume in one second (FEV 1) after exercise. The degree of hyperventilation produced by exercise correlated with the postexercise decrease in FEV 1. Voluntary hyperventilation at rest produced a decrease in FEV 1 in all patients with asthma. Breathing 5.6 per cent carbon dioxide during voluntary hyperventilation instead of room air induced a larger ventilation and greater decrease in FEV1. Neither exercise nor voluntary hyperventilation had any significant effect on the FEV 1 in normal subjects and patients with chronic bronchitis. Both exercise\u00b7induced and hyperventilation-induced decrease in FEV 1 were inhibited by prior administration of isoproterenol but not by atropine. It is postulated that exercise-induced asthma is probably hyperventilation-induced asthma. Several underlying mechanisms by which airway obstruction is produced are possible.",
+          "title": "Exercise-induced asthma."
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "The effect of exercise on ventilatory function was studied in 7 patients with asthma. Three showed appreciable decrease in forced expiratory volume in one second (FEV 1) after exercise. The degree of hyperventilation produced by exercise correlated with the postexercise decrease in FEV 1. Voluntary hyperventilation at rest produced a decrease in FEV 1 in all patients with asthma. Breathing 5.6 per cent carbon dioxide during voluntary hyperventilation instead of room air induced a larger ventilat...",
+      "title": "Exercise-induced asthma.",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    },
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "41165286",
+      "id": "d8a0fd68-ad37-43d2-a557-488dccfb120c",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "41165286",
+          "text": "Bacteroidales are the most abundant Gram-negative bacteria of the human intestinal microbiota comprising more than half of the bacteria in many individuals. Some of the factors that these bacteria use to establish and maintain themselves in this ecosystem are beginning to be identified. However, ecological competition, especially interference competition where one organism directly harms another, is largely unexplored. To begin to understand the relevance of this ecological principle as it applies to these abundant gut bacteria and factors that may promote such competition, we screened Bacteroides fragilis for the production of antimicrobial molecules. We found that the production of extracellularly secreted antimicrobial molecules is widespread in this species. The first identified molecule, described in this manuscript, contains a membrane attack complex/perforin (MACPF) domain present in host immune molecules that kill bacteria and virally infected cells by pore formation, and mutations affecting key residues of this domain abrogated its activity. This antimicrobial molecule, termed BSAP-1, is secreted from the cell in outer membrane vesicles and no additional proteins are required for its secretion, processing or immunity of the producing cell. This study provides the first insight into secreted molecules that promote competitive interference among Bacteroidales strains of the human gut.",
+          "title": "An antimicrobial protein of the gut symbiont Bacteroides fragilis with a MACPF domain of host immune proteins."
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "Bacteroidales are the most abundant Gram-negative bacteria of the human intestinal microbiota comprising more than half of the bacteria in many individuals. Some of the factors that these bacteria use to establish and maintain themselves in this ecosystem are beginning to be identified. However, ecological competition, especially interference competition where one organism directly harms another, is largely unexplored. To begin to understand the relevance of this ecological principle as it appli...",
+      "title": "An antimicrobial protein of the gut symbiont Bacteroides fragilis with a MACPF domain of host immune proteins.",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    },
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "41226276",
+      "id": "57de26cc-735c-4ddf-ae3d-d6f930a2b390",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "41226276",
+          "text": "Adoptive T cell transfer for cancer and chronic infection is an emerging field that shows promise in recent trials. Synthetic-biology-based engineering of T lymphocytes to express high-affinity antigen receptors can overcome immune tolerance, which has been a major limitation of immunotherapy-based strategies. Advances in cell engineering and culture approaches to enable efficient gene transfer and ex vivo cell expansion have facilitated broader evaluation of this technology, moving adoptive transfer from a \"boutique\" application to the cusp of a mainstream technology. The major challenge currently facing the field is to increase the specificity of engineered T cells for tumors, because targeting shared antigens has the potential to lead to on-target off-tumor toxicities, as observed in recent trials. As the field of adoptive transfer technology matures, the major engineering challenge is the development of automated cell culture systems, so that the approach can extend beyond specialized academic centers and become widely available.",
+          "title": "Adoptive T cell transfer for cancer immunotherapy in the era of synthetic biology."
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "Adoptive T cell transfer for cancer and chronic infection is an emerging field that shows promise in recent trials. Synthetic-biology-based engineering of T lymphocytes to express high-affinity antigen receptors can overcome immune tolerance, which has been a major limitation of immunotherapy-based strategies. Advances in cell engineering and culture approaches to enable efficient gene transfer and ex vivo cell expansion have facilitated broader evaluation of this technology, moving adoptive tra...",
+      "title": "Adoptive T cell transfer for cancer immunotherapy in the era of synthetic biology.",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    },
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "41329220",
+      "id": "7b7c7e26-08ef-4081-9679-bc10b5818107",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "41329220",
+          "text": "The heads of mouse spermatozoa obtained 5 min after release from the excised caudae epididymides showed a characteristic fluorescence pattern in the presence of the fluorophore chlortetracycline (CTC). There was uniform fluorescence over the entire head with about half the sperm population showing a brighter line of fluorescence across the equatorial segment; this fluorescence pattern was designated \"F\". After 90-min incubation in culture medium (CM) containing 2% (w/v) bovine serum albumin, most of the sperm heads showed a dark band of nonfluorescence over the equatorial and postequatorial segment, while the anterior portion of the head showed bright fluorescence. This fluorescence pattern was designated \"B.\" The time course for the disappearance of pattern F matched the time course of the appearance of pattern B, with a half-time of 30 min. The transformation was complete in 90 min. At longer times of incubation in CM, the percentage of spermatozoa showing pattern B declined; fluorescence over the entire head was lost, characteristic of the pattern for acrosome-reacted sperm (P. M. Saling and B. T. Storey (1979). J. Cell Biol. 83, 544-555). Mouse sperm showing pattern B were able to undergo the acrosome reaction, either spontaneously or by induction with acid-solubilized zonae pellucidae from mouse eggs (H.M. Florman and B. T. Storey (1982). Dev. Biol. 91, 121-130). The latter reaction was blocked by its specific inhibitor 3-quinuclidinyl benzilate (QNB). Mouse sperm showing pattern F could not be induced to undergo the acrosome reaction by exposure to solubilized zonae. This implies that the change from fluorescence pattern F to fluorescence pattern B corresponds with changes in the sperm which make them susceptible to undergo the acrosome reaction. This change occurs during the time interval previously determined to be needed for capacitation of mouse sperm in vitro in CM (M. Inoue and D. P. Wolf (1975). Biol. Reprod. 13, 340-346). These results imply that spermatozoa showing CTC fluorescence pattern B can be considered to be capacitated and that a functional definition for capacitation is the acquired ability to undergo the acrosome reaction rapidly when treated with acid-solubilized zonae pellucidae. The CTC fluorescence assay provides for the first time a means to monitor the time course of epididymal mouse sperm capacitation in vitro.",
+          "title": "Determination of the time course of capacitation in mouse spermatozoa using a chlortetracycline fluorescence assay."
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "The heads of mouse spermatozoa obtained 5 min after release from the excised caudae epididymides showed a characteristic fluorescence pattern in the presence of the fluorophore chlortetracycline (CTC). There was uniform fluorescence over the entire head with about half the sperm population showing a brighter line of fluorescence across the equatorial segment; this fluorescence pattern was designated \"F\". After 90-min incubation in culture medium (CM) containing 2% (w/v) bovine serum albumin, mos...",
+      "title": "Determination of the time course of capacitation in mouse spermatozoa using a chlortetracycline fluorescence assay.",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    },
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "46926352",
+      "id": "e3019571-f320-4d62-bb8e-9a73eddb9ff8",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "46926352",
+          "text": "Immune cells continuously recirculate through lymph vessels en route from peripheral tissues to the blood. Leuyte trafficking into and within lymph vessels is mediated by an interply with lymphatic endothelial cells (LECs). However, lymphatic vessels are much more than mere conduits for fluid and immune cell transport. Data accumulating during past several years indicate that LECs support T cell survival, induce tolerance to self-antigens, inhibit exaggerated T cell proliferation during immune response and maintain T cell memory. Reciprocally, leukocytes impact LEC biology: lymphatic vessel permeability depends on DCs while lymphocytes regulate LEC proliferation during inflammation. Altogether, these novel results provide important insights on intimate connections between LECs and leukocytes that contribute to the understanding of immune responses.",
+          "title": "Dendritic cells, T cells and lymphatics: dialogues in migration and beyond."
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "Immune cells continuously recirculate through lymph vessels en route from peripheral tissues to the blood. Leuyte trafficking into and within lymph vessels is mediated by an interply with lymphatic endothelial cells (LECs). However, lymphatic vessels are much more than mere conduits for fluid and immune cell transport. Data accumulating during past several years indicate that LECs support T cell survival, induce tolerance to self-antigens, inhibit exaggerated T cell proliferation during immune r...",
+      "title": "Dendritic cells, T cells and lymphatics: dialogues in migration and beyond.",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    },
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "40971746",
+      "id": "6556fdac-c66c-44b8-8baa-67d1453d687e",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "40971746",
+          "text": "Intensive study of a few genetically tractable species with XX/XY sex chromosomes has produced generalizations about the process of sex chromosome dosage compensation that do not fare well when applied to ZZ/ZW sex chromosome systems, such as those in birds. The inherent sexual imbalance in dose of sex chromosome genes has led to the evolution of sex-chromosome-wide mechanisms for balancing gene dosage between the sexes and relative to autosomal genes. Recent advances in our knowledge of avian genomes have led to a reexamination of sex-specific dosage compensation (SSDC) in birds, which is less effective than in known XX/XY systems. Insights about the mechanisms of SSDC in birds also suggest similarities to and differences from those in XX/XY species. Birds are thus offering new opportunities for studying dosage compensation in a ZZ/ZW system, which should shed light on the evolution of SSDC more broadly.",
+          "title": "A bird's-eye view of sex chromosome dosage compensation."
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "Intensive study of a few genetically tractable species with XX/XY sex chromosomes has produced generalizations about the process of sex chromosome dosage compensation that do not fare well when applied to ZZ/ZW sex chromosome systems, such as those in birds. The inherent sexual imbalance in dose of sex chromosome genes has led to the evolution of sex-chromosome-wide mechanisms for balancing gene dosage between the sexes and relative to autosomal genes. Recent advances in our knowledge of avian g...",
+      "title": "A bird's-eye view of sex chromosome dosage compensation.",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    },
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "40996863",
+      "id": "5660e141-41a4-4947-8792-2ab14283a42b",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "40996863",
+          "text": "STUDY OBJECTIVE To review evidence on the association between restless legs syndrome (RLS) and attention-deficit/hyperactivity disorder (ADHD), to discuss the hypothetical mechanisms underlying this association, and to consider the potential interest for common pharmacologic treatments of RLS and ADHD when co-occurring. METHOD A PubMed search. RESULTS In clinical samples, up to 44% of subjects with ADHD have been found to have RLS or RLS symptoms, and up to 26% of subjects with RLS have been found to have ADHD or ADHD symptoms. Several mechanisms may explain this association. Sleep disruption associated with RLS might lead to inattentiveness, moodiness, and paradoxical overactivity. Diurnal manifestations of RLS, such as restlessness and inattention, might mimic ADHD symptoms. Alternatively, RLS might be comorbid with idiopathic ADHD. Subjects with RLS and a subset of subjects with ADHD might share a common dopamine dysfunction. Limited evidence suggests that some dopaminergic agents, such as levodopa/carbidopa, pergolide, and ropinirole, may be effective in children with RLS associated with ADHD symptoms. CONCLUSIONS Although still limited, evidence from clinical studies demonstrates an association between RLS and ADHD or ADHD symptoms. Further clinical studies using standard criteria and procedures are needed to better estimate the degree of association. Epidemiologic studies are required to assess the relationship between ADHD and RLS symptoms in nonclinical samples. Further investigations should address the mechanisms underlying the relationship between RLS and ADHD. Several dopaminergic agents seem to be promising treatment for RLS associated with ADHD symptoms. To date, however, the absence of randomized and blinded controlled studies does not allow evidence-based recommendations.",
+          "title": "Restless legs syndrome and attention-deficit/hyperactivity disorder: a review of the literature."
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "STUDY OBJECTIVE To review evidence on the association between restless legs syndrome (RLS) and attention-deficit/hyperactivity disorder (ADHD), to discuss the hypothetical mechanisms underlying this association, and to consider the potential interest for common pharmacologic treatments of RLS and ADHD when co-occurring. METHOD A PubMed search. RESULTS In clinical samples, up to 44% of subjects with ADHD have been found to have RLS or RLS symptoms, and up to 26% of subjects with RLS have been fou...",
+      "title": "Restless legs syndrome and attention-deficit/hyperactivity disorder: a review of the literature.",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    },
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "41022628",
+      "id": "0948cf18-7285-4f6b-ac56-282eaabd2921",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "41022628",
+          "text": "Using a substrate measuring deletion or inversion of an I-SceI-excised fragment and both accurate and inaccurate rejoining, we determined the impact of non-homologous end-joining (NHEJ) on mammalian chromosome rearrangements. Deletion is 2- to 8-fold more efficient than inversion, independent of the DNA ends structure. KU80 controls accurate rejoining, whereas in absence of KU mutagenic rejoining, particularly microhomology-mediated repair, occurs efficiently. In cells bearing both the NHEJ and a homologous recombination (HR) substrate containing a third I-SceI site, we show that NHEJ is at least 3.3-fold more efficient than HR, and translocation of the I-SceI fragment from the NHEJ substrate locus into the HR-I-SceI site can occur, but 50- to 100-fold less frequently than deletion. Deletions and translocations show both accurate and inaccurate rejoining, suggesting that they correspond to a mix of KU-dependent and KU-independent processes. Thus these processes should represent prominent pathways for DSB-induced genetic instability in mammalian cells.",
+          "title": "Impact of the KU80 pathway on NHEJ-induced genome rearrangements in mammalian cells."
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "Using a substrate measuring deletion or inversion of an I-SceI-excised fragment and both accurate and inaccurate rejoining, we determined the impact of non-homologous end-joining (NHEJ) on mammalian chromosome rearrangements. Deletion is 2- to 8-fold more efficient than inversion, independent of the DNA ends structure. KU80 controls accurate rejoining, whereas in absence of KU mutagenic rejoining, particularly microhomology-mediated repair, occurs efficiently. In cells bearing both the NHEJ and ...",
+      "title": "Impact of the KU80 pathway on NHEJ-induced genome rearrangements in mammalian cells.",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    },
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "41087952",
+      "id": "0f1a4386-edb9-4290-bf00-ef8036396fc5",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "41087952",
+          "text": "RIA1 (YNL163c) is a quasi-essential gene that encodes a protein with strong similarities to elongation factors 2. Small C-terminal deletions in the protein lead to a severe growth defect. In the case of a 22-residue C-terminal deletion this can be suppressed by intragenic mutations in the RIA1 gene or dominant extragenic mutations in TIF6, which is thought to be involved in the biogenesis of the 60S subunit of the ribosome. The dominant TIF6 alleles can also suppress the phenotype associated with a complete deletion of the RIA1 gene. Depletion of Ria1p has a dramatic effect on the polysome profile: there is a severe reduction in the level of the 80S monosomes, an imbalance in the 40S/60S ratio, and halfmers appear. Dissociation of the monosomes and polysomes in the Ria1p depletion mutant revealed a specific reduction in the amount of 60S subunits. Localization experiments with HA-tagged derivatives of Ria1p did not detect any stable association of Ria1p with ribosome subunits, 80S monosomes or polysomes. Cell fractionation experiments show that Ria1p is found in both the cytoplasmic fraction and the nuclear fraction. Taken together, these data suggest that Ria1p is involved in the biogenesis of the 60S subunit of the ribosome.",
+          "title": "Ria1p (Ynl163c), a protein similar to elongation factors 2, is involved in the biogenesis of the 60S subunit of the ribosome in Saccharomyces cerevisiae"
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "RIA1 (YNL163c) is a quasi-essential gene that encodes a protein with strong similarities to elongation factors 2. Small C-terminal deletions in the protein lead to a severe growth defect. In the case of a 22-residue C-terminal deletion this can be suppressed by intragenic mutations in the RIA1 gene or dominant extragenic mutations in TIF6, which is thought to be involved in the biogenesis of the 60S subunit of the ribosome. The dominant TIF6 alleles can also suppress the phenotype associated wit...",
+      "title": "Ria1p (Ynl163c), a protein similar to elongation factors 2, is involved in the biogenesis of the 60S subunit of the ribosome in Saccharomyces cerevisiae",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    },
+    {
+      "created_at": "2026-04-26T01:05:20.232182+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "external_id": "41256402",
+      "id": "8be16214-7706-4421-98f4-8d1eefc3f29a",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "41256402",
+          "text": "Neither the restoration of the centrosome during fertilization nor its reduction during gametogenesis is fully understood, but both are pivotal events in development. During each somatic cell cycle, the chromosomes, cytoplasm, and centrosomes duplicate in interphase, and all three split in two during each cell division. While it has long been recognized that both the sperm and the egg contribute equal haploid genomes during fertilization and that the vast majority of the cytoplasm is contributed by the egg, the relative contributions of the centrosome by each gamete are still in question. This article explores centrosome inheritance patterns and considers nine integral and secondarily derived activities of the centrosome. Boveri once hypothesized that \"The ripe egg possesses all of the elements necessary for development save an active division-center. The sperm, on the other hand, possesses such a center but lacks the protoplasmic substratum in which to operate. In this respect the egg and sperm are complementary structures; their union in syngamy thus restores to each the missing element necessary to further development. \" This article reviews the evidence gathered from 11 experimental strategies used to test this theory. While the majority of these approaches supports the hypothesis that the sperm introduces the centrosome at fertilization, the pattern did not reveal itself as universal, since parthenogenesis occurs in nature and can be induced artificially, since centrosome and centriole form de novo in extracts from unfertilized eggs and since the centrosome is derived from maternal sources during fertilization in some systems--notably, in mice. Models of the centrosome are proposed, along with speculative mechanisms which might lead to the cloaking of the reproducing element of the maternal centrosome during oogenesis and the retention of this structure by the paternal centrosome during spermatogenesis. Proteins essential for microtubule nucleation, like gamma-tubulin, are retained in the cytoplasm during oogenesis, but are largely lost during spermatogenesis. It is further postulated that the restoration of the zygotic centrosome at fertilization requires the attraction of maternal centrosomal components (in particular, gamma-tubulin and the 25S \"gamma-some\" particle) to the paternal reproducing element; this, along with post-translational modifications (including phosphorylation, disulfide reduction, and calcium ion binding), creates a functional zygote centrosome by blending both maternal and paternal constituents.(ABSTRACT TRUNCATED AT 400 WORDS)",
+          "title": "The centrosome and its mode of inheritance: the reduction of the centrosome during gametogenesis and its restoration during fertilization."
+        },
+        "source_dataset_id": "beir/scifact"
+      },
+      "source_url": null,
+      "text": "Neither the restoration of the centrosome during fertilization nor its reduction during gametogenesis is fully understood, but both are pivotal events in development. During each somatic cell cycle, the chromosomes, cytoplasm, and centrosomes duplicate in interphase, and all three split in two during each cell division. While it has long been recognized that both the sperm and the egg contribute equal haploid genomes during fertilization and that the vast majority of the cytoplasm is contributed...",
+      "title": "The centrosome and its mode of inheritance: the reduction of the centrosome during gametogenesis and its restoration during fertilization.",
+      "updated_at": "2026-04-26T01:05:20.232182+00:00"
+    }
+  ],
+  "relevance_judgment_samples": [
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "464511",
+      "document_id": "f235112c-cc76-4a7e-ad96-1db32e096a33",
+      "id": "949c0e83-20f7-4b52-ab1f-55759affed27",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "464511",
+          "iteration": "0",
+          "query_id": "452",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "452",
+      "query_id": "ef336f6c-8c92-42e2-ac9c-b1566097e352",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "13980338",
+      "document_id": "009feb3f-0d13-4ad8-9a55-8cdbdc2dbd8c",
+      "id": "a851e94c-9a24-4aa0-937b-340b14a3a909",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "13980338",
+          "iteration": "0",
+          "query_id": "508",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "508",
+      "query_id": "823c02e4-999d-4b58-9dca-a7d56da4b8e1",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "18399038",
+      "document_id": "776689b8-aeb5-4d3c-a6f0-6424cb12f33a",
+      "id": "e645030e-4d0f-4cd5-b236-9a73b68b6bac",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "18399038",
+          "iteration": "0",
+          "query_id": "437",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "437",
+      "query_id": "c3549043-671e-442a-800c-c15668e5fc6a",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "12804937",
+      "document_id": "b46b4c57-136c-4f6a-ba86-f835e0aafa59",
+      "id": "d3e51903-b086-49b2-80c8-491f5eed35cd",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "12804937",
+          "iteration": "0",
+          "query_id": "452",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "452",
+      "query_id": "ef336f6c-8c92-42e2-ac9c-b1566097e352",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "56893404",
+      "document_id": "466d8d0e-160f-4bf3-81b8-273c3090c1de",
+      "id": "bd4fcff3-c80a-46b7-b6f5-db985f69add6",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "56893404",
+          "iteration": "0",
+          "query_id": "491",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "491",
+      "query_id": "ba1c90c7-bd2f-49d0-86d9-b1ff4e4ef219",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "30774694",
+      "document_id": "3f42b9fb-b7a3-4a66-91ad-c633085aa1af",
+      "id": "61682e23-303c-412a-86eb-2d746ea0be17",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "30774694",
+          "iteration": "0",
+          "query_id": "507",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "507",
+      "query_id": "d9a155ac-5456-4da1-b151-d07ec734b716",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "6309659",
+      "document_id": "70c33d1e-1426-4ac8-9750-c15a900dbc26",
+      "id": "ab576c0e-0835-4263-bfb2-95d6ebffb4b7",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "6309659",
+          "iteration": "0",
+          "query_id": "415",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "415",
+      "query_id": "a10b6d75-957e-4957-8224-4b7891f93e06",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "14637235",
+      "document_id": "ac0e388d-3bee-418b-8b46-52cbd9f40c94",
+      "id": "f59db1aa-8fb0-44c3-a167-d5c937abeb40",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "14637235",
+          "iteration": "0",
+          "query_id": "436",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "436",
+      "query_id": "03ea5ead-affe-4271-9621-2ca70a10e051",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "4423559",
+      "document_id": "edaccca6-c86d-402b-a31b-80bc9f129cc0",
+      "id": "1ef5d3a6-7a56-4378-b41b-9b1697cd36ac",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "4423559",
+          "iteration": "0",
+          "query_id": "440",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "440",
+      "query_id": "9dd7b8d2-5da1-48f1-a067-8ed91330e48a",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "10165258",
+      "document_id": "22990c44-b982-4376-ad5a-54b4d0156f59",
+      "id": "c8b1c423-8bb4-4966-8699-5ddfb80172c9",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "10165258",
+          "iteration": "0",
+          "query_id": "443",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "443",
+      "query_id": "8faa06e5-3914-4a36-9d35-bda0f0dfa972",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "18678095",
+      "document_id": "da507d3c-733b-49dd-a9ee-572d7777c758",
+      "id": "8ce12e45-78e4-434b-81cf-461b7345de1d",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "18678095",
+          "iteration": "0",
+          "query_id": "475",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "475",
+      "query_id": "2d8c146a-5515-4563-8ea0-c02fa3de25bf",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "14767844",
+      "document_id": "00ac85d4-0184-45e2-bc01-dee6d5a11ee5",
+      "id": "46225f6e-8682-49c3-892f-eeff2841e728",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "14767844",
+          "iteration": "0",
+          "query_id": "478",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "478",
+      "query_id": "7440bd88-e334-4691-946b-f382bf7c852b",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "17930286",
+      "document_id": "b09a2715-4b9e-4400-8a7b-38b8c941a3a2",
+      "id": "5b128129-81e8-4696-9926-3444003f280f",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "17930286",
+          "iteration": "0",
+          "query_id": "501",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "501",
+      "query_id": "33b37694-878c-4fd5-b2d3-f25a15c13c87",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "13071728",
+      "document_id": "a33b1ad7-2d21-4e15-b4fa-bd633e7b25bf",
+      "id": "b795d830-a9ec-4553-bcab-c285eeda4780",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "13071728",
+          "iteration": "0",
+          "query_id": "502",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "502",
+      "query_id": "6b927380-bff9-4a66-bd21-862c102cb75a",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "14924526",
+      "document_id": "82a183c8-a860-4608-bb77-eb4da63f7edd",
+      "id": "8b0c6dae-00d3-4792-91e2-cd91a625d458",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "14924526",
+          "iteration": "0",
+          "query_id": "410",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "410",
+      "query_id": "dab690dd-8677-4cf2-afbd-915e37d27a5b",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "14924526",
+      "document_id": "82a183c8-a860-4608-bb77-eb4da63f7edd",
+      "id": "96e1f74d-cda2-441a-8b9d-2b6424182b5f",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "14924526",
+          "iteration": "0",
+          "query_id": "411",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "411",
+      "query_id": "9799c4ce-aef0-4c24-ba26-5b09502d8031",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "11172205",
+      "document_id": "8a2f5b33-9809-47f0-9c41-f118d447a097",
+      "id": "6fadc6b5-438c-46e3-8db3-486cee0644bc",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "11172205",
+          "iteration": "0",
+          "query_id": "421",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "421",
+      "query_id": "b033b656-b323-406e-898d-e38af6f08112",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "28937856",
+      "document_id": "0f11de24-d080-494a-9efd-733f4d6981f0",
+      "id": "488f6f38-ea0d-45c8-9e79-c26ad1d707a7",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "28937856",
+          "iteration": "0",
+          "query_id": "431",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "431",
+      "query_id": "ab161393-7cd3-4cfc-9f7a-a7f4a5644639",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "4423559",
+      "document_id": "edaccca6-c86d-402b-a31b-80bc9f129cc0",
+      "id": "36504bca-61fd-4b2e-b5c4-545033c67588",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "4423559",
+          "iteration": "0",
+          "query_id": "439",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "439",
+      "query_id": "9b3a8752-92fe-4724-af93-74383baa08f9",
+      "relevance_score": 1.0
+    },
+    {
+      "created_at": "2026-04-26T01:05:22.913945+00:00",
+      "dataset_id": "705d48e7-c36d-43b9-9943-178d59bbdd62",
+      "document_external_id": "13230773",
+      "document_id": "50c3220c-aa37-416e-b8e0-8ac5853fc10a",
+      "id": "2db8399f-763d-48ad-a856-18b57d02c9f3",
+      "metadata_json": {
+        "raw_fields": {
+          "doc_id": "13230773",
+          "iteration": "0",
+          "query_id": "513",
+          "relevance": 1
+        },
+        "source_dataset_id": "beir/scifact/test",
+        "split": "test"
+      },
+      "query_external_id": "513",
+      "query_id": "ba88c0e9-e6b4-427a-9a1b-40e28fdedf7d",
+      "relevance_score": 1.0
+    }
+  ]
+}
