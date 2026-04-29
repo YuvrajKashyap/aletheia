@@ -28,6 +28,7 @@ import type {
   QdrantHealthResponse
 } from "@/lib/api/types";
 import { API_BASE_URL } from "@/lib/config";
+import { isSnapshotMode } from "@/lib/demo-mode";
 
 type ErrorState = {
   status?: number;
@@ -46,6 +47,7 @@ function apiError(caught: unknown): ErrorState {
 }
 
 export function IndexConsole() {
+  const snapshotMode = isSnapshotMode();
   const [indexStatus, setIndexStatus] = useState<IndexStatusResponse | null>(null);
   const [versions, setVersions] = useState<IndexVersionItem[]>([]);
   const [jobs, setJobs] = useState<IndexJobItem[]>([]);
@@ -116,13 +118,30 @@ export function IndexConsole() {
             <Badge tone="neutral">Indexes</Badge>
             <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white">Index Console</h1>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
-              Inspect real active index metadata, index versions, OpenSearch and Qdrant health, and index build jobs.
+              {snapshotMode
+                ? "Inspect index metadata, versions, and build jobs exported from the full local stack. Live rebuilds are disabled publicly."
+                : "Inspect real active index metadata, index versions, OpenSearch and Qdrant health, and index build jobs."}
             </p>
           </div>
           <div className="rounded-md border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-slate-400">
-            API base <span className="ml-2 font-mono text-slate-200">{API_BASE_URL}</span>
+            {snapshotMode ? "Snapshot source" : "API base"}{" "}
+            <span className="ml-2 font-mono text-slate-200">
+              {snapshotMode ? "/demo-data/index-status.json" : API_BASE_URL}
+            </span>
           </div>
         </div>
+
+        {snapshotMode ? (
+          <Card className="border-cyan-900/60 bg-cyan-950/10">
+            <CardHeader>
+              <CardTitle>Public index snapshot</CardTitle>
+              <CardDescription>
+                Snapshot mode shows exported index metadata from the full local stack. OpenSearch, Qdrant, and index
+                rebuild actions are local-only in the public demo.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        ) : null}
 
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-slate-800 bg-slate-950/70 p-4">
           <div className="text-sm text-slate-400">
@@ -130,7 +149,9 @@ export function IndexConsole() {
               ? "No index data loaded."
               : isLoading
                 ? "Loading index status, health, versions, and jobs."
-                : `${versions.length} versions and ${jobs.length} jobs loaded from FastAPI.`}
+                : snapshotMode
+                  ? `${versions.length} versions and ${jobs.length} jobs loaded from snapshot exports.`
+                  : `${versions.length} versions and ${jobs.length} jobs loaded from FastAPI.`}
           </div>
           <Button disabled={isLoading} type="button" onClick={() => setRefreshCounter((current) => current + 1)}>
             Refresh

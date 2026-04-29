@@ -1,4 +1,6 @@
 import { apiFetch } from "@/lib/api/client";
+import { getSnapshotExperimentConfigs } from "@/lib/api/snapshot";
+import { isSnapshotMode } from "@/lib/demo-mode";
 import type {
   ExperimentConfigListResponse,
   JobStatusResponse,
@@ -34,6 +36,10 @@ function adminHeaders(adminApiKey: string): HeadersInit {
 }
 
 export function getExperimentConfigs(params: ExperimentConfigParams = {}): Promise<ExperimentConfigListResponse> {
+  if (isSnapshotMode()) {
+    return getSnapshotExperimentConfigs(params);
+  }
+
   return apiFetch<ExperimentConfigListResponse>(
     `/api/v1/experiments/configs${queryString({
       retrieval_mode: params.retrievalMode && params.retrievalMode !== "all" ? params.retrievalMode : undefined,
@@ -45,6 +51,10 @@ export function getExperimentConfigs(params: ExperimentConfigParams = {}): Promi
 }
 
 export function seedDefaultExperimentConfigs(adminApiKey: string): Promise<SeedExperimentConfigsResponse> {
+  if (isSnapshotMode()) {
+    throw new Error("Admin comparison jobs are disabled in public snapshot mode. Run the full local stack to launch new comparisons.");
+  }
+
   return apiFetch<SeedExperimentConfigsResponse>("/api/v1/experiments/configs/seed-defaults", {
     method: "POST",
     headers: adminHeaders(adminApiKey),
@@ -56,6 +66,10 @@ export function startComparisonJob(
   request: StartComparisonRequest,
   adminApiKey: string
 ): Promise<StartComparisonResponse> {
+  if (isSnapshotMode()) {
+    throw new Error("Admin comparison jobs are disabled in public snapshot mode. Run the full local stack to launch new comparisons.");
+  }
+
   return apiFetch<StartComparisonResponse>("/api/v1/experiments/comparisons", {
     method: "POST",
     headers: adminHeaders(adminApiKey),
@@ -64,5 +78,9 @@ export function startComparisonJob(
 }
 
 export function getJobStatus(jobId: string): Promise<JobStatusResponse> {
+  if (isSnapshotMode()) {
+    throw new Error("Job status is unavailable in public snapshot mode because background workers are not hosted.");
+  }
+
   return apiFetch<JobStatusResponse>(`/api/v1/system/jobs/${encodeURIComponent(jobId)}`);
 }

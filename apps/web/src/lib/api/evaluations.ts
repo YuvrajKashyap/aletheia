@@ -1,4 +1,11 @@
 import { apiFetch } from "@/lib/api/client";
+import {
+  getSnapshotEvaluationRun,
+  getSnapshotEvaluationRunReport,
+  getSnapshotEvaluationRunResults,
+  getSnapshotEvaluationRuns
+} from "@/lib/api/snapshot";
+import { isSnapshotMode } from "@/lib/demo-mode";
 import type {
   EvaluationQueryResultListResponse,
   EvaluationReportResponse,
@@ -34,6 +41,10 @@ function queryString(params: Record<string, string | number | boolean | undefine
 }
 
 export function getEvaluationRuns(params: EvaluationRunParams = {}): Promise<EvaluationRunListResponse> {
+  if (isSnapshotMode()) {
+    return getSnapshotEvaluationRuns(params);
+  }
+
   return apiFetch<EvaluationRunListResponse>(
     `/api/v1/evaluations/runs${queryString({
       status: params.status && params.status !== "all" ? params.status : undefined,
@@ -44,6 +55,10 @@ export function getEvaluationRuns(params: EvaluationRunParams = {}): Promise<Eva
 }
 
 export function getEvaluationRun(runId: string): Promise<EvaluationRunDetail> {
+  if (isSnapshotMode()) {
+    return getSnapshotEvaluationRun(runId);
+  }
+
   return apiFetch<EvaluationRunDetail>(`/api/v1/evaluations/runs/${encodeURIComponent(runId)}`);
 }
 
@@ -51,6 +66,10 @@ export function getEvaluationRunResults(
   runId: string,
   params: EvaluationResultParams = {}
 ): Promise<EvaluationQueryResultListResponse> {
+  if (isSnapshotMode()) {
+    return getSnapshotEvaluationRunResults(runId, params);
+  }
+
   return apiFetch<EvaluationQueryResultListResponse>(
     `/api/v1/evaluations/runs/${encodeURIComponent(runId)}/results${queryString({
       limit: params.limit ?? 50,
@@ -64,6 +83,10 @@ export function getEvaluationRunReport(
   runId: string,
   params: EvaluationReportParams = {}
 ): Promise<EvaluationReportResponse> {
+  if (isSnapshotMode()) {
+    return getSnapshotEvaluationRunReport(runId);
+  }
+
   return apiFetch<EvaluationReportResponse>(
     `/api/v1/evaluations/runs/${encodeURIComponent(runId)}/report${queryString({
       include_json: params.includeJson ?? true

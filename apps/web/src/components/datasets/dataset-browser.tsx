@@ -29,6 +29,7 @@ import {
   getRelevanceJudgments
 } from "@/lib/api/datasets";
 import { API_BASE_URL } from "@/lib/config";
+import { isSnapshotMode } from "@/lib/demo-mode";
 import type {
   BenchmarkQueryDetailResponse,
   BenchmarkQueryListItem,
@@ -70,6 +71,7 @@ function normalizeDatasets(response: DatasetListResponse): DatasetSummary[] {
 }
 
 export function DatasetBrowser() {
+  const snapshotMode = isSnapshotMode();
   const [datasets, setDatasets] = useState<DatasetSummary[]>([]);
   const [selectedDatasetId, setSelectedDatasetId] = useState<string | null>(null);
   const [stats, setStats] = useState<DatasetStatsResponse | null>(null);
@@ -420,15 +422,31 @@ export function DatasetBrowser() {
             <div>
               <h1 className="text-3xl font-semibold tracking-tight text-white">Datasets</h1>
               <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
-                Inspect real corpus records, chunks, benchmark queries, and qrels served by FastAPI.
+                {snapshotMode
+                  ? "Inspect representative exported corpus samples, benchmark queries, and qrels generated from the full local stack."
+                  : "Inspect real corpus records, chunks, benchmark queries, and qrels served by FastAPI."}
               </p>
-              <div className="mt-2 font-mono text-xs text-slate-500">Backend: {API_BASE_URL}</div>
+              <div className="mt-2 font-mono text-xs text-slate-500">
+                {snapshotMode ? "Snapshot source: /demo-data dataset samples" : `Backend: ${API_BASE_URL}`}
+              </div>
             </div>
             <Button onClick={refreshCurrent} disabled={loadingDatasets}>
               Refresh
             </Button>
           </div>
         </section>
+
+        {snapshotMode ? (
+          <Card className="border-cyan-900/60 bg-cyan-950/10">
+            <CardHeader>
+              <CardTitle>Public dataset sample</CardTitle>
+              <CardDescription>
+                Public demo mode shows a representative exported sample. The full local dataset contains 5,183
+                documents, 5,183 chunks, 300 benchmark queries, and 339 qrels.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        ) : null}
 
         {topError ? (
           <Card>

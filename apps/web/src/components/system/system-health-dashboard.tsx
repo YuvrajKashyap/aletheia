@@ -35,6 +35,7 @@ import type {
   WorkerHeartbeatListResponse
 } from "@/lib/api/types";
 import { API_BASE_URL } from "@/lib/config";
+import { isSnapshotMode } from "@/lib/demo-mode";
 
 type EndpointResult<T> = {
   data: T | null;
@@ -68,6 +69,7 @@ function workerItems(response: WorkerHeartbeatListResponse | null): WorkerHeartb
 }
 
 export function SystemHealthDashboard() {
+  const snapshotMode = isSnapshotMode();
   const [api, setApi] = useState<EndpointResult<HealthResponse>>(emptyResult);
   const [db, setDb] = useState<EndpointResult<DbHealthResponse>>(emptyResult);
   const [queue, setQueue] = useState<EndpointResult<QueueStatusResponse>>(emptyResult);
@@ -144,13 +146,30 @@ export function SystemHealthDashboard() {
             <Badge tone="neutral">Operations</Badge>
             <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white">System Health</h1>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
-              Inspect API reachability, Postgres, Redis, workers, retrieval services, model status, and recent system events.
+              {snapshotMode
+                ? "Inspect public snapshot system state and exported events. Live backend services are disabled in hosted demo mode."
+                : "Inspect API reachability, Postgres, Redis, workers, retrieval services, model status, and recent system events."}
             </p>
           </div>
           <div className="rounded-md border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-slate-400">
-            API base <span className="ml-2 font-mono text-slate-200">{API_BASE_URL}</span>
+            {snapshotMode ? "Snapshot source" : "API base"}{" "}
+            <span className="ml-2 font-mono text-slate-200">
+              {snapshotMode ? "/demo-data/system.json" : API_BASE_URL}
+            </span>
           </div>
         </div>
+
+        {snapshotMode ? (
+          <Card className="border-cyan-900/60 bg-cyan-950/10">
+            <CardHeader>
+              <CardTitle>Public snapshot system state</CardTitle>
+              <CardDescription>
+                Hosted public mode serves the Vercel frontend and static snapshot data. FastAPI, Redis/RQ, OpenSearch,
+                Qdrant, workers, embeddings, and reranking run in the full local stack.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        ) : null}
 
         <SystemRefreshBar
           isLoading={isLoading}

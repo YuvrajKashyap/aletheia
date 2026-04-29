@@ -18,6 +18,7 @@ import {
   seedGoldenQueries
 } from "@/lib/api/replay";
 import type { ReplayResponse, SavedQueryItem } from "@/lib/api/types";
+import { isSnapshotMode } from "@/lib/demo-mode";
 
 function errorMessage(error: unknown) {
   return error instanceof Error ? error.message : "Request failed";
@@ -38,6 +39,7 @@ export function ReplayAdminPanel({
   onActionComplete: () => void;
   onJobStarted: (response: ReplayResponse) => void;
 }) {
+  const snapshotMode = isSnapshotMode();
   const [adminApiKey, setAdminApiKey] = useState("");
   const [isBusy, setIsBusy] = useState(false);
   const [feedback, setFeedback] = useState<Feedback | null>(null);
@@ -51,6 +53,20 @@ export function ReplayAdminPanel({
   const [goldenName, setGoldenName] = useState("Replay Lab golden replay");
   const [goldenLimit, setGoldenLimit] = useState(3);
   const [goldenNotes, setGoldenNotes] = useState("");
+
+  if (snapshotMode) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>Admin actions disabled</CardTitle>
+          <CardDescription>
+            Replay actions are disabled in public snapshot mode. The rows above are real replay outputs exported from
+            the full local stack.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+    );
+  }
 
   function setSuccess(scope: Feedback["scope"], text: string) {
     setFeedback({ scope, tone: "success", text });

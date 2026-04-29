@@ -2290,3 +2290,54 @@ Doctor:
 Public demo docs:
 
     docs/public-demo-mode.md
+
+## Step 41 Full Public Snapshot Demo Conversion
+
+Step 41 converts the major frontend pages to support public snapshot mode while preserving live mode unchanged.
+
+Snapshot-aware pages:
+
+- `/search`
+- `/traces`
+- `/evaluations`
+- `/experiments`
+- `/indexes`
+- `/datasets`
+- `/replay`
+- `/system`
+
+In snapshot mode, pages read static JSON from:
+
+    apps/web/public/demo-data
+
+The public demo uses real exported outputs from the full local pipeline. It does not run live backend retrieval, reranking, indexing, evaluation, replay, or worker jobs.
+
+Admin and expensive actions are disabled in snapshot mode:
+
+- experiment comparison jobs
+- index create, activate, rollback, lexical build, and vector build actions
+- replay seed, create, single replay, and golden replay actions
+
+Vercel reminder:
+
+    NEXT_PUBLIC_DEMO_MODE=snapshot
+
+Local snapshot validation:
+
+    cd apps/web
+    $env:NEXT_PUBLIC_DEMO_MODE='snapshot'
+    npm run build
+    Remove-Item Env:NEXT_PUBLIC_DEMO_MODE
+    cd ../..
+
+Standard frontend validation:
+
+    cd apps/web
+    npm run typecheck
+    npm run build
+    npm run lint
+    cd ../..
+
+Doctor:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/doctor.ps1

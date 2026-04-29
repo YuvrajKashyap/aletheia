@@ -25,6 +25,7 @@ import { getEvaluationRuns } from "@/lib/api/evaluations";
 import { getExperimentConfigs } from "@/lib/api/experiments";
 import type { EvaluationRunItem, ExperimentConfigItem } from "@/lib/api/types";
 import { API_BASE_URL } from "@/lib/config";
+import { isSnapshotMode } from "@/lib/demo-mode";
 
 type ErrorState = {
   status?: number;
@@ -59,6 +60,7 @@ function latestCompletedRun(configId: string, runs: EvaluationRunItem[]): Evalua
 }
 
 export function ExperimentMatrix() {
+  const snapshotMode = isSnapshotMode();
   const [configs, setConfigs] = useState<ExperimentConfigItem[]>([]);
   const [runs, setRuns] = useState<EvaluationRunItem[]>([]);
   const [selectedConfigId, setSelectedConfigId] = useState<string | null>(null);
@@ -121,14 +123,30 @@ export function ExperimentMatrix() {
             <Badge tone="neutral">Experiments</Badge>
             <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white">Experiment comparison matrix</h1>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
-              Compare real retrieval configs against their latest completed qrels-backed evaluation runs. Best-by-metric
-              indicators are computed only from real numeric fields.
+              {snapshotMode
+                ? "Compare exported retrieval configs against real qrels-backed evaluation runs from the full local pipeline."
+                : "Compare real retrieval configs against their latest completed qrels-backed evaluation runs. Best-by-metric indicators are computed only from real numeric fields."}
             </p>
           </div>
           <div className="rounded-md border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-slate-400">
-            API base <span className="ml-2 font-mono text-slate-200">{API_BASE_URL}</span>
+            {snapshotMode ? "Snapshot source" : "API base"}{" "}
+            <span className="ml-2 font-mono text-slate-200">
+              {snapshotMode ? "/demo-data/experiments.json" : API_BASE_URL}
+            </span>
           </div>
         </div>
+
+        {snapshotMode ? (
+          <Card className="border-cyan-900/60 bg-cyan-950/10">
+            <CardHeader>
+              <CardTitle>Public experiment snapshot</CardTitle>
+              <CardDescription>
+                Best-by-metric indicators use real exported evaluation metrics. Admin comparison jobs are disabled
+                publicly.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        ) : null}
 
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-slate-800 bg-slate-950/70 p-4">
           <div className="text-sm text-slate-400">

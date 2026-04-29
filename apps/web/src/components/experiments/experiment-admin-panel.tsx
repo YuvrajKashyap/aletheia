@@ -8,12 +8,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ApiError } from "@/lib/api/client";
 import { getJobStatus, seedDefaultExperimentConfigs, startComparisonJob } from "@/lib/api/experiments";
 import type { JobStatusResponse, StartComparisonResponse } from "@/lib/api/types";
+import { isSnapshotMode } from "@/lib/demo-mode";
 
 type ExperimentAdminPanelProps = {
   onDataChanged: () => void;
 };
 
 export function ExperimentAdminPanel({ onDataChanged }: ExperimentAdminPanelProps) {
+  const snapshotMode = isSnapshotMode();
   const [isOpen, setIsOpen] = useState(false);
   const [adminApiKey, setAdminApiKey] = useState("");
   const [comparisonName, setComparisonName] = useState("Default experiment comparison");
@@ -26,6 +28,20 @@ export function ExperimentAdminPanel({ onDataChanged }: ExperimentAdminPanelProp
   const [startedJob, setStartedJob] = useState<StartComparisonResponse | null>(null);
   const [jobStatus, setJobStatus] = useState<JobStatusResponse | null>(null);
   const [jobError, setJobError] = useState<string | null>(null);
+
+  if (snapshotMode) {
+    return (
+      <Card className="border-slate-800 bg-slate-950/70">
+        <CardHeader>
+          <CardTitle>Admin actions disabled</CardTitle>
+          <CardDescription>
+            Admin comparison jobs are disabled in public snapshot mode. Run the full local stack to launch new
+            comparisons.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+    );
+  }
 
   async function seedDefaults() {
     setIsSubmitting(true);

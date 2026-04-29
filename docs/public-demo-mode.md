@@ -68,6 +68,8 @@ The frontend can be served for near-zero cost because snapshot files are static.
 
 The public demo can show:
 
+- overview summary cards from exported snapshot data
+- curated precomputed Search Lab scenarios
 - real query traces
 - real retrieval candidates and rank provenance
 - real evaluation metrics
@@ -75,6 +77,7 @@ The public demo can show:
 - real index metadata
 - real dataset samples and qrels
 - real replay outputs
+- snapshot system state and exported system events
 
 The project remains interview-defensible because every displayed metric or trace comes from the local full pipeline.
 
@@ -86,9 +89,64 @@ Public snapshot mode should not run:
 - index rebuilds
 - reranker jobs
 - ingestion jobs
+- evaluation jobs
+- experiment comparison jobs
+- replay jobs
 - worker-backed admin actions
 
 Those workflows remain available in local live mode.
+
+## Snapshot Pages
+
+Step 41 converts the full frontend surface to snapshot-aware mode:
+
+- `/` reads exported overview and manifest files.
+- `/search` reads curated real search scenarios from `search-scenarios.json`.
+- `/traces` reads exported trace lists, trace details, and candidates from `traces.json`.
+- `/evaluations` reads exported evaluation runs, query results, and reports from `evaluations.json`.
+- `/experiments` reads exported experiment configs and evaluation metrics from `experiments.json` and `evaluations.json`.
+- `/indexes` reads exported index metadata, versions, and jobs from `index-status.json`.
+- `/datasets` reads exported dataset summaries and representative samples.
+- `/replay` reads exported saved queries and query replay runs from `replay.json`.
+- `/system` reads public snapshot system state and exported events from `system.json`.
+
+Live mode remains unchanged. Snapshot mode never calls FastAPI for these pages.
+
+## Public Interactions
+
+Available in snapshot mode:
+
+- select curated search scenarios and open their traces
+- filter and inspect exported traces
+- deep-link to `/traces?traceId=<trace_id>`
+- deep-link to `/evaluations?runId=<evaluation_run_id>`
+- inspect evaluation charts, reports, and per-query results
+- inspect experiment best-by-metric indicators from real exported metrics
+- browse sampled documents, chunks, benchmark queries, and qrels
+- inspect replay metrics, matched documents, missed documents, and trace links
+- filter exported system events
+
+Disabled in snapshot mode:
+
+- arbitrary live retrieval outside exported scenarios
+- admin experiment comparisons
+- index creation, activation, rollback, and rebuilds
+- saved query creation and replay jobs
+- any worker-backed operation
+
+## Validate Snapshot Mode Locally
+
+Run:
+
+```powershell
+cd apps/web
+$env:NEXT_PUBLIC_DEMO_MODE='snapshot'
+npm run build
+Remove-Item Env:NEXT_PUBLIC_DEMO_MODE
+cd ../..
+```
+
+Then start the frontend with `NEXT_PUBLIC_DEMO_MODE=snapshot` and inspect the major pages. The UI should use `/demo-data` files, show public snapshot framing, and keep admin actions disabled.
 
 ## Upgrade Path
 

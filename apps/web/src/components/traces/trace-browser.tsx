@@ -13,6 +13,7 @@ import { ApiError } from "@/lib/api/client";
 import { getTrace, getTraces } from "@/lib/api/traces";
 import type { TraceDetailResponse, TraceListItem } from "@/lib/api/types";
 import { API_BASE_URL } from "@/lib/config";
+import { isSnapshotMode } from "@/lib/demo-mode";
 
 type ErrorState = {
   status?: number;
@@ -37,6 +38,7 @@ function apiError(caught: unknown): ErrorState {
 }
 
 export function TraceBrowser() {
+  const snapshotMode = isSnapshotMode();
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialTraceId = searchParams.get("traceId");
@@ -121,14 +123,30 @@ export function TraceBrowser() {
             <Badge tone="neutral">Query Traces</Badge>
             <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white">Search observability console</h1>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
-              Inspect real search traces, pipeline stages, candidate provenance, rerank movement, and raw trace JSON.
-              Search history with full retrieval traces and ranking provenance.
+              {snapshotMode
+                ? "Inspect exported search traces, pipeline stages, candidate provenance, rerank movement, and raw trace JSON."
+                : "Inspect real search traces, pipeline stages, candidate provenance, rerank movement, and raw trace JSON. Search history with full retrieval traces and ranking provenance."}
             </p>
           </div>
           <div className="rounded-md border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-slate-400">
-            API base <span className="ml-2 font-mono text-slate-200">{API_BASE_URL}</span>
+            {snapshotMode ? "Snapshot source" : "API base"}{" "}
+            <span className="ml-2 font-mono text-slate-200">
+              {snapshotMode ? "/demo-data/traces.json" : API_BASE_URL}
+            </span>
           </div>
         </div>
+
+        {snapshotMode ? (
+          <Card className="border-cyan-900/60 bg-cyan-950/10">
+            <CardHeader>
+              <CardTitle>Public trace snapshot</CardTitle>
+              <CardDescription>
+                Trace details and candidates are real exports from the local full stack. New live traces require local
+                FastAPI and retrieval services.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        ) : null}
 
         <TraceFilters
           value={filters}

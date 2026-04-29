@@ -16,6 +16,7 @@ import {
   rollbackIndexVersion
 } from "@/lib/api/indexes";
 import type { BuildIndexJobResponse, IndexVersionItem, JobStatusResponse } from "@/lib/api/types";
+import { isSnapshotMode } from "@/lib/demo-mode";
 
 type IndexAdminPanelProps = {
   selectedVersion: IndexVersionItem | null;
@@ -23,6 +24,7 @@ type IndexAdminPanelProps = {
 };
 
 export function IndexAdminPanel({ selectedVersion, onChanged }: IndexAdminPanelProps) {
+  const snapshotMode = isSnapshotMode();
   const [isOpen, setIsOpen] = useState(false);
   const [adminApiKey, setAdminApiKey] = useState("");
   const [datasetName, setDatasetName] = useState("beir/scifact");
@@ -44,6 +46,20 @@ export function IndexAdminPanel({ selectedVersion, onChanged }: IndexAdminPanelP
   const [jobStatus, setJobStatus] = useState<JobStatusResponse | null>(null);
   const [jobLoading, setJobLoading] = useState(false);
   const [jobError, setJobError] = useState<string | null>(null);
+
+  if (snapshotMode) {
+    return (
+      <Card className="border-slate-800 bg-slate-950/70">
+        <CardHeader>
+          <CardTitle>Admin actions disabled</CardTitle>
+          <CardDescription>
+            Index admin actions are disabled in public snapshot mode. Snapshot data shows index metadata exported from
+            the full local stack. Run locally to create, activate, rollback, or rebuild indexes.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+    );
+  }
 
   async function runMutation(action: () => Promise<unknown>, success: string) {
     setIsSubmitting(true);

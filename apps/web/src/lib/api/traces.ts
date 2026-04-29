@@ -1,4 +1,6 @@
 import { apiFetch } from "@/lib/api/client";
+import { getSnapshotTrace, getSnapshotTraceCandidates, getSnapshotTraceList } from "@/lib/api/snapshot";
+import { isSnapshotMode } from "@/lib/demo-mode";
 import type {
   SearchMode,
   TraceCandidateListResponse,
@@ -31,6 +33,10 @@ function queryString(params: Record<string, string | number | undefined>): strin
 }
 
 export function getTraces(params: TraceListParams = {}): Promise<TraceListResponse> {
+  if (isSnapshotMode()) {
+    return getSnapshotTraceList(params);
+  }
+
   return apiFetch<TraceListResponse>(
     `/api/v1/search/traces${queryString({
       retrieval_mode: params.retrievalMode && params.retrievalMode !== "all" ? params.retrievalMode : undefined,
@@ -42,6 +48,10 @@ export function getTraces(params: TraceListParams = {}): Promise<TraceListRespon
 }
 
 export function getTrace(traceId: string): Promise<TraceDetailResponse> {
+  if (isSnapshotMode()) {
+    return getSnapshotTrace(traceId);
+  }
+
   return apiFetch<TraceDetailResponse>(`/api/v1/search/traces/${encodeURIComponent(traceId)}`);
 }
 
@@ -49,6 +59,10 @@ export function getTraceCandidates(
   traceId: string,
   params: TraceCandidateParams = {}
 ): Promise<TraceCandidateListResponse> {
+  if (isSnapshotMode()) {
+    return getSnapshotTraceCandidates(traceId, params);
+  }
+
   return apiFetch<TraceCandidateListResponse>(
     `/api/v1/search/traces/${encodeURIComponent(traceId)}/candidates${queryString({
       source: params.source,

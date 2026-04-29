@@ -1,4 +1,6 @@
 import { apiFetch } from "@/lib/api/client";
+import { runSnapshotSearch } from "@/lib/api/snapshot";
+import { isSnapshotMode } from "@/lib/demo-mode";
 import type { SearchMode, SearchRequest, SearchResponse } from "@/lib/api/types";
 
 export function getSearchModeLabel(mode: SearchMode): string {
@@ -13,6 +15,10 @@ export function getSearchModeLabel(mode: SearchMode): string {
 }
 
 export async function runSearch(request: SearchRequest): Promise<SearchResponse> {
+  if (isSnapshotMode()) {
+    return runSnapshotSearch(request);
+  }
+
   return apiFetch<SearchResponse>("/api/v1/search", {
     method: "POST",
     headers: {

@@ -28,6 +28,7 @@ import type {
   SavedQueryDetail,
   SavedQueryItem
 } from "@/lib/api/types";
+import { isSnapshotMode } from "@/lib/demo-mode";
 
 function errorMessage(error: unknown) {
   if (error instanceof TypeError && error.message.toLowerCase().includes("fetch")) {
@@ -40,6 +41,7 @@ function errorMessage(error: unknown) {
 }
 
 export function ReplayLab() {
+  const snapshotMode = isSnapshotMode();
   const [sourceFilter, setSourceFilter] = useState("golden_scifact");
   const [statusFilter, setStatusFilter] = useState("all");
   const [savedLimit, setSavedLimit] = useState(25);
@@ -150,20 +152,38 @@ export function ReplayLab() {
             <div>
               <h1 className="text-3xl font-semibold tracking-tight text-white">Replay Lab</h1>
               <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
-                Replay saved and golden queries through real retrieval paths, inspect metrics, and open generated traces.
+                {snapshotMode
+                  ? "Inspect real replay outputs exported from the full local stack, including metrics, document matches, and trace links."
+                  : "Replay saved and golden queries through real retrieval paths, inspect metrics, and open generated traces."}
               </p>
-              <div className="mt-2 font-mono text-xs text-slate-500">Backend: {API_BASE_URL}</div>
+              <div className="mt-2 font-mono text-xs text-slate-500">
+                {snapshotMode ? "Snapshot source: /demo-data/replay.json" : `Backend: ${API_BASE_URL}`}
+              </div>
             </div>
             <Button onClick={refreshAll}>Refresh</Button>
           </div>
         </section>
+
+        {snapshotMode ? (
+          <Card className="border-cyan-900/60 bg-cyan-950/10">
+            <CardHeader>
+              <CardTitle>Public replay snapshot</CardTitle>
+              <CardDescription>
+                Replay actions are disabled in public snapshot mode. The rows below are real replay outputs exported
+                from the full local stack.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        ) : null}
 
         <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_460px]">
           <section className="space-y-4">
             <Card>
               <CardHeader>
                 <CardTitle>Saved queries</CardTitle>
-                <CardDescription>Golden and manual saved queries from FastAPI.</CardDescription>
+                <CardDescription>
+                  {snapshotMode ? "Golden and manual saved queries from snapshot exports." : "Golden and manual saved queries from FastAPI."}
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex flex-wrap items-center gap-3">

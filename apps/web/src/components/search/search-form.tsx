@@ -33,6 +33,7 @@ type SearchFormProps = {
   state: SearchFormState;
   validationError: string | null;
   isLoading: boolean;
+  isSnapshotMode?: boolean;
   onChange: (state: SearchFormState) => void;
   onSubmit: (request: SearchRequest) => void;
 };
@@ -110,7 +111,7 @@ export function validateSearchForm(state: SearchFormState): string | null {
   return null;
 }
 
-export function SearchForm({ state, validationError, isLoading, onChange, onSubmit }: SearchFormProps) {
+export function SearchForm({ state, validationError, isLoading, isSnapshotMode, onChange, onSubmit }: SearchFormProps) {
   function update(next: Partial<SearchFormState>) {
     onChange({ ...state, ...next });
   }
@@ -124,7 +125,11 @@ export function SearchForm({ state, validationError, isLoading, onChange, onSubm
     <Card>
       <CardHeader>
         <CardTitle>Search request</CardTitle>
-        <CardDescription>Run real retrieval against FastAPI. This page does not generate answers.</CardDescription>
+        <CardDescription>
+          {isSnapshotMode
+            ? "Inspect real precomputed retrieval scenarios exported from the full local pipeline."
+            : "Run real retrieval against FastAPI. This page does not generate answers."}
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <form className="space-y-5" onSubmit={submit}>
@@ -132,7 +137,7 @@ export function SearchForm({ state, validationError, isLoading, onChange, onSubm
             <span className="text-xs font-medium uppercase tracking-wide text-slate-500">Query</span>
             <textarea
               className="mt-2 min-h-28 w-full rounded-md border border-slate-800 bg-slate-950 px-3 py-2 text-sm text-slate-100 outline-none transition placeholder:text-slate-600 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20"
-              placeholder="Enter a SciFact-style retrieval query"
+              placeholder={isSnapshotMode ? "Select a curated public demo query" : "Enter a SciFact-style retrieval query"}
               value={state.query}
               onChange={(event) => update({ query: event.target.value })}
             />
@@ -227,7 +232,7 @@ export function SearchForm({ state, validationError, isLoading, onChange, onSubm
 
           <div className="flex justify-end">
             <Button type="submit" variant="primary" disabled={isLoading}>
-              {isLoading ? "Running search" : "Run search"}
+              {isLoading ? "Running search" : isSnapshotMode ? "Load snapshot search" : "Run search"}
             </Button>
           </div>
         </form>

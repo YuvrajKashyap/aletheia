@@ -1,4 +1,13 @@
 import { apiFetch } from "@/lib/api/client";
+import {
+  getSnapshotIndexJobs,
+  getSnapshotIndexStatus,
+  getSnapshotIndexVersion,
+  getSnapshotIndexVersions,
+  getSnapshotOpenSearchHealth,
+  getSnapshotQdrantHealth
+} from "@/lib/api/snapshot";
+import { isSnapshotMode } from "@/lib/demo-mode";
 import type {
   BuildIndexJobResponse,
   CreateIndexVersionRequest,
@@ -45,10 +54,18 @@ function adminHeaders(adminApiKey: string): HeadersInit {
 }
 
 export function getIndexStatus(): Promise<IndexStatusResponse> {
+  if (isSnapshotMode()) {
+    return getSnapshotIndexStatus();
+  }
+
   return apiFetch<IndexStatusResponse>("/api/v1/indexes/status");
 }
 
 export function getIndexVersions(params: VersionParams = {}): Promise<IndexVersionListResponse> {
+  if (isSnapshotMode()) {
+    return getSnapshotIndexVersions(params);
+  }
+
   return apiFetch<IndexVersionListResponse>(
     `/api/v1/indexes/versions${queryString({
       dataset_id: params.datasetId,
@@ -60,10 +77,18 @@ export function getIndexVersions(params: VersionParams = {}): Promise<IndexVersi
 }
 
 export function getIndexVersion(id: string): Promise<IndexVersionItem> {
+  if (isSnapshotMode()) {
+    return getSnapshotIndexVersion(id);
+  }
+
   return apiFetch<IndexVersionItem>(`/api/v1/indexes/versions/${encodeURIComponent(id)}`);
 }
 
 export function getIndexJobs(params: JobParams = {}): Promise<IndexJobListResponse> {
+  if (isSnapshotMode()) {
+    return getSnapshotIndexJobs(params);
+  }
+
   return apiFetch<IndexJobListResponse>(
     `/api/v1/indexes/jobs${queryString({
       index_version_id: params.indexVersionId,
@@ -79,6 +104,10 @@ export function createIndexVersion(
   request: CreateIndexVersionRequest,
   adminApiKey: string
 ): Promise<IndexVersionItem> {
+  if (isSnapshotMode()) {
+    throw new Error("Index admin actions are disabled in public snapshot mode. Run the full local stack to manage indexes.");
+  }
+
   return apiFetch<IndexVersionItem>("/api/v1/indexes/versions", {
     method: "POST",
     headers: adminHeaders(adminApiKey),
@@ -87,6 +116,10 @@ export function createIndexVersion(
 }
 
 export function markIndexVersionReady(id: string, adminApiKey: string): Promise<IndexVersionItem> {
+  if (isSnapshotMode()) {
+    throw new Error("Index admin actions are disabled in public snapshot mode. Run the full local stack to manage indexes.");
+  }
+
   return apiFetch<IndexVersionItem>(`/api/v1/indexes/versions/${encodeURIComponent(id)}/mark-ready`, {
     method: "POST",
     headers: adminHeaders(adminApiKey),
@@ -95,6 +128,10 @@ export function markIndexVersionReady(id: string, adminApiKey: string): Promise<
 }
 
 export function activateIndexVersion(id: string, adminApiKey: string): Promise<unknown> {
+  if (isSnapshotMode()) {
+    throw new Error("Index admin actions are disabled in public snapshot mode. Run the full local stack to manage indexes.");
+  }
+
   return apiFetch<unknown>(`/api/v1/indexes/versions/${encodeURIComponent(id)}/activate`, {
     method: "POST",
     headers: adminHeaders(adminApiKey),
@@ -103,6 +140,10 @@ export function activateIndexVersion(id: string, adminApiKey: string): Promise<u
 }
 
 export function rollbackIndexVersion(id: string, adminApiKey: string): Promise<unknown> {
+  if (isSnapshotMode()) {
+    throw new Error("Index admin actions are disabled in public snapshot mode. Run the full local stack to manage indexes.");
+  }
+
   return apiFetch<unknown>(`/api/v1/indexes/versions/${encodeURIComponent(id)}/rollback`, {
     method: "POST",
     headers: adminHeaders(adminApiKey),
@@ -115,6 +156,10 @@ export function buildLexicalIndex(
   request: { recreate?: boolean; limit?: number | null; refresh?: boolean },
   adminApiKey: string
 ): Promise<BuildIndexJobResponse> {
+  if (isSnapshotMode()) {
+    throw new Error("Index rebuilds are disabled in public snapshot mode. Run the full local stack to build indexes.");
+  }
+
   return apiFetch<BuildIndexJobResponse>(`/api/v1/indexes/versions/${encodeURIComponent(id)}/build-lexical`, {
     method: "POST",
     headers: adminHeaders(adminApiKey),
@@ -127,6 +172,10 @@ export function buildVectorIndex(
   request: { recreate?: boolean; limit?: number | null; batch_size?: number | null },
   adminApiKey: string
 ): Promise<BuildIndexJobResponse> {
+  if (isSnapshotMode()) {
+    throw new Error("Index rebuilds are disabled in public snapshot mode. Run the full local stack to build indexes.");
+  }
+
   return apiFetch<BuildIndexJobResponse>(`/api/v1/indexes/versions/${encodeURIComponent(id)}/build-vector`, {
     method: "POST",
     headers: adminHeaders(adminApiKey),
@@ -135,13 +184,25 @@ export function buildVectorIndex(
 }
 
 export function getJobStatus(jobId: string): Promise<JobStatusResponse> {
+  if (isSnapshotMode()) {
+    throw new Error("Job status is unavailable in public snapshot mode because background workers are not hosted.");
+  }
+
   return apiFetch<JobStatusResponse>(`/api/v1/system/jobs/${encodeURIComponent(jobId)}`);
 }
 
 export function getOpenSearchHealth(): Promise<OpenSearchHealthResponse> {
+  if (isSnapshotMode()) {
+    return Promise.resolve(getSnapshotOpenSearchHealth());
+  }
+
   return apiFetch<OpenSearchHealthResponse>("/api/v1/system/opensearch");
 }
 
 export function getQdrantHealth(): Promise<QdrantHealthResponse> {
+  if (isSnapshotMode()) {
+    return Promise.resolve(getSnapshotQdrantHealth());
+  }
+
   return apiFetch<QdrantHealthResponse>("/api/v1/system/qdrant");
 }
