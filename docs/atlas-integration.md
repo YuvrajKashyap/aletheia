@@ -4,6 +4,10 @@ Atlas is a separate planned project: a production-style distributed crawl, extra
 
 This integration is future-facing. It is not implemented in Aletheia today.
 
+Related diagram:
+
+- [Atlas Integration Flow](diagrams/atlas-integration-flow.md)
+
 ## Integration Model
 
 Atlas crawls and cleans web documents. Aletheia can consume the resulting corpus as a retrieval, ranking, evaluation, and search observability layer.

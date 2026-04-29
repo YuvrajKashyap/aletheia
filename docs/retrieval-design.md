@@ -2,6 +2,10 @@
 
 Aletheia implements four retrieval modes over the same corpus and index metadata: BM25, dense, hybrid reciprocal rank fusion, and hybrid plus reranking. The goal is inspectable retrieval behavior, not answer generation.
 
+Related diagram:
+
+- [Search Flow](diagrams/search-flow.md)
+
 ## Corpus Units
 
 SciFact records are stored as documents and chunks. The current SciFact chunking strategy is document-level, so each document corresponds to one chunk. This keeps evaluation alignment straightforward because SciFact qrels are document-level.

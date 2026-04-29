@@ -31,6 +31,10 @@ This index helps readers navigate Aletheia's technical documentation.
 - `docs/runbooks/index-failure.md`: index failure diagnosis
 - `docs/runbooks/eval-regression.md`: evaluation regression diagnosis
 
+## Diagrams
+
+- `docs/diagrams/README.md`: Mermaid architecture diagrams and system maps
+
 ## Future Integration
 
 - `docs/atlas-integration.md`: planned Atlas integration model

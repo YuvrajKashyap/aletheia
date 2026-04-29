@@ -2,6 +2,12 @@
 
 Aletheia is a production-style retrieval, reranking, evaluation, and search observability platform. The local system runs a full FastAPI-backed retrieval stack over BEIR SciFact, while the public Vercel demo serves real exported outputs from that local pipeline in snapshot mode.
 
+Related diagrams:
+
+- [Local Live Architecture](diagrams/local-live-architecture.md)
+- [Public Snapshot Architecture](diagrams/public-snapshot-architecture.md)
+- [Deployment Topology](diagrams/deployment-topology.md)
+
 ## System Components
 
 - **Next.js frontend**: dashboard and control surface for search, traces, evaluations, experiments, indexes, datasets, replay, and system health.

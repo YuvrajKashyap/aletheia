@@ -2,6 +2,11 @@
 
 Aletheia evaluates retrieval with BEIR SciFact benchmark queries and relevance judgments. Evaluation correctness is backend-owned and uses real qrels.
 
+Related diagrams:
+
+- [Evaluation Flow](diagrams/evaluation-flow.md)
+- [Experiment Comparison Flow](diagrams/experiment-comparison-flow.md)
+
 ## Dataset
 
 Current SciFact counts:
