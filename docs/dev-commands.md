@@ -1745,6 +1745,41 @@ Doctor:
 
     powershell -ExecutionPolicy Bypass -File scripts/powershell/doctor.ps1
 
+## CI and Quality Gates
+
+GitHub Actions runs a fast Aletheia CI gate on pushes and pull requests to `main`, plus manual `workflow_dispatch` runs.
+
+CI checks:
+
+- backend unit tests
+- backend ruff
+- frontend typecheck
+- frontend lint
+- frontend snapshot build
+- doctor
+
+The frontend build runs with:
+
+    NEXT_PUBLIC_DEMO_MODE=snapshot
+
+This validates the public Vercel snapshot path without requiring a live backend.
+
+CI intentionally avoids heavy local infrastructure:
+
+- no Docker stack
+- no OpenSearch or Qdrant
+- no Redis or worker
+- no ingestion, indexing, or evaluation jobs
+- no Hugging Face model downloads
+
+Run the same fast gate locally:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/ci-check.ps1
+
+See:
+
+    docs/ci.md
+
 Manual Search Lab checks:
 
 - Open `http://localhost:3000/search`.
