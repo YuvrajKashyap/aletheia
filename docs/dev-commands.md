@@ -2464,3 +2464,27 @@ Standard frontend validation:
 Doctor:
 
     powershell -ExecutionPolicy Bypass -File scripts/powershell/doctor.ps1
+
+## Step 52 Release Readiness And Repository Audit
+
+Step 52 adds the final repository hygiene checklist before resume bullets and interview packaging.
+
+Readiness docs:
+
+    docs/release-readiness.md
+    docs/repo-audit.md
+
+Run the repository audit:
+
+    powershell -ExecutionPolicy Bypass -File scripts/powershell/repo-audit.ps1
+
+The audit checks git status, common local-only artifacts, dangerous tracked file patterns, generated benchmark and smoke reports, and doctor output. It also prints reminders for manual GitHub Actions and public demo checks.
+
+Final manual checks:
+
+- open the public demo
+- confirm GitHub Actions is green
+- confirm README screenshots render
+- confirm docs links work
+- confirm no generated benchmark or smoke JSON reports are staged
+- confirm no secrets or local env files are tracked

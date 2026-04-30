@@ -30,6 +30,11 @@ This index helps readers navigate Aletheia's technical documentation.
 - `docs/golden-smoke.md`: local qrels-backed golden smoke check
 - `docs/benchmark-results.md`: final benchmark methodology and result placeholder
 
+## Repository Readiness
+
+- `docs/release-readiness.md`: final release readiness checklist
+- `docs/repo-audit.md`: repository contents, ignored artifacts, and audit commands
+
 ## Runbooks
 
 - `docs/runbooks/slow-query.md`: slow query diagnosis

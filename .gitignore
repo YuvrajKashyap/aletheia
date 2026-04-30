@@ -62,6 +62,7 @@ data/processed/*
 !data/processed/.gitkeep
 data/benchmarks/*
 !data/benchmarks/.gitkeep
+data/models/
 
 # Keep small sample data trackable later if intentionally added
 # data/samples is not globally ignored
