@@ -43,6 +43,8 @@ This index helps readers navigate Aletheia's technical documentation.
 ## Demo Assets
 
 - `docs/screenshots.md`: screenshot capture plan for real public snapshot and local live states
+- `docs/demo-walkthrough.md`: public demo walkthrough script and talking points
+- `docs/demo-recording-guide.md`: video recording checklist and asset guidance
 
 ## Future Integration
 

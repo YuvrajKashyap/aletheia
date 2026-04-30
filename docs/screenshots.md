@@ -99,3 +99,10 @@ These screenshots are captured from real public snapshot demo pages. They are no
 3. Capture a PNG under `docs/assets/screenshots/`.
 4. Verify the image is not empty, does not show a browser error page, and does not expose private information.
 5. Update this catalog and README image links only for files that actually exist.
+
+## Video Walkthrough Assets
+
+- Demo walkthrough script: [docs/demo-walkthrough.md](demo-walkthrough.md)
+- Recording checklist: [docs/demo-recording-guide.md](demo-recording-guide.md)
+
+Screenshots are captured and committed. Video recording is a separate manual step. No video file exists yet.
