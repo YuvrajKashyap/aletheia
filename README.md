@@ -275,6 +275,9 @@ Full benchmark and evaluation jobs do not run in default GitHub CI because they 
 - [Resume and recruiter positioning](docs/resume-positioning.md)
 - [Project one-pager](docs/project-one-pager.md)
 - [Recruiter notes](docs/recruiter-notes.md)
+- [Interview package](docs/interview-package.md)
+- [Interview Q&A](docs/interview-q-and-a.md)
+- [System design walkthrough](docs/system-design-walkthrough.md)
 
 ## Screenshots
 

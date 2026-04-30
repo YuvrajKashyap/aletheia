@@ -61,3 +61,8 @@ This index helps readers navigate Aletheia's technical documentation.
 - `docs/resume-positioning.md`: resume bullets, recruiter pitch, LinkedIn copy, and project card language
 - `docs/project-one-pager.md`: concise technical one-pager for portfolio sharing
 - `docs/recruiter-notes.md`: recruiter-facing review guide and caveats
+- `docs/interview-package.md`: compact final interview prep package
+- `docs/interview-q-and-a.md`: likely interview questions and concise answers
+- `docs/system-design-walkthrough.md`: system-design explanation for interviews
+- `docs/engineering-stories.md`: implementation and debugging stories
+- `docs/scale-plan.md`: future scaling plan and tradeoffs
