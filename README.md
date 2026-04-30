@@ -272,6 +272,7 @@ Full benchmark and evaluation jobs do not run in default GitHub CI because they 
 - [Public demo mode](docs/public-demo-mode.md)
 - [Benchmark results](docs/benchmark-results.md)
 - [Architecture diagrams](docs/diagrams/README.md)
+- [Project closeout](docs/project-closeout.md)
 - [Resume and recruiter positioning](docs/resume-positioning.md)
 - [Project one-pager](docs/project-one-pager.md)
 - [Recruiter notes](docs/recruiter-notes.md)
