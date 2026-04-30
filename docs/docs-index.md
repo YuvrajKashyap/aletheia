@@ -34,6 +34,9 @@ This index helps readers navigate Aletheia's technical documentation.
 
 - `docs/release-readiness.md`: final release readiness checklist
 - `docs/repo-audit.md`: repository contents, ignored artifacts, and audit commands
+- `docs/project-closeout.md`: final completion record and caveats
+- `docs/final-handoff.md`: compact handoff for future project work
+- `docs/final-links.md`: final links and status summary
 
 ## Runbooks
 
