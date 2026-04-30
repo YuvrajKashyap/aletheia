@@ -275,7 +275,21 @@ Full benchmark and evaluation jobs do not run in default GitHub CI because they 
 
 ## Screenshots
 
-Screenshot capture checklist is available in [docs/screenshots.md](docs/screenshots.md). Final image assets will be added after the last visual QA pass so README screenshots reflect real public snapshot or local live states.
+The hosted demo runs in public snapshot mode using real outputs exported from the full local Aletheia pipeline.
+
+![Aletheia overview](docs/assets/screenshots/overview.png)
+
+![Search Lab](docs/assets/screenshots/search-lab.png)
+
+![Query Trace](docs/assets/screenshots/query-trace.png)
+
+![Evaluation Dashboard](docs/assets/screenshots/evaluation-dashboard.png)
+
+![Experiment Matrix](docs/assets/screenshots/experiment-matrix.png)
+
+![Index Console](docs/assets/screenshots/index-console.png)
+
+See the full screenshot set in [docs/screenshots.md](docs/screenshots.md).
 
 ## Limitations
 

@@ -1,33 +1,101 @@
 # Screenshot Guide
 
-Screenshots are not committed yet. This guide lists the final capture plan so future README and demo assets use real UI states and real exported data.
+These screenshots are captured from real public snapshot demo pages. They are not mocked, generated, or edited to fake data.
 
-Store final image files under:
+## Overview
 
-```text
-docs/assets/screenshots/
-```
+- File: `docs/assets/screenshots/overview.png`
+- Source: https://aletheia.yuvrajkashyap.com
+- Mode: Public snapshot
+- Shows: snapshot banner, product summary, exported counts, active index metadata, and dataset overview.
 
-## Capture Plan
+![Overview](assets/screenshots/overview.png)
 
-| Filename | Route/source | Mode | What to show | Notes |
-| --- | --- | --- | --- | --- |
-| overview-public-snapshot.png | `/` | Public snapshot | Overview with snapshot banner and exported counts | Use the public demo after final visual QA. |
-| search-lab-hybrid-rerank.png | `/search` | Public snapshot or local live | Search Lab scenario with result cards and trace link | Use a real exported scenario. |
-| trace-rerank-detail.png | `/traces` | Public snapshot or local live | Candidate table, stages, and rank movement | Do not fabricate trace data. |
-| evaluations-dashboard.png | `/evaluations` | Public snapshot | Metrics cards and query result table | Use an exported evaluation run. |
-| experiment-matrix.png | `/experiments` | Public snapshot | Config matrix and best-by-metric indicators | Admin disabled state may be visible if it helps explain snapshot mode. |
-| index-console.png | `/indexes` | Public snapshot | Active index metadata and local-only admin copy | Do not imply live hosted OpenSearch or Qdrant health. |
-| dataset-browser.png | `/datasets` | Public snapshot | Dataset stats and sample rows | Make sample-data scope clear. |
-| replay-lab.png | `/replay` | Public snapshot | Replay details and matched or missed docs | Use a real exported replay. |
-| system-health-snapshot.png | `/system` | Public snapshot | Honest snapshot and local-only service state | No fake backend health. |
-| github-actions-ci.png | GitHub Actions | GitHub | Passing Aletheia CI run | Use the real CI page. |
-| vercel-public-demo.png | Public demo | Public snapshot | Hosted Vercel demo with snapshot banner | Use https://aletheia.yuvrajkashyap.com. |
+## Search Lab
+
+- File: `docs/assets/screenshots/search-lab.png`
+- Source: https://aletheia.yuvrajkashyap.com/search
+- Mode: Public snapshot
+- Shows: curated snapshot scenarios, a real exported retrieval result, score breakdown, and result metadata.
+
+![Search Lab](assets/screenshots/search-lab.png)
+
+## Query Trace
+
+- File: `docs/assets/screenshots/query-trace.png`
+- Source: https://aletheia.yuvrajkashyap.com/traces
+- Mode: Public snapshot
+- Shows: selected hybrid or reranked trace details, stage metadata, ranking summary, and candidate provenance.
+
+![Query Trace](assets/screenshots/query-trace.png)
+
+## Evaluation Dashboard
+
+- File: `docs/assets/screenshots/evaluation-dashboard.png`
+- Source: https://aletheia.yuvrajkashyap.com/evaluations
+- Mode: Public snapshot
+- Shows: exported qrels-backed evaluation dashboard with metric and latency charts.
+
+![Evaluation Dashboard](assets/screenshots/evaluation-dashboard.png)
+
+## Experiment Matrix
+
+- File: `docs/assets/screenshots/experiment-matrix.png`
+- Source: https://aletheia.yuvrajkashyap.com/experiments
+- Mode: Public snapshot
+- Shows: exported experiment configs, best-by-metric cards, and comparison charts.
+
+![Experiment Matrix](assets/screenshots/experiment-matrix.png)
+
+## Index Console
+
+- File: `docs/assets/screenshots/index-console.png`
+- Source: https://aletheia.yuvrajkashyap.com/indexes
+- Mode: Public snapshot
+- Shows: active index metadata, corpus counts, lexical index name, vector collection name, and local-only service state.
+
+![Index Console](assets/screenshots/index-console.png)
+
+## Dataset Browser
+
+- File: `docs/assets/screenshots/dataset-browser.png`
+- Source: https://aletheia.yuvrajkashyap.com/datasets
+- Mode: Public snapshot
+- Shows: real SciFact stats, exported document sample rows, and a document detail panel.
+
+![Dataset Browser](assets/screenshots/dataset-browser.png)
+
+## Replay Lab
+
+- File: `docs/assets/screenshots/replay-lab.png`
+- Source: https://aletheia.yuvrajkashyap.com/replay
+- Mode: Public snapshot
+- Shows: saved golden queries, replay detail, real replay metrics, and trace link affordance.
+
+![Replay Lab](assets/screenshots/replay-lab.png)
+
+## System Health
+
+- File: `docs/assets/screenshots/system-health.png`
+- Source: https://aletheia.yuvrajkashyap.com/system
+- Mode: Public snapshot
+- Shows: honest public snapshot state, available static data, disabled public backend, and local-only infrastructure.
+
+![System Health](assets/screenshots/system-health.png)
 
 ## Policy
 
 - Do not add fake screenshots.
 - Do not create placeholder PNG, JPG, or WebP files.
-- Capture screenshots only after final visual QA.
-- Screenshots must show real public snapshot data or real local live outputs.
-- If a UI state requires a local full-stack run, capture it locally and label it as local live mode in surrounding documentation.
+- Refresh screenshots only from real public snapshot pages or real local live states.
+- Do not capture private browser tabs, secrets, tokens, or personal account data.
+- If a route is broken, report the issue rather than fabricating a screenshot.
+- Public snapshot screenshots must not imply public live arbitrary retrieval.
+
+## Updating Screenshots
+
+1. Open the target route in the public snapshot demo or a verified local live environment.
+2. Confirm the page uses real exported data or real local backend data.
+3. Capture a PNG under `docs/assets/screenshots/`.
+4. Verify the image is not empty, does not show a browser error page, and does not expose private information.
+5. Update this catalog and README image links only for files that actually exist.
