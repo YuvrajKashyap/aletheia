@@ -305,6 +305,10 @@ See the full screenshot set in [docs/screenshots.md](docs/screenshots.md).
 
 Demo video script and recording checklist are available in [docs/demo-walkthrough.md](docs/demo-walkthrough.md) and [docs/demo-recording-guide.md](docs/demo-recording-guide.md). A recorded walkthrough can be added after final video capture.
 
+## License
+
+This project is licensed under the MIT License. See LICENSE for details.
+
 ## Limitations
 
 - The public demo is snapshot-backed, not live arbitrary hosted retrieval.
