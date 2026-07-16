@@ -146,6 +146,45 @@ Indexes are treated as managed assets with versions, activation state, rollback 
 
 The public demo does not claim to provide always-on arbitrary retrieval. It presents genuine exported outputs from the full local stack and visibly disables operations that require the backend, workers, search engines, or local models.
 
+## Where to start in the code
+
+These files provide the shortest technical review path:
+
+| Area | File | What it demonstrates |
+| --- | --- | --- |
+| Hybrid retrieval | [`services/api/app/search/fusion.py`](services/api/app/search/fusion.py) | Reciprocal Rank Fusion across lexical and dense candidates |
+| Query observability | [`services/api/app/search/tracing.py`](services/api/app/search/tracing.py) | Trace construction and stage-level retrieval provenance |
+| Evaluation correctness | [`services/api/app/evaluation/correctness.py`](services/api/app/evaluation/correctness.py) | Parent-document mapping and metric correctness safeguards |
+| Evaluation execution | [`services/api/app/evaluation/runner.py`](services/api/app/evaluation/runner.py) | Reproducible benchmark and evaluation orchestration |
+| Public demo export | [`services/api/app/export/demo_snapshot.py`](services/api/app/export/demo_snapshot.py) | Real-output snapshot generation for the hosted demo |
+| Trace interface | [`apps/web/src/components/traces/trace-candidate-table.tsx`](apps/web/src/components/traces/trace-candidate-table.tsx) | Candidate score, rank, and provenance presentation |
+| Evaluation interface | [`apps/web/src/components/evaluations/evaluation-dashboard.tsx`](apps/web/src/components/evaluations/evaluation-dashboard.tsx) | Retrieval-quality and latency visualization |
+
+## Quick paths
+
+### Explore immediately
+
+Open the [public snapshot demo](https://aletheia.yuvrajkashyap.com). No account or local infrastructure is required. It contains real exported traces, evaluations, replay results, index metadata, and dataset samples.
+
+### Verify a clone
+
+After cloning and completing the one-time dependency setup below, run the repository-wide CI gate:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/powershell/ci-check.ps1
+```
+
+### Run the complete local system
+
+The full system has four stages:
+
+1. Start PostgreSQL, Redis, OpenSearch, and Qdrant with `scripts/powershell/dev.ps1`.
+2. Install the API environment, run migrations, ingest SciFact, and build lexical/vector indexes.
+3. Start the FastAPI server and RQ worker.
+4. Start the Next.js dashboard.
+
+The exact copy-paste commands follow.
+
 ## Local development
 
 ### Prerequisites
