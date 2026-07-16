@@ -36,6 +36,8 @@ The full benchmark rows cover all 300 SciFact queries. The hybrid-rerank result 
 
 **Takeaway:** hybrid RRF produced the strongest full-run Recall@10, dense retrieval improved recall over BM25 at a substantial local latency cost, and BM25 remained the fastest system.
 
+![Grouped bar chart comparing BM25, dense retrieval, and hybrid RRF on the full SciFact benchmark](docs/assets/readme/benchmark-quality.svg)
+
 Results were generated from the retrieval pipeline rather than hand-authored for presentation. See [benchmark results](docs/benchmark-results.md) and [evaluation methodology](docs/evaluation.md) for reproduction details and caveats.
 
 ## Architecture
@@ -80,17 +82,39 @@ Detailed diagrams:
 | Replay Lab | Re-run saved query scenarios against selected configurations |
 | System Health | Monitor queues, workers, models, events, and dependencies |
 
-## Screenshots
+## Complete product tour
+
+Every major public product surface is captured from the real snapshot demo. The screenshots are not mockups and do not imply that compute-heavy operations are publicly enabled.
+
+### Overview
+
+![Aletheia overview with exported counts, active index metadata, and dataset summary](docs/assets/screenshots/overview.png)
+
+### Retrieval and tracing
 
 | Search Lab | Query Trace |
 | --- | --- |
-| ![Aletheia Search Lab](docs/assets/screenshots/search-lab.png) | ![Aletheia query trace](docs/assets/screenshots/query-trace.png) |
+| ![Search Lab with curated retrieval scenarios, scores, and result metadata](docs/assets/screenshots/search-lab.png) | ![Query Trace with stage metadata, ranking changes, and candidate provenance](docs/assets/screenshots/query-trace.png) |
+
+### Evaluation and experimentation
 
 | Evaluation Dashboard | Experiment Matrix |
 | --- | --- |
-| ![Aletheia evaluation dashboard](docs/assets/screenshots/evaluation-dashboard.png) | ![Aletheia experiment matrix](docs/assets/screenshots/experiment-matrix.png) |
+| ![Evaluation Dashboard with qrels-backed metric and latency charts](docs/assets/screenshots/evaluation-dashboard.png) | ![Experiment Matrix with configurations, best-by-metric cards, and comparison charts](docs/assets/screenshots/experiment-matrix.png) |
 
-See the [complete screenshot set](docs/screenshots.md).
+### Data and index operations
+
+| Index Console | Dataset Browser |
+| --- | --- |
+| ![Index Console with active index versions, corpus counts, and service state](docs/assets/screenshots/index-console.png) | ![Dataset Browser with SciFact statistics, document samples, and detail panel](docs/assets/screenshots/dataset-browser.png) |
+
+### Replay and operations
+
+| Replay Lab | System Health |
+| --- | --- |
+| ![Replay Lab with golden queries, replay metrics, and trace links](docs/assets/screenshots/replay-lab.png) | ![System Health with honest snapshot availability and local infrastructure state](docs/assets/screenshots/system-health.png) |
+
+See the [screenshot provenance and refresh guide](docs/screenshots.md).
 
 ## Tech stack
 
