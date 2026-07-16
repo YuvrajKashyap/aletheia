@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Aletheia full benchmark retrieval quality</title>
+  <desc id="desc">Grouped bar chart comparing BM25, dense, and hybrid RRF on Recall at 5, Recall at 10, MRR at 10, and NDCG at 10 across all 300 SciFact benchmark queries.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#090d18"/>
+      <stop offset="1" stop-color="#111a2f"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity=".28"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="720" rx="28" fill="url(#bg)"/>
+  <text x="72" y="74" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="32" font-weight="700">Full benchmark retrieval quality</text>
+  <text x="72" y="108" fill="#94a3b8" font-family="Inter,Arial,sans-serif" font-size="17">BEIR SciFact · 300 queries · document-level evaluation</text>
+
+  <g font-family="Inter,Arial,sans-serif" font-size="14" fill="#94a3b8">
+    <text x="80" y="594">0.00</text><text x="80" y="484">0.20</text><text x="80" y="374">0.40</text>
+    <text x="80" y="264">0.60</text><text x="80" y="154">0.80</text><text x="80" y="99">0.90</text>
+  </g>
+  <g stroke="#334155" stroke-width="1">
+    <line x1="130" y1="590" x2="1130" y2="590"/><line x1="130" y1="480" x2="1130" y2="480"/>
+    <line x1="130" y1="370" x2="1130" y2="370"/><line x1="130" y1="260" x2="1130" y2="260"/>
+    <line x1="130" y1="150" x2="1130" y2="150"/><line x1="130" y1="95" x2="1130" y2="95"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <!-- Recall@5 -->
+    <rect x="172" y="194.7" width="46" height="395.3" rx="8" fill="#64748b"/>
+    <rect x="224" y="170.7" width="46" height="419.3" rx="8" fill="#38bdf8"/>
+    <rect x="276" y="174.3" width="46" height="415.7" rx="8" fill="#a78bfa"/>
+    <!-- Recall@10 -->
+    <rect x="422" y="166.1" width="46" height="423.9" rx="8" fill="#64748b"/>
+    <rect x="474" y="128.8" width="46" height="461.2" rx="8" fill="#38bdf8"/>
+    <rect x="526" y="126.4" width="46" height="463.6" rx="8" fill="#a78bfa"/>
+    <!-- MRR@10 -->
+    <rect x="672" y="243.7" width="46" height="346.3" rx="8" fill="#64748b"/>
+    <rect x="724" y="221.2" width="46" height="368.8" rx="8" fill="#38bdf8"/>
+    <rect x="776" y="221.6" width="46" height="368.4" rx="8" fill="#a78bfa"/>
+    <!-- NDCG@10 -->
+    <rect x="922" y="228.4" width="46" height="361.6" rx="8" fill="#64748b"/>
+    <rect x="974" y="200.8" width="46" height="389.2" rx="8" fill="#38bdf8"/>
+    <rect x="1026" y="202.0" width="46" height="388.0" rx="8" fill="#a78bfa"/>
+  </g>
+
+  <g fill="#e2e8f0" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="600" text-anchor="middle">
+    <text x="247" y="625">Recall@5</text><text x="497" y="625">Recall@10</text>
+    <text x="747" y="625">MRR@10</text><text x="997" y="625">NDCG@10</text>
+  </g>
+
+  <g font-family="Inter,Arial,sans-serif" font-size="15" fill="#cbd5e1">
+    <rect x="326" y="665" width="16" height="16" rx="4" fill="#64748b"/><text x="352" y="679">BM25</text>
+    <rect x="500" y="665" width="16" height="16" rx="4" fill="#38bdf8"/><text x="526" y="679">Dense</text>
+    <rect x="676" y="665" width="16" height="16" rx="4" fill="#a78bfa"/><text x="702" y="679">Hybrid RRF</text>
+  </g>
+  <text x="1128" y="679" fill="#64748b" font-family="Inter,Arial,sans-serif" font-size="13" text-anchor="end">Higher is better</text>
+</svg>
