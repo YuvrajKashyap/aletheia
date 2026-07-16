@@ -1,332 +1,215 @@
 # Aletheia
 
-Hybrid Retrieval, Reranking & Evaluation Platform
+**Hybrid retrieval, reranking, evaluation, and search observability—built as infrastructure, not a chatbot wrapper.**
 
 [![Aletheia CI](https://github.com/YuvrajKashyap/aletheia/actions/workflows/ci.yml/badge.svg)](https://github.com/YuvrajKashyap/aletheia/actions/workflows/ci.yml)
+[![Live Demo](https://img.shields.io/badge/demo-live-22c55e)](https://aletheia.yuvrajkashyap.com)
+[![License: MIT](https://img.shields.io/badge/license-MIT-2563eb.svg)](LICENSE)
 
-Aletheia is a production-style search and ranking platform for comparing BM25, dense retrieval, hybrid retrieval, and cross-encoder reranking over a real benchmark corpus. It focuses on retrieval quality, query tracing, evaluation, index observability, and experiment comparison. It is not a chatbot or a RAG wrapper.
+[**Explore the public demo**](https://aletheia.yuvrajkashyap.com) · [Architecture](docs/architecture.md) · [Benchmark methodology](docs/benchmark-results.md) · [Documentation](docs/docs-index.md)
 
-- Public demo: https://aletheia.yuvrajkashyap.com
-- Technical docs: [docs/docs-index.md](docs/docs-index.md)
-- Architecture diagrams: [docs/diagrams/README.md](docs/diagrams/README.md)
+![Aletheia search infrastructure dashboard](docs/assets/screenshots/overview.png)
 
-## What This Demonstrates
+Aletheia is a production-style search platform for comparing and debugging **BM25**, **dense vector retrieval**, **hybrid Reciprocal Rank Fusion**, and **cross-encoder reranking** over the BEIR SciFact benchmark. It makes retrieval behavior inspectable through query traces, candidate provenance, evaluation reports, experiment comparison, versioned indexes, replay workflows, and system-health views.
 
-- Backend search infrastructure with FastAPI, PostgreSQL, Redis/RQ, OpenSearch, and Qdrant.
-- ML systems integration using local embedding and reranking models.
-- Lexical and vector indexing with explicit index versions and activation state.
-- Async job orchestration for indexing, evaluation, experiments, and replay workflows.
-- Evaluation correctness for document-level qrels over chunk-level retrieval results.
-- Query tracing, candidate provenance, rank movement, system events, and worker heartbeats.
-- A serious dashboard frontend for search, traces, evaluations, experiments, indexes, datasets, replay, and system health.
-- Deployment-aware public demo strategy that avoids pretending expensive live infrastructure is always running.
+The complete live stack runs locally with FastAPI, PostgreSQL, Redis/RQ, OpenSearch, Qdrant, and local embedding and reranking models. The hosted demo uses real snapshots exported from that stack so the project remains publicly explorable without pretending expensive search infrastructure is always running.
 
-## What Aletheia Is Not
+## Engineering highlights
 
-Aletheia is not a chatbot, answer generator, thin RAG wrapper, fake dashboard, or public hosted live search cluster. It does not claim production traffic, production scale, or public live arbitrary retrieval. It is retrieval, ranking, evaluation, and search observability infrastructure built around real SciFact data and real retrieval outputs.
+- Built lexical and vector retrieval pipelines with OpenSearch and Qdrant, then combined results through Reciprocal Rank Fusion and cross-encoder reranking.
+- Evaluated retrieval on **5,183 SciFact documents**, **300 benchmark queries**, and **339 qrels**, mapping chunk-level hits back to parent documents before scoring.
+- Added versioned indexes, explicit activation and rollback state, background jobs, worker heartbeats, system events, and failure-visible operational views.
+- Captured trace-level rank, score, latency, and provenance across every retrieval stage so search behavior can be compared and debugged.
+- Built a Next.js dashboard spanning Search Lab, Query Traces, Evaluations, Experiments, Index Console, Dataset Browser, Replay Lab, and System Health.
+- Shipped reproducible migrations, local orchestration scripts, automated tests, CI, architecture documentation, and a cost-aware public demo.
 
-## Public Demo Mode
+## Benchmark results
 
-The hosted demo runs in public snapshot mode. It serves real traces, evaluations, index metadata, replay results, and dataset samples exported from the full local Docker-based Aletheia stack. Live arbitrary retrieval, reranking, index rebuilds, evaluation jobs, replay jobs, and admin actions are intentionally disabled on the public site to avoid always-on OpenSearch, Qdrant, Redis, worker, and ML model hosting costs.
+The full benchmark rows cover all 300 SciFact queries. The hybrid-rerank result is a 50-query sample because local CPU cross-encoder inference is substantially more expensive; it is intentionally not presented as directly comparable to the full runs.
 
-The full live stack runs locally through Docker Compose and local Python/Node processes. Snapshot data is regenerated from real local outputs, not hand-written. The public site is therefore cost-aware and honest: it is interactive over real exported artifacts, but it does not claim to run public live arbitrary search.
+| Mode | Scope | Recall@5 | Recall@10 | MRR@10 | NDCG@10 | Avg latency |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| BM25 | 300 queries | 0.7187 | 0.7707 | 0.6296 | 0.6574 | 54.8 ms |
+| Dense | 300 queries | 0.7624 | 0.8386 | 0.6705 | 0.7077 | 1144.5 ms |
+| Hybrid RRF | 300 queries | 0.7558 | **0.8429** | 0.6698 | 0.7055 | 856.6 ms |
+| Hybrid + rerank | 50-query sample | 0.7633 | 0.7933 | 0.6733 | 0.6969 | 3265.9 ms |
+
+**Takeaway:** hybrid RRF produced the strongest full-run Recall@10, dense retrieval improved recall over BM25 at a substantial local latency cost, and BM25 remained the fastest system.
+
+Results were generated from the retrieval pipeline rather than hand-authored for presentation. See [benchmark results](docs/benchmark-results.md) and [evaluation methodology](docs/evaluation.md) for reproduction details and caveats.
 
 ## Architecture
 
-Aletheia has two operating shapes:
-
-- Local live stack: the full system with FastAPI, PostgreSQL, Redis/RQ, OpenSearch, Qdrant, local embedding and reranking models, and the Next.js frontend.
-- Public snapshot demo: Vercel serves the Next.js frontend and static `/demo-data` JSON exported from the full local stack. Neon holds the migrated hosted schema, but the public demo does not run the live backend/search/worker stack.
-
 ```mermaid
 flowchart TD
-  User["User browser"] --> Web["Next.js frontend"]
-  Web --> API["FastAPI API in local live mode"]
-  API --> Postgres["PostgreSQL metadata store"]
+  User["User browser"] --> Web["Next.js dashboard"]
+  Web --> API["FastAPI API"]
+  API --> Postgres["PostgreSQL metadata"]
   API --> Redis["Redis queue"]
   Redis --> Worker["RQ worker"]
-  API --> OpenSearch["OpenSearch BM25 index"]
-  API --> Qdrant["Qdrant vector collection"]
-  API --> Embed["BAAI bge-small-en-v1.5 embeddings"]
-  API --> Rerank["Cross-encoder reranker"]
-  Postgres --> Export["Snapshot export CLI"]
-  Export --> DemoData["/demo-data static JSON"]
-  DemoData --> Vercel["Vercel public snapshot frontend"]
+  API --> OpenSearch["OpenSearch / BM25"]
+  API --> Qdrant["Qdrant / vectors"]
+  API --> Models["Embedding + reranking models"]
+  Postgres --> Export["Snapshot exporter"]
+  Export --> Demo["Public Vercel demo"]
 ```
 
-More detail:
+Aletheia has two deliberately separate operating shapes:
+
+- **Local live stack:** arbitrary search, reranking, indexing, evaluation, replay, and administration run against the complete Docker-based system.
+- **Public snapshot demo:** the Next.js interface serves real traces, evaluations, index metadata, replay results, and dataset samples exported from the full stack. Mutating and compute-heavy actions are disabled.
+
+This boundary keeps the demo honest and affordable while preserving a reproducible live implementation.
+
+Detailed diagrams:
 
 - [Local live architecture](docs/diagrams/local-live-architecture.md)
 - [Public snapshot architecture](docs/diagrams/public-snapshot-architecture.md)
 - [Deployment topology](docs/diagrams/deployment-topology.md)
-- [Architecture doc](docs/architecture.md)
 
-## Core Features
+## Product surfaces
 
-Search and retrieval:
+| Surface | Purpose |
+| --- | --- |
+| Search Lab | Compare retrieval modes and inspect ranked results |
+| Query Traces | Follow candidates, scores, ranks, and latency across stages |
+| Evaluation Dashboard | Review Recall, MRR, NDCG, failures, and benchmark runs |
+| Experiment Matrix | Compare retrieval configurations and evaluation outcomes |
+| Index Console | Inspect versions, activation state, jobs, and operational history |
+| Dataset Browser | Explore benchmark documents, queries, and relevance judgments |
+| Replay Lab | Re-run saved query scenarios against selected configurations |
+| System Health | Monitor queues, workers, models, events, and dependencies |
 
-- BM25 lexical retrieval through OpenSearch.
-- Dense vector retrieval through Qdrant.
-- Hybrid retrieval using Reciprocal Rank Fusion.
-- Hybrid plus cross-encoder reranking over top-N candidates.
+## Screenshots
 
-Indexing:
+| Search Lab | Query Trace |
+| --- | --- |
+| ![Aletheia Search Lab](docs/assets/screenshots/search-lab.png) | ![Aletheia query trace](docs/assets/screenshots/query-trace.png) |
 
-- OpenSearch lexical indexes.
-- Qdrant vector collections.
-- Explicit index versions, activation, rollback, and job status.
-- Index metadata and operational history exposed in the UI.
+| Evaluation Dashboard | Experiment Matrix |
+| --- | --- |
+| ![Aletheia evaluation dashboard](docs/assets/screenshots/evaluation-dashboard.png) | ![Aletheia experiment matrix](docs/assets/screenshots/experiment-matrix.png) |
 
-Evaluation:
+See the [complete screenshot set](docs/screenshots.md).
 
-- BEIR SciFact corpus, benchmark queries, and qrels.
-- Recall@5, Recall@10, MRR@10, NDCG@10, and latency metrics.
-- Chunk hits mapped back to parent document IDs before scoring.
-- Offline and async evaluation runners.
-- Experiment configs, comparison matrix, and evaluation reports.
+## Tech stack
 
-Observability:
-
-- Query traces with retrieval stage details.
-- Candidate scores, ranks, and provenance.
-- Rank movement and comparison panels.
-- System events, worker heartbeats, and queue/model status.
-
-Frontend:
-
-- Search Lab
-- Query Traces
-- Evaluation Dashboard
-- Experiment Matrix
-- Index Console
-- Dataset Browser
-- Replay Lab
-- System Health
-
-## Benchmark Results
-
-These results are from the Step 47 benchmark suite over BEIR SciFact. Full rows use all 300 benchmark queries. The hybrid rerank row is sampled and is not directly comparable to the full 300-query rows.
-
-| Mode | Scope | Queries | Failed | Recall@5 | Recall@10 | MRR@10 | NDCG@10 | Avg ms | P95 ms | Notes |
-| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| bm25 | Full | 300 | 0 | 0.7187 | 0.7707 | 0.6296 | 0.6574 | 54.8 | 84.2 | Full 300-query SciFact benchmark. |
-| dense | Full | 300 | 0 | 0.7624 | 0.8386 | 0.6705 | 0.7077 | 1144.5 | 1057.6 | Full 300-query SciFact benchmark using BAAI/bge-small-en-v1.5. |
-| hybrid | Full | 300 | 0 | 0.7558 | 0.8429 | 0.6698 | 0.7055 | 856.6 | 949.8 | Full 300-query SciFact benchmark using Reciprocal Rank Fusion. |
-| hybrid_rerank | Sampled | 50 | 0 | 0.7633 | 0.7933 | 0.6733 | 0.6969 | 3265.9 | 3399.4 | Sampled rerank benchmark. Not directly comparable to full 300-query runs. |
-
-Methodology notes:
-
-- Dataset: BEIR SciFact.
-- Qrels are document-level.
-- Aletheia retrieves chunks and maps hits back to parent document IDs before scoring.
-- Latency is from local execution and includes local model/runtime behavior.
-- No benchmark metrics are fabricated or hand-entered outside generated benchmark output.
-
-Interpretation:
-
-- Hybrid RRF achieved the strongest full-run Recall@10.
-- Dense improved recall over BM25 but was slower due local embedding model calls.
-- BM25 remained fastest.
-- Hybrid rerank was sampled because CPU cross-encoder reranking is expensive.
-- The sampled rerank row is not directly comparable to full 300-query rows.
-
-See [docs/benchmark-results.md](docs/benchmark-results.md) for methodology and reproduction notes.
-
-## Tech Stack
-
-| Area | Stack |
+| Layer | Technologies |
 | --- | --- |
 | Frontend | Next.js, TypeScript, Tailwind CSS, Recharts |
-| Backend | FastAPI, Pydantic, SQLAlchemy, Alembic |
-| Infrastructure | PostgreSQL, Redis/RQ, OpenSearch, Qdrant, Docker Compose |
+| API and data | FastAPI, Pydantic, SQLAlchemy, Alembic, PostgreSQL |
+| Search | OpenSearch, Qdrant, Reciprocal Rank Fusion |
+| Jobs and operations | Redis, RQ, worker heartbeats, system events |
 | ML | BAAI/bge-small-en-v1.5, cross-encoder/ms-marco-MiniLM-L-6-v2 |
-| Deployment and demo | Vercel, Neon schema, static snapshot JSON |
-| Testing and quality | pytest, Ruff, GitHub Actions, PowerShell scripts |
+| Infrastructure | Docker Compose, Vercel, Neon, snapshot export tooling |
+| Quality | pytest, Ruff, TypeScript, ESLint, GitHub Actions |
 
-## Local Setup
+## Key technical decisions
 
-Prerequisites:
+### Document-level evaluation over chunk retrieval
 
-- Windows 11 or equivalent
+SciFact relevance judgments are document-level, while Aletheia retrieves chunks. Evaluation maps chunk hits to parent document IDs and deduplicates them before calculating Recall@K, MRR@10, and NDCG@10. This prevents inflated metrics caused by repeatedly retrieving chunks from the same relevant document.
+
+### Traceable hybrid ranking
+
+Hybrid search is not exposed as an opaque final list. A trace records lexical and dense candidates, fusion inputs, score and rank changes, reranker movement, and stage latency. The dashboard makes it possible to explain why a document appeared and where its rank changed.
+
+### Versioned operational state
+
+Indexes are treated as managed assets with versions, activation state, rollback behavior, job history, and failure visibility—not as invisible setup steps. The UI and API expose enough state to diagnose mismatched or unhealthy retrieval infrastructure.
+
+### Honest public deployment
+
+The public demo does not claim to provide always-on arbitrary retrieval. It presents genuine exported outputs from the full local stack and visibly disables operations that require the backend, workers, search engines, or local models.
+
+## Local development
+
+### Prerequisites
+
 - Docker Desktop
 - Python 3.11
-- Node 22
+- Node.js 22
 - Git
+- PowerShell scripts are provided for the primary Windows development path
 
-Clone the repo:
+Clone the repository:
 
 ```powershell
 git clone https://github.com/YuvrajKashyap/aletheia.git
 cd aletheia
 ```
 
-Start local infrastructure:
+Start infrastructure:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/powershell/dev.ps1
 ```
 
-Set up the backend:
+Set up the API and database:
 
 ```powershell
 py -3.11 -m venv services/api/.venv
 .\services\api\.venv\Scripts\python.exe -m pip install --upgrade pip
 .\services\api\.venv\Scripts\python.exe -m pip install -e "services/api[dev]"
-```
-
-Run migrations:
-
-```powershell
 powershell -ExecutionPolicy Bypass -File scripts/powershell/db-upgrade.ps1
 ```
 
-Load SciFact and create chunks:
+Load SciFact and build indexes:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/powershell/ingest-scifact.ps1
 powershell -ExecutionPolicy Bypass -File scripts/powershell/chunk-documents.ps1
-```
-
-Build indexes:
-
-```powershell
 powershell -ExecutionPolicy Bypass -File scripts/powershell/build-lexical-index.ps1 -Active -Recreate
 powershell -ExecutionPolicy Bypass -File scripts/powershell/build-vector-index.ps1 -Active -Recreate -BatchSize 64
 ```
 
-Start the API:
+Run the API, worker, and web app in separate terminals:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/powershell/api.ps1
-```
-
-Start the worker:
-
-```powershell
 powershell -ExecutionPolicy Bypass -File scripts/powershell/worker.ps1
-```
-
-Start the web app:
-
-```powershell
 powershell -ExecutionPolicy Bypass -File scripts/powershell/web.ps1
 ```
 
-Full first-time setup can take time because SciFact data, indexes, embeddings, and local model caches are built locally.
+The first setup can take time because the corpus, indexes, embeddings, and local model caches are built locally. See the [documentation index](docs/docs-index.md) for the complete runbook.
 
-## Public Snapshot Regeneration
+## Verification
 
-Export the public demo snapshot from real local outputs:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File scripts/powershell/export-demo-snapshot.ps1
-```
-
-Snapshot files are written under:
-
-```text
-apps/web/public/demo-data
-```
-
-Vercel should use:
-
-```text
-NEXT_PUBLIC_DEMO_MODE=snapshot
-```
-
-Snapshot JSON should be regenerated from the full local pipeline. It should not be hand-edited to create better-looking results.
-
-## Quality Gates
-
-Run the fast local CI gate:
+Run the local CI gate:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/powershell/ci-check.ps1
 ```
 
-Run the production readiness check:
+Run the production-readiness check:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/powershell/production-build-check.ps1
 ```
 
-GitHub Actions CI runs:
+GitHub Actions verifies backend tests, Ruff, frontend typechecking, linting, snapshot builds, and doctor checks. Full search and benchmark workloads remain local because they require the complete infrastructure and ML runtime.
 
-- backend tests
-- Ruff
-- frontend typecheck
-- frontend lint
-- frontend snapshot build
-- doctor
+## Current limitations
 
-Full benchmark and evaluation jobs do not run in default GitHub CI because they require local search and ML infrastructure.
+- The hosted demo is snapshot-backed rather than a live arbitrary-search cluster.
+- The full retrieval stack currently runs locally.
+- The hybrid-rerank benchmark is sampled.
+- Local CPU inference is not representative of optimized hosted-model latency.
+- SciFact is much smaller than a web-scale corpus.
+- Authentication, multi-tenant controls, and production administration are not implemented.
+- Atlas integration is planned but not yet implemented.
 
 ## Documentation
 
-- [Docs index](docs/docs-index.md)
 - [Architecture](docs/architecture.md)
 - [Retrieval design](docs/retrieval-design.md)
 - [Evaluation methodology](docs/evaluation.md)
-- [Tradeoffs](docs/tradeoffs.md)
-- [Interview notes](docs/interview-notes.md)
-- [Public demo mode](docs/public-demo-mode.md)
 - [Benchmark results](docs/benchmark-results.md)
-- [Architecture diagrams](docs/diagrams/README.md)
-- [Project closeout](docs/project-closeout.md)
-- [Resume and recruiter positioning](docs/resume-positioning.md)
-- [Project one-pager](docs/project-one-pager.md)
-- [Recruiter notes](docs/recruiter-notes.md)
-- [Final resume copy](docs/final-resume-copy.md)
-- [Portfolio card copy](docs/final-portfolio-card.md)
-- [LinkedIn/GitHub copy](docs/final-linkedin-github-copy.md)
-- [Interview package](docs/interview-package.md)
-- [Interview Q&A](docs/interview-q-and-a.md)
+- [Engineering tradeoffs](docs/tradeoffs.md)
 - [System design walkthrough](docs/system-design-walkthrough.md)
-
-## Screenshots
-
-The hosted demo runs in public snapshot mode using real outputs exported from the full local Aletheia pipeline.
-
-![Aletheia overview](docs/assets/screenshots/overview.png)
-
-![Search Lab](docs/assets/screenshots/search-lab.png)
-
-![Query Trace](docs/assets/screenshots/query-trace.png)
-
-![Evaluation Dashboard](docs/assets/screenshots/evaluation-dashboard.png)
-
-![Experiment Matrix](docs/assets/screenshots/experiment-matrix.png)
-
-![Index Console](docs/assets/screenshots/index-console.png)
-
-See the full screenshot set in [docs/screenshots.md](docs/screenshots.md).
-
-## Demo Walkthrough
-
-Demo video script and recording checklist are available in [docs/demo-walkthrough.md](docs/demo-walkthrough.md) and [docs/demo-recording-guide.md](docs/demo-recording-guide.md). A recorded walkthrough can be added after final video capture.
+- [Interview Q&A](docs/interview-q-and-a.md)
+- [Full documentation index](docs/docs-index.md)
 
 ## License
 
-This project is licensed under the MIT License. See LICENSE for details.
-
-## Limitations
-
-- The public demo is snapshot-backed, not live arbitrary hosted retrieval.
-- The full retrieval stack currently runs locally.
-- The hybrid rerank benchmark is sampled.
-- Local CPU model latency is higher than optimized hosted inference would be.
-- SciFact is small compared to web-scale search.
-- Auth, multi-tenant controls, and production admin roles are not implemented yet.
-- Atlas integration is future-facing and not implemented in this repo.
-
-## Future Work
-
-- Atlas integration as a web corpus ingestion source.
-- Optional hosted live backend and worker stack.
-- Larger benchmark datasets.
-- Stronger caching and performance optimization.
-- Auth and admin roles.
-- Managed OpenSearch and Qdrant deployment option.
-- More evaluation and report dashboards.
-- Model warmup and persistent worker tuning.
-- Additional retrieval corpora.
+Aletheia is available under the [MIT License](LICENSE).
