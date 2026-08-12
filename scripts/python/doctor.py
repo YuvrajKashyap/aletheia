@@ -1,4 +1,4 @@
-﻿"""Standard-library-only diagnostics for the Aletheia repo."""
+"""Standard-library-only diagnostics for the Aletheia repo."""
 
 from __future__ import annotations
 
@@ -61,7 +61,7 @@ EXPECTED_FILES = [
     "docs/interview-notes.md",
     "docs/resume-positioning.md",
     "docs/project-one-pager.md",
-    "docs/recruiter-notes.md",
+    "docs/review-notes.md",
     "docs/final-resume-copy.md",
     "docs/final-portfolio-card.md",
     "docs/final-linkedin-github-copy.md",

@@ -66,7 +66,7 @@ The frontend can be served for near-zero cost because snapshot files are static.
 
 Use `docs/public-demo-qa.md` for the hosted QA checklist before sharing the public demo.
 
-## What Recruiters Can Use
+## What Reviewers Can Use
 
 The public demo can show:
 

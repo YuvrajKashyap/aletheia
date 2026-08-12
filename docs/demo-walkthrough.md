@@ -2,11 +2,11 @@
 
 ## Demo Goal
 
-This walkthrough is for recruiters and engineers reviewing Aletheia as a production-style retrieval infrastructure project. It demonstrates search and ranking infrastructure, observability, evaluation correctness, experiment comparison, and the public snapshot demo model.
+This walkthrough is for engineers and technical reviewers evaluating Aletheia as a production-style retrieval infrastructure project. It demonstrates search and ranking infrastructure, observability, evaluation correctness, experiment comparison, and the public snapshot demo model.
 
 The public walkthrough uses the Vercel-hosted snapshot demo at https://aletheia.yuvrajkashyap.com. The hosted demo is backed by real precomputed outputs exported from the full local Aletheia pipeline. Live retrieval, reranking, index rebuilds, evaluation jobs, replay jobs, and admin actions are disabled publicly to avoid always-on search and ML infrastructure costs.
 
-## 60 To 90 Second Recruiter Walkthrough
+## 60 To 90 Second Technical Walkthrough
 
 0:00 to 0:10, Overview:
 

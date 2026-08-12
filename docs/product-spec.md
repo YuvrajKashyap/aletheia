@@ -1,4 +1,4 @@
-﻿# Aletheia Product Spec
+# Aletheia Product Spec
 
 
 
@@ -104,7 +104,7 @@ The primary intended users are technical reviewers:
 
 \- Search engineers
 
-\- Recruiters with technical evaluation support
+\- Technical reviewers evaluating implementation depth
 
 \- Technical founders or hiring managers reviewing portfolio depth
 

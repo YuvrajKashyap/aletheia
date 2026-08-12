@@ -61,9 +61,9 @@ This index helps readers navigate Aletheia's technical documentation.
 ## Interview Preparation
 
 - `docs/interview-notes.md`: technical explanations and Q&A prompts
-- `docs/resume-positioning.md`: resume bullets, recruiter pitch, LinkedIn copy, and project card language
+- `docs/resume-positioning.md`: resume bullets, technical summary, LinkedIn copy, and project card language
 - `docs/project-one-pager.md`: concise technical one-pager for portfolio sharing
-- `docs/recruiter-notes.md`: recruiter-facing review guide and caveats
+- `docs/review-notes.md`: public-facing review guide and caveats
 - `docs/final-resume-copy.md`: final resume-ready project copy
 - `docs/final-portfolio-card.md`: personal website project card and detail-page copy
 - `docs/final-linkedin-github-copy.md`: LinkedIn, GitHub, application, and outreach copy

@@ -1,4 +1,4 @@
-# Recruiter Notes
+# Review Notes
 
 This guide explains how to review Aletheia quickly without needing to run the local stack.
 

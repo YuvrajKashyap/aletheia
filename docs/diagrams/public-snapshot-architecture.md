@@ -4,7 +4,7 @@ This diagram shows how the public demo serves real exported data without hosting
 
 ```mermaid
 flowchart TD
-  Recruiter[Recruiter browser] --> Vercel[Vercel Next.js frontend]
+  Reviewer[Technical review browser] --> Vercel[Vercel Next.js frontend]
   Vercel --> DemoData["/demo-data static JSON"]
   DemoData --> Pages[Snapshot UI pages]
 

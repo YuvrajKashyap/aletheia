@@ -2,7 +2,7 @@
 
 ## Recommended Length
 
-- Recruiter walkthrough: 60 to 90 seconds.
+- Technical walkthrough: 60 to 90 seconds.
 - Technical walkthrough: 3 to 5 minutes.
 - Avoid trying to cover every table row or every JSON field.
 

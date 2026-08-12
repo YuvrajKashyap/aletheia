@@ -75,7 +75,7 @@ powershell -ExecutionPolicy Bypass -File scripts/powershell/repo-audit.ps1
 - Resume copy: `docs/final-resume-copy.md`
 - Portfolio card: `docs/final-portfolio-card.md`
 - LinkedIn/GitHub copy: `docs/final-linkedin-github-copy.md`
-- Recruiter notes: `docs/recruiter-notes.md`
+- Review notes: `docs/review-notes.md`
 - Interview package: `docs/interview-package.md`
 - Interview Q&A: `docs/interview-q-and-a.md`
 - System design walkthrough: `docs/system-design-walkthrough.md`

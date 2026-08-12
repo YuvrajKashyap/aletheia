@@ -35,7 +35,7 @@ Tech stack: FastAPI, Next.js, PostgreSQL, Redis/RQ, OpenSearch, Qdrant, Docker, 
 
 - Built a Next.js dashboard with Search Lab, Query Trace UI, Evaluation Dashboard, Experiment Matrix, Index Console, Dataset Browser, Replay Lab, and System Health views over real API or exported snapshot data.
 - Created a public Vercel snapshot demo using real exported outputs from the local full stack while disabling live retrieval, reranking, indexing, evaluation, replay, and admin jobs publicly.
-- Delivered a polished portfolio repository with screenshots, Mermaid architecture diagrams, CI, benchmark docs, runbooks, release readiness checks, and interview/recruiter documentation.
+- Delivered a polished project repository with screenshots, Mermaid architecture diagrams, CI, benchmark docs, runbooks, release readiness checks, and interview documentation.
 
 ## One-Line Resume Summary
 

@@ -14,7 +14,7 @@
 - Portfolio card: `docs/final-portfolio-card.md`
 - LinkedIn/GitHub copy: `docs/final-linkedin-github-copy.md`
 - Project one-pager: `docs/project-one-pager.md`
-- Recruiter notes: `docs/recruiter-notes.md`
+- Review notes: `docs/review-notes.md`
 - Interview package: `docs/interview-package.md`
 - Interview Q&A: `docs/interview-q-and-a.md`
 - System design walkthrough: `docs/system-design-walkthrough.md`

@@ -8,7 +8,7 @@ This is the final completion record for Aletheia as a resume, GitHub, and public
 - Public demo is live in snapshot mode.
 - Full local live stack is documented and reproducible.
 - CI is expected green through the local and GitHub quality gates.
-- Resume, recruiter, portfolio, and interview materials exist.
+- Resume, project overview, portfolio, and interview materials exist.
 - No fake data policy remains in force.
 
 ## Final Links

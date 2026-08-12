@@ -1,12 +1,12 @@
 # Resume Positioning
 
-This document translates Aletheia into concise resume, recruiter, LinkedIn, and project-card language. It preserves the project's actual scope: a retrieval, ranking, evaluation, and search observability platform with a public snapshot demo and a full local live stack.
+This document translates Aletheia into concise resume, interview, LinkedIn, and project-card language. It preserves the project's actual scope: a retrieval, ranking, evaluation, and search observability platform with a public snapshot demo and a full local live stack.
 
 ## One-Line Project Description
 
 1. Resume style: Built Aletheia, a production-style hybrid retrieval and search observability platform comparing BM25, dense vector retrieval, hybrid RRF, and cross-encoder reranking over BEIR SciFact with real traces and evaluation metrics.
 2. GitHub style: Hybrid retrieval, reranking, evaluation, and search observability platform using FastAPI, Next.js, PostgreSQL, Redis/RQ, OpenSearch, Qdrant, and BEIR SciFact.
-3. Recruiter style: Aletheia is a full-stack search infrastructure project that shows how retrieval systems are indexed, traced, evaluated, compared, and debugged.
+3. Technical-review style: Aletheia is a full-stack search infrastructure project that shows how retrieval systems are indexed, traced, evaluated, compared, and debugged.
 4. ML systems style: Aletheia evaluates lexical, dense, hybrid, and reranked retrieval using document-level SciFact qrels, rank fusion, query traces, and reproducible benchmark reports.
 5. Backend/search infrastructure style: Aletheia is a FastAPI-backed retrieval platform with versioned indexes, async jobs, search traces, evaluation runs, replay tooling, and a public snapshot demo.
 
@@ -28,7 +28,7 @@ This document translates Aletheia into concise resume, recruiter, LinkedIn, and 
 
 - Built a Next.js dashboard for Search Lab, Query Traces, Evaluations, Experiments, Index Console, Dataset Browser, Replay Lab, and System Health using real API or exported snapshot data.
 - Shipped a public Vercel snapshot demo using real outputs exported from the full local pipeline while disabling live retrieval, reranking, rebuilds, evaluation jobs, replay jobs, and admin actions publicly.
-- Created technical docs, Mermaid architecture diagrams, screenshot assets, demo scripts, benchmark methodology, runbooks, and release-readiness checks for a recruiter-readable portfolio project.
+- Created technical docs, Mermaid architecture diagrams, screenshot assets, demo scripts, benchmark methodology, runbooks, and release-readiness checks for a reviewer-readable portfolio project.
 
 ### Set 4: Ultra-Compact Resume Version
 
@@ -106,7 +106,7 @@ Links:
 - GitHub: https://github.com/YuvrajKashyap/aletheia
 - Technical docs: `docs/docs-index.md`
 
-## Recruiter Pitch
+## Technical Summary
 
 ### 15-Second Pitch
 

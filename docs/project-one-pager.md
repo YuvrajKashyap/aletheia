@@ -8,7 +8,7 @@ It is not a chatbot or a generic RAG wrapper. It focuses on retrieval infrastruc
 
 ## Why It Exists
 
-Modern retrieval systems need more than a search box. They need reproducible indexing, candidate provenance, evaluation against qrels, trace-level debugging, latency visibility, replay checks, and comparison tools for retrieval modes. Aletheia packages those concerns into a full-stack platform that can be inspected by engineers and recruiters.
+Modern retrieval systems need more than a search box. They need reproducible indexing, candidate provenance, evaluation against qrels, trace-level debugging, latency visibility, replay checks, and comparison tools for retrieval modes. Aletheia packages those concerns into a full-stack platform that can be inspected by engineers and technical reviewers.
 
 ## Architecture
 
